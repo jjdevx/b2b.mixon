@@ -1,0 +1,22 @@
+{
+  "name": "nwidart/account",
+  "description": "Account module",
+  "authors": [
+    {
+      "name": "Yurii Kinakh",
+      "email": "extremtmnt@gmail.com"
+    }
+  ],
+  "extra": {
+    "laravel": {
+      "providers": [],
+      "aliases": {
+      }
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Modules\\Account\\": ""
+    }
+  }
+}
