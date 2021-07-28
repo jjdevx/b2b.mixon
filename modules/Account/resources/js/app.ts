@@ -1,13 +1,14 @@
 import {createApp, h, App} from 'vue'
-import {createInertiaApp} from '@inertiajs/inertia-vue3'
+import {createInertiaApp, Link} from '@inertiajs/inertia-vue3'
+import {InertiaProgress} from '@inertiajs/progress'
 
 import store from './store'
 import ElementPlus from 'element-plus'
 import i18n from '@/metronic/core/plugins/i18n'
 
-import MockAdapter from '@/metronic/core/mock/MockService'
-import ApiService from '@/metronic/core/services/ApiService'
-import {initApexCharts} from '@/metronic/core/plugins/apexcharts'
+//import MockAdapter from '@/metronic/core/mock/MockService'
+//import ApiService from '@/metronic/core/services/ApiService'
+//import {initApexCharts} from '@/metronic/core/plugins/apexcharts'
 import {initInlineSvg} from '@/metronic/core/plugins/inline-svg'
 import {initVeeValidate} from '@/metronic/core/plugins/vee-validate'
 
@@ -21,19 +22,20 @@ createInertiaApp({
   resolve: name => import(`./Pages/${name}`),
   setup({el, app: InertiaApp, props, plugin}) {
     app = createApp({render: () => h(InertiaApp, props)})
-    app.use(plugin).mount(el)
-  },
-}).then(() => {
-  app.use(store)
-  app.use(ElementPlus)
 
-  ApiService.init(app)
-  MockAdapter.init(app)
-  initApexCharts(app)
-  initInlineSvg(app)
-  initVeeValidate()
+    app.use(plugin).component('InertiaLink', Link)
 
-  app.use(i18n)
+    app.use(store)
+    app.use(ElementPlus)
+
+    //ApiService.init(app)
+    //MockAdapter.init(app)
+    //initApexCharts(app)
+    initInlineSvg(app)
+    initVeeValidate()
+    InertiaProgress.init()
+
+    app.use(i18n)
+    app.mount(el)
+  }
 })
-
-

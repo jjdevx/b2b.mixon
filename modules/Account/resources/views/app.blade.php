@@ -6,11 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>{{$page['props']['metaInfo']['title']}} - Mixon</title>
     <link rel="icon" href="/favicon.ico" type="image/svg+xml">
-    <!-- Styles -->
-    <link href="{{ mix('css/app.css','dist') }}" rel="stylesheet"/>
-    <link
-        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700|Material+Icons"
-        rel="stylesheet">
+    <link href="{{ mix('css/app.css','dist') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap|Material+Icons" rel="stylesheet">
 </head>
 <body>
 @inertia

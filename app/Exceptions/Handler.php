@@ -38,4 +38,38 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $e)
+    {
+        $response = parent::render($request, $e);
+
+        inertia()->setRootView('account::app');
+
+        if (in_array($response->status(), [404, 403])) {
+            return inertia()
+                ->render('Error/Error404', [
+                    'status' => $response->status(),
+                    'message' => $response->status() === 404 ? 'Страница не найдена.' : 'Доступ запрещен.',
+                    'metaInfo' => ['title' => $response->status()]
+                ])
+                ->toResponse($request)
+                ->setStatusCode($response->status());
+        }
+
+        if (in_array($response->status(), [500, 503])) {
+            return inertia()
+                ->render('Error/Error500', [
+                    'status' => $response->status(),
+                    'message' => ucfirst($e->getMessage())
+                ])
+                ->toResponse($request)
+                ->setStatusCode($response->status());
+        }
+
+        if ($response->status() === 419) {
+            return inertia()->location($request->getRequestUri());
+        }
+
+        return $response;
+    }
 }

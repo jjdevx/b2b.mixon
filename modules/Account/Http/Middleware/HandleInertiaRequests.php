@@ -20,11 +20,17 @@ class HandleInertiaRequests extends Middleware
 
     public function share(Request $request): array
     {
-        $shared = [
-            'metaInfo' => fn() => [
-                'title' => \SEOMeta::getTitle()
-            ]
-        ];
+        $shared = [];
+        if ($request->isMethod('GET')) {
+            $shared = [
+                'metaInfo' => fn() => [
+                    'title' => \SEOMeta::getTitle()
+                ]
+            ];
+        }
+        if ($flash = \Session::get('flash')) {
+            $shared['flash'] = $flash;
+        }
 
         return array_merge(parent::share($request), $shared);
     }
