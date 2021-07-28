@@ -3,17 +3,20 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="icon" type="image/svg+xml" href="/dist/img/favicon.svg">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
     <title>{{$page['props']['metaInfo']['title']}} - Mixon</title>
+    <link rel="icon" href="/favicon.ico" type="image/svg+xml">
     <!-- Styles -->
-    <link href="{{ mix('dist/css/app.css') }}" rel="stylesheet"/>
+    <link href="{{ mix('css/app.css','dist') }}" rel="stylesheet"/>
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700|Material+Icons"
+        rel="stylesheet">
 </head>
 <body>
 @inertia
 @routes('account')
-<script src="{{ mix('dist/js/manifest.js') }}" defer></script>
-<script src="{{ mix('dist/js/vendor.js') }}" defer></script>
-<script src="{{ mix('dist/js/app.js') }}" defer></script>
+<script src="{{ mix('js/manifest.js','dist') }}" defer></script>
+<script src="{{ mix('js/vendor.js','dist') }}" defer></script>
+<script src="{{ mix('js/app.js','dist') }}" defer></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
 /public/hot
 /public/storage
 /public/mix-manifest.json
+public/dist
 /storage/*.key
 /vendor
 

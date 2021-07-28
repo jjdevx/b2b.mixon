@@ -7,7 +7,7 @@ use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
-    protected $rootView = 'admin::app';
+    protected $rootView = 'account::app';
 
     public function version(Request $request): string
     {
