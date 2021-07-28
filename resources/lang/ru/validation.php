@@ -150,7 +150,7 @@ return [
         'month'                 => 'Месяц',
         'name'                  => 'Имя',
         'password'              => 'Пароль',
-        'password_confirmation' => 'Подтверждение пароля',
+        'passwordConfirmation' => 'Подтверждение пароля',
         'phone'                 => 'Телефон',
         'second'                => 'Секунда',
         'sex'                   => 'Пол',

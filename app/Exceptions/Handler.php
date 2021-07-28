@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Exceptions\ThrottleRequestsException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -56,7 +57,7 @@ class Handler extends ExceptionHandler
                 ->setStatusCode($response->status());
         }
 
-        if (in_array($response->status(), [500, 503])) {
+        if (app()->environment('production') && in_array($response->status(), [500, 503])) {
             return inertia()
                 ->render('Error/Error500', [
                     'status' => $response->status(),
@@ -68,6 +69,17 @@ class Handler extends ExceptionHandler
 
         if ($response->status() === 419) {
             return inertia()->location($request->getRequestUri());
+        }
+
+        if ($e instanceof ThrottleRequestsException) {
+            $seconds = $e->getHeaders()['Retry-After'];
+
+            return back()->with('flash', [
+                'type' => 'throttle',
+                'text' => trans('errors.throttle'),
+                'icon' => 'warning',
+                'timer' => $seconds * 1000
+            ]);
         }
 
         return $response;

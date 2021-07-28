@@ -24,7 +24,7 @@
       />
       <div class="fv-plugins-message-container">
         <div class="fv-help-block">
-          <ErrorMessage name="email"/>
+          <ErrorMessage name="email" />
         </div>
       </div>
     </div>
@@ -85,15 +85,17 @@ export default defineComponent({
       isLoading.value = true
 
       Inertia.post('', data, {
-        onSuccess() {
-          e.resetForm()
+        onSuccess({props}) {
+          if (props.status === 'ok') {
+            e.resetForm()
 
-          Swal.fire({
-            text: 'Отлично! Новый пароль был отправлен вам на почту.',
-            icon: 'success',
-            timer: 4000,
-            showConfirmButton: false,
-          })
+            Swal.fire({
+              text: 'Отлично! Новый пароль был отправлен вам на почту.',
+              icon: 'success',
+              timer: 4000,
+              showConfirmButton: false,
+            })
+          }
         },
         onError(errors) {
           e.setErrors(errors)

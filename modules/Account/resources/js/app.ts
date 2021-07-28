@@ -1,4 +1,5 @@
-import {createApp, h, App} from 'vue'
+import {createApp, h} from 'vue'
+import {Inertia} from '@inertiajs/inertia'
 import {createInertiaApp, Link} from '@inertiajs/inertia-vue3'
 import {InertiaProgress} from '@inertiajs/progress'
 
@@ -6,9 +7,6 @@ import store from './store'
 import ElementPlus from 'element-plus'
 import i18n from '@/metronic/core/plugins/i18n'
 
-//import MockAdapter from '@/metronic/core/mock/MockService'
-//import ApiService from '@/metronic/core/services/ApiService'
-//import {initApexCharts} from '@/metronic/core/plugins/apexcharts'
 import {initInlineSvg} from '@/metronic/core/plugins/inline-svg'
 import {initVeeValidate} from '@/metronic/core/plugins/vee-validate'
 
@@ -16,26 +14,29 @@ import '@/metronic/core/plugins/keenthemes'
 import '@/metronic/core/plugins/prismjs'
 import 'bootstrap'
 
-let app: App
+import {flashMessages} from '@/helpers/flash-messages'
+import {initApexCharts} from '@/metronic/core/plugins/apexcharts'
 
 createInertiaApp({
   resolve: name => import(`./Pages/${name}`),
   setup({el, app: InertiaApp, props, plugin}) {
-    app = createApp({render: () => h(InertiaApp, props)})
+    const app = createApp({render: () => h(InertiaApp, props)})
 
     app.use(plugin).component('InertiaLink', Link)
 
     app.use(store)
     app.use(ElementPlus)
 
-    //ApiService.init(app)
-    //MockAdapter.init(app)
-    //initApexCharts(app)
     initInlineSvg(app)
     initVeeValidate()
+    initApexCharts(app)
     InertiaProgress.init()
 
     app.use(i18n)
     app.mount(el)
+
+    flashMessages(props.initialPage.props)
+
+    Inertia.on('success', async event => flashMessages(event.detail.page.props))
   }
 })

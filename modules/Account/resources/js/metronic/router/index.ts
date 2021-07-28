@@ -3,6 +3,7 @@ import store from "@/store";
 import { Mutations, Actions } from "@/store/enums/StoreEnums";
 
 const routes: Array<RouteRecordRaw> = [
+  /*
   {
     path: "/",
     redirect: "/dashboard",
@@ -873,6 +874,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/:pathMatch(.*)*",
     redirect: "/404"
   }
+   */
 ];
 
 const router = createRouter({

@@ -12,6 +12,8 @@ class AccountServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        \Validator::extend('string255', fn($attr, $value) => (is_string($value) && mb_strlen($value) <= 255));
+
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();

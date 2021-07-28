@@ -37,6 +37,7 @@ mix.webpackConfig({
     }),
     new VueTsCheckerPlugin()
   ],
+  devtool: 'source-map',
 }).setPublicPath('../../public/dist/')
 
 mix.alias({
@@ -73,4 +74,4 @@ if (mix.inProduction()) {
   mix.sourceMaps()
 }
 
-mix.disableNotifications()
+mix.disableSuccessNotifications()

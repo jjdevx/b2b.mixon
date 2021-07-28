@@ -11,7 +11,7 @@ class HandleInertiaRequests extends Middleware
 
     public function version(Request $request): string
     {
-        if (file_exists($manifest = public_path('/admin/dist/mix-manifest.json'))) {
+        if (file_exists($manifest = public_path('/dist/mix-manifest.json'))) {
             return md5_file($manifest);
         }
 
@@ -21,15 +21,20 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         $shared = [];
+
         if ($request->isMethod('GET')) {
             $shared = [
                 'metaInfo' => fn() => [
                     'title' => \SEOMeta::getTitle()
                 ]
             ];
-        }
-        if ($flash = \Session::get('flash')) {
-            $shared['flash'] = $flash;
+
+            if ($flash = \Session::get('flash')) {
+                $shared['flash'] = $flash;
+            }
+            if ($data = \Session::get('data')) {
+                $shared['data'] = $data;
+            }
         }
 
         return array_merge(parent::share($request), $shared);
