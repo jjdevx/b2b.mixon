@@ -30,19 +30,12 @@ class AuthController extends Controller
     {
         $request->authenticate();
 
-        if (!$request->user()->can('account.access')) {
-            \Auth::logout();
-            throw ValidationException::withMessages([
-                'email' => 'У вас нет доступа в личный кабинет.',
-            ]);
-        }
-
         $request->session()->regenerate();
 
         return inertia()->location('/');
     }
 
-    public function logout(Request $request): RedirectResponse
+    public function logout(Request $request): \Illuminate\Http\Response
     {
         \Auth::guard('web')->logout();
 
@@ -50,7 +43,7 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('account.login');
+        return inertia()->location('/');
     }
 
     public function register(): Response
@@ -111,10 +104,16 @@ class AuthController extends Controller
             $password = \Str::random(8);
             if ($user->update(['password' => \Hash::make($password)])) {
                 $user->notify(new ResetPassword($password));
-                $user->tokens()->delete();
             }
         }
 
-        return back();
+        return back()->with([
+            'data' => ['status' => 200],
+            'flash' => [
+                'text' => ' Вам на почту было отправлено письмо с новым паролем.',
+                'icon' => 'success',
+                'timer' => 4000
+            ]
+        ]);
     }
 }

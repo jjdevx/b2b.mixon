@@ -80,41 +80,36 @@
 
 <script lang="ts">
 import {defineComponent, ref} from 'vue'
-import {Inertia} from '@inertiajs/inertia'
 import {ErrorMessage, Field, Form, FormActions} from 'vee-validate'
-import * as Yup from 'yup'
 import AuthLayout from '@/layouts/Auth.vue'
+import {object, string} from 'yup'
+import BaseSchema from 'yup/lib/schema'
+import {Inertia} from '@inertiajs/inertia'
+
+type FormFields = { email: string, password: string }
 
 export default defineComponent({
-  components: {
-    Field,
-    Form,
-    ErrorMessage
-  },
+  components: {Field, Form, ErrorMessage},
   layout: AuthLayout,
   setup() {
     const isLoading = ref(false)
 
-    const login = Yup.object().shape({
-      email: Yup.string()
+    const login = object().shape<Record<keyof FormFields, BaseSchema>>({
+      email: string()
         .email()
         .required()
         .label('Почта'),
-      password: Yup.string()
+      password: string()
         .min(4)
         .required()
         .label('Пароль')
     })
 
-    type FormFields = { email: string, password: string }
-
-    function tryLogin(data: FormFields, e: FormActions<FormFields>): void {
+    function tryLogin(data: FormFields, actions: FormActions<FormFields>): void {
       isLoading.value = true
 
       Inertia.post('', data, {
-        onError(errors) {
-          e.setErrors(errors)
-        },
+        onError: errors => actions.setErrors(errors),
         onFinish: () => isLoading.value = false
       })
     }

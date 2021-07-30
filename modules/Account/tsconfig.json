@@ -2,10 +2,19 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "noImplicitAny": false,
     "target": "es5",
     "module": "esnext",
     "strict": true,
+    // Strict Checks
+    //"alwaysStrict": true,
+    "noImplicitAny": false,
+    //"strictNullChecks": true,
+    //"strictPropertyInitialization": true,
+    //"strictFunctionTypes": true,
+    //"noImplicitThis": true,
+    //"strictBindCallApply": true,
+    //"noPropertyAccessFromIndexSignature": false,
+    //"noUncheckedIndexedAccess": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
@@ -16,9 +25,9 @@
     "sourceMap": true,
     "baseUrl": ".",
     "typeRoots": [
-      "resources/js/vue-shims.d.ts",
       "resources/js/types",
-      "node_modules/@types"
+      "node_modules/@types",
+      "resources/js/vue-shims.d.ts"
     ],
     "types": [
       "webpack-env",
@@ -38,8 +47,9 @@
   },
   "include": [
     "resources/js/**/*",
-    "resources/js/**/*.ts",
     "resources/js/**/*.tsx",
+    "resources/js/**/*.ts",
+    "resources/js/**/*.js",
     "resources/js/**/*.vue",
     "resources/js/**/*.vue.ts"
   ],

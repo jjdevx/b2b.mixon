@@ -4,7 +4,12 @@ const path = require('path')
 const VueTsCheckerPlugin = require('@juit/vue-ts-checker').VueTsCheckerPlugin
 require('laravel-mix-eslint-config')
 
-mix.browserSync('mixon.loc')
+mix.browserSync({
+  proxy: 'mixon.loc',
+  files: 'resources/js/**/*'
+})
+
+mix.alias({'@': path.join(__dirname, 'resources/js')})
 
 mix.webpackConfig({
   output: {
@@ -17,7 +22,8 @@ mix.webpackConfig({
         loader: 'ts-loader',
         exclude: /node_modules/,
         options: {
-          transpileOnly: true
+          transpileOnly: true,
+          appendTsSuffixTo: [/\.vue$/]
         }
       }
     ]
@@ -37,28 +43,20 @@ mix.webpackConfig({
     }),
     new VueTsCheckerPlugin()
   ],
-  devtool: 'source-map',
+  //devtool: 'source-map',
 }).setPublicPath('../../public/dist/')
 
-mix.alias({
-  '@': path.join(__dirname, 'resources/js')
-})
-
-const options = {
+mix.options({
   processCssUrls: false,
   terser: {
     extractComments: false,
   }
-}
-
-mix.options(options)
+})
 
 mix.ts('resources/js/app.ts', 'js/app.js')
   .vue({version: 3})
   .extract(['vue', '@vue/composition-api', '@inertiajs/inertia-vue', '@inertiajs/progress', 'axios'])
-  .eslint({
-    extensions: ['js', 'ts', 'vue']
-  })
+  .eslint({extensions: ['js', 'ts', 'vue']})
 
 mix.sass('resources/scss/app.scss', 'css/app.css', {
   sassOptions: {
@@ -74,4 +72,4 @@ if (mix.inProduction()) {
   mix.sourceMaps()
 }
 
-mix.disableSuccessNotifications()
+mix.disableNotifications()

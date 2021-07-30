@@ -1,9 +1,7 @@
-import Swal, {SweetAlertIcon} from 'sweetalert2'
-import {PageProps} from '@inertiajs/inertia/types/types'
+import Swal from 'sweetalert2'
+import {Flash} from '@/types/mixon'
 
-export async function flashMessages(props: PageProps & { flash?: { type: string, text: string, icon?: SweetAlertIcon, timer?: number } }) {
-  const {flash} = props
-  if (flash) {
+export async function flashMessages(flash: Flash) {
     const {type, icon} = flash
     let {text, timer} = flash
 
@@ -38,5 +36,4 @@ export async function flashMessages(props: PageProps & { flash?: { type: string,
     if (intervalId) {
       clearInterval(intervalId)
     }
-  }
 }

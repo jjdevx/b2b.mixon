@@ -223,10 +223,10 @@
 <script lang="ts">
 import {defineComponent, ref} from 'vue'
 import {ErrorMessage, Field, Form, FormActions} from 'vee-validate'
-import {object, string, ref as reference} from 'yup'
 import AuthLayout from '@/layouts/Auth.vue'
-import {Inertia} from '@inertiajs/inertia'
+import {object, string, ref as reference} from 'yup'
 import BaseSchema from 'yup/lib/schema'
+import {Inertia} from '@inertiajs/inertia'
 
 type FormFields = {
   name: string
@@ -244,11 +244,7 @@ type FormFields = {
 }
 
 export default defineComponent({
-  components: {
-    Field,
-    Form,
-    ErrorMessage
-  },
+  components: {Field, Form, ErrorMessage},
   layout: AuthLayout,
   setup() {
     const isLoading = ref(false)

@@ -55,46 +55,38 @@
 <script lang="ts">
 import {defineComponent, ref} from 'vue'
 import {ErrorMessage, Field, Form, FormActions} from 'vee-validate'
-import * as Yup from 'yup'
+import {object, string} from 'yup'
 import AuthLayout from '@/layouts/Auth.vue'
 import {Inertia} from '@inertiajs/inertia'
-import Swal from 'sweetalert2'
+import {usePage} from '@inertiajs/inertia-vue3'
+import BaseSchema from 'yup/lib/schema'
+
+type FormFields = {
+  email: string
+}
 
 export default defineComponent({
-  components: {
-    Field,
-    Form,
-    ErrorMessage
-  },
+  components: {Field, Form, ErrorMessage},
   layout: AuthLayout,
   setup() {
     const isLoading = ref(false)
 
-    const forgotPassword = Yup.object().shape({
-      email: Yup.string()
+    const forgotPassword = object().shape<Record<keyof FormFields, BaseSchema>>({
+      email: string()
         .email()
         .required()
         .label('Email')
     })
 
-    type FormFields = {
-      email: string
-    }
-
     function tryReset(data: FormFields, e: FormActions<FormFields>): void {
+      const {props} = usePage<{ data: { status: number } }>()
+
       isLoading.value = true
 
       Inertia.post('', data, {
-        onSuccess({props}) {
-          if (props.status === 'ok') {
+        onSuccess() {
+          if (props.value.data.status === 200) {
             e.resetForm()
-
-            Swal.fire({
-              text: 'Отлично! Новый пароль был отправлен вам на почту.',
-              icon: 'success',
-              timer: 4000,
-              showConfirmButton: false,
-            })
           }
         },
         onError(errors) {

@@ -61,7 +61,7 @@ class LoginRequest extends FormRequest
     {
         return Auth::attempt(
             $this->only('email', 'password'),
-            $this->filled('rememberMe')
+           true// $this->filled('rememberMe')
         );
     }
 

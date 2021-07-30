@@ -20,14 +20,22 @@ class HandleInertiaRequests extends Middleware
 
     public function share(Request $request): array
     {
-        $shared = [];
+        $shared = [
+            'flash' => null
+        ];
 
         if ($request->isMethod('GET')) {
             $shared = [
-                'metaInfo' => fn() => [
-                    'title' => \SEOMeta::getTitle()
+                'common' => [
+                    'meta' => fn() => [
+                        'title' => \SEOMeta::getTitle()
+                    ],
                 ]
             ];
+
+            if ($user = \Auth::user()) {
+                $shared['common']['auth'] = $user->only(['name', 'email']);
+            }
 
             if ($flash = \Session::get('flash')) {
                 $shared['flash'] = $flash;
