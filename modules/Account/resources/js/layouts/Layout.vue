@@ -1,45 +1,42 @@
 <template>
-  <div class="page d-flex flex-row flex-column-fluid">
-    <KTAside
-      v-if="asideEnabled"
-      :light-logo="themeLightLogo"
-      :dark-logo="themeDarkLogo"
-    />
-    <div
-      id="kt_wrapper"
-      class="d-flex flex-column flex-row-fluid wrapper"
-    >
-      <KTHeader :title="pageTitle" />
+  <ElConfigProvider :locale="ru">
+    <div class="page d-flex flex-row flex-column-fluid">
+      <KTAside
+        v-if="asideEnabled"
+        :light-logo="themeLightLogo"
+        :dark-logo="themeDarkLogo"
+      />
       <div
-        id="kt_content"
-        class="content d-flex flex-column flex-column-fluid"
+        id="kt_wrapper"
+        class="d-flex flex-column flex-row-fluid wrapper"
       >
-        <KTToolbar
-          v-if="subheaderDisplay && !isDocPage"
-          :breadcrumbs="breadcrumbs"
-          :title="pageTitle"
-        />
-        <div class="post d-flex flex-column-fluid">
-          <div
-            :class="{
-              'container-fluid': contentWidthFluid,
-              container: !contentWidthFluid
-            }"
-          >
-            <KTMobilePageTitle
-              v-if="subheaderDisplay && !isDocPage"
-              :breadcrumbs="breadcrumbs"
-              :title="pageTitle"
-            />
-            <slot />
+        <KTHeader :title="pageTitle" />
+        <div
+          id="kt_content"
+          class="content d-flex flex-column flex-column-fluid"
+        >
+          <KTToolbar
+            v-if="subheaderDisplay"
+            :breadcrumbs="breadcrumbs"
+            :title="pageTitle"
+          />
+          <div class="post d-flex flex-column-fluid">
+            <div class="container-fluid">
+              <KTMobilePageTitle
+                v-if="subheaderDisplay"
+                :breadcrumbs="breadcrumbs"
+                :title="pageTitle"
+              />
+              <slot />
+            </div>
           </div>
         </div>
+        <KTFooter />
       </div>
-      <KTFooter />
     </div>
-  </div>
-  <KTScrollTop />
-  <KTUserMenu />
+    <KTScrollTop />
+    <KTUserMenu />
+  </ElConfigProvider>
 </template>
 
 <script lang="ts">
@@ -50,7 +47,7 @@ import KTHeader from '@/layouts/header/Header.vue'
 import KTFooter from '@/layouts/footer/Footer.vue'
 import HtmlClass from '@/metronic/core/services/LayoutService'
 import KTToolbar from '@/layouts/toolbar/Toolbar.vue'
-import KTMobilePageTitle from '@/metronic/layout/toolbar/MobilePageTitle.vue'
+import KTMobilePageTitle from '@/layouts/toolbar/MobilePageTitle.vue'
 import KTScrollTop from '@/metronic/layout/extras/ScrollTop.vue'
 import KTUserMenu from '@/metronic/layout/header/partials/ActivityDrawer.vue'
 import {
@@ -63,7 +60,10 @@ import {
   themeLightLogo,
   themeDarkLogo
 } from '@/metronic/core/helpers/config'
-import {isDocPage} from '@/metronic/core/helpers/documentation'
+
+import {ElConfigProvider} from 'element-plus'
+import ru from 'element-plus/lib/locale/lang/ru'
+
 
 export default defineComponent({
   name: 'Layout',
@@ -74,7 +74,8 @@ export default defineComponent({
     KTToolbar,
     KTScrollTop,
     KTUserMenu,
-    KTMobilePageTitle
+    KTMobilePageTitle,
+    [ElConfigProvider.name]: ElConfigProvider,
   },
   setup() {
     const store = useStore()
@@ -107,10 +108,16 @@ export default defineComponent({
       subheaderDisplay,
       pageTitle,
       breadcrumbs,
-      isDocPage,
       themeLightLogo,
-      themeDarkLogo
+      themeDarkLogo,
+      ru
     }
   }
 })
 </script>
+
+<style scoped>
+.container-fluid {
+  margin-top: 100px;
+}
+</style>

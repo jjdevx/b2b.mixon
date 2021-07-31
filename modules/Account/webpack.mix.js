@@ -6,10 +6,13 @@ require('laravel-mix-eslint-config')
 
 mix.browserSync({
   proxy: 'mixon.loc',
-  files: 'resources/js/**/*'
+  files: '../../public/dist/**/*'
 })
 
-mix.alias({'@': path.join(__dirname, 'resources/js')})
+mix.alias({
+  '@': path.join(__dirname, 'resources/js'),
+  'mixon': path.join(__dirname, 'resources/js/helpers/mixon.ts')
+})
 
 mix.webpackConfig({
   output: {
@@ -43,7 +46,6 @@ mix.webpackConfig({
     }),
     new VueTsCheckerPlugin()
   ],
-  //devtool: 'source-map',
 }).setPublicPath('../../public/dist/')
 
 mix.options({
@@ -55,7 +57,11 @@ mix.options({
 
 mix.ts('resources/js/app.ts', 'js/app.js')
   .vue({version: 3})
-  .extract(['vue', '@vue/composition-api', '@inertiajs/inertia-vue', '@inertiajs/progress', 'axios'])
+  .extract([
+    'vue', '@vue/composition-api', 'vue-router', 'vue-i18n', 'vee-validate', 'vue-axios',
+    '@inertiajs/inertia-vue3', '@inertiajs/progress',
+    'axios', 'apexcharts', 'sweetalert2', 'i18n', 'popper.js'
+  ])
   .eslint({extensions: ['js', 'ts', 'vue']})
 
 mix.sass('resources/scss/app.scss', 'css/app.css', {

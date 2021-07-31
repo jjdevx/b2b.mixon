@@ -25,9 +25,9 @@
     "sourceMap": true,
     "baseUrl": ".",
     "typeRoots": [
+      "resources/js/vue-shims.d.ts",
       "resources/js/types",
-      "node_modules/@types",
-      "resources/js/vue-shims.d.ts"
+      "node_modules/@types"
     ],
     "types": [
       "webpack-env",
@@ -36,6 +36,9 @@
     "paths": {
       "@/*": [
         "resources/js/*"
+      ],
+      "mixon": [
+        "resources/js/helpers/mixon.ts"
       ]
     },
     "lib": [

@@ -1,10 +1,11 @@
-import {createApp, h, toRefs} from 'vue'
-import {Inertia, PageProps} from '@inertiajs/inertia'
+import {createApp, h} from 'vue'
+import {Inertia} from '@inertiajs/inertia'
 import {createInertiaApp, Link, usePage} from '@inertiajs/inertia-vue3'
 import {InertiaProgress} from '@inertiajs/progress'
 
 import {store, key} from './store'
 import ElementPlus from 'element-plus'
+
 import i18n from '@/metronic/core/plugins/i18n'
 
 import {initInlineSvg} from '@/metronic/core/plugins/inline-svg'
@@ -43,12 +44,13 @@ createInertiaApp({
     initInlineSvg(app)
     initVeeValidate()
     initApexCharts(app)
-    InertiaProgress.init()
 
     app.use(i18n)
     app.mount(el)
 
     initInertia()
     Inertia.on('success', () => initInertia())
+
+    InertiaProgress.init()
   }
 })

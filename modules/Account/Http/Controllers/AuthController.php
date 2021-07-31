@@ -61,6 +61,8 @@ class AuthController extends Controller
 
         event(new Registered($user));
 
+        $user->assignRole('user');
+
         \Auth::guard()->login($user, true);
 
         return redirect()->route('account.dashboard')->with('flash', [

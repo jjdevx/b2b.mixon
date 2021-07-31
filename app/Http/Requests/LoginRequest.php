@@ -21,7 +21,7 @@ class LoginRequest extends FormRequest
 
     public function authenticate(): void
     {
-        $this->ensureIsNotRateLimited();
+        //$this->ensureIsNotRateLimited();
 
         if (!$this->try()) {
             RateLimiter::hit($this->throttleKey());

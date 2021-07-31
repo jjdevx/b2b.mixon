@@ -9,7 +9,7 @@ use Modules\Account\Http\Middleware\HandleInertiaRequests;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected string $moduleNamespace = 'Modules\Account\Http\Controllers';
+    protected string $moduleNamespace = '';
 
     public function map(): void
     {
