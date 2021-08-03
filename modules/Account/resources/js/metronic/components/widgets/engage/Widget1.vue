@@ -1,6 +1,9 @@
 <template>
   <!--begin::Engage Widget 1-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Body-->
     <div class="card-body pb-0">
       <!--begin::Wrapper-->
@@ -9,14 +12,14 @@
         <div class="pt-15 mb-10">
           <!--begin::Title-->
           <h3 class="text-dark text-center fs-1 fw-bolder lh-lg">
-            Upgrade to Pro<br />
+            Upgrade to Pro<br>
             For Limitless Features
           </h3>
           <!--end::Title-->
 
           <!--begin::Text-->
           <div class="text-center text-gray-600 fs-6 fw-bold pt-4 pb-1">
-            They stoping you from amazing poorly about drive.<br />
+            They stoping you from amazing poorly about drive.<br>
             Outlines keep you honest.
           </div>
           <!--end::Text-->
@@ -28,8 +31,7 @@
               class="btn btn-primary fs-6 px-6"
               data-bs-toggle="modal"
               data-bs-target="#kt_modal_create_app"
-              >Get Started</a
-            >
+            >Get Started</a>
           </div>
           <!--end::Action-->
         </div>
@@ -38,8 +40,8 @@
         <!--begin::Image-->
         <div
           class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom card-rounded-bottom h-200px"
-          style="background-image:url('dist/media/illustrations/work.png')"
-        ></div>
+          style="background-image:url('/dist/media/illustrations/work.png')"
+        />
         <!--end::Image-->
       </div>
       <!--end::Wrapper-->
@@ -53,7 +55,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "widget-1",
+  name: "Widget1",
   props: {
     widgetClasses: String
   }

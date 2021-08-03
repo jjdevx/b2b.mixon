@@ -7,6 +7,7 @@ export interface Common {
   auth: {
     name: string
     email: string
+    icon: string
   }
 }
 
@@ -15,4 +16,9 @@ export interface Flash {
   text: string,
   icon?: SweetAlertIcon,
   timer?: number
+}
+
+export interface Toast {
+  text: string,
+  icon?: SweetAlertIcon,
 }

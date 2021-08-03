@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - Share & Earn-->
   <div
-    class="modal fade"
     id="kt_modal_share_earn"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -18,7 +18,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -32,13 +32,18 @@
             <!--begin::Heading-->
             <div class="mb-13 text-center">
               <!--begin::Title-->
-              <h1 class="mb-3">Share & Earn</h1>
+              <h1 class="mb-3">
+                Share & Earn
+              </h1>
               <!--end::Title-->
 
               <!--begin::Description-->
               <div class="text-gray-400 fw-bold fs-5">
                 If you need more info, please check
-                <a href="#" class="link-primary fw-bolder">Author Commision</a>.
+                <a
+                  href="#"
+                  class="link-primary fw-bolder"
+                >Author Commision</a>.
               </div>
               <!--end::Description-->
             </div>
@@ -55,17 +60,17 @@
               <!--begin::Title-->
               <div class="d-flex">
                 <input
-                  ref="inputRef"
                   id="kt_share_earn_link_input"
+                  ref="inputRef"
                   type="text"
                   class="form-control form-control-solid me-3 flex-grow-1"
                   name="search"
                   value="https://keenthemes.com/?ref=skitechnology"
-                />
+                >
 
                 <button
-                  ref="copyButtonRef"
                   id="kt_share_earn_link_copy_button"
+                  ref="copyButtonRef"
                   class="btn btn-light fw-bolder flex-shrink-0"
                   data-clipboard-target="#kt_share_earn_link_input"
                 >
@@ -78,30 +83,39 @@
 
             <!--begin::Actions-->
             <div class="d-flex">
-              <a href="#" class="btn btn-light-primary w-100">
+              <a
+                href="#"
+                class="btn btn-light-primary w-100"
+              >
                 <img
                   alt="Logo"
-                  src="dist/media/svg/brand-logos/google-icon.svg"
+                  src="/dist/media/svg/brand-logos/google-icon.svg"
                   class="h-15px me-3"
-                />
+                >
                 Import Contacts
               </a>
 
-              <a href="#" class="btn btn-icon btn-facebook w-100 mx-6">
+              <a
+                href="#"
+                class="btn btn-icon btn-facebook w-100 mx-6"
+              >
                 <img
                   alt="Logo"
-                  src="dist/media/svg/brand-logos/facebook-2.svg"
+                  src="/dist/media/svg/brand-logos/facebook-2.svg"
                   class="h-20px me-3"
-                />
+                >
                 Facebook
               </a>
 
-              <a href="#" class="btn btn-icon btn-twitter w-100">
+              <a
+                href="#"
+                class="btn btn-icon btn-twitter w-100"
+              >
                 <img
                   alt="Logo"
-                  src="dist/media/svg/brand-logos/twitter.svg"
+                  src="/dist/media/svg/brand-logos/twitter.svg"
                   class="h-20px me-3"
-                />
+                >
                 Twitter
               </a>
             </div>
@@ -111,13 +125,13 @@
             <div class="d-flex align-items-center mt-10">
               <!--begin::Label-->
               <div class="flex-grow-1">
-                <span class="fs-6 fw-bold text-gray-800 d-block"
-                  >Adding Users by Team Members</span
-                >
+                <span
+                  class="fs-6 fw-bold text-gray-800 d-block"
+                >Adding Users by Team Members</span>
 
-                <span class="fs-7 fw-bold text-gray-400"
-                  >If you need more info, please check budget planning</span
-                >
+                <span
+                  class="fs-7 fw-bold text-gray-400"
+                >If you need more info, please check budget planning</span>
               </div>
               <!--end::Label-->
 
@@ -130,7 +144,7 @@
                   type="checkbox"
                   value="1"
                   checked="checked"
-                />
+                >
                 <span class="form-check-label">
                   Allowed
                 </span>
@@ -155,7 +169,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import ClipboardJS from "clipboard";
 
 export default defineComponent({
-  name: "share-and-earn-modal",
+  name: "ShareAndEarnModal",
   components: {},
   setup() {
     const copyButtonRef = ref<null | HTMLElement>(null);

@@ -1,6 +1,9 @@
 <template>
   <!--begin::List Widget 1-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -19,11 +22,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
     </div>
@@ -31,7 +34,10 @@
 
     <!--begin::Body-->
     <div class="card-body pt-5">
-      <template v-for="(item, index) in items" :key="index">
+      <template
+        v-for="(item, index) in items"
+        :key="index"
+      >
         <!--begin::Item-->
         <div
           :class="{ 'mb-7': items.length - 1 !== index }"
@@ -39,7 +45,10 @@
         >
           <!--begin::Symbol-->
           <div class="symbol symbol-50px me-5">
-            <span :class="`bg-light-${item.color}`" class="symbol-label">
+            <span
+              :class="`bg-light-${item.color}`"
+              class="symbol-label"
+            >
               <span
                 :class="`svg-icon-${item.color}`"
                 class="svg-icon svg-icon-2x"
@@ -52,7 +61,10 @@
 
           <!--begin::Text-->
           <div class="d-flex flex-column">
-            <a href="#" class="text-dark text-hover-primary fs-6 fw-bolder">{{
+            <a
+              href="#"
+              class="text-dark text-hover-primary fs-6 fw-bolder"
+            >{{
               item.title
             }}</a>
 
@@ -73,7 +85,7 @@ import { defineComponent } from "vue";
 import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 
 export default defineComponent({
-  name: "kt-widget-1",
+  name: "KtWidget1",
   components: {
     Dropdown1
   },
@@ -83,31 +95,31 @@ export default defineComponent({
   setup() {
     const items = [
       {
-        icon: "dist/media/icons/duotone/Home/Library.svg",
+        icon: "/dist/media/icons/duotone/Home/Library.svg",
         color: "success",
         title: "Project Briefing",
         description: "Project Manager"
       },
       {
-        icon: "dist/media/icons/duotone/Communication/Write.svg",
+        icon: "/dist/media/icons/duotone/Communication/Write.svg",
         color: "warning",
         title: "Concept Design",
         description: "Art Director"
       },
       {
-        icon: "dist/media/icons/duotone/Communication/Group-chat.svg",
+        icon: "/dist/media/icons/duotone/Communication/Group-chat.svg",
         color: "primary",
         title: "Functional Logics",
         description: "Lead Developer"
       },
       {
-        icon: "dist/media/icons/duotone/General/Attachment2.svg",
+        icon: "/dist/media/icons/duotone/General/Attachment2.svg",
         color: "danger",
         title: "Development",
         description: "DevOps"
       },
       {
-        icon: "dist/media/icons/duotone/Communication/Shield-user.svg",
+        icon: "/dist/media/icons/duotone/Communication/Shield-user.svg",
         color: "info",
         title: "Testing",
         description: "QA Managers"

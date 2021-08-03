@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - View Users-->
   <div
-    class="modal fade"
     id="kt_modal_view_users"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -18,7 +18,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -30,13 +30,18 @@
           <!--begin::Heading-->
           <div class="text-center mb-13">
             <!--begin::Title-->
-            <h1 class="mb-3">Browse Users</h1>
+            <h1 class="mb-3">
+              Browse Users
+            </h1>
             <!--end::Title-->
 
             <!--begin::Description-->
             <div class="text-gray-400 fw-bold fs-5">
               If you need more info, please check out our
-              <a href="#" class="link-primary fw-bolder">Users Directory</a>.
+              <a
+                href="#"
+                class="link-primary fw-bolder"
+              >Users Directory</a>.
             </div>
             <!--end::Description-->
           </div>
@@ -46,7 +51,10 @@
           <div class="mb-15">
             <!--begin::List-->
             <div class="mh-375px scroll-y me-n7 pe-7">
-              <template v-for="(user, index) in users" :key="index">
+              <template
+                v-for="(user, index) in users"
+                :key="index"
+              >
                 <!--begin::User-->
                 <div
                   class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed"
@@ -55,7 +63,11 @@
                   <div class="d-flex align-items-center">
                     <!--begin::Avatar-->
                     <div class="symbol symbol-35px symbol-circle">
-                      <img v-if="user.avatar" alt="Pic" :src="user.avatar" />
+                      <img
+                        v-if="user.avatar"
+                        alt="Pic"
+                        :src="user.avatar"
+                      >
                       <span
                         v-else
                         :class="`bg-light-${user.state} text-${user.state}`"
@@ -82,7 +94,9 @@
                       <!--end::Name-->
 
                       <!--begin::Email-->
-                      <div class="fw-bold text-gray-400">{{ user.email }}</div>
+                      <div class="fw-bold text-gray-400">
+                        {{ user.email }}
+                      </div>
                       <!--end::Email-->
                     </div>
                     <!--end::Details-->
@@ -97,7 +111,9 @@
                         ${{ user.sales }}
                       </div>
 
-                      <div class="fs-7 text-muted">Sales</div>
+                      <div class="fs-7 text-muted">
+                        Sales
+                      </div>
                     </div>
                     <!--end::Sales-->
                   </div>
@@ -131,7 +147,7 @@
                 type="checkbox"
                 value=""
                 checked="checked"
-              />
+              >
 
               <span class="form-check-label fw-bold text-gray-400">
                 Allowed
@@ -154,12 +170,12 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "view-users-modal",
+  name: "ViewUsersModal",
   components: {},
   setup() {
     const users = [
       {
-        avatar: "dist/media/avatars/150-1.jpg",
+        avatar: "/dist/media/avatars/150-1.jpg",
         name: "Emma Smith",
         email: "e.smith@kpmg.com.au",
         position: "Art Director",
@@ -173,21 +189,21 @@ export default defineComponent({
         sales: "50,500"
       },
       {
-        avatar: "dist/media/avatars/150-2.jpg",
+        avatar: "/dist/media/avatars/150-2.jpg",
         name: "Max Smith",
         email: "max@kt.com",
         position: "Software Enginer",
         sales: "75,900"
       },
       {
-        avatar: "dist/media/avatars/150-2.jpg",
+        avatar: "/dist/media/avatars/150-2.jpg",
         name: "Sean Bean",
         email: "sean@dellito.com",
         position: "Web Developer",
         sales: "10,500"
       },
       {
-        avatar: "dist/media/avatars/150-15.jpg",
+        avatar: "/dist/media/avatars/150-15.jpg",
         name: "Brian Cox",
         email: "brian@exchange.com",
         position: "UI/UX Designer",
@@ -201,7 +217,7 @@ export default defineComponent({
         sales: "9,300"
       },
       {
-        avatar: "dist/media/avatars/150-8.jpg",
+        avatar: "/dist/media/avatars/150-8.jpg",
         name: "Francis Mitcham",
         email: "f.mitcham@kpmg.com.au",
         position: "Software Arcitect",
@@ -222,7 +238,7 @@ export default defineComponent({
         sales: "45,000"
       },
       {
-        avatar: "dist/media/avatars/150-6.jpg",
+        avatar: "/dist/media/avatars/150-6.jpg",
         name: "Dan Wilson",
         email: "dam@consilting.com",
         position: "Web Desinger",
@@ -236,7 +252,7 @@ export default defineComponent({
         sales: "5,000"
       },
       {
-        avatar: "dist/media/avatars/150-7.jpg",
+        avatar: "/dist/media/avatars/150-7.jpg",
         name: "Ana Crown",
         email: "ana.cf@limtel.com",
         position: "Customer Relationship",

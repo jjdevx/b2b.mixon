@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - Create account-->
   <div
-    class="modal fade"
     id="kt_modal_create_account"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -22,7 +22,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -33,14 +33,17 @@
         <div class="modal-body scroll-y m-5">
           <!--begin::Stepper-->
           <div
+            id="kt_create_account_stepper"
             ref="createAccountRef"
             class="stepper stepper-links d-flex flex-column"
-            id="kt_create_account_stepper"
           >
             <!--begin::Nav-->
             <div class="stepper-nav py-5">
               <!--begin::Step 1-->
-              <div class="stepper-item current" data-kt-stepper-element="nav">
+              <div
+                class="stepper-item current"
+                data-kt-stepper-element="nav"
+              >
                 <h3 class="stepper-title">
                   Account Type
                 </h3>
@@ -48,7 +51,10 @@
               <!--end::Step 1-->
 
               <!--begin::Step 2-->
-              <div class="stepper-item" data-kt-stepper-element="nav">
+              <div
+                class="stepper-item"
+                data-kt-stepper-element="nav"
+              >
                 <h3 class="stepper-title">
                   Account Info
                 </h3>
@@ -56,7 +62,10 @@
               <!--end::Step 2-->
 
               <!--begin::Step 3-->
-              <div class="stepper-item" data-kt-stepper-element="nav">
+              <div
+                class="stepper-item"
+                data-kt-stepper-element="nav"
+              >
                 <h3 class="stepper-title">
                   Business Details
                 </h3>
@@ -64,7 +73,10 @@
               <!--end::Step 3-->
 
               <!--begin::Step 4-->
-              <div class="stepper-item" data-kt-stepper-element="nav">
+              <div
+                class="stepper-item"
+                data-kt-stepper-element="nav"
+              >
                 <h3 class="stepper-title">
                   Billing Details
                 </h3>
@@ -72,7 +84,10 @@
               <!--end::Step 4-->
 
               <!--begin::Step 5-->
-              <div class="stepper-item" data-kt-stepper-element="nav">
+              <div
+                class="stepper-item"
+                data-kt-stepper-element="nav"
+              >
                 <h3 class="stepper-title">
                   Completed
                 </h3>
@@ -83,13 +98,16 @@
 
             <!--begin::Form-->
             <form
+              id="kt_create_account_form"
               class="mx-auto mw-600px w-100 py-10"
               novalidate="novalidate"
-              id="kt_create_account_form"
               @submit="handleStep"
             >
               <!--begin::Step 1-->
-              <div class="current" data-kt-stepper-element="content">
+              <div
+                class="current"
+                data-kt-stepper-element="content"
+              >
                 <!--begin::Wrapper-->
                 <div class="w-100">
                   <!--begin::Heading-->
@@ -101,14 +119,17 @@
                         class="fas fa-exclamation-circle ms-2 fs-7"
                         data-bs-toggle="tooltip"
                         title="Billing is issued based on your selected account type"
-                      ></i>
+                      />
                     </h2>
                     <!--end::Title-->
 
                     <!--begin::Notice-->
                     <div class="text-gray-400 fw-bold fs-6">
                       If you need more info, please check out
-                      <a href="#" class="link-primary fw-bolder">Help Page</a>.
+                      <a
+                        href="#"
+                        class="link-primary fw-bolder"
+                      >Help Page</a>.
                     </div>
                     <!--end::Notice-->
                   </div>
@@ -122,21 +143,21 @@
                       <div class="col-lg-6">
                         <!--begin::Option-->
                         <input
+                          id="kt_create_account_form_account_type_personal"
+                          v-model="formData.accountType"
                           type="radio"
                           class="btn-check"
                           name="accountType"
                           value="personal"
                           checked="checked"
-                          id="kt_create_account_form_account_type_personal"
-                          v-model="formData.accountType"
-                        />
+                        >
                         <label
                           class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10"
                           for="kt_create_account_form_account_type_personal"
                         >
                           <span class="svg-icon svg-icon-3x me-5">
                             <inline-svg
-                              src="dist/media/icons/duotone/Interface/User.svg"
+                              src="/dist/media/icons/duotone/Interface/User.svg"
                             />
                           </span>
 
@@ -145,9 +166,9 @@
                             <span class="text-dark fw-bolder d-block fs-4 mb-2">
                               Personal Account
                             </span>
-                            <span class="text-gray-400 fw-bold fs-6"
-                              >If you need more info, please check it out</span
-                            >
+                            <span
+                              class="text-gray-400 fw-bold fs-6"
+                            >If you need more info, please check it out</span>
                           </span>
                           <!--end::Info-->
                         </label>
@@ -159,31 +180,31 @@
                       <div class="col-lg-6">
                         <!--begin::Option-->
                         <input
+                          id="kt_create_account_form_account_type_corporate"
+                          v-model="formData.accountType"
                           type="radio"
                           class="btn-check"
                           name="accountType"
                           value="corporate"
-                          id="kt_create_account_form_account_type_corporate"
-                          v-model="formData.accountType"
-                        />
+                        >
                         <label
                           class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"
                           for="kt_create_account_form_account_type_corporate"
                         >
                           <span class="svg-icon svg-icon-3x me-5">
                             <inline-svg
-                              src="dist/media/icons/duotone/Interface/Briefcase.svg"
+                              src="/dist/media/icons/duotone/Interface/Briefcase.svg"
                             />
                           </span>
 
                           <!--begin::Info-->
                           <span class="d-block fw-bold text-start">
-                            <span class="text-dark fw-bolder d-block fs-4 mb-2"
-                              >Corporate Account</span
-                            >
-                            <span class="text-gray-400 fw-bold fs-6"
-                              >Create corporate account to mane users</span
-                            >
+                            <span
+                              class="text-dark fw-bolder d-block fs-4 mb-2"
+                            >Corporate Account</span>
+                            <span
+                              class="text-gray-400 fw-bold fs-6"
+                            >Create corporate account to mane users</span>
                           </span>
                           <!--end::Info-->
                         </label>
@@ -206,13 +227,18 @@
                   <!--begin::Heading-->
                   <div class="pb-10 pb-lg-15">
                     <!--begin::Title-->
-                    <h2 class="fw-bolder text-dark">Account Info</h2>
+                    <h2 class="fw-bolder text-dark">
+                      Account Info
+                    </h2>
                     <!--end::Title-->
 
                     <!--begin::Notice-->
                     <div class="text-gray-400 fw-bold fs-6">
                       If you need more info, please check out
-                      <a href="#" class="link-primary fw-bolder">Help Page</a>.
+                      <a
+                        href="#"
+                        class="link-primary fw-bolder"
+                      >Help Page</a>.
                     </div>
                     <!--end::Notice-->
                   </div>
@@ -227,24 +253,27 @@
                         class="fas fa-exclamation-circle ms-2 fs-7"
                         data-bs-toggle="tooltip"
                         title="Provide your team size to help us setup your billing"
-                      ></i>
+                      />
                     </label>
                     <!--end::Label-->
 
                     <!--begin::Row-->
-                    <div class="row mb-2" data-kt-buttons="true">
+                    <div
+                      class="row mb-2"
+                      data-kt-buttons="true"
+                    >
                       <!--begin::Col-->
                       <div class="col">
                         <!--begin::Option-->
                         <input
+                          id="kt_one_one_select"
+                          v-model="formData.teamSize"
                           type="radio"
                           class="btn-check"
                           checked="checked"
                           name="teamSize"
                           value="1-1"
-                          id="kt_one_one_select"
-                          v-model="formData.teamSize"
-                        />
+                        >
                         <label
                           class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4"
                           for="kt_one_one_select"
@@ -259,13 +288,13 @@
                       <div class="col">
                         <!--begin::Option-->
                         <input
+                          id="kt_two_ten_select"
+                          v-model="formData.teamSize"
                           type="radio"
                           class="btn-check"
                           name="teamSize"
                           value="2-10"
-                          id="kt_two_ten_select"
-                          v-model="formData.teamSize"
-                        />
+                        >
                         <label
                           class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4"
                           for="kt_two_ten_select"
@@ -280,13 +309,13 @@
                       <div class="col">
                         <!--begin::Option-->
                         <input
+                          id="kt_ten_fifty_select"
+                          v-model="formData.teamSize"
                           type="radio"
                           class="btn-check"
                           name="teamSize"
                           value="10-50"
-                          id="kt_ten_fifty_select"
-                          v-model="formData.teamSize"
-                        />
+                        >
                         <label
                           class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4"
                           for="kt_ten_fifty_select"
@@ -301,13 +330,13 @@
                       <div class="col">
                         <!--begin::Option-->
                         <input
+                          id="kt_fifty_select"
+                          v-model="formData.teamSize"
                           type="radio"
                           class="btn-check"
                           name="teamSize"
                           value="50+"
-                          id="kt_fifty_select"
-                          v-model="formData.teamSize"
-                        />
+                        >
                         <label
                           class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4"
                           for="kt_fifty_select"
@@ -360,7 +389,7 @@
                         class="fas fa-exclamation-circle ms-2 fs-7"
                         data-bs-toggle="tooltip"
                         title="Monthly billing will be based on your account plan"
-                      ></i>
+                      />
                     </label>
                     <!--end::Label-->
 
@@ -377,7 +406,7 @@
                                 class="svg-icon svg-icon-1 svg-icon-gray-600"
                               >
                                 <inline-svg
-                                  src="dist/media/icons/duotone/Interface/Bank.svg"
+                                  src="/dist/media/icons/duotone/Interface/Bank.svg"
                                 />
                               </span>
                             </span>
@@ -388,11 +417,10 @@
                           <span class="d-flex flex-column">
                             <span
                               class="fw-bolder text-gray-800 text-hover-primary fs-5"
-                              >Company Account</span
-                            >
-                            <span class="fs-6 fw-bold text-gray-400"
-                              >Use images to enhance your post flow</span
-                            >
+                            >Company Account</span>
+                            <span
+                              class="fs-6 fw-bold text-gray-400"
+                            >Use images to enhance your post flow</span>
                           </span>
                           <!--end:Description-->
                         </span>
@@ -403,12 +431,12 @@
                           class="form-check form-check-custom form-check-solid"
                         >
                           <input
+                            v-model="formData.accountPlan"
                             class="form-check-input"
                             type="radio"
                             name="accountPlan"
                             value="1"
-                            v-model="formData.accountPlan"
-                          />
+                          >
                         </span>
                         <!--end:Input-->
                       </label>
@@ -425,7 +453,7 @@
                                 class="svg-icon svg-icon-1 svg-icon-gray-600"
                               >
                                 <inline-svg
-                                  src="dist/media/icons/duotone/Interface/Doughnut.svg"
+                                  src="/dist/media/icons/duotone/Interface/Doughnut.svg"
                                 />
                               </span>
                             </span>
@@ -436,11 +464,10 @@
                           <span class="d-flex flex-column">
                             <span
                               class="fw-bolder text-gray-800 text-hover-primary fs-5"
-                              >Developer Account</span
-                            >
-                            <span class="fs-6 fw-bold text-gray-400"
-                              >Use images to your post time</span
-                            >
+                            >Developer Account</span>
+                            <span
+                              class="fs-6 fw-bold text-gray-400"
+                            >Use images to your post time</span>
                           </span>
                           <!--end:Description-->
                         </span>
@@ -451,13 +478,13 @@
                           class="form-check form-check-custom form-check-solid"
                         >
                           <input
+                            v-model="formData.accountPlan"
                             class="form-check-input"
                             type="radio"
                             checked
                             name="accountPlan"
                             value="2"
-                            v-model="formData.accountPlan"
-                          />
+                          >
                         </span>
                         <!--end:Input-->
                       </label>
@@ -474,7 +501,7 @@
                                 class="svg-icon svg-icon-1 svg-icon-gray-600"
                               >
                                 <inline-svg
-                                  src="dist/media/icons/duotone/Interface/Line-03-Down.svg"
+                                  src="/dist/media/icons/duotone/Interface/Line-03-Down.svg"
                                 />
                               </span>
                             </span>
@@ -485,11 +512,10 @@
                           <span class="d-flex flex-column">
                             <span
                               class="fw-bolder text-gray-800 text-hover-primary fs-5"
-                              >Testing Account</span
-                            >
-                            <span class="fs-6 fw-bold text-gray-400"
-                              >Use images to enhance time travel rivers</span
-                            >
+                            >Testing Account</span>
+                            <span
+                              class="fs-6 fw-bold text-gray-400"
+                            >Use images to enhance time travel rivers</span>
                           </span>
                           <!--end:Description-->
                         </span>
@@ -500,12 +526,12 @@
                           class="form-check form-check-custom form-check-solid"
                         >
                           <input
+                            v-model="formData.accountPlan"
                             class="form-check-input"
                             type="radio"
                             name="accountPlan"
                             value="3"
-                            v-model="formData.accountPlan"
-                          />
+                          >
                         </span>
                         <!--end:Input-->
                       </label>
@@ -526,13 +552,18 @@
                   <!--begin::Heading-->
                   <div class="pb-10 pb-lg-12">
                     <!--begin::Title-->
-                    <h2 class="fw-bolder text-dark">Business Details</h2>
+                    <h2 class="fw-bolder text-dark">
+                      Business Details
+                    </h2>
                     <!--end::Title-->
 
                     <!--begin::Notice-->
                     <div class="text-gray-400 fw-bold fs-6">
                       If you need more info, please check out
-                      <a href="#" class="link-primary fw-bolder">Help Page</a>.
+                      <a
+                        href="#"
+                        class="link-primary fw-bolder"
+                      >Help Page</a>.
                     </div>
                     <!--end::Notice-->
                   </div>
@@ -600,8 +631,7 @@
                         </div>
                     </div>
                 "
-                      >
-                      </i>
+                      />
                     </label>
                     <!--end::Label-->
 
@@ -638,18 +668,37 @@
                       class="form-select form-select-lg form-select-solid"
                       as="select"
                     >
-                      <option></option>
-                      <option label="Corporation" value="1">Corporation</option>
-                      <option label="Sole Proprietorship" value="2"
-                        >Sole Proprietorship</option
+                      <option />
+                      <option
+                        label="Corporation"
+                        value="1"
                       >
-                      <option label="Non-profit" value="3">Non-profit</option>
-                      <option label="Limited Liability" value="4"
-                        >Limited Liability</option
+                        Corporation
+                      </option>
+                      <option
+                        label="Sole Proprietorship"
+                        value="2"
                       >
-                      <option label="General Partnership" value="5"
-                        >General Partnership</option
+                        Sole Proprietorship
+                      </option>
+                      <option
+                        label="Non-profit"
+                        value="3"
                       >
+                        Non-profit
+                      </option>
+                      <option
+                        label="Limited Liability"
+                        value="4"
+                      >
+                        Limited Liability
+                      </option>
+                      <option
+                        label="General Partnership"
+                        value="5"
+                      >
+                        General Partnership
+                      </option>
                     </Field>
                     <ErrorMessage
                       class="fv-plugins-message-container invalid-feedback"
@@ -683,9 +732,9 @@
                   <!--begin::Input group-->
                   <div class="fv-row mb-0">
                     <!--begin::Label-->
-                    <label class="fs-6 fw-bold form-label required"
-                      >Contact Email</label
-                    >
+                    <label
+                      class="fs-6 fw-bold form-label required"
+                    >Contact Email</label>
                     <!--end::Label-->
 
                     <!--begin::Input-->
@@ -713,13 +762,18 @@
                   <!--begin::Heading-->
                   <div class="pb-10 pb-lg-15">
                     <!--begin::Title-->
-                    <h2 class="fw-bolder text-dark">Billing Details</h2>
+                    <h2 class="fw-bolder text-dark">
+                      Billing Details
+                    </h2>
                     <!--end::Title-->
 
                     <!--begin::Notice-->
                     <div class="text-gray-400 fw-bold fs-6">
                       If you need more info, please check out
-                      <a href="#" class="text-primary fw-bolder">Help Page</a>.
+                      <a
+                        href="#"
+                        class="text-primary fw-bolder"
+                      >Help Page</a>.
                     </div>
                     <!--end::Notice-->
                   </div>
@@ -736,7 +790,7 @@
                         class="fas fa-exclamation-circle ms-2 fs-7"
                         data-bs-toggle="tooltip"
                         title="Specify a card holder's name"
-                      ></i>
+                      />
                     </label>
                     <!--end::Label-->
 
@@ -757,9 +811,9 @@
                   <!--begin::Input group-->
                   <div class="d-flex flex-column mb-7 fv-row">
                     <!--begin::Label-->
-                    <label class="required fs-6 fw-bold form-label mb-2"
-                      >Card Number</label
-                    >
+                    <label
+                      class="required fs-6 fw-bold form-label mb-2"
+                    >Card Number</label>
                     <!--end::Label-->
 
                     <!--begin::Input wrapper-->
@@ -783,20 +837,20 @@
                         class="position-absolute translate-middle-y top-50 end-0 me-5"
                       >
                         <img
-                          src="dist/media/svg/card-logos/visa.svg"
+                          src="/dist/media/svg/card-logos/visa.svg"
                           alt=""
                           class="h-25px"
-                        />
+                        >
                         <img
-                          src="dist/media/svg/card-logos/mastercard.svg"
+                          src="/dist/media/svg/card-logos/mastercard.svg"
                           alt=""
                           class="h-25px"
-                        />
+                        >
                         <img
-                          src="dist/media/svg/card-logos/american-express.svg"
+                          src="/dist/media/svg/card-logos/american-express.svg"
                           alt=""
                           class="h-25px"
-                        />
+                        >
                       </div>
                       <!--end::Card logos-->
                     </div>
@@ -809,9 +863,9 @@
                     <!--begin::Col-->
                     <div class="col-md-8 fv-row">
                       <!--begin::Label-->
-                      <label class="required fs-6 fw-bold form-label mb-2"
-                        >Expiration Date</label
-                      >
+                      <label
+                        class="required fs-6 fw-bold form-label mb-2"
+                      >Expiration Date</label>
                       <!--end::Label-->
 
                       <!--begin::Row-->
@@ -826,9 +880,17 @@
                             data-placeholder="Month"
                             as="select"
                           >
-                            <option></option>
-                            <template v-for="i in 12" :key="i">
-                              <option :label="i" :value="i">{{ i }}</option>
+                            <option />
+                            <template
+                              v-for="i in 12"
+                              :key="i"
+                            >
+                              <option
+                                :label="i"
+                                :value="i"
+                              >
+                                {{ i }}
+                              </option>
                             </template>
                           </Field>
                           <div class="fv-plugins-message-container">
@@ -849,13 +911,17 @@
                             data-placeholder="Year"
                             as="select"
                           >
-                            <option></option>
-                            <template v-for="i in 10" :key="i">
+                            <option />
+                            <template
+                              v-for="i in 10"
+                              :key="i"
+                            >
                               <option
                                 :label="new Date().getFullYear() + i"
                                 :value="new Date().getFullYear() + i"
-                                >{{ new Date().getFullYear() + i }}</option
                               >
+                                {{ new Date().getFullYear() + i }}
+                              </option>
                             </template>
                           </Field>
                           <div class="fv-plugins-message-container">
@@ -881,7 +947,7 @@
                           class="fas fa-exclamation-circle ms-2 fs-7"
                           data-bs-toggle="tooltip"
                           title="Enter a card CVV code"
-                        ></i>
+                        />
                       </label>
                       <!--end::Label-->
 
@@ -904,7 +970,7 @@
                         >
                           <span class="svg-icon svg-icon-2hx">
                             <inline-svg
-                              src="dist/media/icons/duotone/Shopping/Credit-card.svg"
+                              src="/dist/media/icons/duotone/Shopping/Credit-card.svg"
                             />
                           </span>
                         </div>
@@ -925,9 +991,9 @@
                   <div class="d-flex flex-stack">
                     <!--begin::Label-->
                     <div class="me-5">
-                      <label class="fs-6 fw-bold form-label"
-                        >Save Card for further billing?</label
-                      >
+                      <label
+                        class="fs-6 fw-bold form-label"
+                      >Save Card for further billing?</label>
                       <div class="fs-7 fw-bold text-gray-400">
                         If you need more info, please check budget planning
                       </div>
@@ -943,7 +1009,7 @@
                         type="checkbox"
                         value="1"
                         checked="checked"
-                      />
+                      >
                       <span class="form-check-label fw-bold text-gray-400">
                         Save Card
                       </span>
@@ -963,15 +1029,20 @@
                   <!--begin::Heading-->
                   <div class="pb-8 pb-lg-10">
                     <!--begin::Title-->
-                    <h2 class="fw-bolder text-dark">Your Are Done!</h2>
+                    <h2 class="fw-bolder text-dark">
+                      Your Are Done!
+                    </h2>
                     <!--end::Title-->
 
                     <!--begin::Notice-->
                     <div class="text-gray-400 fw-bold fs-6">
                       If you need more info, please
-                      <router-link to="/sign-in" class="link-primary fw-bolder"
-                        >Sign In</router-link
-                      >.
+                      <router-link
+                        to="/sign-in"
+                        class="link-primary fw-bolder"
+                      >
+                        Sign In
+                      </router-link>.
                     </div>
                     <!--end::Notice-->
                   </div>
@@ -995,7 +1066,7 @@
                       <!--begin::Icon-->
                       <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
                         <inline-svg
-                          src="dist/media/icons/duotone/Code/Warning-1-circle.svg"
+                          src="/dist/media/icons/duotone/Code/Warning-1-circle.svg"
                         />
                       </span>
                       <!--end::Icon-->
@@ -1008,9 +1079,10 @@
                           </h4>
                           <div class="fs-6 text-gray-600">
                             To start using great tools, please, please
-                            <a href="#" class="fw-bolder"
-                              >Create Team Platform</a
-                            >
+                            <a
+                              href="#"
+                              class="fw-bolder"
+                            >Create Team Platform</a>
                           </div>
                         </div>
                         <!--end::Content-->
@@ -1037,7 +1109,7 @@
                   >
                     <span class="svg-icon svg-icon-3 me-1">
                       <inline-svg
-                        src="dist/media/icons/duotone/Navigation/Left-2.svg"
+                        src="/dist/media/icons/duotone/Navigation/Left-2.svg"
                       />
                     </span>
                     Back
@@ -1048,9 +1120,9 @@
                 <!--begin::Wrapper-->
                 <div>
                   <button
+                    v-if="currentStepIndex === totalSteps - 1"
                     type="submit"
                     class="btn btn-lg btn-primary"
-                    v-if="currentStepIndex === totalSteps - 1"
                     @click="formSubmit()"
                   >
                     <span class="indicator-label">
@@ -1065,15 +1137,19 @@
                       Please wait...
                       <span
                         class="spinner-border spinner-border-sm align-middle ms-2"
-                      ></span>
+                      />
                     </span>
                   </button>
 
-                  <button type="submit" class="btn btn-lg btn-primary" v-else>
+                  <button
+                    v-else
+                    type="submit"
+                    class="btn btn-lg btn-primary"
+                  >
                     Continue
                     <span class="svg-icon svg-icon-3 ms-1 me-0">
                       <inline-svg
-                        src="dist/media/icons/duotone/Navigation/Right-2.svg"
+                        src="/dist/media/icons/duotone/Navigation/Right-2.svg"
                       />
                     </span>
                   </button>
@@ -1132,7 +1208,7 @@ interface Step4 {
 interface KTCreateApp extends Step1, Step2, Step3, Step4 {}
 
 export default defineComponent({
-  name: "create-account-modal",
+  name: "CreateAccountModal",
   components: {
     Field,
     ErrorMessage

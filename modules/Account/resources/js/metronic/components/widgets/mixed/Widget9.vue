@@ -1,6 +1,9 @@
 <template>
   <!--begin::Mixed Widget 9-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Body-->
     <div class="card-body d-flex flex-column">
       <div class="flex-grow-1">
@@ -12,21 +15,28 @@
 
           <div class="symbol symbol-50px">
             <span class="symbol-label bg-light">
-              <img :src="image" class="h-50 align-self-center" alt="" />
+              <img
+                :src="image"
+                class="h-50 align-self-center"
+                alt=""
+              >
             </span>
           </div>
         </div>
         <!--end::Info-->
 
         <!--begin::Link-->
-        <a href="#" class="text-dark fw-bolder text-hover-primary fs-4">
+        <a
+          href="#"
+          class="text-dark fw-bolder text-hover-primary fs-4"
+        >
           {{ title }}
         </a>
         <!--end::Link-->
 
         <!--begin::Desc-->
         <p class="py-3">
-          <span v-html="description"></span>
+          <span v-html="description" />
         </p>
         <!--end::Desc-->
       </div>
@@ -39,7 +49,10 @@
           data-bs-toggle="tooltip"
           title="Ana Stone"
         >
-          <img src="dist/media/avatars/150-1.jpg" alt="" />
+          <img
+            src="/dist/media/avatars/150-1.jpg"
+            alt=""
+          >
         </a>
 
         <a
@@ -48,7 +61,10 @@
           data-bs-toggle="tooltip"
           title="Mark Larson"
         >
-          <img src="dist/media/avatars/150-4.jpg" alt="" />
+          <img
+            src="/dist/media/avatars/150-4.jpg"
+            alt=""
+          >
         </a>
 
         <a
@@ -57,7 +73,10 @@
           data-bs-toggle="tooltip"
           title="Sam Harris"
         >
-          <img src="dist/media/avatars/150-8.jpg" alt="" />
+          <img
+            src="/dist/media/avatars/150-8.jpg"
+            alt=""
+          >
         </a>
       </div>
       <!--end::Team-->
@@ -71,7 +90,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "widget-1",
+  name: "Widget1",
   components: {},
   props: {
     widgetClasses: String,

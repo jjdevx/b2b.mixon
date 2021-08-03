@@ -11,10 +11,7 @@
         data-kt-menu-placement="bottom-end"
         data-kt-menu-flip="bottom"
       >
-        <img
-          src="dist/media/avatars/150-26.jpg"
-          alt="metronic"
-        >
+        <img :src="icon">
       </div>
       <KTUserMenu />
     </div>
@@ -27,7 +24,7 @@
         class="btn btn-icon btn-active-light-primary"
       >
         <span class="svg-icon svg-icon-1">
-          <inline-svg src="dist/media/icons/duotone/Text/Toggle-Right.svg" />
+          <inline-svg src="/dist/media/icons/duotone/Text/Toggle-Right.svg" />
         </span>
       </div>
     </div>
@@ -35,12 +32,20 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import {computed, defineComponent} from 'vue'
 import KTUserMenu from '@/layouts/Header/partials/UserMenu.vue'
+import {useStore} from '@/store'
 
 export default defineComponent({
   components: {
     KTUserMenu
+  },
+  setup(){
+    const store = useStore()
+
+    const icon = computed(() => store.state.common?.auth.icon)
+
+    return {icon}
   }
 })
 </script>

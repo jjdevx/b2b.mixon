@@ -1,6 +1,9 @@
 <template>
   <!--begin::Tables Widget 11-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -9,9 +12,12 @@
         <span class="text-muted mt-1 fw-bold fs-7">Over 500 new products</span>
       </h3>
       <div class="card-toolbar">
-        <a href="#" class="btn btn-sm btn-light-primary">
+        <a
+          href="#"
+          class="btn btn-sm btn-light-primary"
+        >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="dist/media/icons/duotone/Communication/Add-user.svg" />
+            <inline-svg src="/dist/media/icons/duotone/Communication/Add-user.svg" />
           </span>
           New Member
         </a>
@@ -28,36 +34,51 @@
           <!--begin::Table head-->
           <thead>
             <tr class="fw-bolder text-muted bg-light">
-              <th class="ps-4 min-w-325px rounded-start">Product</th>
-              <th class="min-w-125px">Price</th>
-              <th class="min-w-125px">Deposit</th>
-              <th class="min-w-200px">Agent</th>
-              <th class="min-w-150px">Status</th>
-              <th class="min-w-200px text-end rounded-end"></th>
+              <th class="ps-4 min-w-325px rounded-start">
+                Product
+              </th>
+              <th class="min-w-125px">
+                Price
+              </th>
+              <th class="min-w-125px">
+                Deposit
+              </th>
+              <th class="min-w-200px">
+                Agent
+              </th>
+              <th class="min-w-150px">
+                Status
+              </th>
+              <th class="min-w-200px text-end rounded-end" />
             </tr>
           </thead>
           <!--end::Table head-->
 
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in list" :key="index">
+            <template
+              v-for="(item, index) in list"
+              :key="index"
+            >
               <tr>
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="symbol symbol-50px me-5">
-                      <img :src="item.product.image" class="" alt="" />
+                      <img
+                        :src="item.product.image"
+                        class=""
+                        alt=""
+                      >
                     </div>
 
                     <div class="d-flex justify-content-start flex-column">
                       <a
                         href="#"
                         class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                        >{{ item.product.name }}</a
-                      >
+                      >{{ item.product.name }}</a>
                       <span
                         class="text-muted fw-bold text-muted d-block fs-7"
-                        >{{ item.product.specs }}</span
-                      >
+                      >{{ item.product.specs }}</span>
                     </div>
                   </div>
                 </td>
@@ -66,30 +87,27 @@
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.price }}</a
-                  >
-                  <span class="text-muted fw-bold text-muted d-block fs-7"
-                    >Paid</span
-                  >
+                  >{{ item.price }}</a>
+                  <span
+                    class="text-muted fw-bold text-muted d-block fs-7"
+                  >Paid</span>
                 </td>
 
                 <td>
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.deposit }}</a
-                  >
-                  <span class="text-muted fw-bold text-muted d-block fs-7"
-                    >Rejected</span
-                  >
+                  >{{ item.deposit }}</a>
+                  <span
+                    class="text-muted fw-bold text-muted d-block fs-7"
+                  >Rejected</span>
                 </td>
 
                 <td>
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.agent.name }}</a
-                  >
+                  >{{ item.agent.name }}</a>
                   <span class="text-muted fw-bold text-muted d-block fs-7">{{
                     item.agent.position
                   }}</span>
@@ -98,8 +116,7 @@
                 <td>
                   <span
                     class="badge badge-light-<?php echo $row['status']['color']?> fs-7 fw-bold"
-                    >{{ item.status.label }}</span
-                  >
+                  >{{ item.status.label }}</span>
                 </td>
 
                 <td class="text-end">
@@ -109,7 +126,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="dist/media/icons/duotone/General/Settings-1.svg"
+                        src="/dist/media/icons/duotone/General/Settings-1.svg"
                       />
                     </span>
                   </a>
@@ -120,7 +137,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="dist/media/icons/duotone/Communication/Write.svg"
+                        src="/dist/media/icons/duotone/Communication/Write.svg"
                       />
                     </span>
                   </a>
@@ -130,7 +147,7 @@
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                   >
                     <span class="svg-icon svg-icon-3">
-                      <inline-svg src="dist/media/icons/duotone/General/Trash.svg" />
+                      <inline-svg src="/dist/media/icons/duotone/General/Trash.svg" />
                     </span>
                   </a>
                 </td>
@@ -152,7 +169,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "kt-widget-11",
+  name: "KtWidget11",
   components: {},
   props: {
     widgetClasses: String
@@ -161,7 +178,7 @@ export default defineComponent({
     const list = [
       {
         product: {
-          image: "dist/media/stock/600x400/img-26.jpg",
+          image: "/dist/media/stock/600x400/img-26.jpg",
           name: "Sant Extreanet Solution",
           specs: "HTML, JS, ReactJS"
         },
@@ -178,7 +195,7 @@ export default defineComponent({
       },
       {
         product: {
-          image: "dist/media/stock/600x400/img-3.jpg",
+          image: "/dist/media/stock/600x400/img-3.jpg",
           name: "Telegram Development",
           specs: "C#, ASP.NET, MS SQL"
         },
@@ -195,7 +212,7 @@ export default defineComponent({
       },
       {
         product: {
-          image: "dist/media/stock/600x400/img-9.jpg",
+          image: "/dist/media/stock/600x400/img-9.jpg",
           name: "Payroll Application",
           specs: "PHP, Laravel, VueJS"
         },
@@ -212,7 +229,7 @@ export default defineComponent({
       },
       {
         product: {
-          image: "dist/media/stock/600x400/img-18.jpg",
+          image: "/dist/media/stock/600x400/img-18.jpg",
           name: "HR Management System",
           specs: "Python, PostgreSQL, ReactJS"
         },
@@ -229,7 +246,7 @@ export default defineComponent({
       },
       {
         product: {
-          image: "dist/media/stock/600x400/img-8.jpg",
+          image: "/dist/media/stock/600x400/img-8.jpg",
           name: "Telegram Mobile",
           specs: "HTML, JS, ReactJS"
         },

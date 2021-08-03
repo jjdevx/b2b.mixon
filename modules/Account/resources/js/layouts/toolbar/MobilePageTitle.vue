@@ -25,7 +25,7 @@
           href="/dashboard"
           class="text-muted text-hover-primary"
         >
-          Home
+          Главная
         </InertiaLink>
       </li>
       <li class="breadcrumb-item">

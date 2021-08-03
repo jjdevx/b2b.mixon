@@ -2,14 +2,14 @@
   <!--begin::Timeline item-->
   <div class="timeline-item">
     <!--begin::Timeline line-->
-    <div class="timeline-line w-40px"></div>
+    <div class="timeline-line w-40px" />
     <!--end::Timeline line-->
 
     <!--begin::Timeline icon-->
     <div class="timeline-icon symbol symbol-circle symbol-40px me-4">
       <div class="symbol-label bg-light">
         <span class="svg-icon svg-icon-2 svg-icon-gray-500">
-          <inline-svg src="dist/media/icons/duotone/Communication/Chat2.svg" />
+          <inline-svg src="/dist/media/icons/duotone/Communication/Chat2.svg" />
         </span>
       </div>
     </div>
@@ -28,7 +28,9 @@
         <!--begin::Description-->
         <div class="d-flex align-items-center mt-1 fs-6">
           <!--begin::Info-->
-          <div class="text-muted me-2 fs-7">Added at 4:23 PM by</div>
+          <div class="text-muted me-2 fs-7">
+            Added at 4:23 PM by
+          </div>
           <!--end::Info-->
 
           <!--begin::User-->
@@ -39,7 +41,10 @@
             data-bs-placement="top"
             title="Nina Nilson"
           >
-            <img src="dist/media/avatars/150-11.jpg" alt="img" />
+            <img
+              src="/dist/media/avatars/150-11.jpg"
+              alt="img"
+            >
           </div>
           <!--end::User-->
         </div>
@@ -57,8 +62,7 @@
           <a
             href="#"
             class="fs-5 text-dark text-hover-primary fw-bold w-375px min-w-200px"
-            >Meeting with customer</a
-          >
+          >Meeting with customer</a>
           <!--end::Title-->
 
           <!--begin::Label-->
@@ -73,13 +77,19 @@
           >
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="dist/media/avatars/150-3.jpg" alt="img" />
+              <img
+                src="/dist/media/avatars/150-3.jpg"
+                alt="img"
+              >
             </div>
             <!--end::User-->
 
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="dist/media/avatars/150-11.jpg" alt="img" />
+              <img
+                src="/dist/media/avatars/150-11.jpg"
+                alt="img"
+              >
             </div>
             <!--end::User-->
 
@@ -102,9 +112,10 @@
           <!--end::Progress-->
 
           <!--begin::Action-->
-          <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-            >View</a
-          >
+          <a
+            href="#"
+            class="btn btn-sm btn-light btn-active-light-primary"
+          >View</a>
           <!--end::Action-->
         </div>
         <!--end::Record-->
@@ -117,15 +128,14 @@
           <a
             href="#"
             class="fs-5 text-dark text-hover-primary fw-bold w-375px min-w-200px"
-            >Project Delivery Preparation</a
-          >
+          >Project Delivery Preparation</a>
           <!--end::Title-->
 
           <!--begin::Label-->
           <div class="min-w-175px">
-            <span class="badge badge-light text-muted"
-              >CRM System Development</span
-            >
+            <span
+              class="badge badge-light text-muted"
+            >CRM System Development</span>
           </div>
           <!--end::Label-->
 
@@ -135,7 +145,10 @@
           >
             <!--begin::User-->
             <div class="symbol symbol-circle symbol-25px">
-              <img src="dist/media/avatars/150-5.jpg" alt="img" />
+              <img
+                src="/dist/media/avatars/150-5.jpg"
+                alt="img"
+              >
             </div>
             <!--end::User-->
 
@@ -158,9 +171,10 @@
           <!--end::Progress-->
 
           <!--begin::Action-->
-          <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-            >View</a
-          >
+          <a
+            href="#"
+            class="btn btn-sm btn-light btn-active-light-primary"
+          >View</a>
           <!--end::Action-->
         </div>
         <!--end::Record-->
@@ -176,7 +190,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "item-1",
+  name: "Item1",
   components: {}
 });
 </script>

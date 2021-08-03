@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - Create App-->
   <div
-    class="modal fade"
     id="kt_modal_create_app"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -22,7 +22,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -33,9 +33,9 @@
         <div class="modal-body py-lg-10 px-lg-10">
           <!--begin::Stepper-->
           <div
-            class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid"
             id="kt_modal_create_app_stepper"
             ref="createAppRef"
+            class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid"
           >
             <!--begin::Aside-->
             <div
@@ -44,14 +44,17 @@
               <!--begin::Nav-->
               <div class="stepper-nav ps-lg-10">
                 <!--begin::Step 1-->
-                <div class="stepper-item current" data-kt-stepper-element="nav">
+                <div
+                  class="stepper-item current"
+                  data-kt-stepper-element="nav"
+                >
                   <!--begin::Line-->
-                  <div class="stepper-line w-40px"></div>
+                  <div class="stepper-line w-40px" />
                   <!--end::Line-->
 
                   <!--begin::Icon-->
                   <div class="stepper-icon w-40px h-40px">
-                    <i class="stepper-check fas fa-check"></i>
+                    <i class="stepper-check fas fa-check" />
                     <span class="stepper-number">1</span>
                   </div>
                   <!--end::Icon-->
@@ -71,14 +74,17 @@
                 <!--end::Step 1-->
 
                 <!--begin::Step 2-->
-                <div class="stepper-item" data-kt-stepper-element="nav">
+                <div
+                  class="stepper-item"
+                  data-kt-stepper-element="nav"
+                >
                   <!--begin::Line-->
-                  <div class="stepper-line w-40px"></div>
+                  <div class="stepper-line w-40px" />
                   <!--end::Line-->
 
                   <!--begin::Icon-->
                   <div class="stepper-icon w-40px h-40px">
-                    <i class="stepper-check fas fa-check"></i>
+                    <i class="stepper-check fas fa-check" />
                     <span class="stepper-number">2</span>
                   </div>
                   <!--begin::Icon-->
@@ -98,14 +104,17 @@
                 <!--end::Step 2-->
 
                 <!--begin::Step 3-->
-                <div class="stepper-item" data-kt-stepper-element="nav">
+                <div
+                  class="stepper-item"
+                  data-kt-stepper-element="nav"
+                >
                   <!--begin::Line-->
-                  <div class="stepper-line w-40px"></div>
+                  <div class="stepper-line w-40px" />
                   <!--end::Line-->
 
                   <!--begin::Icon-->
                   <div class="stepper-icon w-40px h-40px">
-                    <i class="stepper-check fas fa-check"></i>
+                    <i class="stepper-check fas fa-check" />
                     <span class="stepper-number">3</span>
                   </div>
                   <!--end::Icon-->
@@ -125,14 +134,17 @@
                 <!--end::Step 3-->
 
                 <!--begin::Step 4-->
-                <div class="stepper-item" data-kt-stepper-element="nav">
+                <div
+                  class="stepper-item"
+                  data-kt-stepper-element="nav"
+                >
                   <!--begin::Line-->
-                  <div class="stepper-line w-40px"></div>
+                  <div class="stepper-line w-40px" />
                   <!--end::Line-->
 
                   <!--begin::Icon-->
                   <div class="stepper-icon w-40px h-40px">
-                    <i class="stepper-check fas fa-check"></i>
+                    <i class="stepper-check fas fa-check" />
                     <span class="stepper-number">4</span>
                   </div>
                   <!--end::Icon-->
@@ -152,14 +164,17 @@
                 <!--end::Step 4-->
 
                 <!--begin::Step 5-->
-                <div class="stepper-item" data-kt-stepper-element="nav">
+                <div
+                  class="stepper-item"
+                  data-kt-stepper-element="nav"
+                >
                   <!--begin::Line-->
-                  <div class="stepper-line w-40px"></div>
+                  <div class="stepper-line w-40px" />
                   <!--end::Line-->
 
                   <!--begin::Icon-->
                   <div class="stepper-icon w-40px h-40px">
-                    <i class="stepper-check fas fa-check"></i>
+                    <i class="stepper-check fas fa-check" />
                     <span class="stepper-number">5</span>
                   </div>
                   <!--end::Icon-->
@@ -186,13 +201,16 @@
             <div class="flex-row-fluid py-lg-5 px-lg-15">
               <!--begin::Form-->
               <form
+                id="kt_modal_create_app_form"
                 class="form"
                 novalidate="novalidate"
-                id="kt_modal_create_app_form"
                 @submit="handleStep"
               >
                 <!--begin::Step 1-->
-                <div class="current" data-kt-stepper-element="content">
+                <div
+                  class="current"
+                  data-kt-stepper-element="content"
+                >
                   <div class="w-100">
                     <!--begin::Input group-->
                     <div class="fv-row mb-10">
@@ -205,7 +223,7 @@
                           class="fas fa-exclamation-circle ms-2 fs-7"
                           data-bs-toggle="tooltip"
                           title="Specify your unique app name"
-                        ></i>
+                        />
                       </label>
                       <!--end::Label-->
 
@@ -236,7 +254,7 @@
                           class="fas fa-exclamation-circle ms-2 fs-7"
                           data-bs-toggle="tooltip"
                           title="Select your app category"
-                        ></i>
+                        />
                       </label>
                       <!--end::Label-->
 
@@ -253,7 +271,7 @@
                                   class="svg-icon svg-icon-1 svg-icon-primary"
                                 >
                                   <inline-svg
-                                    src="dist/media/icons/duotone/Home/Globe.svg"
+                                    src="/dist/media/icons/duotone/Home/Globe.svg"
                                   />
                                 </span>
                               </span>
@@ -262,14 +280,14 @@
 
                             <!--begin:Info-->
                             <span class="d-flex flex-column">
-                              <span class="fw-bolder fs-6"
-                                >Quick Online Courses</span
-                              >
+                              <span
+                                class="fw-bolder fs-6"
+                              >Quick Online Courses</span>
 
-                              <span class="fs-7 text-muted"
-                                >Creating a clear text structure is just one
-                                SEO</span
-                              >
+                              <span
+                                class="fs-7 text-muted"
+                              >Creating a clear text structure is just one
+                                SEO</span>
                             </span>
                             <!--end:Info-->
                           </span>
@@ -301,7 +319,7 @@
                                   class="svg-icon svg-icon-1 svg-icon-danger"
                                 >
                                   <inline-svg
-                                    src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+                                    src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
                                   />
                                 </span>
                               </span>
@@ -310,14 +328,14 @@
 
                             <!--begin:Info-->
                             <span class="d-flex flex-column">
-                              <span class="fw-bolder fs-6"
-                                >Face to Face Discussions</span
-                              >
+                              <span
+                                class="fw-bolder fs-6"
+                              >Face to Face Discussions</span>
 
-                              <span class="fs-7 text-muted"
-                                >Creating a clear text structure is just one
-                                aspect</span
-                              >
+                              <span
+                                class="fs-7 text-muted"
+                              >Creating a clear text structure is just one
+                                aspect</span>
                             </span>
                             <!--end:Info-->
                           </span>
@@ -349,7 +367,7 @@
                                   class="svg-icon svg-icon-1 svg-icon-success"
                                 >
                                   <inline-svg
-                                    src="dist/media/icons/duotone/Devices/Watch1.svg"
+                                    src="/dist/media/icons/duotone/Devices/Watch1.svg"
                                   />
                                 </span>
                               </span>
@@ -358,14 +376,14 @@
 
                             <!--begin:Info-->
                             <span class="d-flex flex-column">
-                              <span class="fw-bolder fs-6"
-                                >Full Intro Training</span
-                              >
+                              <span
+                                class="fw-bolder fs-6"
+                              >Full Intro Training</span>
 
-                              <span class="fs-7 text-muted"
-                                >Creating a clear text structure
-                                copywriting</span
-                              >
+                              <span
+                                class="fs-7 text-muted"
+                              >Creating a clear text structure
+                                copywriting</span>
                             </span>
                             <!--end:Info-->
                           </span>
@@ -411,7 +429,7 @@
                           class="fas fa-exclamation-circle ms-2 fs-7"
                           data-bs-toggle="tooltip"
                           title="Specify your apps framework"
-                        ></i>
+                        />
                       </label>
                       <!--end::Label-->
 
@@ -422,7 +440,7 @@
                           <!--begin:Icon-->
                           <span class="symbol symbol-50px me-6">
                             <span class="symbol-label bg-light-warning">
-                              <i class="fab fa-html5 text-warning fs-2x"></i>
+                              <i class="fab fa-html5 text-warning fs-2x" />
                             </span>
                           </span>
                           <!--end:Icon-->
@@ -460,7 +478,7 @@
                           <!--begin:Icon-->
                           <span class="symbol symbol-50px me-6">
                             <span class="symbol-label bg-light-success">
-                              <i class="fab fa-react text-success fs-2x"></i>
+                              <i class="fab fa-react text-success fs-2x" />
                             </span>
                           </span>
                           <!--end:Icon-->
@@ -468,9 +486,9 @@
                           <!--begin:Info-->
                           <span class="d-flex flex-column">
                             <span class="fw-bolder fs-6">ReactJS</span>
-                            <span class="fs-7 text-muted"
-                              >Robust and flexible app framework</span
-                            >
+                            <span
+                              class="fs-7 text-muted"
+                            >Robust and flexible app framework</span>
                           </span>
                           <!--end:Info-->
                         </span>
@@ -485,7 +503,7 @@
                             type="radio"
                             name="framework"
                             value="2"
-                          />
+                          >
                         </span>
                         <!--end:Input-->
                       </label>
@@ -498,7 +516,7 @@
                           <!--begin:Icon-->
                           <span class="symbol symbol-50px me-6">
                             <span class="symbol-label bg-light-danger">
-                              <i class="fab fa-angular text-danger fs-2x"></i>
+                              <i class="fab fa-angular text-danger fs-2x" />
                             </span>
                           </span>
                           <!--end:Icon-->
@@ -506,9 +524,9 @@
                           <!--begin:Info-->
                           <span class="d-flex flex-column">
                             <span class="fw-bolder fs-6">Angular</span>
-                            <span class="fs-7 text-muted"
-                              >Powerful data mangement</span
-                            >
+                            <span
+                              class="fs-7 text-muted"
+                            >Powerful data mangement</span>
                           </span>
                           <!--end:Info-->
                         </span>
@@ -536,7 +554,7 @@
                           <!--begin:Icon-->
                           <span class="symbol symbol-50px me-6">
                             <span class="symbol-label bg-light-primary">
-                              <i class="fab fa-vuejs text-primary fs-2x"></i>
+                              <i class="fab fa-vuejs text-primary fs-2x" />
                             </span>
                           </span>
                           <!--end:Icon-->
@@ -544,9 +562,9 @@
                           <!--begin:Info-->
                           <span class="d-flex flex-column">
                             <span class="fw-bolder fs-6">Vue</span>
-                            <span class="fs-7 text-muted"
-                              >Lightweight and responsive framework</span
-                            >
+                            <span
+                              class="fs-7 text-muted"
+                            >Lightweight and responsive framework</span>
                           </span>
                           <!--end:Info-->
                         </span>
@@ -615,7 +633,7 @@
                           class="fas fa-exclamation-circle ms-2 fs-7"
                           data-bs-toggle="tooltip"
                           title="Select your app database engine"
-                        ></i>
+                        />
                       </label>
                       <!--end::Label-->
 
@@ -626,7 +644,7 @@
                           <!--begin::Icon-->
                           <span class="symbol symbol-50px me-6">
                             <span class="symbol-label bg-light-success">
-                              <i class="fas fa-database text-success fs-2x"></i>
+                              <i class="fas fa-database text-success fs-2x" />
                             </span>
                           </span>
                           <!--end::Icon-->
@@ -635,9 +653,9 @@
                           <span class="d-flex flex-column">
                             <span class="fw-bolder fs-6">MySQL</span>
 
-                            <span class="fs-7 text-muted"
-                              >Basic MySQL database</span
-                            >
+                            <span
+                              class="fs-7 text-muted"
+                            >Basic MySQL database</span>
                           </span>
                           <!--end::Info-->
                         </span>
@@ -665,7 +683,7 @@
                           <!--begin::Icon-->
                           <span class="symbol symbol-50px me-6">
                             <span class="symbol-label bg-light-danger">
-                              <i class="fab fa-google text-danger fs-2x"></i>
+                              <i class="fab fa-google text-danger fs-2x" />
                             </span>
                           </span>
                           <!--end::Icon-->
@@ -674,9 +692,9 @@
                           <span class="d-flex flex-column">
                             <span class="fw-bolder fs-6">Firebase</span>
 
-                            <span class="fs-7 text-muted"
-                              >Google based app data management</span
-                            >
+                            <span
+                              class="fs-7 text-muted"
+                            >Google based app data management</span>
                           </span>
                           <!--end::Info-->
                         </span>
@@ -704,7 +722,7 @@
                           <!--begin::Icon-->
                           <span class="symbol symbol-50px me-6">
                             <span class="symbol-label bg-light-warning">
-                              <i class="fab fa-amazon text-warning fs-2x"></i>
+                              <i class="fab fa-amazon text-warning fs-2x" />
                             </span>
                           </span>
                           <!--end::Icon-->
@@ -713,9 +731,9 @@
                           <span class="d-flex flex-column">
                             <span class="fw-bolder fs-6">DynamoDB</span>
 
-                            <span class="fs-7 text-muted"
-                              >Amazon Fast NoSQL Database</span
-                            >
+                            <span
+                              class="fs-7 text-muted"
+                            >Amazon Fast NoSQL Database</span>
                           </span>
                           <!--end::Info-->
                         </span>
@@ -760,7 +778,7 @@
                           class="fas fa-exclamation-circle ms-2 fs-7"
                           data-bs-toggle="tooltip"
                           title="Specify a card holder's name"
-                        ></i>
+                        />
                       </label>
                       <!--end::Label-->
 
@@ -780,9 +798,9 @@
                     <!--begin::Input group-->
                     <div class="d-flex flex-column mb-7 fv-row">
                       <!--begin::Label-->
-                      <label class="required fs-6 fw-bold form-label mb-2"
-                        >Card Number</label
-                      >
+                      <label
+                        class="required fs-6 fw-bold form-label mb-2"
+                      >Card Number</label>
                       <!--end::Label-->
 
                       <!--begin::Input wrapper-->
@@ -805,20 +823,20 @@
                           class="position-absolute translate-middle-y top-50 end-0 me-5"
                         >
                           <img
-                            src="dist/media/svg/card-logos/visa.svg"
+                            src="/dist/media/svg/card-logos/visa.svg"
                             alt=""
                             class="h-25px"
-                          />
+                          >
                           <img
-                            src="dist/media/svg/card-logos/mastercard.svg"
+                            src="/dist/media/svg/card-logos/mastercard.svg"
                             alt=""
                             class="h-25px"
-                          />
+                          >
                           <img
-                            src="dist/media/svg/card-logos/american-express.svg"
+                            src="/dist/media/svg/card-logos/american-express.svg"
                             alt=""
                             class="h-25px"
-                          />
+                          >
                         </div>
                         <!--end::Card logos-->
                       </div>
@@ -831,9 +849,9 @@
                       <!--begin::Col-->
                       <div class="col-md-8 fv-row">
                         <!--begin::Label-->
-                        <label class="required fs-6 fw-bold form-label mb-2"
-                          >Expiration Date</label
-                        >
+                        <label
+                          class="required fs-6 fw-bold form-label mb-2"
+                        >Expiration Date</label>
                         <!--end::Label-->
 
                         <!--begin::Row-->
@@ -851,8 +869,7 @@
                                 :key="i"
                                 :label="i"
                                 :value="i"
-                              >
-                              </option>
+                              />
                             </Field>
                             <ErrorMessage
                               class="fv-plugins-message-container invalid-feedback"
@@ -874,7 +891,7 @@
                                 :key="i"
                                 :label="i + (new Date().getFullYear() - 1)"
                                 :value="i"
-                              ></option>
+                              />
                             </Field>
                             <ErrorMessage
                               class="fv-plugins-message-container invalid-feedback"
@@ -898,7 +915,7 @@
                             class="fas fa-exclamation-circle ms-2 fs-7"
                             data-bs-toggle="tooltip"
                             title="Enter a card CVV code"
-                          ></i>
+                          />
                         </label>
                         <!--end::Label-->
 
@@ -925,7 +942,7 @@
                           >
                             <span class="svg-icon svg-icon-2hx">
                               <inline-svg
-                                src="dist/media/icons/duotone/Shopping/Credit-card.svg"
+                                src="/dist/media/icons/duotone/Shopping/Credit-card.svg"
                               />
                             </span>
                           </div>
@@ -941,9 +958,9 @@
                     <div class="d-flex flex-stack">
                       <!--begin::Label-->
                       <div class="me-5">
-                        <label class="fs-6 fw-bold form-label"
-                          >Save Card for further billing?</label
-                        >
+                        <label
+                          class="fs-6 fw-bold form-label"
+                        >Save Card for further billing?</label>
                         <div class="fs-7 fw-bold text-gray-400">
                           If you need more info, please check budget planning
                         </div>
@@ -975,7 +992,9 @@
                 <div data-kt-stepper-element="content">
                   <div class="w-100 text-center">
                     <!--begin::Heading-->
-                    <h1 class="fw-bolder text-dark mb-3">Release!</h1>
+                    <h1 class="fw-bolder text-dark mb-3">
+                      Release!
+                    </h1>
                     <!--end::Heading-->
 
                     <!--begin::Description-->
@@ -987,10 +1006,10 @@
                     <!--begin::Illustration-->
                     <div class="text-center px-4 py-15">
                       <img
-                        src="dist/media/illustrations/todo.png"
+                        src="/dist/media/illustrations/todo.png"
                         alt=""
                         class="mw-100 mh-150px"
-                      />
+                      >
                     </div>
                     <!--end::Illustration-->
                   </div>
@@ -1009,7 +1028,7 @@
                     >
                       <span class="svg-icon svg-icon-3 me-1">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Left-2.svg"
+                          src="/dist/media/icons/duotone/Navigation/Left-2.svg"
                         />
                       </span>
                       Back
@@ -1020,9 +1039,9 @@
                   <!--begin::Wrapper-->
                   <div>
                     <button
+                      v-if="currentStepIndex === totalSteps - 1"
                       type="submit"
                       class="btn btn-lg btn-primary"
-                      v-if="currentStepIndex === totalSteps - 1"
                       @click="formSubmit()"
                     >
                       <span class="indicator-label">
@@ -1037,15 +1056,19 @@
                         Please wait...
                         <span
                           class="spinner-border spinner-border-sm align-middle ms-2"
-                        ></span>
+                        />
                       </span>
                     </button>
 
-                    <button type="submit" class="btn btn-lg btn-primary" v-else>
+                    <button
+                      v-else
+                      type="submit"
+                      class="btn btn-lg btn-primary"
+                    >
                       Continue
                       <span class="svg-icon svg-icon-3 ms-1 me-0">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Right-2.svg"
+                          src="/dist/media/icons/duotone/Navigation/Right-2.svg"
                         />
                       </span>
                     </button>
@@ -1113,7 +1136,7 @@ interface Step4 {
 interface KTCreateApp extends Step1, Step2, Step3, Step4 {}
 
 export default defineComponent({
-  name: "create-app-modal",
+  name: "CreateAppModal",
   components: {
     Field,
     ErrorMessage

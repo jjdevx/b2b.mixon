@@ -1,6 +1,9 @@
 <template>
   <!--begin::Tables Widget 13-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -19,11 +22,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown2></Dropdown2>
+        <Dropdown2 />
         <!--end::Menu-->
       </div>
     </div>
@@ -50,23 +53,40 @@
                     value="1"
                     data-kt-check="true"
                     data-kt-check-target=".widget-13-check"
-                  />
+                  >
                 </div>
               </th>
-              <th class="min-w-150px">Order Id</th>
-              <th class="min-w-140px">Country</th>
-              <th class="min-w-120px">Date</th>
-              <th class="min-w-120px">Company</th>
-              <th class="min-w-120px">Total</th>
-              <th class="min-w-120px">Status</th>
-              <th class="min-w-100px text-end">Actions</th>
+              <th class="min-w-150px">
+                Order Id
+              </th>
+              <th class="min-w-140px">
+                Country
+              </th>
+              <th class="min-w-120px">
+                Date
+              </th>
+              <th class="min-w-120px">
+                Company
+              </th>
+              <th class="min-w-120px">
+                Total
+              </th>
+              <th class="min-w-120px">
+                Status
+              </th>
+              <th class="min-w-100px text-end">
+                Actions
+              </th>
             </tr>
           </thead>
           <!--end::Table head-->
 
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in list" :key="index">
+            <template
+              v-for="(item, index) in list"
+              :key="index"
+            >
               <tr>
                 <td>
                   <div
@@ -76,7 +96,7 @@
                       class="form-check-input widget-13-check"
                       type="checkbox"
                       value="1"
-                    />
+                    >
                   </div>
                 </td>
 
@@ -84,38 +104,34 @@
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary fs-6"
-                    >{{ item.orderid }}</a
-                  >
+                  >{{ item.orderid }}</a>
                 </td>
 
                 <td>
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.company.name }}</a
-                  >
-                  <span class="text-muted fw-bold text-muted d-block fs-7"
-                    >Code: {{ item.country.code }}</span
-                  >
+                  >{{ item.company.name }}</a>
+                  <span
+                    class="text-muted fw-bold text-muted d-block fs-7"
+                  >Code: {{ item.country.code }}</span>
                 </td>
 
                 <td>
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.date.value }}</a
-                  >
-                  <span class="text-muted fw-bold text-muted d-block fs-7"
-                    >Code: {{ item.date.remarks }}</span
-                  >
+                  >{{ item.date.value }}</a>
+                  <span
+                    class="text-muted fw-bold text-muted d-block fs-7"
+                  >Code: {{ item.date.remarks }}</span>
                 </td>
 
                 <td>
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.company.name }}</a
-                  >
+                  >{{ item.company.name }}</a>
                   <span class="text-muted fw-bold text-muted d-block fs-7">{{
                     item.company.fields
                   }}</span>
@@ -129,8 +145,7 @@
                   <span
                     :class="`badge-light-${item.status.color}`"
                     class="badge"
-                    >{{ item.status.label }}</span
-                  >
+                  >{{ item.status.label }}</span>
                 </td>
 
                 <td class="text-end">
@@ -140,7 +155,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="dist/media/icons/duotone/General/Settings-1.svg"
+                        src="/dist/media/icons/duotone/General/Settings-1.svg"
                       />
                     </span>
                   </a>
@@ -151,7 +166,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="dist/media/icons/duotone/Communication/Write.svg"
+                        src="/dist/media/icons/duotone/Communication/Write.svg"
                       />
                     </span>
                   </a>
@@ -161,7 +176,7 @@
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                   >
                     <span class="svg-icon svg-icon-3">
-                      <inline-svg src="dist/media/icons/duotone/General/Trash.svg" />
+                      <inline-svg src="/dist/media/icons/duotone/General/Trash.svg" />
                     </span>
                   </a>
                 </td>
@@ -184,7 +199,7 @@ import { defineComponent } from "vue";
 import Dropdown2 from "@/metronic/components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
-  name: "kt-widget-12",
+  name: "KtWidget12",
   components: {
     Dropdown2
   },

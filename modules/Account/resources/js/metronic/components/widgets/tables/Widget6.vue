@@ -1,13 +1,16 @@
 <template>
   <!--begin::Table Widget 6-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bolder fs-3 mb-1">Authors Earnings</span>
-        <span class="text-muted mt-1 fw-bold fs-7"
-          >More than 400 new authors</span
-        >
+        <span
+          class="text-muted mt-1 fw-bold fs-7"
+        >More than 400 new authors</span>
       </h3>
       <div class="card-toolbar">
         <ul class="nav">
@@ -16,8 +19,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary active fw-bolder px-4 me-1"
               data-bs-toggle="tab"
               href="#kt_table_widget_6_tab_1"
-              >Month</a
-            >
+            >Month</a>
           </li>
 
           <li class="nav-item">
@@ -25,8 +27,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1"
               data-bs-toggle="tab"
               href="#kt_table_widget_6_tab_2"
-              >Week</a
-            >
+            >Week</a>
           </li>
 
           <li class="nav-item">
@@ -34,8 +35,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4"
               data-bs-toggle="tab"
               href="#kt_table_widget_6_tab_3"
-              >Day</a
-            >
+            >Day</a>
           </li>
         </ul>
       </div>
@@ -45,12 +45,15 @@
     <!--begin::Body-->
     <div class="card-body py-3">
       <div class="tab-content">
-        <template v-for="(item, index) in items" :key="index">
+        <template
+          v-for="(item, index) in items"
+          :key="index"
+        >
           <!--begin::Tap pane-->
           <div
+            :id="`kt_table_widget_6_tab_${index + 1}`"
             :class="[index === 0 && 'active show']"
             class="tab-pane fade"
-            :id="`kt_table_widget_6_tab_${index + 1}`"
           >
             <!--begin::Table container-->
             <div class="table-responsive">
@@ -59,17 +62,20 @@
                 <!--begin::Table head-->
                 <thead>
                   <tr>
-                    <th class="p-0 w-50px"></th>
-                    <th class="p-0 min-w-150px"></th>
-                    <th class="p-0 min-w-140px"></th>
-                    <th class="p-0 min-w-120px"></th>
+                    <th class="p-0 w-50px" />
+                    <th class="p-0 min-w-150px" />
+                    <th class="p-0 min-w-140px" />
+                    <th class="p-0 min-w-120px" />
                   </tr>
                 </thead>
                 <!--end::Table head-->
 
                 <!--begin::Table body-->
                 <tbody>
-                  <template v-for="(item1, index1) in item" :key="index1">
+                  <template
+                    v-for="(item1, index1) in item"
+                    :key="index1"
+                  >
                     <tr>
                       <td>
                         <div class="symbol symbol-50px me-2">
@@ -78,7 +84,7 @@
                               :src="item1.image"
                               class="h-75 align-self-end"
                               alt=""
-                            />
+                            >
                           </span>
                         </div>
                       </td>
@@ -86,16 +92,15 @@
                         <a
                           href="#"
                           class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                          >{{ item1.user.name }}</a
-                        >
+                        >{{ item1.user.name }}</a>
                         <span class="text-muted fw-bold d-block">{{
                           item1.user.position
                         }}</span>
                       </td>
                       <td>
-                        <span class="text-muted fw-bold d-block fs-7"
-                          >Paid</span
-                        >
+                        <span
+                          class="text-muted fw-bold d-block fs-7"
+                        >Paid</span>
                         <span class="text-dark fw-bolder d-block fs-5">{{
                           item1.paid
                         }}</span>
@@ -104,8 +109,7 @@
                         <span
                           :class="`text-${item1.progress.color}`"
                           class="fs-7 fw-bolder"
-                          >{{ item1.progress.value }}</span
-                        >
+                        >{{ item1.progress.value }}</span>
                       </td>
                       <td class="text-end">
                         <a
@@ -114,7 +118,7 @@
                         >
                           <span class="svg-icon svg-icon-2">
                             <inline-svg
-                              src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                              src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                             />
                           </span>
                         </a>
@@ -140,7 +144,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "kt-widget-6",
+  name: "KtWidget6",
   components: {},
   props: {
     widgetClasses: String
@@ -149,7 +153,7 @@ export default defineComponent({
     const items = [
       [
         {
-          image: "dist/media/svg/avatars/001-boy.svg",
+          image: "/dist/media/svg/avatars/001-boy.svg",
           user: {
             name: "Brad Simmons",
             position: "Successful Fellas"
@@ -161,7 +165,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/018-girl-9.svg",
+          image: "/dist/media/svg/avatars/018-girl-9.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding"
@@ -173,7 +177,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/047-girl-25.svg",
+          image: "/dist/media/svg/avatars/047-girl-25.svg",
           user: {
             name: "Jessie Clarcson",
             position: "PHP, Laravel, VueJS"
@@ -185,7 +189,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/014-girl-7.svg",
+          image: "/dist/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer"
@@ -197,7 +201,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/043-boy-18.svg",
+          image: "/dist/media/svg/avatars/043-boy-18.svg",
           user: {
             name: "Kevin Leonard",
             position: "Art Director"
@@ -212,7 +216,7 @@ export default defineComponent({
 
       [
         {
-          image: "dist/media/svg/avatars/018-girl-9.svg",
+          image: "/dist/media/svg/avatars/018-girl-9.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding"
@@ -224,7 +228,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/014-girl-7.svg",
+          image: "/dist/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer"
@@ -236,7 +240,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/001-boy.svg",
+          image: "/dist/media/svg/avatars/001-boy.svg",
           user: {
             name: "Brad Simmons",
             position: "Successful Fellas"
@@ -251,7 +255,7 @@ export default defineComponent({
 
       [
         {
-          image: "dist/media/svg/avatars/047-girl-25.svg",
+          image: "/dist/media/svg/avatars/047-girl-25.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding"
@@ -263,7 +267,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/014-girl-7.svg",
+          image: "/dist/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer"
@@ -275,7 +279,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/043-boy-18.svg",
+          image: "/dist/media/svg/avatars/043-boy-18.svg",
           user: {
             name: "Kevin Leonard",
             position: "Art Director"
@@ -287,7 +291,7 @@ export default defineComponent({
           }
         },
         {
-          image: "dist/media/svg/avatars/001-boy.svg",
+          image: "/dist/media/svg/avatars/001-boy.svg",
           user: {
             name: "Brad Simmons",
             position: "Successful Fellas"

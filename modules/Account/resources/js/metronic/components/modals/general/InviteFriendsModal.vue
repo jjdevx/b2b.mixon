@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - Invite Friends-->
   <div
-    class="modal fade"
     id="kt_modal_invite_friends"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -18,7 +18,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -30,13 +30,18 @@
           <!--begin::Heading-->
           <div class="text-center mb-13">
             <!--begin::Title-->
-            <h1 class="mb-3">Invite a Friend</h1>
+            <h1 class="mb-3">
+              Invite a Friend
+            </h1>
             <!--end::Title-->
 
             <!--begin::Description-->
             <div class="text-gray-400 fw-bold fs-5">
               If you need more info, please check out
-              <a href="#" class="link-primary fw-bolder">FAQ Page</a>.
+              <a
+                href="#"
+                class="link-primary fw-bolder"
+              >FAQ Page</a>.
             </div>
             <!--end::Description-->
           </div>
@@ -46,9 +51,9 @@
           <div class="btn btn-light-primary fw-bolder w-100 mb-8">
             <img
               alt="Logo"
-              src="dist/media/svg/brand-logos/google-icon.svg"
+              src="/dist/media/svg/brand-logos/google-icon.svg"
               class="h-20px me-3"
-            />
+            >
             Invite Gmail Contacts
           </div>
           <!--end::Google Contacts Invite-->
@@ -57,8 +62,7 @@
           <div class="separator d-flex flex-center mb-8">
             <span
               class="text-uppercase bg-white fs-7 fw-bold text-gray-400 px-3"
-              >or</span
-            >
+            >or</span>
           </div>
           <!--end::Separator-->
 
@@ -67,19 +71,23 @@
             class="form-control form-control-solid mb-8"
             rows="3"
             placeholder="Type or paste emails here"
-          >
-          </textarea>
+          />
           <!--end::Textarea-->
 
           <!--begin::Users-->
           <div class="mb-10">
             <!--begin::Heading-->
-            <div class="fs-6 fw-bold mb-2">Your Invitations</div>
+            <div class="fs-6 fw-bold mb-2">
+              Your Invitations
+            </div>
             <!--end::Heading-->
 
             <!--begin::List-->
             <div class="mh-300px scroll-y me-n7 pe-7">
-              <template v-for="(user, index) in users" :key="index">
+              <template
+                v-for="(user, index) in users"
+                :key="index"
+              >
                 <!--begin::User-->
                 <div
                   class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed"
@@ -88,7 +96,11 @@
                   <div class="d-flex align-items-center">
                     <!--begin::Avatar-->
                     <div class="symbol symbol-35px symbol-circle">
-                      <img v-if="user.avatar" alt="Pic" :src="user.avatar" />
+                      <img
+                        v-if="user.avatar"
+                        alt="Pic"
+                        :src="user.avatar"
+                      >
                       <span
                         v-else
                         :class="`bg-light-${user.state} text-${user.state}`"
@@ -104,10 +116,11 @@
                       <a
                         href="#"
                         class="fs-5 fw-bolder text-gray-900 text-hover-primary mb-2"
-                        >{{ user.name }}</a
-                      >
+                      >{{ user.name }}</a>
 
-                      <div class="fw-bold text-gray-400">{{ user.email }}</div>
+                      <div class="fw-bold text-gray-400">
+                        {{ user.email }}
+                      </div>
                     </div>
                     <!--end::Details-->
                   </div>
@@ -121,9 +134,15 @@
                       data-control="select2"
                       data-hide-search="true"
                     >
-                      <option value="1">Guest</option>
-                      <option value="2">Owner</option>
-                      <option value="3">Can Edit</option>
+                      <option value="1">
+                        Guest
+                      </option>
+                      <option value="2">
+                        Owner
+                      </option>
+                      <option value="3">
+                        Can Edit
+                      </option>
                     </select>
                   </div>
                   <!--end::Access menu-->
@@ -155,7 +174,7 @@
                 type="checkbox"
                 value="1"
                 checked="checked"
-              />
+              >
 
               <span class="form-check-label fw-bold text-gray-400">
                 Allowed
@@ -178,12 +197,12 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "invite-friends-modal",
+  name: "InviteFriendsModal",
   components: {},
   setup() {
     const users = [
       {
-        avatar: "dist/media/avatars/150-1.jpg",
+        avatar: "/dist/media/avatars/150-1.jpg",
         name: "Emma Smith",
         email: "e.smith@kpmg.com.au",
         access: "1"
@@ -195,19 +214,19 @@ export default defineComponent({
         access: "1"
       },
       {
-        avatar: "dist/media/avatars/150-2.jpg",
+        avatar: "/dist/media/avatars/150-2.jpg",
         name: "Max Smith",
         email: "max@kt.com",
         access: "3"
       },
       {
-        avatar: "dist/media/avatars/150-2.jpg",
+        avatar: "/dist/media/avatars/150-2.jpg",
         name: "Sean Bean",
         email: "sean@dellito.com",
         access: "2"
       },
       {
-        avatar: "dist/media/avatars/150-15.jpg",
+        avatar: "/dist/media/avatars/150-15.jpg",
         name: "Brian Cox",
         email: "brian@exchange.com",
         access: "3"
@@ -219,7 +238,7 @@ export default defineComponent({
         access: "2"
       },
       {
-        avatar: "dist/media/avatars/150-8.jpg",
+        avatar: "/dist/media/avatars/150-8.jpg",
         name: "Francis Mitcham",
         email: "f.mitcham@kpmg.com.au",
         access: "3"
@@ -237,7 +256,7 @@ export default defineComponent({
         access: "1"
       },
       {
-        avatar: "dist/media/avatars/150-6.jpg",
+        avatar: "/dist/media/avatars/150-6.jpg",
         name: "Dan Wilson",
         email: "dam@consilting.com",
         access: "3"
@@ -249,7 +268,7 @@ export default defineComponent({
         access: "2"
       },
       {
-        avatar: "dist/media/avatars/150-7.jpg",
+        avatar: "/dist/media/avatars/150-7.jpg",
         name: "Ana Crown",
         email: "ana.cf@limtel.com",
         access: "1"
@@ -261,7 +280,7 @@ export default defineComponent({
         access: "3"
       },
       {
-        avatar: "dist/media/avatars/150-17.jpg",
+        avatar: "/dist/media/avatars/150-17.jpg",
         name: "John Miller",
         email: "miller@mapple.com",
         access: "3"
@@ -273,13 +292,13 @@ export default defineComponent({
         access: "2"
       },
       {
-        state: "dist/media/avatars/150-10.jpg",
+        state: "/dist/media/avatars/150-10.jpg",
         name: "Ethan Wilder",
         email: "ethan@loop.com.au",
         access: "1"
       },
       {
-        state: "dist/media/avatars/150-7.jpg",
+        state: "/dist/media/avatars/150-7.jpg",
         name: "Ana Crown",
         email: "ana.cf@limtel.com",
         access: "3"

@@ -1,9 +1,14 @@
 <template>
   <!--begin::List Widget 3-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header border-0">
-      <h3 class="card-title fw-bolder text-dark">Todo</h3>
+      <h3 class="card-title fw-bolder text-dark">
+        Todo
+      </h3>
 
       <div class="card-toolbar">
         <!--begin::Menu-->
@@ -16,11 +21,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown2></Dropdown2>
+        <Dropdown2 />
         <!--end::Menu-->
       </div>
     </div>
@@ -28,7 +33,10 @@
 
     <!--begin::Body-->
     <div class="card-body pt-2">
-      <template v-for="(item, index) in list" :key="index">
+      <template
+        v-for="(item, index) in list"
+        :key="index"
+      >
         <!--begin::Item-->
         <div
           :class="{ 'mb-8': list.length - 1 !== index }"
@@ -38,12 +46,16 @@
           <span
             class="bullet bullet-vertical h-40px"
             :class="`bg-${item.color}`"
-          ></span>
+          />
           <!--end::Bullet-->
 
           <!--begin::Checkbox-->
           <div class="form-check form-check-custom form-check-solid mx-5">
-            <input class="form-check-input" type="checkbox" value="" />
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+            >
           </div>
           <!--end::Checkbox-->
 
@@ -52,8 +64,7 @@
             <a
               href="#"
               class="text-gray-800 text-hover-primary fw-bolder fs-6"
-              >{{ item.title }}</a
-            >
+            >{{ item.title }}</a>
 
             <span class="text-muted fw-bold d-block">{{ item.text }}</span>
           </div>
@@ -62,8 +73,7 @@
           <span
             class="badge fs-8 fw-bolder"
             :class="`badge-light-${item.color}`"
-            >New</span
-          >
+          >New</span>
         </div>
         <!--end:Item-->
       </template>
@@ -79,7 +89,7 @@ import Dropdown2 from "@/metronic/components/dropdown/Dropdown2.vue";
 import { MenuComponent } from "@/metronic/assets/ts/components/MenuComponent";
 
 export default defineComponent({
-  name: "kt-widget-3",
+  name: "KtWidget3",
   components: {
     Dropdown2
   },

@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - Upgrade plan-->
   <div
-    class="modal fade"
     id="kt_modal_upgrade_plan"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -18,7 +18,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -29,11 +29,16 @@
         <div class="modal-body pt-0 pb-15 px-5 px-xl-20">
           <!--begin::Heading-->
           <div class="mb-13 text-center">
-            <h1 class="mb-3">Upgrade a Plan</h1>
+            <h1 class="mb-3">
+              Upgrade a Plan
+            </h1>
 
             <div class="text-gray-400 fw-bold fs-5">
               If you need more info, please check
-              <a href="#" class="link-primary fw-bolder">Pricing Guidelines</a>.
+              <a
+                href="#"
+                class="link-primary fw-bolder"
+              >Pricing Guidelines</a>.
             </div>
           </div>
           <!--end::Heading-->
@@ -46,16 +51,16 @@
               data-kt-buttons="true"
             >
               <button
-                @click="current = 'month'"
                 :class="[current === 'month' && 'active']"
                 class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3 me-2"
+                @click="current = 'month'"
               >
                 Monthly
               </button>
               <button
-                @click="current = 'annual'"
                 :class="[current === 'annual' && 'active']"
                 class="btn btn-color-gray-400 btn-active btn-active-secondary px-6 py-3"
+                @click="current = 'annual'"
               >
                 Annual
               </button>
@@ -68,10 +73,12 @@
               <div class="col-lg-6 mb-10 mb-lg-0">
                 <!--begin::Tabs-->
                 <div class="nav flex-column">
-                  <template v-for="(plan, index) in plans" :key="index">
+                  <template
+                    v-for="(plan, index) in plans"
+                    :key="index"
+                  >
                     <!--begin::Tab link-->
                     <div
-                      @click="selected = plan.title"
                       class="nav-link btn btn-outline btn-outline-dashed btn-color-dark d-flex flex-stack text-start p-6"
                       :class="[
                         index !== plans.length - 1 && 'mb-6',
@@ -80,6 +87,7 @@
                       ]"
                       data-bs-toggle="tab"
                       :data-bs-target="`#kt_upgrade_plan_${index}`"
+                      @click="selected = plan.title"
                     >
                       <!--end::Description-->
                       <div class="d-flex align-items-center me-2">
@@ -93,7 +101,7 @@
                             name="plan"
                             :value="plan.title"
                             :checked="selected === plan.title"
-                          />
+                          >
                         </div>
                         <!--end::Radio-->
 
@@ -107,8 +115,7 @@
                             <span
                               v-if="plan.label"
                               class="badge badge-light-success ms-2 fs-7"
-                              >{{ plan.label }}</span
-                            >
+                            >{{ plan.label }}</span>
                           </h2>
                           <div class="fw-bold opacity-50">
                             {{ plan.subTitle }}
@@ -137,8 +144,9 @@
                             }}
                           </span>
 
-                          <span class="fs-7 opacity-50"
-                            >/
+                          <span
+                            class="fs-7 opacity-50"
+                          >/
                             <span data-kt-element="period">Mon</span>
                           </span>
                         </template>
@@ -156,13 +164,16 @@
               <div class="col-lg-6">
                 <!--begin::Tab content-->
                 <div class="tab-content rounded h-100 bg-light p-10">
-                  <template v-for="(plan, index) in plans" :key="index">
+                  <template
+                    v-for="(plan, index) in plans"
+                    :key="index"
+                  >
                     <!--begin::Tab Pane-->
                     <div
                       v-if="!plan.custom"
+                      :id="`kt_upgrade_plan_${index}`"
                       :class="[plan.default && 'show active']"
                       class="tab-pane fade"
-                      :id="`kt_upgrade_plan_${index}`"
                     >
                       <!--begin::Heading-->
                       <div class="pb-5">
@@ -198,7 +209,7 @@
                                 class="svg-icon svg-icon-1 svg-icon-success"
                               >
                                 <inline-svg
-                                  src="dist/media/icons/duotone/Code/Done-circle.svg"
+                                  src="/dist/media/icons/duotone/Code/Done-circle.svg"
                                 />
                               </span>
                             </template>
@@ -210,7 +221,7 @@
                               </span>
                               <span class="svg-icon svg-icon-1">
                                 <inline-svg
-                                  src="dist/media/icons/duotone/Code/Error-circle.svg"
+                                  src="/dist/media/icons/duotone/Code/Error-circle.svg"
                                 />
                               </span>
                             </template>
@@ -241,7 +252,10 @@
               Cancel
             </button>
 
-            <button type="submit" class="btn btn-primary">
+            <button
+              type="submit"
+              class="btn btn-primary"
+            >
               Upgrade Plan
             </button>
           </div>
@@ -260,7 +274,7 @@
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "upgrade-plan-modal",
+  name: "UpgradePlanModal",
   components: {},
   setup() {
     const current = ref<"month" | "annual">("month");

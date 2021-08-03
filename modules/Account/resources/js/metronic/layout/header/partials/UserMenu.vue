@@ -9,7 +9,10 @@
       <div class="menu-content d-flex align-items-center px-3">
         <!--begin::Avatar-->
         <div class="symbol symbol-50px me-5">
-          <img alt="Logo" src="dist/media/avatars/150-26.jpg" />
+          <img
+            alt="Logo"
+            src="/dist/media/avatars/150-26.jpg"
+          >
         </div>
         <!--end::Avatar-->
 
@@ -19,12 +22,12 @@
             Max Smith
             <span
               class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2"
-              >Pro</span
-            >
+            >Pro</span>
           </div>
-          <a href="#" class="fw-bold text-muted text-hover-primary fs-7"
-            >max@kt.com</a
-          >
+          <a
+            href="#"
+            class="fw-bold text-muted text-hover-primary fs-7"
+          >max@kt.com</a>
         </div>
         <!--end::Username-->
       </div>
@@ -32,12 +35,15 @@
     <!--end::Menu item-->
 
     <!--begin::Menu separator-->
-    <div class="separator my-2"></div>
+    <div class="separator my-2" />
     <!--end::Menu separator-->
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <router-link
+        to="/pages/profile/overview"
+        class="menu-link px-5"
+      >
         My Profile
       </router-link>
     </div>
@@ -45,12 +51,15 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <router-link
+        to="/pages/profile/overview"
+        class="menu-link px-5"
+      >
         <span class="menu-text">My Projects</span>
         <span class="menu-badge">
-          <span class="badge badge-light-danger badge-circle fw-bolder fs-7"
-            >3</span
-          >
+          <span
+            class="badge badge-light-danger badge-circle fw-bolder fs-7"
+          >3</span>
         </span>
       </router-link>
     </div>
@@ -63,16 +72,22 @@
       data-kt-menu-placement="left-start"
       data-kt-menu-flip="center, top"
     >
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <router-link
+        to="/pages/profile/overview"
+        class="menu-link px-5"
+      >
         <span class="menu-title">My Subscription</span>
-        <span class="menu-arrow"></span>
+        <span class="menu-arrow" />
       </router-link>
 
       <!--begin::Menu sub-->
       <div class="menu-sub menu-sub-dropdown w-175px py-4">
         <!--begin::Menu item-->
         <div class="menu-item px-3">
-          <router-link to="/pages/profile/overview" class="menu-link px-5">
+          <router-link
+            to="/pages/profile/overview"
+            class="menu-link px-5"
+          >
             Referrals
           </router-link>
         </div>
@@ -80,7 +95,10 @@
 
         <!--begin::Menu item-->
         <div class="menu-item px-3">
-          <router-link to="/pages/profile/overview" class="menu-link px-5">
+          <router-link
+            to="/pages/profile/overview"
+            class="menu-link px-5"
+          >
             Billing
           </router-link>
         </div>
@@ -88,7 +106,10 @@
 
         <!--begin::Menu item-->
         <div class="menu-item px-3">
-          <router-link to="/pages/profile/overview" class="menu-link px-5">
+          <router-link
+            to="/pages/profile/overview"
+            class="menu-link px-5"
+          >
             Payments
           </router-link>
         </div>
@@ -106,13 +127,13 @@
               class="fas fa-exclamation-circle ms-2 fs-7"
               data-bs-toggle="tooltip"
               title="View your statements"
-            ></i>
+            />
           </router-link>
         </div>
         <!--end::Menu item-->
 
         <!--begin::Menu separator-->
-        <div class="separator my-2"></div>
+        <div class="separator my-2" />
         <!--end::Menu separator-->
 
         <!--begin::Menu item-->
@@ -127,7 +148,7 @@
                 value="1"
                 checked="checked"
                 name="notifications"
-              />
+              >
               <span class="form-check-label text-muted fs-7">
                 Notifications
               </span>
@@ -142,14 +163,17 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <router-link
+        to="/pages/profile/overview"
+        class="menu-link px-5"
+      >
         My Statements
       </router-link>
     </div>
     <!--end::Menu item-->
 
     <!--begin::Menu separator-->
-    <div class="separator my-2"></div>
+    <div class="separator my-2" />
     <!--end::Menu separator-->
 
     <!--begin::Menu item-->
@@ -159,7 +183,10 @@
       data-kt-menu-placement="left-start"
       data-kt-menu-flip="center, top"
     >
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <router-link
+        to="/pages/profile/overview"
+        class="menu-link px-5"
+      >
         <span class="menu-title position-relative">
           Language
           <span
@@ -170,7 +197,7 @@
               class="w-15px h-15px rounded-1 ms-2"
               :src="currentLangugeLocale.flag"
               alt="metronic"
-            />
+            >
           </span>
         </span>
       </router-link>
@@ -180,17 +207,17 @@
         <!--begin::Menu item-->
         <div class="menu-item px-3">
           <a
-            @click="setLang('en')"
             href="#"
             class="menu-link d-flex px-5"
             :class="{ active: currentLanguage('en') }"
+            @click="setLang('en')"
           >
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="dist/media/flags/united-states.svg"
+                src="/dist/media/flags/united-states.svg"
                 alt="metronic"
-              />
+              >
             </span>
             English
           </a>
@@ -200,17 +227,17 @@
         <!--begin::Menu item-->
         <div class="menu-item px-3">
           <a
-            @click="setLang('es')"
             href="#"
             class="menu-link d-flex px-5"
             :class="{ active: currentLanguage('es') }"
+            @click="setLang('es')"
           >
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="dist/media/flags/spain.svg"
+                src="/dist/media/flags/spain.svg"
                 alt="metronic"
-              />
+              >
             </span>
             Spanish
           </a>
@@ -220,17 +247,17 @@
         <!--begin::Menu item-->
         <div class="menu-item px-3">
           <a
-            @click="setLang('de')"
             href="#"
             class="menu-link d-flex px-5"
             :class="{ active: currentLanguage('de') }"
+            @click="setLang('de')"
           >
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="dist/media/flags/germany.svg"
+                src="/dist/media/flags/germany.svg"
                 alt="metronic"
-              />
+              >
             </span>
             German
           </a>
@@ -240,17 +267,17 @@
         <!--begin::Menu item-->
         <div class="menu-item px-3">
           <a
-            @click="setLang('ja')"
             href="#"
             class="menu-link d-flex px-5"
             :class="{ active: currentLanguage('ja') }"
+            @click="setLang('ja')"
           >
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="dist/media/flags/japan.svg"
+                src="/dist/media/flags/japan.svg"
                 alt="metronic"
-              />
+              >
             </span>
             Japanese
           </a>
@@ -260,17 +287,17 @@
         <!--begin::Menu item-->
         <div class="menu-item px-3">
           <a
-            @click="setLang('fr')"
             href="#"
             class="menu-link d-flex px-5"
             :class="{ active: currentLanguage('fr') }"
+            @click="setLang('fr')"
           >
             <span class="symbol symbol-20px me-4">
               <img
                 class="rounded-1"
-                src="dist/media/flags/france.svg"
+                src="/dist/media/flags/france.svg"
                 alt="metronic"
-              />
+              >
             </span>
             French
           </a>
@@ -283,7 +310,10 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5 my-1">
-      <router-link to="/pages/profile/overview" class="menu-link px-5">
+      <router-link
+        to="/pages/profile/overview"
+        class="menu-link px-5"
+      >
         Account Settings
       </router-link>
     </div>
@@ -291,7 +321,10 @@
 
     <!--begin::Menu item-->
     <div class="menu-item px-5">
-      <a @click="signOut()" class="menu-link px-5">
+      <a
+        class="menu-link px-5"
+        @click="signOut()"
+      >
         Sign Out
       </a>
     </div>
@@ -308,7 +341,7 @@ import { useRouter } from "vue-router";
 import { Actions } from "@/store/enums/StoreEnums";
 
 export default defineComponent({
-  name: "kt-user-menu",
+  name: "KtUserMenu",
   components: {},
   setup() {
     const router = useRouter();
@@ -321,23 +354,23 @@ export default defineComponent({
 
     const countries = {
       en: {
-        flag: "dist/media/flags/united-states.svg",
+        flag: "/dist/media/flags/united-states.svg",
         name: "English"
       },
       es: {
-        flag: "dist/media/flags/spain.svg",
+        flag: "/dist/media/flags/spain.svg",
         name: "Spanish"
       },
       de: {
-        flag: "dist/media/flags/germany.svg",
+        flag: "/dist/media/flags/germany.svg",
         name: "German"
       },
       ja: {
-        flag: "dist/media/flags/japan.svg",
+        flag: "/dist/media/flags/japan.svg",
         name: "Japanese"
       },
       fr: {
-        flag: "dist/media/flags/france.svg",
+        flag: "/dist/media/flags/france.svg",
         name: "French"
       }
     };

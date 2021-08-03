@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2'
-import {Flash} from '@/types/mixon'
+import {Flash, Toast} from '@/types/mixon'
 
 export async function flashMessages(flash: Flash) {
   const {type, icon, timer} = flash
@@ -37,4 +37,17 @@ export async function flashMessages(flash: Flash) {
   if (intervalId) {
     clearInterval(intervalId)
   }
+}
+
+export async function toastMessages(toast: Toast) {
+  const {text, icon} = toast
+
+  await Swal.fire({
+    title: text,
+    icon: icon ?? 'success',
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+  })
 }

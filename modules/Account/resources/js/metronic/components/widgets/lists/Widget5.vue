@@ -1,6 +1,9 @@
 <template>
   <!--begin::List Widget 5-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header align-items-center border-0 mt-4">
       <h3 class="card-title align-items-start flex-column">
@@ -19,11 +22,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
     </div>
@@ -36,12 +39,14 @@
         <!--begin::Item-->
         <div class="timeline-item">
           <!--begin::Label-->
-          <div class="timeline-label fw-bolder text-gray-800 fs-6">08:42</div>
+          <div class="timeline-label fw-bolder text-gray-800 fs-6">
+            08:42
+          </div>
           <!--end::Label-->
 
           <!--begin::Badge-->
           <div class="timeline-badge">
-            <i class="fa fa-genderless text-warning fs-1"></i>
+            <i class="fa fa-genderless text-warning fs-1" />
           </div>
           <!--end::Badge-->
 
@@ -56,12 +61,14 @@
         <!--begin::Item-->
         <div class="timeline-item">
           <!--begin::Label-->
-          <div class="timeline-label fw-bolder text-gray-800 fs-6">10:00</div>
+          <div class="timeline-label fw-bolder text-gray-800 fs-6">
+            10:00
+          </div>
           <!--end::Label-->
 
           <!--begin::Badge-->
           <div class="timeline-badge">
-            <i class="fa fa-genderless text-success fs-1"></i>
+            <i class="fa fa-genderless text-success fs-1" />
           </div>
           <!--end::Badge-->
 
@@ -76,19 +83,24 @@
         <!--begin::Item-->
         <div class="timeline-item">
           <!--begin::Label-->
-          <div class="timeline-label fw-bolder text-gray-800 fs-6">14:37</div>
+          <div class="timeline-label fw-bolder text-gray-800 fs-6">
+            14:37
+          </div>
           <!--end::Label-->
 
           <!--begin::Badge-->
           <div class="timeline-badge">
-            <i class="fa fa-genderless text-danger fs-1"></i>
+            <i class="fa fa-genderless text-danger fs-1" />
           </div>
           <!--end::Badge-->
 
           <!--begin::Desc-->
           <div class="timeline-content fw-bolder text-gray-800 ps-3">
             Make deposit
-            <a href="#" class="text-primary">USD 700</a>. to ESL
+            <a
+              href="#"
+              class="text-primary"
+            >USD 700</a>. to ESL
           </div>
           <!--end::Desc-->
         </div>
@@ -97,12 +109,14 @@
         <!--begin::Item-->
         <div class="timeline-item">
           <!--begin::Label-->
-          <div class="timeline-label fw-bolder text-gray-800 fs-6">16:50</div>
+          <div class="timeline-label fw-bolder text-gray-800 fs-6">
+            16:50
+          </div>
           <!--end::Label-->
 
           <!--begin::Badge-->
           <div class="timeline-badge">
-            <i class="fa fa-genderless text-primary fs-1"></i>
+            <i class="fa fa-genderless text-primary fs-1" />
           </div>
           <!--end::Badge-->
 
@@ -117,18 +131,23 @@
         <!--begin::Item-->
         <div class="timeline-item">
           <!--begin::Label-->
-          <div class="timeline-label fw-bolder text-gray-800 fs-6">21:03</div>
+          <div class="timeline-label fw-bolder text-gray-800 fs-6">
+            21:03
+          </div>
           <!--end::Label-->
 
           <!--begin::Badge-->
           <div class="timeline-badge">
-            <i class="fa fa-genderless text-danger fs-1"></i>
+            <i class="fa fa-genderless text-danger fs-1" />
           </div>
           <!--end::Badge-->
 
           <!--begin::Desc-->
           <div class="timeline-content fw-bold text-gray-800 ps-3">
-            New order placed <a href="#" class="text-primary">#XF-2356</a>.
+            New order placed <a
+              href="#"
+              class="text-primary"
+            >#XF-2356</a>.
           </div>
           <!--end::Desc-->
         </div>
@@ -137,12 +156,14 @@
         <!--begin::Item-->
         <div class="timeline-item">
           <!--begin::Label-->
-          <div class="timeline-label fw-bolder text-gray-800 fs-6">16:50</div>
+          <div class="timeline-label fw-bolder text-gray-800 fs-6">
+            16:50
+          </div>
           <!--end::Label-->
 
           <!--begin::Badge-->
           <div class="timeline-badge">
-            <i class="fa fa-genderless text-primary fs-1"></i>
+            <i class="fa fa-genderless text-primary fs-1" />
           </div>
           <!--end::Badge-->
 
@@ -157,18 +178,23 @@
         <!--begin::Item-->
         <div class="timeline-item">
           <!--begin::Label-->
-          <div class="timeline-label fw-bolder text-gray-800 fs-6">21:03</div>
+          <div class="timeline-label fw-bolder text-gray-800 fs-6">
+            21:03
+          </div>
           <!--end::Label-->
 
           <!--begin::Badge-->
           <div class="timeline-badge">
-            <i class="fa fa-genderless text-danger fs-1"></i>
+            <i class="fa fa-genderless text-danger fs-1" />
           </div>
           <!--end::Badge-->
 
           <!--begin::Desc-->
           <div class="timeline-content fw-bold text-gray-800 ps-3">
-            New order placed <a href="#" class="text-primary">#XF-2356</a>.
+            New order placed <a
+              href="#"
+              class="text-primary"
+            >#XF-2356</a>.
           </div>
           <!--end::Desc-->
         </div>
@@ -177,12 +203,14 @@
         <!--begin::Item-->
         <div class="timeline-item">
           <!--begin::Label-->
-          <div class="timeline-label fw-bolder text-gray-800 fs-6">10:30</div>
+          <div class="timeline-label fw-bolder text-gray-800 fs-6">
+            10:30
+          </div>
           <!--end::Label-->
 
           <!--begin::Badge-->
           <div class="timeline-badge">
-            <i class="fa fa-genderless text-success fs-1"></i>
+            <i class="fa fa-genderless text-success fs-1" />
           </div>
           <!--end::Badge-->
 
@@ -207,12 +235,12 @@ import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 import { MenuComponent } from "@/metronic/assets/ts/components/MenuComponent";
 
 export default defineComponent({
-  name: "kt-widget-5",
-  props: {
-    widgetClasses: String
-  },
+  name: "KtWidget5",
   components: {
     Dropdown1
+  },
+  props: {
+    widgetClasses: String
   },
   setup() {
     onMounted(() => {

@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - New Target-->
   <div
-    class="modal fade"
     id="kt_modal_new_target"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -18,7 +18,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -30,22 +30,26 @@
           <!--begin:Form-->
           <el-form
             id="kt_modal_new_target_form"
+            ref="formRef"
             :model="targetData"
             :rules="rules"
-            ref="formRef"
             class="form"
           >
             <!--begin::Heading-->
             <div class="mb-13 text-center">
               <!--begin::Title-->
-              <h1 class="mb-3">Set First Target</h1>
+              <h1 class="mb-3">
+                Set First Target
+              </h1>
               <!--end::Title-->
 
               <!--begin::Description-->
               <div class="text-gray-400 fw-bold fs-5">
                 If you need more info, please check
-                <a href="#" class="fw-bolder link-primary">Project Guidelines</a
-                >.
+                <a
+                  href="#"
+                  class="fw-bolder link-primary"
+                >Project Guidelines</a>.
               </div>
               <!--end::Description-->
             </div>
@@ -60,7 +64,7 @@
                   class="fas fa-exclamation-circle ms-2 fs-7"
                   data-bs-toggle="tooltip"
                   title="Specify a target name for future usage and reference"
-                ></i>
+                />
               </label>
               <!--end::Label-->
 
@@ -69,7 +73,7 @@
                   v-model="targetData.targetTitle"
                   placeholder="Enter Target Title"
                   name="targetTitle"
-                ></el-input>
+                />
               </el-form-item>
             </div>
             <!--end::Input group-->
@@ -87,18 +91,39 @@
                     name="assign"
                     as="select"
                   >
-                    <el-option value="">Select user...</el-option>
-                    <el-option label="Karina Clark" value="1"
-                      >Karina Clark</el-option
+                    <el-option value="">
+                      Select user...
+                    </el-option>
+                    <el-option
+                      label="Karina Clark"
+                      value="1"
                     >
-                    <el-option label="Robert Doe" value="2"
-                      >Robert Doe</el-option
+                      Karina Clark
+                    </el-option>
+                    <el-option
+                      label="Robert Doe"
+                      value="2"
                     >
-                    <el-option label="Niel Owen" value="3">Niel Owen</el-option>
-                    <el-option label="Olivia Wild" value="4"
-                      >Olivia Wild</el-option
+                      Robert Doe
+                    </el-option>
+                    <el-option
+                      label="Niel Owen"
+                      value="3"
                     >
-                    <el-option label="Sean Bean" value="5">Sean Bean</el-option>
+                      Niel Owen
+                    </el-option>
+                    <el-option
+                      label="Olivia Wild"
+                      value="4"
+                    >
+                      Olivia Wild
+                    </el-option>
+                    <el-option
+                      label="Sean Bean"
+                      value="5"
+                    >
+                      Sean Bean
+                    </el-option>
                   </el-select>
                 </el-form-item>
               </div>
@@ -115,7 +140,7 @@
                     <span class="symbol-label bg-secondary">
                       <span class="svg-icon">
                         <inline-svg
-                          src="dist/media/icons/duotone/Layout/Layout-grid.svg"
+                          src="/dist/media/icons/duotone/Layout/Layout-grid.svg"
                         />
                       </span>
                     </span>
@@ -163,7 +188,7 @@
                   class="fas fa-exclamation-circle ms-2 fs-7"
                   data-bs-toggle="tooltip"
                   title="Specify a target priorty"
-                ></i>
+                />
               </label>
               <!--end::Label-->
 
@@ -176,11 +201,26 @@
                   default-first-option
                   placeholder="Choose tags for your target"
                 >
-                  <el-option label="Important" value="important"> </el-option>
-                  <el-option label="Urgent" value="urgent"> </el-option>
-                  <el-option label="high" value="high"> </el-option>
-                  <el-option label="low" value="low"> </el-option>
-                  <el-option label="medium" value="medium"> </el-option>
+                  <el-option
+                    label="Important"
+                    value="important"
+                  />
+                  <el-option
+                    label="Urgent"
+                    value="urgent"
+                  />
+                  <el-option
+                    label="high"
+                    value="high"
+                  />
+                  <el-option
+                    label="low"
+                    value="low"
+                  />
+                  <el-option
+                    label="medium"
+                    value="medium"
+                  />
                 </el-select>
               </el-form-item>
             </div>
@@ -207,7 +247,7 @@
                   type="checkbox"
                   value="1"
                   checked="checked"
-                />
+                >
                 <span class="form-check-label fw-bold text-gray-400">
                   Allowed
                 </span>
@@ -242,7 +282,7 @@
                       name="communication[]"
                       value="email"
                       checked="checked"
-                    />
+                    >
 
                     <span class="form-check-label fw-bold">
                       Email
@@ -257,7 +297,7 @@
                       type="checkbox"
                       name="communication[]"
                       value="phone"
-                    />
+                    >
 
                     <span class="form-check-label fw-bold">
                       Phone
@@ -274,14 +314,18 @@
             <!--begin::Actions-->
             <div class="text-center">
               <button
-                type="reset"
                 id="kt_modal_new_target_cancel"
+                type="reset"
                 class="btn btn-white me-3"
               >
                 Cancel
               </button>
 
-              <el-button type="primary" @click="submit()" :loading="loading">
+              <el-button
+                type="primary"
+                :loading="loading"
+                @click="submit()"
+              >
                 {{ loading ? "Please wait..." : "Submit" }}
               </el-button>
             </div>
@@ -322,7 +366,7 @@ interface NewAddressData {
 }
 
 export default defineComponent({
-  name: "new-target-modal",
+  name: "NewTargetModal",
   components: {},
   setup() {
     const formRef = ref<null | HTMLFormElement>(null);

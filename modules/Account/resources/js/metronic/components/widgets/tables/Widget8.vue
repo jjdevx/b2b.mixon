@@ -1,13 +1,16 @@
 <template>
   <!--begin::Table Widget 8-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bolder fs-3 mb-1">Latest Products</span>
-        <span class="text-muted mt-1 fw-bold fs-7"
-          >More than 100 new orders</span
-        >
+        <span
+          class="text-muted mt-1 fw-bold fs-7"
+        >More than 100 new orders</span>
       </h3>
       <div class="card-toolbar">
         <ul class="nav">
@@ -16,8 +19,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary active fw-bolder px-4 me-1"
               data-bs-toggle="tab"
               href="#kt_table_widget_8_tab_1"
-              >Month</a
-            >
+            >Month</a>
           </li>
 
           <li class="nav-item">
@@ -25,8 +27,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1"
               data-bs-toggle="tab"
               href="#kt_table_widget_8_tab_2"
-              >Week</a
-            >
+            >Week</a>
           </li>
 
           <li class="nav-item">
@@ -34,8 +35,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4"
               data-bs-toggle="tab"
               href="#kt_table_widget_8_tab_3"
-              >Day</a
-            >
+            >Day</a>
           </li>
         </ul>
       </div>
@@ -45,12 +45,15 @@
     <!--begin::Body-->
     <div class="card-body py-3">
       <div class="tab-content">
-        <template v-for="(item, index) in items" :key="index">
+        <template
+          v-for="(item, index) in items"
+          :key="index"
+        >
           <!--begin::Tap pane-->
           <div
+            :id="`kt_table_widget_8_tab_${index + 1}`"
             :class="[index === 0 && 'active show']"
             class="tab-pane fade"
-            :id="`kt_table_widget_8_tab_${index + 1}`"
           >
             <!--begin::Table container-->
             <div class="table-responsive">
@@ -59,16 +62,19 @@
                 <!--begin::Table head-->
                 <thead>
                   <tr>
-                    <th class="p-0 w-50px"></th>
-                    <th class="p-0 min-w-150px"></th>
-                    <th class="p-0 min-w-120px"></th>
+                    <th class="p-0 w-50px" />
+                    <th class="p-0 min-w-150px" />
+                    <th class="p-0 min-w-120px" />
                   </tr>
                 </thead>
                 <!--end::Table head-->
 
                 <!--begin::Table body-->
                 <tbody>
-                  <template v-for="(item1, index1) in item" :key="index1">
+                  <template
+                    v-for="(item1, index1) in item"
+                    :key="index1"
+                  >
                     <tr>
                       <td>
                         <div class="symbol symbol-50px me-2">
@@ -89,8 +95,7 @@
                         <a
                           href="#"
                           class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                          >{{ item1.info.event }}</a
-                        >
+                        >{{ item1.info.event }}</a>
                         <span class="text-muted fw-bold d-block fs-7">{{
                           item1.info.user
                         }}</span>
@@ -100,16 +105,16 @@
                           item1.info.date
                         }}</span>
 
-                        <span class="text-muted fw-bold d-block fs-8"
-                          >Date</span
-                        >
+                        <span
+                          class="text-muted fw-bold d-block fs-8"
+                        >Date</span>
                       </td>
                       <td class="text-end">
                         <a
                           href="#"
                           class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary"
                         >
-                          <i class="bi bi-three-dots fs-5"></i>
+                          <i class="bi bi-three-dots fs-5" />
                         </a>
                       </td>
                     </tr>
@@ -133,7 +138,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "kt-widget-8",
+  name: "KtWidget8",
   components: {},
   props: {
     widgetClasses: String
@@ -143,7 +148,7 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "dist/media/icons/duotone/dist/media/Playlist1.svg",
+            file: "/dist/media/icons/duotone/dist/media/Playlist1.svg",
             color: "danger"
           },
           info: {
@@ -154,7 +159,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
+            file: "/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
             color: "warning"
           },
           info: {
@@ -165,7 +170,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/Home/Globe.svg",
+            file: "/dist/media/icons/duotone/Home/Globe.svg",
             color: "info"
           },
           info: {
@@ -176,7 +181,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/Home/Library.svg",
+            file: "/dist/media/icons/duotone/Home/Library.svg",
             color: "primary"
           },
           info: {
@@ -187,7 +192,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/Design/Color-profile.svg",
+            file: "/dist/media/icons/duotone/Design/Color-profile.svg",
             color: "success"
           },
           info: {
@@ -201,7 +206,7 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "dist/media/icons/duotone/Home/Globe.svg",
+            file: "/dist/media/icons/duotone/Home/Globe.svg",
             color: "info"
           },
           info: {
@@ -212,7 +217,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
+            file: "/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
             color: "warning"
           },
           info: {
@@ -223,7 +228,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/dist/media/Playlist1.svg",
+            file: "/dist/media/icons/duotone/dist/media/Playlist1.svg",
             color: "danger"
           },
           info: {
@@ -237,7 +242,7 @@ export default defineComponent({
       [
         {
           icon: {
-            file: "dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
+            file: "/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
             color: "warning"
           },
           info: {
@@ -248,7 +253,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/Home/Globe.svg",
+            file: "/dist/media/icons/duotone/Home/Globe.svg",
             color: "info"
           },
           info: {
@@ -259,7 +264,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/Home/Library.svg",
+            file: "/dist/media/icons/duotone/Home/Library.svg",
             color: "primary"
           },
           info: {
@@ -270,7 +275,7 @@ export default defineComponent({
         },
         {
           icon: {
-            file: "dist/media/icons/duotone/dist/media/Playlist1.svg",
+            file: "/dist/media/icons/duotone/dist/media/Playlist1.svg",
             color: "danger"
           },
           info: {

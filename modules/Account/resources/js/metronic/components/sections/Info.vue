@@ -5,12 +5,14 @@
       <!--begin::Icon-->
       <!--begin::Svg Icon | path: '.svg/icons/Code/Info-circle.svg.'-->
       <span class="svg-icon svg-icon-3x svg-icon-warning me-5">
-        <inline-svg src="dist/media/icons/duotone/Code/Info-circle.svg" />
+        <inline-svg src="/dist/media/icons/duotone/Code/Info-circle.svg" />
       </span>
       <!--end::Svg Icon-->
       <!--end::Icon-->
       <!--begin::Description-->
-      <div class="text-gray-600 fw-bold fs-5"><slot></slot></div>
+      <div class="text-gray-600 fw-bold fs-5">
+        <slot />
+      </div>
       <!--end::Description-->
     </div>
     <!--end::Information-->

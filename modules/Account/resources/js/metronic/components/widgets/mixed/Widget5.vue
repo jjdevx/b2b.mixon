@@ -1,6 +1,9 @@
 <template>
   <!--begin::Mixed Widget 5-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Beader-->
     <div class="card-header border-0 py-5">
       <h3 class="card-title align-items-start flex-column">
@@ -20,11 +23,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown3></Dropdown3>
+        <Dropdown3 />
         <!--end::Menu-->
       </div>
     </div>
@@ -39,7 +42,7 @@
         :series="series"
         type="area"
         :height="chartHeight"
-      ></apexchart>
+      />
       <!--end::Chart-->
 
       <!--begin::Items-->
@@ -52,10 +55,10 @@
             <div class="symbol symbol-50px me-3">
               <div class="symbol-label bg-light">
                 <img
-                  src="dist/media/svg/brand-logos/plurk.svg"
+                  src="/dist/media/svg/brand-logos/plurk.svg"
                   alt=""
                   class="h-50"
-                />
+                >
               </div>
             </div>
             <!--end::Symbol-->
@@ -65,8 +68,7 @@
               <a
                 href="#"
                 class="fs-6 text-gray-800 text-hover-primary fw-bolder"
-                >Top Authors</a
-              >
+              >Top Authors</a>
               <div class="fs-7 text-muted fw-bold mt-1">
                 Ricky Hunt, Sandra Trepp
               </div>
@@ -76,7 +78,9 @@
           <!--end::Section-->
 
           <!--begin::Label-->
-          <div class="badge badge-light fw-bold py-4 px-3">+82$</div>
+          <div class="badge badge-light fw-bold py-4 px-3">
+            +82$
+          </div>
           <!--end::Label-->
         </div>
         <!--end::Item-->
@@ -89,10 +93,10 @@
             <div class="symbol symbol-50px me-3">
               <div class="symbol-label bg-light">
                 <img
-                  src="dist/media/svg/brand-logos/figma-1.svg"
+                  src="/dist/media/svg/brand-logos/figma-1.svg"
                   alt=""
                   class="h-50"
-                />
+                >
               </div>
             </div>
             <!--end::Symbol-->
@@ -102,16 +106,19 @@
               <a
                 href="#"
                 class="fs-6 text-gray-800 text-hover-primary fw-bolder"
-                >Top Sales</a
-              >
-              <div class="fs-7 text-muted fw-bold mt-1">PitStop Emails</div>
+              >Top Sales</a>
+              <div class="fs-7 text-muted fw-bold mt-1">
+                PitStop Emails
+              </div>
             </div>
             <!--end::Title-->
           </div>
           <!--end::Section-->
 
           <!--begin::Label-->
-          <div class="badge badge-light fw-bold py-4 px-3">+82$</div>
+          <div class="badge badge-light fw-bold py-4 px-3">
+            +82$
+          </div>
           <!--end::Label-->
         </div>
         <!--end::Item-->
@@ -124,10 +131,10 @@
             <div class="symbol symbol-50px me-3">
               <div class="symbol-label bg-light">
                 <img
-                  src="dist/media/svg/brand-logos/vimeo.svg"
+                  src="/dist/media/svg/brand-logos/vimeo.svg"
                   alt=""
                   class="h-50"
-                />
+                >
               </div>
             </div>
             <!--end::Symbol-->
@@ -137,17 +144,20 @@
               <a
                 href="#"
                 class="fs-6 text-gray-800 text-hover-primary fw-bolder"
-                >Top Engagement</a
-              >
+              >Top Engagement</a>
 
-              <div class="fs-7 text-muted fw-bold mt-1">KT.com</div>
+              <div class="fs-7 text-muted fw-bold mt-1">
+                KT.com
+              </div>
             </div>
             <!--end::Title-->
           </div>
           <!--end::Section-->
 
           <!--begin::Label-->
-          <div class="badge badge-light fw-bold py-4 px-3">+82$</div>
+          <div class="badge badge-light fw-bold py-4 px-3">
+            +82$
+          </div>
           <!--end::Label-->
         </div>
         <!--end::Item-->
@@ -165,7 +175,7 @@ import Dropdown3 from "@/metronic/components/dropdown/Dropdown3.vue";
 import { getCSSVariableValue } from "@/metronic/assets/ts/_utils";
 
 export default defineComponent({
-  name: "widget-7",
+  name: "Widget7",
   components: {
     Dropdown3
   },
@@ -179,8 +189,8 @@ export default defineComponent({
 
     const labelColor = getCSSVariableValue("--bs-" + "gray-800");
     const strokeColor = getCSSVariableValue("--bs-" + "gray-300");
-    const baseColor = getCSSVariableValue("--bs-" + color.value);
-    const lightColor = getCSSVariableValue("--bs-light-" + color.value);
+    const baseColor = getCSSVariableValue(`--bs-${  color.value}`);
+    const lightColor = getCSSVariableValue(`--bs-light-${  color.value}`);
 
     const chartOptions = {
       chart: {
@@ -289,8 +299,8 @@ export default defineComponent({
           fontSize: "12px"
         },
         y: {
-          formatter: function(val) {
-            return "$" + val + " thousands";
+          formatter(val) {
+            return `$${  val  } thousands`;
           }
         }
       },

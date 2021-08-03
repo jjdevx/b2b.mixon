@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - New Card-->
   <div
-    class="modal fade"
     id="kt_modal_new_card"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -22,7 +22,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -35,8 +35,8 @@
           <Form
             id="kt_modal_new_card_form"
             class="form"
-            @submit="submit"
             :validation-schema="validationSchema"
+            @submit="submit"
           >
             <!--begin::Input group-->
             <div class="d-flex flex-column mb-7 fv-row">
@@ -49,16 +49,16 @@
                   class="fas fa-exclamation-circle ms-2 fs-7"
                   data-bs-toggle="tooltip"
                   title="Specify a card holder's name"
-                ></i>
+                />
               </label>
               <!--end::Label-->
 
               <Field
+                v-model="cardData.nameOnCard"
                 type="text"
                 class="form-control form-control-solid"
                 placeholder=""
                 name="nameOnCard"
-                v-model="cardData.nameOnCard"
               />
               <div class="fv-plugins-message-container">
                 <div class="fv-help-block">
@@ -71,20 +71,20 @@
             <!--begin::Input group-->
             <div class="d-flex flex-column mb-7 fv-row">
               <!--begin::Label-->
-              <label class="required fs-6 fw-bold form-label mb-2"
-                >Card Number</label
-              >
+              <label
+                class="required fs-6 fw-bold form-label mb-2"
+              >Card Number</label>
               <!--end::Label-->
 
               <!--begin::Input wrapper-->
               <div class="position-relative">
                 <!--begin::Input-->
                 <Field
+                  v-model="cardData.cardNumber"
                   type="text"
                   class="form-control form-control-solid"
                   placeholder="Enter card number"
                   name="cardNumber"
-                  v-model="cardData.cardNumber"
                 />
                 <div class="fv-plugins-message-container">
                   <div class="fv-help-block">
@@ -98,20 +98,20 @@
                   class="position-absolute translate-middle-y top-50 end-0 me-5"
                 >
                   <img
-                    src="dist/media/svg/card-logos/visa.svg"
+                    src="/dist/media/svg/card-logos/visa.svg"
                     alt=""
                     class="h-25px"
-                  />
+                  >
                   <img
-                    src="dist/media/svg/card-logos/mastercard.svg"
+                    src="/dist/media/svg/card-logos/mastercard.svg"
                     alt=""
                     class="h-25px"
-                  />
+                  >
                   <img
-                    src="dist/media/svg/card-logos/american-express.svg"
+                    src="/dist/media/svg/card-logos/american-express.svg"
                     alt=""
                     class="h-25px"
-                  />
+                  >
                 </div>
                 <!--end::Card logos-->
               </div>
@@ -124,9 +124,9 @@
               <!--begin::Col-->
               <div class="col-md-8 fv-row">
                 <!--begin::Label-->
-                <label class="required fs-6 fw-bold form-label mb-2"
-                  >Expiration Date</label
-                >
+                <label
+                  class="required fs-6 fw-bold form-label mb-2"
+                >Expiration Date</label>
                 <!--end::Label-->
 
                 <!--begin::Row-->
@@ -142,9 +142,14 @@
                       data-placeholder="Month"
                       as="select"
                     >
-                      <option></option>
-                      <template v-for="i in 12" :key="i">
-                        <option :value="i">{{ i }}</option>
+                      <option />
+                      <template
+                        v-for="i in 12"
+                        :key="i"
+                      >
+                        <option :value="i">
+                          {{ i }}
+                        </option>
                       </template>
                     </Field>
                     <div class="fv-plugins-message-container">
@@ -166,11 +171,16 @@
                       data-placeholder="Year"
                       as="select"
                     >
-                      <option></option>
-                      <template v-for="i in 10" :key="i">
-                        <option :value="new Date().getFullYear() + i">{{
-                          new Date().getFullYear() + i
-                        }}</option>
+                      <option />
+                      <template
+                        v-for="i in 10"
+                        :key="i"
+                      >
+                        <option :value="new Date().getFullYear() + i">
+                          {{
+                            new Date().getFullYear() + i
+                          }}
+                        </option>
                       </template>
                     </Field>
                     <div class="fv-plugins-message-container">
@@ -196,7 +206,7 @@
                     class="fas fa-exclamation-circle ms-2 fs-7"
                     data-bs-toggle="tooltip"
                     title="Enter a card CVV code"
-                  ></i>
+                  />
                 </label>
                 <!--end::Label-->
 
@@ -220,7 +230,7 @@
                   >
                     <span class="svg-icon svg-icon-2hx">
                       <inline-svg
-                        src="dist/media/icons/duotone/Shopping/Credit-card.svg"
+                        src="/dist/media/icons/duotone/Shopping/Credit-card.svg"
                       />
                     </span>
                   </div>
@@ -241,9 +251,9 @@
             <div class="d-flex flex-stack">
               <!--begin::Label-->
               <div class="me-5">
-                <label class="fs-6 fw-bold form-label"
-                  >Save Card for further billing?</label
-                >
+                <label
+                  class="fs-6 fw-bold form-label"
+                >Save Card for further billing?</label>
                 <div class="fs-7 fw-bold text-gray-400">
                   If you need more info, please check budget planning
                 </div>
@@ -259,7 +269,7 @@
                   type="checkbox"
                   value="1"
                   checked="checked"
-                />
+                >
                 <span class="form-check-label fw-bold text-gray-400">
                   Save Card
                 </span>
@@ -271,17 +281,17 @@
             <!--begin::Actions-->
             <div class="text-center pt-15">
               <button
-                type="reset"
                 id="kt_modal_new_card_cancel"
+                type="reset"
                 class="btn btn-white me-3"
               >
                 Discard
               </button>
 
               <button
+                id="kt_modal_new_card_submit"
                 ref="submitButtonRef"
                 type="submit"
-                id="kt_modal_new_card_submit"
                 class="btn btn-primary"
               >
                 <span class="indicator-label">
@@ -291,7 +301,7 @@
                   Please wait...
                   <span
                     class="spinner-border spinner-border-sm align-middle ms-2"
-                  ></span>
+                  />
                 </span>
               </button>
             </div>
@@ -323,7 +333,7 @@ interface CardData {
 }
 
 export default defineComponent({
-  name: "new-card-modal",
+  name: "NewCardModal",
   components: {
     ErrorMessage,
     Field,

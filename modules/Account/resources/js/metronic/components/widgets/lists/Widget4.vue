@@ -1,6 +1,9 @@
 <template>
   <!--begin::List Widget 4-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -20,11 +23,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown3></Dropdown3>
+        <Dropdown3 />
         <!--end::Menu-->
       </div>
     </div>
@@ -32,7 +35,10 @@
 
     <!--begin::Body-->
     <div class="card-body pt-5">
-      <template v-for="(item, index) in list" :key="index">
+      <template
+        v-for="(item, index) in list"
+        :key="index"
+      >
         <!--begin::Item-->
         <div
           :class="{ 'mb-7': list.length - 1 !== index }"
@@ -41,7 +47,11 @@
           <!--begin::Symbol-->
           <div class="symbol symbol-50px me-5">
             <span class="symbol-label">
-              <img :src="item.image" class="h-50 align-self-center" alt="" />
+              <img
+                :src="item.image"
+                class="h-50 align-self-center"
+                alt=""
+              >
             </span>
           </div>
           <!--end::Symbol-->
@@ -52,8 +62,7 @@
               <a
                 href="#"
                 class="text-gray-800 text-hover-primary fs-6 fw-bolder"
-                >{{ item.title }}</a
-              >
+              >{{ item.title }}</a>
 
               <span class="text-muted fw-bold d-block fs-7">{{
                 item.text
@@ -79,7 +88,7 @@ import { defineComponent, ref } from "vue";
 import Dropdown3 from "@/metronic/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
-  name: "kt-widget-4",
+  name: "KtWidget4",
   components: {
     Dropdown3
   },
@@ -89,31 +98,31 @@ export default defineComponent({
   setup() {
     const list = ref([
       {
-        image: "dist/media/svg/brand-logos/plurk.svg",
+        image: "/dist/media/svg/brand-logos/plurk.svg",
         title: "Top Authors",
         text: "Mark, Rowling, Esther",
         badge: "+82$"
       },
       {
-        image: "dist/media/svg/brand-logos/telegram.svg",
+        image: "/dist/media/svg/brand-logos/telegram.svg",
         title: "Popular Authors",
         text: "Randy, Steve, Mike",
         badge: "+280$"
       },
       {
-        image: "dist/media/svg/brand-logos/vimeo.svg",
+        image: "/dist/media/svg/brand-logos/vimeo.svg",
         title: "New Users",
         text: "John, Pat, Jimmy",
         badge: "+4500$"
       },
       {
-        image: "dist/media/svg/brand-logos/bebo.svg",
+        image: "/dist/media/svg/brand-logos/bebo.svg",
         title: "Active Customers",
         text: "Mark, Rowling, Esther",
         badge: "+4500$"
       },
       {
-        image: "dist/media/svg/brand-logos/kickstarter.svg",
+        image: "/dist/media/svg/brand-logos/kickstarter.svg",
         title: "Bestseller Theme",
         text: "Disco, Retro, Sports",
         badge: "+4500$",

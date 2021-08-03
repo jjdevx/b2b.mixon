@@ -14,17 +14,22 @@
   >
     <div class="card shadow-none">
       <!--begin::Header-->
-      <div class="card-header" id="kt_activities_header">
-        <h3 class="card-title fw-bolder text-dark">Activity Logs</h3>
+      <div
+        id="kt_activities_header"
+        class="card-header"
+      >
+        <h3 class="card-title fw-bolder text-dark">
+          Activity Logs
+        </h3>
 
         <div class="card-toolbar">
           <button
+            id="kt_activities_close"
             type="button"
             class="btn btn-sm btn-icon btn-active-light-primary me-n5"
-            id="kt_activities_close"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </button>
         </div>
@@ -32,7 +37,10 @@
       <!--end::Header-->
 
       <!--begin::Body-->
-      <div class="card-body position-relative" id="kt_activities_body">
+      <div
+        id="kt_activities_body"
+        class="card-body position-relative"
+      >
         <!--begin::Content-->
         <div
           id="kt_activities_scroll"
@@ -45,14 +53,14 @@
         >
           <!--begin::Timeline items-->
           <div class="timeline">
-            <Item1></Item1>
-            <Item2></Item2>
-            <Item3></Item3>
-            <Item4></Item4>
-            <Item5></Item5>
-            <Item6></Item6>
-            <Item7></Item7>
-            <Item8></Item8>
+            <Item1 />
+            <Item2 />
+            <Item3 />
+            <Item4 />
+            <Item5 />
+            <Item6 />
+            <Item7 />
+            <Item8 />
           </div>
           <!--end::Timeline items-->
         </div>
@@ -61,10 +69,16 @@
       <!--end::Body-->
 
       <!--begin::Footer-->
-      <div class="card-footer py-5 text-center" id="kt_activities_footer">
-        <a href="#" class="btn btn-bg-white text-primary">
+      <div
+        id="kt_activities_footer"
+        class="card-footer py-5 text-center"
+      >
+        <a
+          href="#"
+          class="btn btn-bg-white text-primary"
+        >
           View All Activities<span class="svg-icon svg-icon-3 svg-icon-primary">
-            <inline-svg src="dist/media/icons/duotone/Navigation/Right-2.svg" />
+            <inline-svg src="/dist/media/icons/duotone/Navigation/Right-2.svg" />
           </span>
         </a>
       </div>
@@ -87,7 +101,7 @@ import Item7 from "@/metronic/layout/header/partials/activity-timeline/Item7.vue
 import Item8 from "@/metronic/layout/header/partials/activity-timeline/Item8.vue";
 
 export default defineComponent({
-  name: "kt-activity-drawer",
+  name: "KtActivityDrawer",
   components: {
     Item1,
     Item2,

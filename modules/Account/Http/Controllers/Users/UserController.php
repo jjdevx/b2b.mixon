@@ -3,6 +3,7 @@
 namespace Modules\Account\Http\Controllers\Users;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Http\Resources\Json\ResourceCollection;
 use Modules\Account\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
@@ -32,10 +33,8 @@ class UserController extends Controller
 
     public function index(IndexRequest $request): Response
     {
-        $title = 'Пользователи';
-        if ($page = $request->input('page')) {
-            $title .= " - страница $page";
-        }
+        $title = 'Пользователи' . $this->appendPageToTitle($request);
+
         $this->seo()->setTitle($title);
 
         $users = $this->repository->getUsersForIndex($request->validated());
@@ -54,23 +53,22 @@ class UserController extends Controller
     {
         $this->seo()->setTitle('Создать пользователя');
 
-        return inertia('Users/Profile', [
-            'roles' => $this->repository->getRoles()
-        ]);
+        return inertia('Users/Profile', ['data' => ['roles' => $this->repository->getRoles()]]);
     }
 
     public function store(UserRequest $request): RedirectResponse
     {
         $password = \Hash::make($request->input('password'));
 
-        $user = User::create(array_merge($request->only(['email', 'name']), compact('password')));
+        $user = User::create(array_merge($request->except('password'), compact('password')));
 
-        $user->assignRole($request->roles);
+        $user->assignRole($request->input('roles'));
         $user->markEmailAsVerified();
 
         return redirect()->route('account.users.edit', $user->id)->with([
-            'message' => "Пользователь {$user->name} был создан",
-            'type' => 'created'
+            'toast' => [
+                'text' => "Пользователь {$user->full_name} был создан."
+            ]
         ]);
     }
 
@@ -80,7 +78,7 @@ class UserController extends Controller
 
         $this->seo()->setTitle('Редактировать пользователя');
 
-        $data = $user->only(['id', 'account_type_id', 'name', 'nickname', 'email', 'styles']);
+        $data = $user->only(['id', 'name', 'surname', 'email', 'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone']);
         $data['roles'] = $user->roles->pluck('id');
 
         if ($user->avatarMedia) {
@@ -88,8 +86,10 @@ class UserController extends Controller
         }
 
         return inertia('Users/Profile', [
-            'user' => $data,
-            'roles' => $this->repository->getRoles()
+            'data' => [
+                'user' => $data,
+                'roles' => $this->repository->getRoles()
+            ]
         ]);
     }
 
@@ -97,15 +97,17 @@ class UserController extends Controller
     {
         $user = $this->repository->findById($id);
 
-        $data = $request->only(['email', 'name']);
-        if ($password = $request->password) {
+        $data = $request->except('password');
+
+        if ($password = $request->input('password')) {
             $data['password'] = \Hash::make($password);
         }
+
         $user->update($data);
 
-        $user->syncRoles($request->roles);
+        $user->syncRoles($request->input('roles'));
 
-        return back()->with(['message' => "Пользователь {$user->name} был отредактирован."]);
+        return back()->with(['toast' => ['text' => "Пользователь {$user->full_name} был отредактирован."]]);
     }
 
     public function destroy(int $id): RedirectResponse
@@ -113,7 +115,7 @@ class UserController extends Controller
         $user = $this->repository->findById($id);
 
         if ($user->hasRole('admin')) {
-            return back()->with(['error' => 'Ты в своем уме?']);
+            return back()->with(['flash' => ['text' => 'Ты в своем уме?', 'icon' => 'error']]);
         }
 
         try {
@@ -122,32 +124,26 @@ class UserController extends Controller
             return back()->with(['error' => 'Возникла ошибка при удалении пользователя.']);
         }
 
-        return back()->with(['message' => 'Пользователь был удален.', 'type' => 'destroy']);
+        return back()->with(['toast' => ['text' => 'Пользователь был удален.']]);
     }
 
     public function trash(IndexRequest $request): Response
     {
-        $title = 'Удаленные пользователи';
-        if ($page = $request->input('page')) {
-            $title .= " - страница $page";
-        }
+        $title = 'Удаленные пользователи' . $this->appendPageToTitle($request);
+
         $this->seo()->setTitle($title);
 
         /* @var $q SoftDeletes */
         $users = $this->repository->getUsersForIndex(
-            $request->only(['searchQuery', 'sortBy', 'sortDesc']), fn(Builder $q) => $q->onlyTrashed()
+            $request->validated(), fn(Builder $q) => $q->onlyTrashed()
         );
 
-        $this->repository->transformUsers($users);
-
         return inertia('Users/Index', [
-            'resource' => 'users',
-            'data' => $users,
-            'isTrash' => true,
-            'table' => [
-                'searchQuery' => $request->input('searchQuery'),
-                'sortBy' => $request->input('sortBy'),
-                'sortDesc' => $request->input('sortDesc')
+            'data' => [
+                'paginator' => (new UserCollection($users))->toArray(),
+                'table' => array_merge($request->only(['searchQuery', 'sortBy',]), [
+                    'sortDesc' => (int)$request->input('sortDesc')
+                ]),
             ]
         ]);
     }
@@ -158,7 +154,7 @@ class UserController extends Controller
         if ($user->trashed()) {
             $user->restore();
         }
-        return back()->with(['message' => "Пользователь {$user->name} был восстановлен."]);
+        return back()->with(['toast' => ['text' => "Пользователь $user->full_name был восстановлен."]]);
     }
 
     public function forceDestroy(int $id): RedirectResponse
@@ -167,6 +163,6 @@ class UserController extends Controller
         if ($user->trashed()) {
             $user->forceDelete();
         }
-        return back()->with(['message' => 'Пользователь был удален окончательно.', 'type' => 'destroy']);
+        return back()->with(['toast' => ['text' => 'Пользователь был удален окончательно.']]);
     }
 }

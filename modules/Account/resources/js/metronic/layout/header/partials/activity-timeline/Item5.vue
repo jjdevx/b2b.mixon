@@ -2,14 +2,14 @@
   <!--begin::Timeline item-->
   <div class="timeline-item">
     <!--begin::Timeline line-->
-    <div class="timeline-line w-40px"></div>
+    <div class="timeline-line w-40px" />
     <!--end::Timeline line-->
 
     <!--begin::Timeline icon-->
     <div class="timeline-icon symbol symbol-circle symbol-40px">
       <div class="symbol-label bg-light">
         <span class="svg-icon svg-icon-2 svg-icon-gray-500">
-          <inline-svg src="dist/media/icons/duotone/Communication/Write.svg" />
+          <inline-svg src="/dist/media/icons/duotone/Communication/Write.svg" />
         </span>
       </div>
     </div>
@@ -28,7 +28,9 @@
         <!--begin::Description-->
         <div class="d-flex align-items-center mt-1 fs-6">
           <!--begin::Info-->
-          <div class="text-muted me-2 fs-7">Created at 4:23 PM by</div>
+          <div class="text-muted me-2 fs-7">
+            Created at 4:23 PM by
+          </div>
           <!--end::Info-->
 
           <!--begin::User-->
@@ -39,7 +41,10 @@
             data-bs-placement="top"
             title="Marcus Dotson"
           >
-            <img src="dist/media/avatars/150-3.jpg" alt="img" />
+            <img
+              src="/dist/media/avatars/150-3.jpg"
+              alt="img"
+            >
           </div>
           <!--end::User-->
         </div>
@@ -59,14 +64,17 @@
               <img
                 alt="img"
                 class="rounded w-200px"
-                src="dist/media/demos/demo1.png"
-              />
+                src="/dist/media/demos/demo1.png"
+              >
             </div>
             <!--end::Image-->
 
             <!--begin::Link-->
             <div class="overlay-layer bg-dark bg-opacity-10 rounded">
-              <a href="#" class="btn btn-sm btn-primary btn-shadow">Explore</a>
+              <a
+                href="#"
+                class="btn btn-sm btn-primary btn-shadow"
+              >Explore</a>
             </div>
             <!--end::Link-->
           </div>
@@ -79,14 +87,17 @@
               <img
                 alt="img"
                 class="rounded w-200px"
-                src="dist/media/demos/demo2.png"
-              />
+                src="/dist/media/demos/demo2.png"
+              >
             </div>
             <!--end::Image-->
 
             <!--begin::Link-->
             <div class="overlay-layer bg-dark bg-opacity-10 rounded">
-              <a href="#" class="btn btn-sm btn-primary btn-shadow">Explore</a>
+              <a
+                href="#"
+                class="btn btn-sm btn-primary btn-shadow"
+              >Explore</a>
             </div>
             <!--end::Link-->
           </div>
@@ -99,14 +110,17 @@
               <img
                 alt="img"
                 class="rounded w-200px"
-                src="dist/media/demos/demo3.png"
-              />
+                src="/dist/media/demos/demo3.png"
+              >
             </div>
             <!--end::Image-->
 
             <!--begin::Link-->
             <div class="overlay-layer bg-dark bg-opacity-10 rounded">
-              <a href="#" class="btn btn-sm btn-primary btn-shadow">Explore</a>
+              <a
+                href="#"
+                class="btn btn-sm btn-primary btn-shadow"
+              >Explore</a>
             </div>
             <!--end::Link-->
           </div>

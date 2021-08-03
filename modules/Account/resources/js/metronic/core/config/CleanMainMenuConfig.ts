@@ -4,7 +4,7 @@ const DocMenuConfig: object = [
       {
         heading: "Dashboard",
         route: "/dashboard",
-        svgIcon: "dist/media/icons/duotone/Design/PenAndRuller.svg",
+        svgIcon: "/dist/media/icons/duotone/Design/PenAndRuller.svg",
         fontIcon: "bi-app-indicator"
       }
     ]

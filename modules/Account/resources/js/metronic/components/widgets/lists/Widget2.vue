@@ -1,9 +1,14 @@
 <template>
   <!--begin::List Widget 2-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header border-0">
-      <h3 class="card-title fw-bolder text-dark">Authors</h3>
+      <h3 class="card-title fw-bolder text-dark">
+        Authors
+      </h3>
 
       <div class="card-toolbar">
         <!--begin::Menu-->
@@ -16,11 +21,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown2></Dropdown2>
+        <Dropdown2 />
         <!--end::Menu-->
       </div>
     </div>
@@ -28,7 +33,10 @@
 
     <!--begin::Body-->
     <div class="card-body pt-2">
-      <template v-for="(item, index) in list" :key="index">
+      <template
+        v-for="(item, index) in list"
+        :key="index"
+      >
         <!--begin::Item-->
         <div
           :class="{ 'mb-7': list.length - 1 !== index }"
@@ -36,13 +44,20 @@
         >
           <!--begin::Avatar-->
           <div class="symbol symbol-50px me-5">
-            <img :src="item.avatar" class="" alt="" />
+            <img
+              :src="item.avatar"
+              class=""
+              alt=""
+            >
           </div>
           <!--end::Avatar-->
 
           <!--begin::Text-->
           <div class="flex-grow-1">
-            <a href="#" class="text-dark fw-bolder text-hover-primary fs-6">{{
+            <a
+              href="#"
+              class="text-dark fw-bolder text-hover-primary fs-6"
+            >{{
               item.name
             }}</a>
 
@@ -65,7 +80,7 @@ import { defineComponent, ref } from "vue";
 import Dropdown2 from "@/metronic/components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
-  name: "kt-widget-2",
+  name: "KtWidget2",
   components: {
     Dropdown2
   },
@@ -75,27 +90,27 @@ export default defineComponent({
   setup() {
     const list = ref([
       {
-        avatar: "dist/media/avatars/150-1.jpg",
+        avatar: "/dist/media/avatars/150-1.jpg",
         name: "Emma Smith",
         description: "Project Manager"
       },
       {
-        avatar: "dist/media/avatars/150-4.jpg",
+        avatar: "/dist/media/avatars/150-4.jpg",
         name: "Sean Bean",
         description: "PHP, SQLite, Artisan CLI"
       },
       {
-        avatar: "dist/media/avatars/150-12.jpg",
+        avatar: "/dist/media/avatars/150-12.jpg",
         name: "Brian Cox",
         description: "PHP, SQLite, Artisan CLI"
       },
       {
-        avatar: "dist/media/avatars/150-8.jpg",
+        avatar: "/dist/media/avatars/150-8.jpg",
         name: "Francis Mitcham",
         description: "PHP, SQLite, Artisan CLI"
       },
       {
-        avatar: "dist/media/avatars/150-6.jpg",
+        avatar: "/dist/media/avatars/150-6.jpg",
         name: "Dan Wilson",
         description: "PHP, SQLite, Artisan CLI"
       }

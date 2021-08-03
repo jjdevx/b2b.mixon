@@ -1,6 +1,9 @@
 <template>
   <!--begin::Mixed Widget 8-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Body-->
     <div class="card-body">
       <!--begin::Heading-->
@@ -9,15 +12,25 @@
         <div class="d-flex align-items-center">
           <!--begin:Image-->
           <div class="symbol symbol-60px me-5">
-            <span :class="`bg-${color}-light`" class="symbol-label">
-              <img :src="image" class="h-50 align-self-center" alt="" />
+            <span
+              :class="`bg-${color}-light`"
+              class="symbol-label"
+            >
+              <img
+                :src="image"
+                class="h-50 align-self-center"
+                alt=""
+              >
             </span>
           </div>
           <!--end:Image-->
 
           <!--begin:Title-->
           <div class="d-flex flex-column flex-grow-1 my-lg-0 my-2 pr-3">
-            <a href="#" class="text-dark fw-bolder text-hover-primary fs-5">
+            <a
+              href="#"
+              class="text-dark fw-bolder text-hover-primary fs-5"
+            >
               {{ title }}
             </a>
 
@@ -40,11 +53,11 @@
           >
             <span class="svg-icon svg-icon-2">
               <inline-svg
-                src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+                src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
               />
             </span>
           </button>
-          <Dropdown2></Dropdown2>
+          <Dropdown2 />
         </div>
         <!--end::Menu-->
       </div>
@@ -65,7 +78,7 @@
             :aria-valuenow="progress"
             aria-valuemin="0"
             aria-valuemax="100"
-          ></div>
+          />
         </div>
       </div>
       <!--end:Stats-->
@@ -83,7 +96,10 @@
             data-bs-toggle="tooltip"
             title="Ana Stone"
           >
-            <img src="dist/media/avatars/150-1.jpg" alt="" />
+            <img
+              src="/dist/media/avatars/150-1.jpg"
+              alt=""
+            >
           </a>
 
           <a
@@ -92,7 +108,10 @@
             data-bs-toggle="tooltip"
             title="Mark Larson"
           >
-            <img src="dist/media/avatars/150-4.jpg" alt="" />
+            <img
+              src="/dist/media/avatars/150-4.jpg"
+              alt=""
+            >
           </a>
 
           <a
@@ -101,7 +120,10 @@
             data-bs-toggle="tooltip"
             title="Sam Harris"
           >
-            <img src="dist/media/avatars/150-8.jpg" alt="" />
+            <img
+              src="/dist/media/avatars/150-8.jpg"
+              alt=""
+            >
           </a>
 
           <a
@@ -110,7 +132,10 @@
             data-bs-toggle="tooltip"
             title="Alice Micto"
           >
-            <img src="dist/media/avatars/150-9.jpg" alt="" />
+            <img
+              src="/dist/media/avatars/150-9.jpg"
+              alt=""
+            >
           </a>
         </div>
       </div>
@@ -126,7 +151,7 @@ import { defineComponent } from "vue";
 import Dropdown2 from "@/metronic/components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
-  name: "widget-1",
+  name: "Widget1",
   components: {
     Dropdown2
   },

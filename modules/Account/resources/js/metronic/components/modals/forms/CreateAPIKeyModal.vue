@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - Create Api Key-->
   <div
-    class="modal fade"
     id="kt_modal_create_api_key"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -11,7 +11,10 @@
       <!--begin::Modal content-->
       <div class="modal-content">
         <!--begin::Modal header-->
-        <div class="modal-header" id="kt_modal_create_api_key_header">
+        <div
+          id="kt_modal_create_api_key_header"
+          class="modal-header"
+        >
           <!--begin::Modal title-->
           <h2>Create API Key</h2>
           <!--end::Modal title-->
@@ -22,7 +25,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -33,15 +36,15 @@
         <Form
           id="kt_modal_create_api_key_form"
           class="form"
-          @submit="submit"
           :validation-schema="validationSchema"
+          @submit="submit"
         >
           <!--begin::Modal body-->
           <div class="modal-body py-10 px-lg-17">
             <!--begin::Scroll-->
             <div
-              class="scroll-y me-n7 pe-7"
               id="kt_modal_create_api_key_scroll"
+              class="scroll-y me-n7 pe-7"
               data-kt-scroll="true"
               data-kt-scroll-activate="{default: false, lg: true}"
               data-kt-scroll-max-height="auto"
@@ -54,14 +57,16 @@
               >
                 <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
                   <inline-svg
-                    src="dist/media/icons/duotone/Code/Warning-1-circle.svg"
+                    src="/dist/media/icons/duotone/Code/Warning-1-circle.svg"
                   />
                 </span>
                 <!--begin::Wrapper-->
                 <div class="d-flex flex-stack flex-grow-1">
                   <!--begin::Content-->
                   <div class="fw-bold">
-                    <h4 class="text-gray-800 fw-bolder">Please Note!</h4>
+                    <h4 class="text-gray-800 fw-bolder">
+                      Please Note!
+                    </h4>
                     <div class="fs-6 text-gray-600">
                       Adding new API key may afftect to your
                       <a href="#">Affiliate Income</a>
@@ -80,11 +85,11 @@
 
                 <!--begin::Input-->
                 <Field
+                  v-model="apiData.apiName"
                   type="text"
                   class="form-control form-control-solid"
                   placeholder="Your API Name"
                   name="apiName"
-                  v-model="apiData.apiName"
                 />
                 <div class="fv-plugins-message-container">
                   <div class="fv-help-block">
@@ -98,19 +103,19 @@
               <!--begin::Input group-->
               <div class="d-flex flex-column mb-5 fv-row">
                 <!--begin::Label-->
-                <label class="required fs-5 fw-bold mb-2"
-                  >Short Description</label
-                >
+                <label
+                  class="required fs-5 fw-bold mb-2"
+                >Short Description</label>
                 <!--end::Label-->
 
                 <!--begin::Input-->
                 <Field
+                  v-model="apiData.shortDescription"
                   type="text"
                   class="form-control form-control-solid"
                   rows="3"
                   name="shortDescription"
                   placeholder="Describe your API"
-                  v-model="apiData.shortDescription"
                 />
                 <div class="fv-plugins-message-container">
                   <div class="fv-help-block">
@@ -129,19 +134,29 @@
 
                 <!--begin::Select-->
                 <Field
+                  v-model="apiData.category"
                   name="category"
                   data-control="select2"
                   data-hide-search="true"
                   data-placeholder="Select a Category..."
                   class="form-select form-select-solid"
                   as="select"
-                  v-model="apiData.category"
                 >
-                  <option value="">Select a Category...</option>
-                  <option value="1">CRM</option>
-                  <option value="2">Project Alice</option>
-                  <option value="3">Keenthemes</option>
-                  <option value="4">General</option>
+                  <option value="">
+                    Select a Category...
+                  </option>
+                  <option value="1">
+                    CRM
+                  </option>
+                  <option value="2">
+                    Project Alice
+                  </option>
+                  <option value="3">
+                    Keenthemes
+                  </option>
+                  <option value="4">
+                    General
+                  </option>
                 </Field>
                 <div class="fv-plugins-message-container">
                   <div class="fv-help-block">
@@ -164,7 +179,7 @@
                       class="fas fa-exclamation-circle ms-2 fs-7"
                       data-bs-toggle="tooltip"
                       title="Your billing numbers will be calculated based on your API method"
-                    ></i>
+                    />
                   </label>
                   <!--end::Label-->
 
@@ -180,19 +195,29 @@
                 <div class="fv-row">
                   <!--begin::Select-->
                   <Field
+                    v-model="apiData.apiMethod"
                     name="apiMethod"
                     data-control="select2"
                     data-hide-search="true"
                     data-placeholder="Select a Category..."
                     class="form-select form-select-solid"
                     as="select"
-                    v-model="apiData.apiMethod"
                   >
-                    <option value="">Select a API method...</option>
-                    <option value="1">Open API</option>
-                    <option value="2">SQL Call</option>
-                    <option value="3">UI/UX</option>
-                    <option value="4">Docs</option>
+                    <option value="">
+                      Select a API method...
+                    </option>
+                    <option value="1">
+                      Open API
+                    </option>
+                    <option value="2">
+                      SQL Call
+                    </option>
+                    <option value="3">
+                      UI/UX
+                    </option>
+                    <option value="4">
+                      Docs
+                    </option>
                   </Field>
                   <div class="fv-plugins-message-container">
                     <div class="fv-help-block">
@@ -213,8 +238,8 @@
           <div class="modal-footer flex-center">
             <!--begin::Button-->
             <button
-              type="reset"
               id="kt_modal_create_api_key_cancel"
+              type="reset"
               class="btn btn-white me-3"
             >
               Discard
@@ -223,9 +248,9 @@
 
             <!--begin::Button-->
             <button
+              id="kt_modal_create_api_key_submit"
               ref="submitButtonRef"
               type="submit"
-              id="kt_modal_create_api_key_submit"
               class="btn btn-primary"
             >
               <span class="indicator-label">
@@ -235,7 +260,7 @@
                 Please wait...
                 <span
                   class="spinner-border spinner-border-sm align-middle ms-2"
-                ></span>
+                />
               </span>
             </button>
             <!--end::Button-->
@@ -265,7 +290,7 @@ interface APIData {
 }
 
 export default defineComponent({
-  name: "create-api-key-modal",
+  name: "CreateApiKeyModal",
   components: {
     ErrorMessage,
     Field,

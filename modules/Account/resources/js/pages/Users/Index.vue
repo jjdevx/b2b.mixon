@@ -9,17 +9,37 @@
         >Количество: {{ paginator.total }}</span>
       </h3>
       <div class="d-flex align-items-center">
-        <a
-          href="#"
+        <InertiaLink
+          v-if="!isTrash"
+          :href="route('users.trash')"
+          class="add-user-btn btn btn-sm btn-light-danger"
+        >
+          <span class="svg-icon svg-icon-2">
+            <inline-svg src="/dist/media/icons/duotone/Home/Trash.svg" />
+          </span>
+          Корзина
+        </InertiaLink>
+        <InertiaLink
+          v-else
+          :href="route('users.index')"
+          class="add-user-btn btn btn-sm btn-light-success"
+        >
+          <span class="svg-icon svg-icon-2">
+            <inline-svg src="/dist/media/icons/duotone/General/User.svg" />
+          </span>
+          Активные
+        </InertiaLink>
+        <InertiaLink
+          :href="route('users.create')"
           class="add-user-btn btn btn-sm btn-light-primary"
         >
           <span class="svg-icon svg-icon-2">
-            <inline-svg src="dist/media/icons/duotone/Communication/Add-user.svg" />
+            <inline-svg src="/dist/media/icons/duotone/Communication/Add-user.svg" />
           </span>
           Добавить
-        </a>
+        </InertiaLink>
         <form
-          class="input-group"
+          class="input-group w-50"
           @submit.prevent="search()"
         >
           <input
@@ -58,25 +78,16 @@
                 Почта
               </th>
               <th class="min-w-150px">
-                Компания
-              </th>
-              <th class="min-w-100px">
-                ОКПО
+                Компания и ОКПО
               </th>
               <th class="min-w-150px">
-                Страна
+                Локация
               </th>
               <th class="min-w-150px">
-                Город
+                Телефон и факс
               </th>
-              <th class="min-w-150px">
-                Адрес
-              </th>
-              <th class="min-w-150px">
-                Факс
-              </th>
-              <th class="min-w-150px">
-                Телефон
+              <th class="min-w-125px">
+                Роль
               </th>
               <th class="min-w-150px text-end">
                 Действия
@@ -85,7 +96,7 @@
           </thead>
           <tbody>
             <template
-              v-for="(item, index) in paginator.collection"
+              v-for="(user, index) in paginator.collection"
               :key="index"
             >
               <tr>
@@ -94,61 +105,67 @@
                     <div class="symbol symbol-50px me-5">
                       <span class="symbol-label bg-light">
                         <img
-                          :src="item.icon"
+                          :src="user.icon"
                           class="w-100 align-self-end"
                         >
                       </span>
                     </div>
-                    <span class="text-dark fw-bolder text-hover-primary fs-6">{{ item.id }}</span>
+                    <span class="text-dark fw-bolder text-hover-primary fs-6">{{ user.id }}</span>
                   </div>
                 </td>
 
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ `${item.surname} ${item.name}` }}
+                  {{ `${user.surname} ${user.name}` }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ item.email }}
+                  {{ user.email }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ item.company }}
+                  {{ user.company }}
+                  <p>{{ user.okpo }}</p>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ item.okpo }}
+                  {{ user.country }}
+                  <p>{{ user.city }}</p>
+                  <p>{{ user.address }}</p>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ item.country }}
+                  {{ user.phone }}
+                  <p> {{ user.fax }}</p>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ item.city }}
-                </td>
-                <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ item.address }}
-                </td>
-                <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ item.fax }}
-                </td>
-                <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ item.phone }}
+                  {{ user.roles.join(', ') }}
                 </td>
 
                 <td class="text-end">
-                  <a
-                    href="#"
+                  <InertiaLink
+                    :href="route('users.edit',user.id)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                   >
                     <span class="svg-icon svg-icon-3">
-                      <inline-svg src="dist/media/icons/duotone/Communication/Write.svg" />
+                      <inline-svg src="/dist/media/icons/duotone/Communication/Write.svg" />
+                    </span>
+                  </InertiaLink>
+                  <a
+                    href="#"
+                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                    @click.prevent="destroy(user.id)"
+                  >
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg src="/dist/media/icons/duotone/General/Trash.svg" />
                     </span>
                   </a>
                   <a
+                    v-if="isTrash"
                     href="#"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Восстановить"
+                    @click.prevent="restore(user.id)"
                   >
-                    <span
-                      class="svg-icon svg-icon-3"
-                      @click="destroy(item.id)"
-                    >
-                      <inline-svg src="dist/media/icons/duotone/General/Trash.svg" />
+                    <span class="svg-icon svg-icon-3">
+                      <inline-svg src="/dist/media/icons/duotone/General/Shield-check.svg" />
                     </span>
                   </a>
                 </td>
@@ -174,13 +191,12 @@
 
 <script lang="ts">
 import {computed, defineComponent, onMounted, ref} from 'vue'
-import {route} from 'mixon'
-import Layout from '@/layouts/Layout.vue'
+import route, {routeIncludes} from '@/helpers/route'
 import {ElPagination} from 'element-plus'
-import {setCurrentPageTitle} from '@/metronic/core/helpers/breadcrumb'
 import {usePage} from '@inertiajs/inertia-vue3'
 import {Inertia} from '@inertiajs/inertia'
 import Swal from 'sweetalert2'
+import {Tooltip} from 'bootstrap'
 
 interface Page {
   data: {
@@ -220,10 +236,11 @@ interface User {
 
 export default defineComponent({
   components: {ElPagination},
-  layout: Layout,
   setup() {
     const page = usePage<Page>()
     const data = computed(() => page.props.value.data)
+
+    const isTrash = routeIncludes('trash')
 
     const searchQuery = ref(data.value.table.searchQuery ?? '')
     const search = () => Inertia.get('', {searchQuery: searchQuery.value}, {preserveScroll: true})
@@ -240,7 +257,7 @@ export default defineComponent({
 
     async function destroy(id: number) {
       const {isConfirmed} = await Swal.fire({
-        title: 'Вы уверены?',
+        title: `Вы уверены, что хотите удалить пользователя${isTrash ? ' окончательно' : ''}?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -249,7 +266,25 @@ export default defineComponent({
         cancelButtonText: 'Отменить'
       })
       if (isConfirmed) {
-        Inertia.delete(route('users.destroy', id), {
+        Inertia.delete(route(`users.${!isTrash ? 'destroy' : 'forceDestroy'}`, id), {
+          preserveState: false,
+          replace: true
+        })
+      }
+    }
+
+    async function restore(id: number) {
+      const {isConfirmed} = await Swal.fire({
+        title: 'Вы уверены, что хотите восстановить пользователя?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Да!',
+        cancelButtonText: 'Отменить'
+      })
+      if (isConfirmed) {
+        Inertia.post(route(`users.restore`, id), {}, {
           preserveState: false,
           replace: true
         })
@@ -259,14 +294,21 @@ export default defineComponent({
     const handleSizeChange = (size: number) => Inertia.get('', {perPage: size})
     const handleCurrentChange = (page: number) => Inertia.get('', {page}, {preserveScroll: true})
 
-    onMounted(() => setCurrentPageTitle('Пользователи'))
+    onMounted(() => {
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new Tooltip(tooltipTriggerEl)
+      })
+    })
 
     return {
       paginator: data.value.paginator,
+      isTrash,
       sortBy, sortDesc, sort,
       searchQuery, search,
-      destroy,
-      handleSizeChange, handleCurrentChange
+      destroy, restore,
+      handleSizeChange, handleCurrentChange,
+      route
     }
   }
 })
@@ -275,7 +317,6 @@ export default defineComponent({
 <style scoped>
 .add-user-btn {
   height: 42.5px;
-  width: 160px;
   display: flex;
   align-items: center;
   margin-right: 15px;

@@ -24,6 +24,7 @@
     "@popperjs/core": "^2.9.1",
     "@soerenmartius/vue3-clipboard": "^0.1.2",
     "@testing-library/dom": "^8.1.0",
+    "@types/bootstrap": "^5.0.17",
     "@types/jest": "^26.0.24",
     "@types/object-path": "^0.11.0",
     "@types/prismjs": "^1.16.2",

@@ -1,6 +1,9 @@
 <template>
   <!--begin::Tables Widget 10-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -19,11 +22,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown2></Dropdown2>
+        <Dropdown2 />
         <!--end::Menu-->
       </div>
     </div>
@@ -40,18 +43,21 @@
           <!--begin::Table head-->
           <thead>
             <tr class="border-0">
-              <th class="p-0 "></th>
-              <th class="p-0 min-w-150px"></th>
-              <th class="p-0 min-w-200px"></th>
-              <th class="p-0 min-w-150px"></th>
-              <th class="p-0 min-w-100px text-end"></th>
+              <th class="p-0 " />
+              <th class="p-0 min-w-150px" />
+              <th class="p-0 min-w-200px" />
+              <th class="p-0 min-w-150px" />
+              <th class="p-0 min-w-100px text-end" />
             </tr>
           </thead>
           <!--end::Table head-->
 
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in list" :key="index">
+            <template
+              v-for="(item, index) in list"
+              :key="index"
+            >
               <tr>
                 <td>
                   <div class="d-flex align-items-center">
@@ -61,7 +67,7 @@
                         v-if="item.user.avatar"
                         alt="Pic"
                         :src="item.user.avatar"
-                      />
+                      >
                       <span
                         v-else-if="item.user.state"
                         :class="
@@ -79,8 +85,7 @@
                       <a
                         href="#"
                         class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                        >{{ item.user.name }}</a
-                      >
+                      >{{ item.user.name }}</a>
 
                       <a
                         href="#"
@@ -98,11 +103,10 @@
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.price }}</a
-                  >
-                  <span class="text-muted fw-bold text-muted d-block fs-7"
-                    >Paid</span
-                  >
+                  >{{ item.price }}</a>
+                  <span
+                    class="text-muted fw-bold text-muted d-block fs-7"
+                  >Paid</span>
                 </td>
 
                 <td class="text-muted fw-bold text-end">
@@ -113,8 +117,7 @@
                   <span
                     :class="`badge-light-${item.status.color}`"
                     class="badge"
-                    >{{ item.status.label }}</span
-                  >
+                  >{{ item.status.label }}</span>
                 </td>
 
                 <td class="text-end">
@@ -124,7 +127,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="dist/media/icons/duotone/General/Settings-1.svg"
+                        src="/dist/media/icons/duotone/General/Settings-1.svg"
                       />
                     </span>
                   </a>
@@ -135,7 +138,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="dist/media/icons/duotone/Communication/Write.svg"
+                        src="/dist/media/icons/duotone/Communication/Write.svg"
                       />
                     </span>
                   </a>
@@ -145,7 +148,7 @@
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                   >
                     <span class="svg-icon svg-icon-3">
-                      <inline-svg src="dist/media/icons/duotone/General/Trash.svg" />
+                      <inline-svg src="/dist/media/icons/duotone/General/Trash.svg" />
                     </span>
                   </a>
                 </td>
@@ -168,7 +171,7 @@ import { defineComponent } from "vue";
 import Dropdown2 from "@/metronic/components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
-  name: "kt-widget-10",
+  name: "KtWidget10",
   components: {
     Dropdown2
   },
@@ -179,7 +182,7 @@ export default defineComponent({
     const list = [
       {
         user: {
-          avatar: "dist/media/avatars/150-1.jpg",
+          avatar: "/dist/media/avatars/150-1.jpg",
           name: "Emma Smith",
           email: "e.smith@kpmg.com.au"
         },
@@ -205,7 +208,7 @@ export default defineComponent({
       },
       {
         user: {
-          avatar: "dist/media/avatars/150-2.jpg",
+          avatar: "/dist/media/avatars/150-2.jpg",
           name: "Max Smith",
           email: "max@kt.com"
         },
@@ -218,7 +221,7 @@ export default defineComponent({
       },
       {
         user: {
-          avatar: "dist/media/avatars/150-4.jpg",
+          avatar: "/dist/media/avatars/150-4.jpg",
           name: "Sean Bean",
           email: "sean@dellito.com"
         },
@@ -231,7 +234,7 @@ export default defineComponent({
       },
       {
         user: {
-          avatar: "dist/media/avatars/150-15.jpg",
+          avatar: "/dist/media/avatars/150-15.jpg",
           name: "Brian Cox",
           email: "brian@exchange.com"
         },

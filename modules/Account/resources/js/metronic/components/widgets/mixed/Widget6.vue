@@ -1,6 +1,9 @@
 <template>
   <!--begin::Mixed Widget 6-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Beader-->
     <div class="card-header border-0 py-5">
       <h3 class="card-title align-items-start flex-column">
@@ -20,11 +23,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
     </div>
@@ -44,7 +47,7 @@
                 <div class="symbol-label bg-light-info">
                   <span class="svg-icon svg-icon-1 svg-icon-info">
                     <inline-svg
-                      src="dist/media/icons/duotone/Design/Color-profile.svg"
+                      src="/dist/media/icons/duotone/Design/Color-profile.svg"
                     />
                   </span>
                 </div>
@@ -53,8 +56,12 @@
 
               <!--begin::Title-->
               <div>
-                <div class="fs-4 text-dark fw-bolder">$2,034</div>
-                <div class="fs-7 text-muted fw-bold">Author Sales</div>
+                <div class="fs-4 text-dark fw-bolder">
+                  $2,034
+                </div>
+                <div class="fs-7 text-muted fw-bold">
+                  Author Sales
+                </div>
               </div>
               <!--end::Title-->
             </div>
@@ -68,7 +75,7 @@
               <div class="symbol symbol-50px me-3">
                 <div class="symbol-label bg-light-danger">
                   <span class="svg-icon svg-icon-1 svg-icon-danger">
-                    <inline-svg src="dist/media/icons/duotone/Home/Library.svg" />
+                    <inline-svg src="/dist/media/icons/duotone/Home/Library.svg" />
                   </span>
                 </div>
               </div>
@@ -76,8 +83,12 @@
 
               <!--begin::Title-->
               <div>
-                <div class="fs-4 text-dark fw-bolder">$706</div>
-                <div class="fs-7 text-muted fw-bold">Commision</div>
+                <div class="fs-4 text-dark fw-bolder">
+                  $706
+                </div>
+                <div class="fs-7 text-muted fw-bold">
+                  Commision
+                </div>
               </div>
               <!--end::Title-->
             </div>
@@ -95,7 +106,7 @@
               <div class="symbol symbol-50px me-3">
                 <div class="symbol-label bg-light-success">
                   <span class="svg-icon svg-icon-1 svg-icon-success">
-                    <inline-svg src="dist/media/icons/duotone/Shopping/Cart3.svg" />
+                    <inline-svg src="/dist/media/icons/duotone/Shopping/Cart3.svg" />
                   </span>
                 </div>
               </div>
@@ -103,8 +114,12 @@
 
               <!--begin::Title-->
               <div>
-                <div class="fs-4 text-dark fw-bolder">$49</div>
-                <div class="fs-7 text-muted fw-bold">Average Bid</div>
+                <div class="fs-4 text-dark fw-bolder">
+                  $49
+                </div>
+                <div class="fs-7 text-muted fw-bold">
+                  Average Bid
+                </div>
               </div>
               <!--end::Title-->
             </div>
@@ -119,7 +134,7 @@
                 <div class="symbol-label bg-light-primary">
                   <span class="svg-icon svg-icon-1 svg-icon-primary">
                     <inline-svg
-                      src="dist/media/icons/duotone/Shopping/Barcode-read.svg"
+                      src="/dist/media/icons/duotone/Shopping/Barcode-read.svg"
                     />
                   </span>
                 </div>
@@ -128,8 +143,12 @@
 
               <!--begin::Title-->
               <div>
-                <div class="fs-4 text-dark fw-bolder">$5.8M</div>
-                <div class="fs-7 text-muted fw-bold">All Time Sales</div>
+                <div class="fs-4 text-dark fw-bolder">
+                  $5.8M
+                </div>
+                <div class="fs-7 text-muted fw-bold">
+                  All Time Sales
+                </div>
               </div>
               <!--end::Title-->
             </div>
@@ -147,7 +166,7 @@
         :series="series"
         :height="chartHeight"
         type="area"
-      ></apexchart>
+      />
       <!--end::Chart-->
     </div>
     <!--end::Body-->
@@ -161,7 +180,7 @@ import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 import { getCSSVariableValue } from "@/metronic/assets/ts/_utils";
 
 export default defineComponent({
-  name: "widget-1",
+  name: "Widget1",
   components: {
     Dropdown1
   },
@@ -175,8 +194,8 @@ export default defineComponent({
 
     const labelColor = getCSSVariableValue("--bs-" + "gray-800");
     const strokeColor = getCSSVariableValue("--bs-" + "gray-300");
-    const baseColor = getCSSVariableValue("--bs-" + color.value);
-    const lightColor = getCSSVariableValue("--bs-light-" + color.value);
+    const baseColor = getCSSVariableValue(`--bs-${  color.value}`);
+    const lightColor = getCSSVariableValue(`--bs-light-${  color.value}`);
 
     const chartOptions = {
       chart: {
@@ -275,8 +294,8 @@ export default defineComponent({
           fontSize: "12px"
         },
         y: {
-          formatter: function(val) {
-            return "$" + val + " thousands";
+          formatter(val) {
+            return `$${  val  } thousands`;
           }
         }
       },

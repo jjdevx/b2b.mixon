@@ -8,16 +8,18 @@
       <span class="svg-icon position-absolute opacity-5">
         <inline-svg
           class="w-80px h-80px"
-          src="dist/media/icons/duotone/Layout/Layout-polygon.svg"
+          src="/dist/media/icons/duotone/Layout/Layout-polygon.svg"
         />
       </span>
       <span class="svg-icon svg-icon-3x svg-icon-info position-absolute">
-        <inline-svg src="dist/media/icons/duotone/Tools/Compass.svg" />
+        <inline-svg src="/dist/media/icons/duotone/Tools/Compass.svg" />
       </span>
     </div>
     <!--end::Icon-->
     <!--begin::Description-->
-    <div class="text-gray-600 fw-bold fs-5"><slot></slot></div>
+    <div class="text-gray-600 fw-bold fs-5">
+      <slot />
+    </div>
     <!--end::Description-->
   </div>
   <!--end::Information-->

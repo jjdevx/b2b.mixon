@@ -1,18 +1,28 @@
 <template>
   <!--begin::Card-->
-  <div class="card h-100" :class="cardClasses">
+  <div
+    class="card h-100"
+    :class="cardClasses"
+  >
     <!--begin::Card header-->
     <div class="card-header flex-nowrap border-0 pt-9">
       <!--begin::Card title-->
       <div class="card-title m-0">
         <!--begin::Icon-->
         <div class="symbol symbol-45px w-45px bg-light me-5">
-          <img :src="icon" alt="image" class="p-3" />
+          <img
+            :src="icon"
+            alt="image"
+            class="p-3"
+          >
         </div>
         <!--end::Icon-->
 
         <!--begin::Title-->
-        <a href="#" class="fs-4 fw-bold text-hover-primary text-gray-600 m-0">
+        <a
+          href="#"
+          class="fs-4 fw-bold text-hover-primary text-gray-600 m-0"
+        >
           {{ title }}
         </a>
         <!--end::Title-->
@@ -31,12 +41,12 @@
         >
           <span class="svg-icon svg-icon-3 svg-icon-primary">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
 
-        <Dropdown3></Dropdown3>
+        <Dropdown3 />
         <!--end::Menu-->
       </div>
       <!--end::Card toolbar-->
@@ -53,12 +63,18 @@
 
       <!--begin::Stats-->
       <div class="d-flex align-items-center flex-wrap mb-5 mt-auto fs-6">
-        <span :class="`svg-icon-${color}`" class="svg-icon svg-icon-3 me-1">
-          <inline-svg :src="`dist/media/icons/duotone/Navigation/${arrow}.svg`" />
+        <span
+          :class="`svg-icon-${color}`"
+          class="svg-icon svg-icon-3 me-1"
+        >
+          <inline-svg :src="`/dist/media/icons/duotone/Navigation/${arrow}.svg`" />
         </span>
 
         <!--begin::Number-->
-        <div :class="`text-${color}`" class="fw-bolder me-2">
+        <div
+          :class="`text-${color}`"
+          class="fw-bolder me-2"
+        >
           {{ footerData }}
         </div>
         <!--end::Number-->
@@ -91,7 +107,7 @@ import { defineComponent } from "vue";
 import Dropdown3 from "@/metronic/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
-  name: "card-2",
+  name: "Card2",
   components: {
     Dropdown3
   },

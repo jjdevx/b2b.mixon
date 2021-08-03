@@ -1,14 +1,17 @@
 <template>
   <!--begin::List Widget 7-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header align-items-center border-0 mt-4">
       <h3 class="card-title align-items-start flex-column">
         <span class="fw-bolder text-dark">Latest Media</span>
 
-        <span class="text-muted mt-1 fw-bold fs-7"
-          >Articles and publications</span
-        >
+        <span
+          class="text-muted mt-1 fw-bold fs-7"
+        >Articles and publications</span>
       </h3>
 
       <div class="card-toolbar">
@@ -22,11 +25,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
     </div>
@@ -34,7 +37,10 @@
 
     <!--begin::Body-->
     <div class="card-body pt-3">
-      <template v-for="(item, index) in list" :key="index">
+      <template
+        v-for="(item, index) in list"
+        :key="index"
+      >
         <!--begin::Item-->
         <div
           :class="{ 'mb-7': list.length - 1 !== index }"
@@ -45,7 +51,7 @@
             <div
               class="symbol-label"
               :style="`background-image: url('${item.image}')`"
-            ></div>
+            />
           </div>
           <!--end::Symbol-->
 
@@ -55,19 +61,17 @@
               <a
                 href="#"
                 class="text-gray-800 fw-bolder text-hover-primary fs-6"
-                >{{ item.title }}</a
-              >
+              >{{ item.title }}</a>
 
-              <span class="text-muted fw-bold d-block pt-1"
-                >Size: {{ item.size }}</span
-              >
+              <span
+                class="text-muted fw-bold d-block pt-1"
+              >Size: {{ item.size }}</span>
             </div>
 
             <span
               :class="`badge-light-${item.color}`"
               class="badge fs-8 fw-bolder my-2"
-              >{{ item.status }}</span
-            >
+            >{{ item.status }}</span>
           </div>
           <!--end::Title-->
         </div>
@@ -84,7 +88,7 @@ import { defineComponent, ref } from "vue";
 import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 
 export default defineComponent({
-  name: "kt-widget-6",
+  name: "KtWidget6",
   components: {
     Dropdown1
   },
@@ -94,28 +98,28 @@ export default defineComponent({
   setup() {
     const list = ref([
       {
-        image: "dist/media/stock/600x400/img-20.jpg",
+        image: "/dist/media/stock/600x400/img-20.jpg",
         title: "Cup & Green",
         size: "87KB",
         color: "success",
         status: "Approved"
       },
       {
-        image: "dist/media/stock/600x400/img-19.jpg",
+        image: "/dist/media/stock/600x400/img-19.jpg",
         title: "Yellow Background",
         size: "1.2MB",
         color: "warning",
         status: "In Progress"
       },
       {
-        image: "dist/media/stock/600x400/img-25.jpg",
+        image: "/dist/media/stock/600x400/img-25.jpg",
         title: "Nike & Blue",
         size: "87KB",
         color: "success",
         status: "Success"
       },
       {
-        image: "dist/media/stock/600x400/img-24.jpg",
+        image: "/dist/media/stock/600x400/img-24.jpg",
         title: "Red Boots",
         size: "345KB",
         color: "danger",

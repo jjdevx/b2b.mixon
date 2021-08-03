@@ -34,11 +34,14 @@ class HandleInertiaRequests extends Middleware
             ];
 
             if ($user = \Auth::user()) {
-                $shared['common']['auth'] = $user->only(['name', 'email']);
+                $shared['common']['auth'] = $user->only(['name', 'email', 'icon']);
             }
 
             if ($flash = \Session::get('flash')) {
                 $shared['flash'] = $flash;
+            }
+            if ($flash = \Session::get('toast')) {
+                $shared['toast'] = $flash;
             }
             if ($data = \Session::get('data')) {
                 $shared['data'] = $data;

@@ -7,10 +7,16 @@
         class="card-body d-flex justify-content-center text-center flex-column p-8"
       >
         <!--begin::Name-->
-        <a href="#" class="text-gray-800 text-hover-primary d-flex flex-column">
+        <a
+          href="#"
+          class="text-gray-800 text-hover-primary d-flex flex-column"
+        >
           <!--begin::Image-->
           <div class="symbol symbol-75px mb-6">
-            <img src="dist/media/svg/files/folder-document.svg" alt="" />
+            <img
+              src="/dist/media/svg/files/folder-document.svg"
+              alt=""
+            >
           </div>
           <!--end::Image-->
 
@@ -38,12 +44,12 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "file",
+  name: "File",
+  components: {},
   props: {
     folderName: String,
 
     files: String
-  },
-  components: {}
+  }
 });
 </script>

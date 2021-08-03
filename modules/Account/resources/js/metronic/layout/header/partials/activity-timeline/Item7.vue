@@ -2,14 +2,14 @@
   <!--begin::Timeline item-->
   <div class="timeline-item">
     <!--begin::Timeline line-->
-    <div class="timeline-line w-40px"></div>
+    <div class="timeline-line w-40px" />
     <!--end::Timeline line-->
 
     <!--begin::Timeline icon-->
     <div class="timeline-icon symbol symbol-circle symbol-40px">
       <div class="symbol-label bg-light">
         <span class="svg-icon svg-icon-2 svg-icon-gray-500">
-          <inline-svg src="dist/media/icons/duotone/Communication/Write.svg" />
+          <inline-svg src="/dist/media/icons/duotone/Communication/Write.svg" />
         </span>
       </div>
     </div>
@@ -20,13 +20,17 @@
       <!--begin::Timeline heading-->
       <div class="pe-3 mb-5">
         <!--begin::Title-->
-        <div class="fs-5 fw-bold mb-2">You have received a new order:</div>
+        <div class="fs-5 fw-bold mb-2">
+          You have received a new order:
+        </div>
         <!--end::Title-->
 
         <!--begin::Description-->
         <div class="d-flex align-items-center mt-1 fs-6">
           <!--begin::Info-->
-          <div class="text-muted me-2 fs-7">Placed at 5:05 AM by</div>
+          <div class="text-muted me-2 fs-7">
+            Placed at 5:05 AM by
+          </div>
           <!--end::Info-->
 
           <!--begin::User-->
@@ -37,7 +41,10 @@
             data-bs-placement="top"
             title="Robert Rich"
           >
-            <img src="dist/media/avatars/150-14.jpg" alt="img" />
+            <img
+              src="/dist/media/avatars/150-14.jpg"
+              alt="img"
+            >
           </div>
           <!--end::User-->
         </div>
@@ -52,7 +59,7 @@
         >
           <!--begin::Icon-->
           <span class="svg-icon svg-icon-2tx svg-icon-primary me-4">
-            <inline-svg src="dist/media/icons/duotone/Code/Git4.svg" />
+            <inline-svg src="/dist/media/icons/duotone/Code/Git4.svg" />
           </span>
           <!--end::Icon-->
 

@@ -1,6 +1,10 @@
 <template>
   <!--begin::Header-->
-  <div id="kt_header" style="" class="header align-items-stretch">
+  <div
+    id="kt_header"
+    style=""
+    class="header align-items-stretch"
+  >
     <!--begin::Container-->
     <div
       :class="{
@@ -15,11 +19,11 @@
         title="Show aside menu"
       >
         <div
-          class="btn btn-icon btn-active-light-primary"
           id="kt_aside_mobile_toggle"
+          class="btn btn-icon btn-active-light-primary"
         >
           <span class="svg-icon svg-icon-2x mt-1">
-            <inline-svg src="dist/media/icons/duotone/Text/Menu.svg" />
+            <inline-svg src="/dist/media/icons/duotone/Text/Menu.svg" />
           </span>
         </div>
       </div>
@@ -27,8 +31,15 @@
 
       <!--begin::Mobile logo-->
       <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-        <a href="#" class="d-lg-none">
-          <img alt="Logo" src="dist/media/logos/logo-3.svg" class="h-30px" />
+        <a
+          href="#"
+          class="d-lg-none"
+        >
+          <img
+            alt="Logo"
+            src="/dist/media/logos/logo-3.svg"
+            class="h-30px"
+          >
         </a>
       </div>
       <!--end::Mobile logo-->
@@ -40,10 +51,10 @@
         <!--begin::Navbar-->
         <div
           v-if="!isDocPage"
-          class="d-flex align-items-stretch"
           id="kt_header_menu_nav"
+          class="d-flex align-items-stretch"
         >
-          <KTMenu></KTMenu>
+          <KTMenu />
         </div>
         <!--end::Navbar-->
 
@@ -54,11 +65,12 @@
               <router-link
                 to="/documentation/changelog"
                 class="badge badge-light-danger bg-hover-danger text-hover-white fw-bold fs-9 px-2 ms-2"
-                >v{{ version }}</router-link
               >
+                v{{ version }}
+              </router-link>
             </h1>
 
-            <span class="h-20px border-gray-200 border-start mx-4"></span>
+            <span class="h-20px border-gray-200 border-start mx-4" />
             <ul class="breadcrumb breadcrumb-separatorless fw-bold fs-6 my-1">
               <li class="breadcrumb-item text-muted">
                 {{ title }}
@@ -69,7 +81,7 @@
 
         <!--begin::Topbar-->
         <div class="d-flex align-items-stretch flex-shrink-0">
-          <KTTopbar></KTTopbar>
+          <KTTopbar />
         </div>
         <!--end::Topbar-->
       </div>
@@ -95,12 +107,12 @@ import {
 
 export default defineComponent({
   name: "KTHeader",
-  props: {
-    title: String
-  },
   components: {
     KTTopbar,
     KTMenu
+  },
+  props: {
+    title: String
   },
   setup() {
     return {

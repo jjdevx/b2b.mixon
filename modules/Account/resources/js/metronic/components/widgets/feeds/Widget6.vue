@@ -1,6 +1,9 @@
 <template>
   <!--begin::Forms Widget 6-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Body-->
     <div class="card-body pb-0">
       <!--begin::Header-->
@@ -9,15 +12,19 @@
         <div class="d-flex align-items-center flex-grow-1">
           <!--begin::Avatar-->
           <div class="symbol symbol-45px me-5">
-            <img src="dist/media/avatars/150-17.jpg" alt="" />
+            <img
+              src="/dist/media/avatars/150-17.jpg"
+              alt=""
+            >
           </div>
           <!--end::Avatar-->
 
           <!--begin::Info-->
           <div class="d-flex flex-column">
-            <a href="#" class="text-gray-800 text-hover-primary fs-6 fw-bolder"
-              >Mat Dillon</a
-            >
+            <a
+              href="#"
+              class="text-gray-800 text-hover-primary fs-6 fw-bolder"
+            >Mat Dillon</a>
             <span class="text-gray-400 fw-bold">Last month</span>
           </div>
           <!--end::Info-->
@@ -35,11 +42,11 @@
           >
             <span class="svg-icon svg-icon-2">
               <inline-svg
-                src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+                src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
               />
             </span>
           </button>
-          <Dropdown3></Dropdown3>
+          <Dropdown3 />
         </div>
         <!--end::Menu-->
       </div>
@@ -60,7 +67,7 @@
             class="embed-responsive-item rounded h-300px w-100"
             src="https://www.youtube.com/embed/qIHXpnASPAA"
             allowfullscreen=""
-          ></iframe>
+          />
         </div>
         <!--end::Video-->
 
@@ -72,7 +79,7 @@
           >
             <span class="svg-icon svg-icon-3">
               <inline-svg
-                src="dist/media/icons/duotone/Communication/Group-chat.svg"
+                src="/dist/media/icons/duotone/Communication/Group-chat.svg"
               />
             </span>
             189
@@ -83,7 +90,7 @@
             class="btn btn-sm btn-light btn-color-muted btn-active-light-danger px-4 py-2"
           >
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="dist/media/icons/duotone/General/Heart.svg" />
+              <inline-svg src="/dist/media/icons/duotone/General/Heart.svg" />
             </span>
             229
           </a>
@@ -93,7 +100,7 @@
       <!--end::Bottom-->
 
       <!--begin::Separator-->
-      <div class="separator mb-4"></div>
+      <div class="separator mb-4" />
       <!--end::Separator-->
 
       <!--begin::Reply input-->
@@ -103,18 +110,18 @@
           data-kt-autosize="true"
           rows="1"
           placeholder="Reply.."
-        ></textarea>
+        />
 
         <div class="position-absolute top-0 end-0 me-n5">
           <span class="btn btn-icon btn-sm btn-active-color-primary pe-0 me-2">
             <span class="svg-icon svg-icon-3 mb-3">
-              <inline-svg src="dist/media/icons/duotone/General/Clip.svg" />
+              <inline-svg src="/dist/media/icons/duotone/General/Clip.svg" />
             </span>
           </span>
 
           <span class="btn btn-icon btn-sm btn-active-color-primary ps-0">
             <span class="svg-icon svg-icon-2 mb-3">
-              <inline-svg src="dist/media/icons/duotone/Map/Marker1.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Map/Marker1.svg" />
             </span>
           </span>
         </div>
@@ -131,12 +138,12 @@ import { defineComponent } from "vue";
 import Dropdown3 from "@/metronic/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
-  name: "widget-6",
-  props: {
-    widgetClasses: String
-  },
+  name: "Widget6",
   components: {
     Dropdown3
+  },
+  props: {
+    widgetClasses: String
   }
 });
 </script>

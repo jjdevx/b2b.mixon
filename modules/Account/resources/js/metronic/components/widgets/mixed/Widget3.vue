@@ -1,6 +1,9 @@
 <template>
   <!--begin::Mixed Widget 3-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Beader-->
     <div class="card-header border-0 py-5">
       <h3 class="card-title align-items-start flex-column">
@@ -20,11 +23,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
     </div>
@@ -39,14 +42,18 @@
           <!--begin::Col-->
           <div class="col mr-8">
             <!--begin::Label-->
-            <div class="fs-7 text-muted fw-bold">Average Sale</div>
+            <div class="fs-7 text-muted fw-bold">
+              Average Sale
+            </div>
             <!--end::Label-->
 
             <!--begin::Stat-->
             <div class="d-flex align-items-center">
-              <div class="fs-4 fw-bolder">$650</div>
+              <div class="fs-4 fw-bolder">
+                $650
+              </div>
               <span class="svg-icon svg-icon-5 svg-icon-success ms-1">
-                <inline-svg src="dist/media/icons/duotone/Navigation/Arrow-up.svg" />
+                <inline-svg src="/dist/media/icons/duotone/Navigation/Arrow-up.svg" />
               </span>
             </div>
             <!--end::Stat-->
@@ -56,11 +63,15 @@
           <!--begin::Col-->
           <div class="col">
             <!--begin::Label-->
-            <div class="fs-7 text-muted fw-bold">Commission</div>
+            <div class="fs-7 text-muted fw-bold">
+              Commission
+            </div>
             <!--end::Label-->
 
             <!--begin::Stat-->
-            <div class="fs-4 fw-bolder">$233,600</div>
+            <div class="fs-4 fw-bolder">
+              $233,600
+            </div>
             <!--end::Stat-->
           </div>
           <!--end::Col-->
@@ -72,11 +83,15 @@
           <!--begin::Col-->
           <div class="col mr-8">
             <!--begin::Label-->
-            <div class="fs-7 text-muted fw-bold">Annual Taxes 2019</div>
+            <div class="fs-7 text-muted fw-bold">
+              Annual Taxes 2019
+            </div>
             <!--end::Label-->
 
             <!--begin::Stat-->
-            <div class="fs-4 fw-bolder">$29,004</div>
+            <div class="fs-4 fw-bolder">
+              $29,004
+            </div>
             <!--end::Stat-->
           </div>
           <!--end::Col-->
@@ -84,15 +99,19 @@
           <!--begin::Col-->
           <div class="col">
             <!--begin::Label-->
-            <div class="fs-7 text-muted fw-bold">Annual Income</div>
+            <div class="fs-7 text-muted fw-bold">
+              Annual Income
+            </div>
             <!--end::Label-->
 
             <!--begin::Stat-->
             <div class="d-flex align-items-center">
-              <div class="fs-4 fw-bolder">$1,480,00</div>
+              <div class="fs-4 fw-bolder">
+                $1,480,00
+              </div>
               <span class="svg-icon svg-icon-5 svg-icon-danger ms-1">
                 <inline-svg
-                  src="dist/media/icons/duotone/Navigation/Arrow-down.svg"
+                  src="/dist/media/icons/duotone/Navigation/Arrow-down.svg"
                 />
               </span>
             </div>
@@ -111,7 +130,7 @@
         :series="series"
         :height="chartHeight"
         type="area"
-      ></apexchart>
+      />
       <!--end::Chart-->
     </div>
     <!--end::Body-->
@@ -125,7 +144,7 @@ import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 import { getCSSVariableValue } from "@/metronic/assets/ts/_utils";
 
 export default defineComponent({
-  name: "widget-1",
+  name: "Widget1",
   components: {
     Dropdown1
   },
@@ -139,8 +158,8 @@ export default defineComponent({
 
     const labelColor = getCSSVariableValue("--bs-" + "gray-800");
     const strokeColor = getCSSVariableValue("--bs-" + "gray-300");
-    const baseColor = getCSSVariableValue("--bs-" + color.value);
-    const lightColor = getCSSVariableValue("--bs-light-" + color.value);
+    const baseColor = getCSSVariableValue(`--bs-${  color.value}`);
+    const lightColor = getCSSVariableValue(`--bs-light-${  color.value}`);
 
     const chartOptions = {
       chart: {
@@ -239,8 +258,8 @@ export default defineComponent({
           fontSize: "12px"
         },
         y: {
-          formatter: function(val) {
-            return "$" + val + " thousands";
+          formatter(val) {
+            return `$${  val  } thousands`;
           }
         }
       },

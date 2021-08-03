@@ -5,11 +5,11 @@
     <div class="d-flex align-items-center ms-1 ms-lg-3">
       <!--begin::drawer toggle-->
       <div
-        class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
         id="kt_activities_toggle"
+        class="btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px"
       >
         <span class="svg-icon svg-icon-1">
-          <inline-svg src="dist/media/icons/duotone/dist/media/Equalizer.svg" />
+          <inline-svg src="/dist/media/icons/duotone/dist/media/Equalizer.svg" />
         </span>
       </div>
       <!--end::drawer toggle-->
@@ -27,10 +27,10 @@
         data-kt-menu-flip="bottom"
       >
         <span class="svg-icon svg-icon-1">
-          <inline-svg src="dist/media/icons/duotone/Layout/Layout-4-blocks.svg" />
+          <inline-svg src="/dist/media/icons/duotone/Layout/Layout-4-blocks.svg" />
         </span>
       </div>
-      <KTQuickLinksMenu></KTQuickLinksMenu>
+      <KTQuickLinksMenu />
       <!--end::Menu-->
     </div>
     <!--end::Quick links-->
@@ -39,17 +39,16 @@
     <div class="d-flex align-items-center ms-1 ms-lg-3">
       <!--begin::Menu wrapper-->
       <div
-        class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
         id="kt_drawer_chat_toggle"
+        class="btn btn-icon btn-active-light-primary position-relative w-30px h-30px w-md-40px h-md-40px"
       >
         <span class="svg-icon svg-icon-1">
-          <inline-svg src="dist/media/icons/duotone/Communication/Group-chat.svg" />
+          <inline-svg src="/dist/media/icons/duotone/Communication/Group-chat.svg" />
         </span>
 
         <span
           class="bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink"
-        >
-        </span>
+        />
       </div>
       <!--end::Menu wrapper-->
     </div>
@@ -66,18 +65,18 @@
         data-kt-menu-flip="bottom"
       >
         <span class="svg-icon svg-icon-1">
-          <inline-svg src="dist/media/icons/duotone/Code/Compiling.svg" />
+          <inline-svg src="/dist/media/icons/duotone/Code/Compiling.svg" />
         </span>
       </div>
-      <KTNotificationsMenu></KTNotificationsMenu>
+      <KTNotificationsMenu />
       <!--end::Menu-->
     </div>
     <!--end::Notifications-->
 
     <!--begin::User-->
     <div
-      class="d-flex align-items-center ms-1 ms-lg-3"
       id="kt_header_user_menu_toggle"
+      class="d-flex align-items-center ms-1 ms-lg-3"
     >
       <!--begin::Menu-->
       <div
@@ -87,9 +86,12 @@
         data-kt-menu-placement="bottom-end"
         data-kt-menu-flip="bottom"
       >
-        <img src="dist/media/avatars/150-26.jpg" alt="metronic" />
+        <img
+          src="/dist/media/avatars/150-26.jpg"
+          alt="metronic"
+        >
       </div>
-      <KTUserMenu></KTUserMenu>
+      <KTUserMenu />
       <!--end::Menu-->
     </div>
     <!--end::User -->
@@ -100,11 +102,11 @@
       title="Show header menu"
     >
       <div
-        class="btn btn-icon btn-active-light-primary"
         id="kt_header_menu_mobile_toggle"
+        class="btn btn-icon btn-active-light-primary"
       >
         <span class="svg-icon svg-icon-1">
-          <inline-svg src="dist/media/icons/duotone/Text/Toggle-Right.svg" />
+          <inline-svg src="/dist/media/icons/duotone/Text/Toggle-Right.svg" />
         </span>
       </div>
     </div>
@@ -120,7 +122,7 @@ import KTQuickLinksMenu from "@/metronic/layout/header/partials/QuickLinksMenu.v
 import KTUserMenu from "@/metronic/layout/header/partials/UserMenu.vue";
 
 export default defineComponent({
-  name: "topbar",
+  name: "Topbar",
   components: {
     KTNotificationsMenu,
     KTQuickLinksMenu,

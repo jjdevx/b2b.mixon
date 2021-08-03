@@ -2,7 +2,10 @@
   <!--begin::Mixed Widget 1-->
   <div class="card card-xxl-stretch">
     <!--begin::Header-->
-    <div :class="`bg-${widgetColor}`" class="card-header border-0 py-5">
+    <div
+      :class="`bg-${widgetColor}`"
+      class="card-header border-0 py-5"
+    >
       <h3 class="card-title fw-bolder text-white">
         Sales Statistics
       </h3>
@@ -18,11 +21,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown3></Dropdown3>
+        <Dropdown3 />
         <!--end::Menu-->
       </div>
     </div>
@@ -37,7 +40,7 @@
         :series="series"
         height="200"
         type="area"
-      ></apexchart>
+      />
       <!--end::Chart-->
       <!--begin::Stats-->
       <div class="card-p mt-n20 position-relative">
@@ -45,19 +48,25 @@
         <div class="row m-0">
           <div class="col bg-light-warning px-6 py-8 rounded-2 me-7 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
-              <inline-svg src="dist/media/icons/duotone/dist/media/Equalizer.svg" />
+              <inline-svg src="/dist/media/icons/duotone/dist/media/Equalizer.svg" />
             </span>
-            <a href="#" class="text-warning fw-bold fs-6">
+            <a
+              href="#"
+              class="text-warning fw-bold fs-6"
+            >
               Weekly Sales
             </a>
           </div>
           <div class="col bg-light-primary px-6 py-8 rounded-2 mb-7">
             <span class="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
               <inline-svg
-                src="dist/media/icons/duotone/Communication/Add-user.svg"
+                src="/dist/media/icons/duotone/Communication/Add-user.svg"
               />
             </span>
-            <a href="#" class="text-primary fw-bold fs-6">
+            <a
+              href="#"
+              class="text-primary fw-bold fs-6"
+            >
               New Users
             </a>
           </div>
@@ -67,19 +76,25 @@
         <div class="row m-0">
           <div class="col bg-light-danger px-6 py-8 rounded-2 me-7">
             <span class="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
-              <inline-svg src="dist/media/icons/duotone/Design/Layers.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Design/Layers.svg" />
             </span>
-            <a href="#" class="text-danger fw-bold fs-6 mt-2">
+            <a
+              href="#"
+              class="text-danger fw-bold fs-6 mt-2"
+            >
               Item Orders
             </a>
           </div>
           <div class="col bg-light-success px-6 py-8 rounded-2">
             <span class="svg-icon svg-icon-3x svg-icon-success d-block my-2">
               <inline-svg
-                src="dist/media/icons/duotone/Communication/Urgent-mail.svg"
+                src="/dist/media/icons/duotone/Communication/Urgent-mail.svg"
               />
             </span>
-            <a href="#" class="text-success fw-bold fs-6 mt-2">
+            <a
+              href="#"
+              class="text-success fw-bold fs-6 mt-2"
+            >
               Bug Reports
             </a>
           </div>
@@ -100,7 +115,7 @@ import { MenuComponent } from "@/metronic/assets/ts/components/MenuComponent";
 import { getCSSVariableValue } from "@/metronic/assets/ts/_utils";
 
 export default defineComponent({
-  name: "widget-1",
+  name: "Widget1",
   components: {
     Dropdown3
   },
@@ -113,7 +128,7 @@ export default defineComponent({
     const labelColor = getCSSVariableValue("--bs-gray-500");
     const borderColor = getCSSVariableValue("--bs-gray-200");
 
-    const color = getCSSVariableValue("--bs-" + props.widgetColor);
+    const color = getCSSVariableValue(`--bs-${  props.widgetColor}`);
 
     const strokeColor = ref(props.strokeColor);
 
@@ -219,8 +234,8 @@ export default defineComponent({
           fontSize: "12px"
         },
         y: {
-          formatter: function(val) {
-            return "$" + val + " thousands";
+          formatter(val) {
+            return `$${  val  } thousands`;
           }
         },
         marker: {

@@ -19,7 +19,7 @@
           class="btn btn-icon btn-active-light-primary"
         >
           <span class="svg-icon svg-icon-2x mt-1">
-            <inline-svg src="dist/media/icons/duotone/Text/Menu.svg" />
+            <inline-svg src="/dist/media/icons/duotone/Text/Menu.svg" />
           </span>
         </div>
       </div>
@@ -30,7 +30,7 @@
         >
           <img
             alt="Logo"
-            src="dist/img/logo-start.svg"
+            src="/dist/img/logo-start.svg"
             class="h-30px"
           >
         </a>
@@ -64,13 +64,12 @@ import {
 } from '@/metronic/core/helpers/config'
 
 export default defineComponent({
-  name: 'KTHeader',
   components: {
     KTTopbar,
     KTMenu
   },
   props: {
-    title: {type: String, required: true}
+    title: {type: String, default: ''}
   },
   setup() {
     return {

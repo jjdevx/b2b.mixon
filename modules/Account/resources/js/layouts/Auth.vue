@@ -1,7 +1,7 @@
 <template>
   <div
     class="auth-layout d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
-    style="background-image: url('dist/media/illustrations/progress-hd.png');"
+    style="background-image: url('/dist/media/illustrations/progress-hd.png');"
   >
     <div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
       <a
@@ -10,7 +10,7 @@
       >
         <img
           alt="Logo"
-          src="dist/img/logo-start.svg"
+          src="/dist/img/logo-start.svg"
           class="h-45px"
         >
       </a>

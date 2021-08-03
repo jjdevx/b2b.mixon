@@ -1,12 +1,15 @@
 <template>
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bolder fs-3 mb-1">Latest Products</span>
-        <span class="text-muted mt-1 fw-bold fs-7"
-          >More than 400 new products</span
-        >
+        <span
+          class="text-muted mt-1 fw-bold fs-7"
+        >More than 400 new products</span>
       </h3>
       <div class="card-toolbar">
         <ul class="nav">
@@ -15,24 +18,21 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1 active"
               data-bs-toggle="tab"
               href="#kt_table_widget_5_tab_1"
-              >Month</a
-            >
+            >Month</a>
           </li>
           <li class="nav-item">
             <a
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1"
               data-bs-toggle="tab"
               href="#kt_table_widget_5_tab_2"
-              >Week</a
-            >
+            >Week</a>
           </li>
           <li class="nav-item">
             <a
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4"
               data-bs-toggle="tab"
               href="#kt_table_widget_5_tab_3"
-              >Day</a
-            >
+            >Day</a>
           </li>
         </ul>
       </div>
@@ -42,7 +42,10 @@
     <div class="card-body py-3">
       <div class="tab-content">
         <!--begin::Tap pane-->
-        <div class="tab-pane fade active show" id="kt_table_widget_5_tab_1">
+        <div
+          id="kt_table_widget_5_tab_1"
+          class="tab-pane fade active show"
+        >
           <!--begin::Table container-->
           <div class="table-responsive">
             <!--begin::Table-->
@@ -52,11 +55,11 @@
               <!--begin::Table head-->
               <thead>
                 <tr class="border-0">
-                  <th class="p-0 w-50px"></th>
-                  <th class="p-0 min-w-150px"></th>
-                  <th class="p-0 min-w-140px"></th>
-                  <th class="p-0 min-w-110px"></th>
-                  <th class="p-0 min-w-50px"></th>
+                  <th class="p-0 w-50px" />
+                  <th class="p-0 min-w-150px" />
+                  <th class="p-0 min-w-140px" />
+                  <th class="p-0 min-w-110px" />
+                  <th class="p-0 min-w-50px" />
                 </tr>
               </thead>
               <!--end::Table head-->
@@ -67,10 +70,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/plurk.svg"
+                          src="/dist/media/svg/brand-logos/plurk.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -78,13 +81,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Brad Simmons</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Movie Creator</span
-                    >
+                    >Brad Simmons</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Movie Creator</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">React, HTML</td>
+                  <td class="text-end text-muted fw-bold">
+                    React, HTML
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-success">Approved</span>
                   </td>
@@ -96,7 +100,7 @@
                       <!--begin::Svg Icon | path: -->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -108,10 +112,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/telegram.svg"
+                          src="/dist/media/svg/brand-logos/telegram.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -119,13 +123,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Popular Authors</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Most Successful</span
-                    >
+                    >Popular Authors</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Most Successful</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">Python, MySQL</td>
+                  <td class="text-end text-muted fw-bold">
+                    Python, MySQL
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-warning">In Progress</span>
                   </td>
@@ -137,7 +142,7 @@
                       <!--begin::Svg Icon | path: -->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -149,10 +154,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/vimeo.svg"
+                          src="/dist/media/svg/brand-logos/vimeo.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -160,13 +165,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >New Users</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Awesome Users</span
-                    >
+                    >New Users</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Awesome Users</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">Laravel,Metronic</td>
+                  <td class="text-end text-muted fw-bold">
+                    Laravel,Metronic
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-primary">Success</span>
                   </td>
@@ -178,7 +184,7 @@
                       <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -190,10 +196,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/bebo.svg"
+                          src="/dist/media/svg/brand-logos/bebo.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -201,13 +207,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Active Customers</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Movie Creator</span
-                    >
+                    >Active Customers</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Movie Creator</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">AngularJS, C#</td>
+                  <td class="text-end text-muted fw-bold">
+                    AngularJS, C#
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-danger">Rejected</span>
                   </td>
@@ -219,7 +226,7 @@
                       <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -231,10 +238,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/kickstarter.svg"
+                          src="/dist/media/svg/brand-logos/kickstarter.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -242,13 +249,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Bestseller Theme</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Best Customers</span
-                    >
+                    >Bestseller Theme</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Best Customers</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">ReactJS, Ruby</td>
+                  <td class="text-end text-muted fw-bold">
+                    ReactJS, Ruby
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-warning">In Progress</span>
                   </td>
@@ -260,7 +268,7 @@
                       <span class="svg-icon svg-icon-2">
                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                         <!--end::Svg Icon-->
                       </span>
@@ -275,7 +283,10 @@
         </div>
         <!--end::Tap pane-->
         <!--begin::Tap pane-->
-        <div class="tab-pane fade" id="kt_table_widget_5_tab_2">
+        <div
+          id="kt_table_widget_5_tab_2"
+          class="tab-pane fade"
+        >
           <!--begin::Table container-->
           <div class="table-responsive">
             <!--begin::Table-->
@@ -285,11 +296,11 @@
               <!--begin::Table head-->
               <thead>
                 <tr class="border-0">
-                  <th class="p-0 w-50px"></th>
-                  <th class="p-0 min-w-150px"></th>
-                  <th class="p-0 min-w-140px"></th>
-                  <th class="p-0 min-w-110px"></th>
-                  <th class="p-0 min-w-50px"></th>
+                  <th class="p-0 w-50px" />
+                  <th class="p-0 min-w-150px" />
+                  <th class="p-0 min-w-140px" />
+                  <th class="p-0 min-w-110px" />
+                  <th class="p-0 min-w-50px" />
                 </tr>
               </thead>
               <!--end::Table head-->
@@ -300,10 +311,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/plurk.svg"
+                          src="/dist/media/svg/brand-logos/plurk.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -311,13 +322,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Brad Simmons</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Movie Creator</span
-                    >
+                    >Brad Simmons</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Movie Creator</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">React, HTML</td>
+                  <td class="text-end text-muted fw-bold">
+                    React, HTML
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-success">Approved</span>
                   </td>
@@ -329,7 +341,7 @@
                       <span class="svg-icon svg-icon-2">
                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                         <!--end::Svg Icon-->
                       </span>
@@ -341,10 +353,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/telegram.svg"
+                          src="/dist/media/svg/brand-logos/telegram.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -352,13 +364,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Popular Authors</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Most Successful</span
-                    >
+                    >Popular Authors</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Most Successful</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">Python, MySQL</td>
+                  <td class="text-end text-muted fw-bold">
+                    Python, MySQL
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-warning">In Progress</span>
                   </td>
@@ -370,7 +383,7 @@
                       <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -382,10 +395,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/bebo.svg"
+                          src="/dist/media/svg/brand-logos/bebo.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -393,13 +406,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Active Customers</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Movie Creator</span
-                    >
+                    >Active Customers</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Movie Creator</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">AngularJS, C#</td>
+                  <td class="text-end text-muted fw-bold">
+                    AngularJS, C#
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-danger">Rejected</span>
                   </td>
@@ -411,7 +425,7 @@
                       <span class="svg-icon svg-icon-2">
                         <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                         <!--end::Svg Icon-->
                       </span>
@@ -426,7 +440,10 @@
         </div>
         <!--end::Tap pane-->
         <!--begin::Tap pane-->
-        <div class="tab-pane fade" id="kt_table_widget_5_tab_3">
+        <div
+          id="kt_table_widget_5_tab_3"
+          class="tab-pane fade"
+        >
           <!--begin::Table container-->
           <div class="table-responsive">
             <!--begin::Table-->
@@ -436,11 +453,11 @@
               <!--begin::Table head-->
               <thead>
                 <tr class="border-0">
-                  <th class="p-0 w-50px"></th>
-                  <th class="p-0 min-w-150px"></th>
-                  <th class="p-0 min-w-140px"></th>
-                  <th class="p-0 min-w-110px"></th>
-                  <th class="p-0 min-w-50px"></th>
+                  <th class="p-0 w-50px" />
+                  <th class="p-0 min-w-150px" />
+                  <th class="p-0 min-w-140px" />
+                  <th class="p-0 min-w-110px" />
+                  <th class="p-0 min-w-50px" />
                 </tr>
               </thead>
               <!--end::Table head-->
@@ -451,10 +468,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/kickstarter.svg"
+                          src="/dist/media/svg/brand-logos/kickstarter.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -462,13 +479,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Bestseller Theme</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Best Customers</span
-                    >
+                    >Bestseller Theme</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Best Customers</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">ReactJS, Ruby</td>
+                  <td class="text-end text-muted fw-bold">
+                    ReactJS, Ruby
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-warning">In Progress</span>
                   </td>
@@ -480,7 +498,7 @@
                       <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -492,10 +510,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/bebo.svg"
+                          src="/dist/media/svg/brand-logos/bebo.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -503,13 +521,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Active Customers</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Movie Creator</span
-                    >
+                    >Active Customers</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Movie Creator</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">AngularJS, C#</td>
+                  <td class="text-end text-muted fw-bold">
+                    AngularJS, C#
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-danger">Rejected</span>
                   </td>
@@ -521,7 +540,7 @@
                       <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -533,10 +552,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/vimeo.svg"
+                          src="/dist/media/svg/brand-logos/vimeo.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -544,13 +563,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >New Users</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Awesome Users</span
-                    >
+                    >New Users</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Awesome Users</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">Laravel,Metronic</td>
+                  <td class="text-end text-muted fw-bold">
+                    Laravel,Metronic
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-primary">Success</span>
                   </td>
@@ -562,7 +582,7 @@
                       <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -574,10 +594,10 @@
                     <div class="symbol symbol-45px me-2">
                       <span class="symbol-label">
                         <img
-                          src="dist/media/svg/brand-logos/telegram.svg"
+                          src="/dist/media/svg/brand-logos/telegram.svg"
                           class="h-50 align-self-center"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
                   </td>
@@ -585,13 +605,14 @@
                     <a
                       href="#"
                       class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                      >Popular Authors</a
-                    >
-                    <span class="text-muted fw-bold d-block"
-                      >Most Successful</span
-                    >
+                    >Popular Authors</a>
+                    <span
+                      class="text-muted fw-bold d-block"
+                    >Most Successful</span>
                   </td>
-                  <td class="text-end text-muted fw-bold">Python, MySQL</td>
+                  <td class="text-end text-muted fw-bold">
+                    Python, MySQL
+                  </td>
                   <td class="text-end">
                     <span class="badge badge-light-warning">In Progress</span>
                   </td>
@@ -603,7 +624,7 @@
                       <!--begin::Svg Icon | path: icons/duotone/Navigation/Arrow-right.svg-->
                       <span class="svg-icon svg-icon-2">
                         <inline-svg
-                          src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                          src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                         />
                       </span>
                       <!--end::Svg Icon-->
@@ -627,7 +648,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "kt-widget-5",
+  name: "KtWidget5",
   components: {},
   props: {
     widgetClasses: String

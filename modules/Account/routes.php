@@ -34,7 +34,7 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         ->as('users.avatar.')
         ->middleware('can:users.edit')
         ->group(function () {
-            Route::post('', [AvatarController::class, 'update'])->name('update');
-            Route::delete('', [AvatarController::class, 'destroy'])->name('destroy');
+           // Route::post('', [AvatarController::class, 'update'])->name('update');
+           // Route::delete('', [AvatarController::class, 'destroy'])->name('destroy');
         });
 });

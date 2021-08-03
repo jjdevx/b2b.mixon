@@ -1,6 +1,9 @@
 <template>
   <!--begin::Tables Widget 3-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -19,11 +22,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown3></Dropdown3>
+        <Dropdown3 />
         <!--end::Menu-->
       </div>
     </div>
@@ -38,18 +41,21 @@
           <!--begin::Table head-->
           <thead>
             <tr>
-              <th class="p-0 w-50px"></th>
-              <th class="p-0 min-w-150px"></th>
-              <th class="p-0 min-w-140px"></th>
-              <th class="p-0 min-w-120px"></th>
-              <th class="p-0 min-w-40px"></th>
+              <th class="p-0 w-50px" />
+              <th class="p-0 min-w-150px" />
+              <th class="p-0 min-w-140px" />
+              <th class="p-0 min-w-120px" />
+              <th class="p-0 min-w-40px" />
             </tr>
           </thead>
           <!--end::Table head-->
 
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in items" :key="index">
+            <template
+              v-for="(item, index) in items"
+              :key="index"
+            >
               <tr>
                 <td>
                   <div class="symbol symbol-50px me-2">
@@ -102,7 +108,7 @@ import { defineComponent } from "vue";
 import Dropdown3 from "@/metronic/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
-  name: "kt-widget-3",
+  name: "KtWidget3",
   components: {
     Dropdown3
   },
@@ -112,7 +118,7 @@ export default defineComponent({
   setup() {
     const items = [
       {
-        icon: "dist/media/icons/duotone/Shopping/Cart3.svg",
+        icon: "/dist/media/icons/duotone/Shopping/Cart3.svg",
         color: "success",
         title: "Top Authors",
         description: "Best Customers",
@@ -121,7 +127,7 @@ export default defineComponent({
         size: "5.4MB"
       },
       {
-        icon: "dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
+        icon: "/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
         color: "danger",
         title: "Popular Authors",
         description: "Best Customers",
@@ -130,7 +136,7 @@ export default defineComponent({
         size: "2.8MB"
       },
       {
-        icon: "dist/media/icons/duotone/Communication/Group.svg",
+        icon: "/dist/media/icons/duotone/Communication/Group.svg",
         color: "info",
         title: "New Users",
         description: "Communication/Group.svg",
@@ -139,7 +145,7 @@ export default defineComponent({
         size: "1.5MB"
       },
       {
-        icon: "dist/media/icons/duotone/Home/Library.svg",
+        icon: "/dist/media/icons/duotone/Home/Library.svg",
         color: "warning",
         title: "Active Customers",
         description: "Best Customers",
@@ -148,7 +154,7 @@ export default defineComponent({
         size: "5.4MB"
       },
       {
-        icon: "dist/media/icons/duotone/Shopping/Box2.svg",
+        icon: "/dist/media/icons/duotone/Shopping/Box2.svg",
         color: "primary",
         title: "Active Customers",
         description: "Best Customers",

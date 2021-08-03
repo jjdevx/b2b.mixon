@@ -16,29 +16,46 @@
     data-kt-drawer-toggle="#kt_aside_mobile_toggle"
   >
     <!--begin::Brand-->
-    <div class="aside-logo flex-column-auto" id="kt_aside_logo">
+    <div
+      id="kt_aside_logo"
+      class="aside-logo flex-column-auto"
+    >
       <!--begin::Logo-->
-      <a href="#" v-if="asideTheme === 'dark' && !isDocPage">
-        <img alt="Logo" :src="darkLogo" class="h-15px logo" />
+      <a
+        v-if="asideTheme === 'dark' && !isDocPage"
+        href="#"
+      >
+        <img
+          alt="Logo"
+          :src="darkLogo"
+          class="h-15px logo"
+        >
       </a>
-      <a href="#" v-if="asideTheme === 'light' || isDocPage">
-        <img alt="Logo" :src="lightLogo" class="h-15px logo" />
+      <a
+        v-if="asideTheme === 'light' || isDocPage"
+        href="#"
+      >
+        <img
+          alt="Logo"
+          :src="lightLogo"
+          class="h-15px logo"
+        >
       </a>
       <!--end::Logo-->
 
       <!--begin::Aside toggler-->
       <div
+        v-if="!isDocPage"
         id="kt_aside_toggle"
         class="btn btn-icon w-auto px-0 btn-active-color-primary aside-toggle"
         data-kt-toggle="true"
         data-kt-toggle-state="active"
         data-kt-toggle-target="body"
         data-kt-toggle-name="aside-minimize"
-        v-if="!isDocPage"
       >
         <span class="svg-icon svg-icon-1 rotate-180">
           <inline-svg
-            src="dist/media/icons/duotone/Navigation/Angle-double-left.svg"
+            src="/dist/media/icons/duotone/Navigation/Angle-double-left.svg"
           />
         </span>
       </div>
@@ -48,21 +65,22 @@
 
     <!--begin::Aside menu-->
     <div class="aside-menu flex-column-fluid">
-      <KTMenu></KTMenu>
+      <KTMenu />
     </div>
     <!--end::Aside menu-->
 
     <!--begin::Footer-->
     <div
-      class="aside-footer flex-column-auto pt-5 pb-7 px-5"
       id="kt_aside_footer"
+      class="aside-footer flex-column-auto pt-5 pb-7 px-5"
     >
       <router-link
         v-if="isDocPage"
         to="/dashboard"
         class="btn btn-primary w-100"
-        >Preview Metronic</router-link
       >
+        Preview Metronic
+      </router-link>
       <router-link
         v-else
         to="/documentation/doc-overview"
@@ -76,7 +94,7 @@
           {{ t("docsAndComponents") }}
         </span>
         <span class="svg-icon btn-icon svg-icon-2">
-          <inline-svg src="dist/media/icons/duotone/General/Clipboard.svg" />
+          <inline-svg src="/dist/media/icons/duotone/General/Clipboard.svg" />
         </span>
       </router-link>
     </div>

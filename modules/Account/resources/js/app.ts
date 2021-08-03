@@ -1,6 +1,7 @@
 import {createApp, h} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
 import {createInertiaApp, Link, usePage} from '@inertiajs/inertia-vue3'
+import Layout from '@/layouts/Layout.vue'
 import {InertiaProgress} from '@inertiajs/progress'
 
 import {store, key} from './store'
@@ -16,23 +17,32 @@ import '@/metronic/core/plugins/keenthemes'
 import '@/metronic/core/plugins/prismjs'
 import 'bootstrap'
 
-import {flashMessages} from '@/helpers/flash-messages'
-import {Common, Flash} from '@/types/mixon'
+import {flashMessages, toastMessages} from '@/helpers/flash-messages'
+import {Common, Flash, Toast} from '@/types/mixon'
+import {setCurrentPageTitle} from '@/metronic/core/helpers/breadcrumb'
 
-const setTitle = (title: string) => document.title = `${title} - Mixon`
+function setTitle(title: string) {
+  document.title = `${title} - Mixon`
+  setCurrentPageTitle(title)
+}
 
 function initInertia() {
-  const {props: {value: {common, flash}}} = usePage<{ common: Common, flash: Flash }>()
+  const {props: {value: {common, flash, toast}}} = usePage<{ common: Common, flash: Flash, toast: Toast }>()
 
   store.commit('setCommon', common)
 
   const {meta: {title}} = common
   setTitle(title)
   if (flash) flashMessages(flash)
+  if (toast) toastMessages(toast)
 }
 
 createInertiaApp({
-  resolve: name => import(`./Pages/${name}`),
+  resolve: async (name) => {
+    const {default: page} = await import(`./Pages/${name}`)
+    page.layout = page.layout || Layout
+    return page
+  },
   setup({el, app: InertiaApp, props, plugin}) {
     const app = createApp({render: () => h(InertiaApp, props)})
 

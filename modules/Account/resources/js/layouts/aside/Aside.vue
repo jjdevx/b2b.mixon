@@ -17,7 +17,7 @@
       <a href="/">
         <img
           alt="Logo"
-          src="dist/img/logo-red.svg"
+          src="/dist/img/logo-red.svg"
           class="h-50px logo"
         >
       </a>
@@ -32,7 +32,7 @@
       >
         <span class="svg-icon svg-icon-1 rotate-180">
           <inline-svg
-            src="dist/media/icons/duotone/Navigation/Angle-double-left.svg"
+            src="/dist/media/icons/duotone/Navigation/Angle-double-left.svg"
           />
         </span>
       </div>

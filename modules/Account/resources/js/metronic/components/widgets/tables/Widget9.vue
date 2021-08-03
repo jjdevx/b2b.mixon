@@ -1,6 +1,9 @@
 <template>
   <!--begin::Tables Widget 9-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -23,7 +26,7 @@
           data-bs-target="#kt_modal_invite_friends"
         >
           <span class="svg-icon svg-icon-3">
-            <inline-svg src="dist/media/icons/duotone/Communication/Add-user.svg" />
+            <inline-svg src="/dist/media/icons/duotone/Communication/Add-user.svg" />
           </span>
           New Member
         </a>
@@ -46,20 +49,35 @@
                 <div
                   class="form-check form-check-sm form-check-custom form-check-solid"
                 >
-                  <input class="form-check-input" type="checkbox" value="1" />
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value="1"
+                  >
                 </div>
               </th>
-              <th class="min-w-150px">Authors</th>
-              <th class="min-w-140px">Company</th>
-              <th class="min-w-120px">Progress</th>
-              <th class="min-w-100px text-end">Actions</th>
+              <th class="min-w-150px">
+                Authors
+              </th>
+              <th class="min-w-140px">
+                Company
+              </th>
+              <th class="min-w-120px">
+                Progress
+              </th>
+              <th class="min-w-100px text-end">
+                Actions
+              </th>
             </tr>
           </thead>
           <!--end::Table head-->
 
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in list" :key="index">
+            <template
+              v-for="(item, index) in list"
+              :key="index"
+            >
               <tr>
                 <td>
                   <div
@@ -69,26 +87,27 @@
                       class="form-check-input widget-9-check"
                       type="checkbox"
                       :value="index"
-                    />
+                    >
                   </div>
                 </td>
 
                 <td>
                   <div class="d-flex align-items-center">
                     <div class="symbol symbol-45px me-5">
-                      <img :src="item.image" alt="" />
+                      <img
+                        :src="item.image"
+                        alt=""
+                      >
                     </div>
                     <div class="d-flex justify-content-start flex-column">
                       <a
                         href="#"
                         class="text-dark fw-bolder text-hover-primary fs-6"
-                        >{{ item.name }}</a
-                      >
+                      >{{ item.name }}</a>
 
                       <span
                         class="text-muted fw-bold text-muted d-block fs-7"
-                        >{{ item.skills }}</span
-                      >
+                      >{{ item.skills }}</span>
                     </div>
                   </div>
                 </td>
@@ -97,8 +116,7 @@
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block fs-6"
-                    >{{ item.companyName }}</a
-                  >
+                  >{{ item.companyName }}</a>
                   <span class="text-muted fw-bold text-muted d-block fs-7">{{
                     item.companySkills
                   }}</span>
@@ -121,7 +139,7 @@
                         :aria-valuenow="item.value"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                      ></div>
+                      />
                     </div>
                   </div>
                 </td>
@@ -133,7 +151,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="dist/media/icons/duotone/General/Settings-1.svg"
+                        src="/dist/media/icons/duotone/General/Settings-1.svg"
                       />
                     </span>
                   </a>
@@ -144,7 +162,7 @@
                   >
                     <span class="svg-icon svg-icon-3">
                       <inline-svg
-                        src="dist/media/icons/duotone/Communication/Write.svg"
+                        src="/dist/media/icons/duotone/Communication/Write.svg"
                       />
                     </span>
                   </a>
@@ -154,7 +172,7 @@
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                   >
                     <span class="svg-icon svg-icon-3">
-                      <inline-svg src="dist/media/icons/duotone/General/Trash.svg" />
+                      <inline-svg src="/dist/media/icons/duotone/General/Trash.svg" />
                     </span>
                   </a>
                 </td>
@@ -176,7 +194,7 @@
 import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: "kt-widget-9",
+  name: "KtWidget9",
   components: {},
   props: {
     widgetClasses: String
@@ -186,7 +204,7 @@ export default defineComponent({
 
     const list = [
       {
-        image: "dist/media/avatars/150-11.jpg",
+        image: "/dist/media/avatars/150-11.jpg",
         name: "Ana Simmons",
         skills: "HTML, JS, ReactJS",
         companyName: "Intertico",
@@ -195,7 +213,7 @@ export default defineComponent({
         color: "primary"
       },
       {
-        image: "dist/media/avatars/150-3.jpg",
+        image: "/dist/media/avatars/150-3.jpg",
         name: "Jessie Clarcson",
         skills: "C#, ASP.NET, MS SQL",
         companyName: "Agoda",
@@ -204,7 +222,7 @@ export default defineComponent({
         color: "danger"
       },
       {
-        image: "dist/media/avatars/150-4.jpg",
+        image: "/dist/media/avatars/150-4.jpg",
         name: "Lebron Wayde",
         skills: "PHP, Laravel, VueJS",
         companyName: "RoadGee",
@@ -213,7 +231,7 @@ export default defineComponent({
         color: "success"
       },
       {
-        image: "dist/media/avatars/150-5.jpg",
+        image: "/dist/media/avatars/150-5.jpg",
         name: "Natali Goodwin",
         skills: "Python, PostgreSQL, ReactJS",
         companyName: "The Hill",
@@ -222,7 +240,7 @@ export default defineComponent({
         color: "warning"
       },
       {
-        image: "dist/media/avatars/150-6.jpg",
+        image: "/dist/media/avatars/150-6.jpg",
         name: "Kevin Leonard",
         skills: "HTML, JS, ReactJS",
         companyName: "RoadGee",

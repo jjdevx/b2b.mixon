@@ -42,14 +42,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted} from 'vue'
-import {setCurrentPageTitle} from '@/metronic/core/helpers/breadcrumb'
-import Layout from '@/layouts/Layout.vue'
+import {defineComponent} from 'vue'
 
-export default defineComponent({
-  layout: Layout,
-  setup() {
-    onMounted(() => setCurrentPageTitle('Главная'))
-  }
-})
+export default defineComponent({})
 </script>

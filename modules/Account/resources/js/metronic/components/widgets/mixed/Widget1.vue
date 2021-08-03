@@ -1,6 +1,9 @@
 <template>
   <!--begin::List Widget 1-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Body-->
     <div class="card-body p-0">
       <!--begin::Header-->
@@ -10,7 +13,9 @@
       >
         <!--begin::Heading-->
         <div class="d-flex flex-stack">
-          <h3 class="m-0 text-white fw-bolder fs-3">Sales Summary</h3>
+          <h3 class="m-0 text-white fw-bolder fs-3">
+            Sales Summary
+          </h3>
 
           <div class="ms-1">
             <!--begin::Menu-->
@@ -24,11 +29,11 @@
             >
               <span class="svg-icon svg-icon-2">
                 <inline-svg
-                  src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+                  src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
                 />
               </span>
             </button>
-            <Dropdown3></Dropdown3>
+            <Dropdown3 />
             <!--end::Menu-->
           </div>
         </div>
@@ -48,7 +53,10 @@
         class="shadow-xs card-rounded mx-9 mb-9 px-6 py-9 position-relative z-index-1 bg-white"
         style="margin-top: -100px"
       >
-        <template v-for="(item, index) in items" :key="index">
+        <template
+          v-for="(item, index) in items"
+          :key="index"
+        >
           <!--begin::Item-->
           <div
             :class="[index !== item.length && 'mb-7']"
@@ -71,8 +79,7 @@
                 <a
                   href="#"
                   class="fs-5 text-gray-800 text-hover-primary fw-bolder"
-                  >{{ item.title }}</a
-                >
+                >{{ item.title }}</a>
                 <div class="text-gray-400 fw-bold fs-7">
                   {{ item.description }}
                 </div>
@@ -90,7 +97,7 @@
                   class="svg-icon svg-icon-5 svg-icon-success ms-1"
                 >
                   <inline-svg
-                    src="dist/media/icons/duotone/Navigation/Arrow-up.svg"
+                    src="/dist/media/icons/duotone/Navigation/Arrow-up.svg"
                   />
                 </span>
                 <span
@@ -98,7 +105,7 @@
                   class="svg-icon svg-icon-5 svg-icon-danger ms-1"
                 >
                   <inline-svg
-                    src="dist/media/icons/duotone/Navigation/Arrow-down.svg"
+                    src="/dist/media/icons/duotone/Navigation/Arrow-down.svg"
                   />
                 </span>
               </div>
@@ -121,7 +128,7 @@ import { defineComponent } from "vue";
 import Dropdown3 from "@/metronic/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
-  name: "widget-1",
+  name: "Widget1",
   components: {
     Dropdown3
   },
@@ -133,28 +140,28 @@ export default defineComponent({
   setup() {
     const items = [
       {
-        icon: "dist/media/icons/duotone/Home/Globe.svg",
+        icon: "/dist/media/icons/duotone/Home/Globe.svg",
         title: "Sales",
         description: "100 Regions",
         stats: "$2,5b",
         arrow: "up"
       },
       {
-        icon: "dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
+        icon: "/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg",
         title: "Revenue",
         description: "Quarter 2/3",
         stats: "$1,7b",
         arrow: "down"
       },
       {
-        icon: "dist/media/icons/duotone/Devices/Watch2.svg",
+        icon: "/dist/media/icons/duotone/Devices/Watch2.svg",
         title: "Growth",
         description: "80% Rate",
         stats: "$8,8m",
         arrow: "up"
       },
       {
-        icon: "dist/media/icons/duotone/General/Clipboard.svg",
+        icon: "/dist/media/icons/duotone/General/Clipboard.svg",
         title: "Dispute",
         description: "3090 Refunds",
         stats: "$270m",

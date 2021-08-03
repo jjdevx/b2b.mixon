@@ -1,14 +1,17 @@
 <template>
   <!--begin::Tables Widget 2-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bolder fs-3 mb-1">Latest Arrivals</span>
 
-        <span class="text-muted mt-1 fw-bold fs-7"
-          >More than 100 new products</span
-        >
+        <span
+          class="text-muted mt-1 fw-bold fs-7"
+        >More than 100 new products</span>
       </h3>
       <div class="card-toolbar">
         <!--begin::Menu-->
@@ -21,11 +24,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
     </div>
@@ -40,18 +43,21 @@
           <!--begin::Table head-->
           <thead>
             <tr>
-              <th class="p-0 w-50px"></th>
-              <th class="p-0 min-w-150px"></th>
-              <th class="p-0 min-w-150px"></th>
-              <th class="p-0 min-w-125px"></th>
-              <th class="p-0 min-w-40px"></th>
+              <th class="p-0 w-50px" />
+              <th class="p-0 min-w-150px" />
+              <th class="p-0 min-w-150px" />
+              <th class="p-0 min-w-125px" />
+              <th class="p-0 min-w-40px" />
             </tr>
           </thead>
           <!--end::Table head-->
 
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in items" :key="index">
+            <template
+              v-for="(item, index) in items"
+              :key="index"
+            >
               <tr>
                 <td>
                   <div class="symbol symbol-50px me-2">
@@ -60,7 +66,7 @@
                         :src="item.image"
                         class="h-50 align-self-center"
                         alt=""
-                      />
+                      >
                     </span>
                   </div>
                 </td>
@@ -68,8 +74,7 @@
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                    >{{ item.info.title }}</a
-                  >
+                  >{{ item.info.title }}</a>
                   <span class="text-muted fw-bold d-block fs-7">{{
                     item.info.description
                   }}</span>
@@ -82,8 +87,7 @@
                     <span
                       :class="`badge-light-${item1.color}`"
                       class="badge fw-bold me-1"
-                      >{{ item1.label }}</span
-                    >
+                    >{{ item1.label }}</span>
                   </template>
                 </td>
                 <td class="text-end">
@@ -98,7 +102,7 @@
                   >
                     <span class="svg-icon svg-icon-2">
                       <inline-svg
-                        src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                        src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                       />
                     </span>
                   </a>
@@ -122,7 +126,7 @@ import { defineComponent } from "vue";
 import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 
 export default defineComponent({
-  name: "kt-widget-2",
+  name: "KtWidget2",
   components: {
     Dropdown1
   },
@@ -132,7 +136,7 @@ export default defineComponent({
   setup() {
     const items = [
       {
-        image: "dist/media/svg/brand-logos/plurk.svg",
+        image: "/dist/media/svg/brand-logos/plurk.svg",
         info: {
           title: "Top Authors",
           description: "Successful Fellas"
@@ -145,7 +149,7 @@ export default defineComponent({
       },
 
       {
-        image: "dist/media/svg/brand-logos/telegram.svg",
+        image: "/dist/media/svg/brand-logos/telegram.svg",
         info: {
           title: "Popular Authors",
           description: "Most Successful"
@@ -158,7 +162,7 @@ export default defineComponent({
       },
 
       {
-        image: "dist/media/svg/brand-logos/vimeo.svg",
+        image: "/dist/media/svg/brand-logos/vimeo.svg",
         info: {
           title: "New Users",
           description: "Awesome Users"
@@ -171,7 +175,7 @@ export default defineComponent({
       },
 
       {
-        image: "dist/media/svg/brand-logos/bebo.svg",
+        image: "/dist/media/svg/brand-logos/bebo.svg",
         info: {
           title: "Active Customers",
           description: "Best Customers"
@@ -184,7 +188,7 @@ export default defineComponent({
       },
 
       {
-        image: "dist/media/svg/brand-logos/kickstarter.svg",
+        image: "/dist/media/svg/brand-logos/kickstarter.svg",
         info: {
           title: "Bestseller Theme",
           description: "Amazing Templates"

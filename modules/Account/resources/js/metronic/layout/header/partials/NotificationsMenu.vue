@@ -7,7 +7,7 @@
     <!--begin::Heading-->
     <div
       class="d-flex flex-column bgi-no-repeat rounded-top"
-      style="background-image:url('dist/media/misc/pattern-1.jpg')"
+      style="background-image:url('/dist/media/misc/pattern-1.jpg')"
     >
       <!--begin::Title-->
       <h3 class="text-white fw-bold px-9 mt-10 mb-6">
@@ -22,8 +22,7 @@
             class="nav-link text-white opacity-75 opacity-state-100 pb-4"
             data-bs-toggle="tab"
             href="#kt_topbar_notifications_1"
-            >Alerts</a
-          >
+          >Alerts</a>
         </li>
 
         <li class="nav-item">
@@ -31,8 +30,7 @@
             class="nav-link text-white opacity-75 opacity-state-100 pb-4 active"
             data-bs-toggle="tab"
             href="#kt_topbar_notifications_2"
-            >Updates</a
-          >
+          >Updates</a>
         </li>
 
         <li class="nav-item">
@@ -40,8 +38,7 @@
             class="nav-link text-white opacity-75 opacity-state-100 pb-4"
             data-bs-toggle="tab"
             href="#kt_topbar_notifications_3"
-            >Logs</a
-          >
+          >Logs</a>
         </li>
       </ul>
       <!--end::Tabs-->
@@ -51,21 +48,31 @@
     <!--begin::Tab content-->
     <div class="tab-content">
       <!--begin::Tab panel-->
-      <div class="tab-pane fade" id="kt_topbar_notifications_1" role="tabpanel">
+      <div
+        id="kt_topbar_notifications_1"
+        class="tab-pane fade"
+        role="tabpanel"
+      >
         <!--begin::Items-->
         <div class="scroll-y mh-325px my-5 px-8">
-          <template v-for="(item, index) in data1" :key="index">
+          <template
+            v-for="(item, index) in data1"
+            :key="index"
+          >
             <!--begin::Item-->
             <div class="d-flex flex-stack py-4">
               <!--begin::Section-->
               <div class="d-flex align-items-center">
                 <!--begin::Symbol-->
                 <div class="symbol symbol-35px me-4">
-                  <span :class="`bg-light-${item.state}`" class="symbol-label">
+                  <span
+                    :class="`bg-light-${item.state}`"
+                    class="symbol-label"
+                  >
                     <span
                       class="svg-icon svg-icon-2"
                       :class="`svg-icon-${item.state}`"
-                    ></span>
+                    />
                     <inline-svg :src="item.icon" />
                   </span>
                 </div>
@@ -76,8 +83,7 @@
                   <a
                     href="#"
                     class="fs-6 text-gray-800 text-hover-primary fw-bolder"
-                    >{{ item.title }}</a
-                  >
+                  >{{ item.title }}</a>
                   <div class="text-gray-400 fs-7">
                     {{ item.description }}
                   </div>
@@ -97,10 +103,13 @@
 
         <!--begin::View more-->
         <div class="py-3 text-center border-top">
-          <a href="#" class="btn btn-color-gray-600 btn-active-color-primary">
+          <a
+            href="#"
+            class="btn btn-color-gray-600 btn-active-color-primary"
+          >
             View All
             <span class="svg-icon svg-icon-5">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Right-2.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Right-2.svg" />
             </span>
           </a>
         </div>
@@ -110,8 +119,8 @@
 
       <!--begin::Tab panel-->
       <div
-        class="tab-pane fade show active"
         id="kt_topbar_notifications_2"
+        class="tab-pane fade show active"
         role="tabpanel"
       >
         <!--begin::Wrapper-->
@@ -138,8 +147,7 @@
                 class="btn btn-sm btn-primary px-6"
                 data-bs-toggle="modal"
                 data-bs-target="#kt_modal_upgrade_plan"
-                >Upgrade</a
-              >
+              >Upgrade</a>
             </div>
             <!--end::Action-->
           </div>
@@ -149,8 +157,8 @@
           <img
             class="mh-200px"
             alt="metronic"
-            src="dist/media/illustrations/work.png"
-          />
+            src="/dist/media/illustrations/work.png"
+          >
           <!--end::Illustration-->
         </div>
         <!--end::Wrapper-->
@@ -158,10 +166,17 @@
       <!--end::Tab panel-->
 
       <!--begin::Tab panel-->
-      <div class="tab-pane fade" id="kt_topbar_notifications_3" role="tabpanel">
+      <div
+        id="kt_topbar_notifications_3"
+        class="tab-pane fade"
+        role="tabpanel"
+      >
         <!--begin::Items-->
         <div class="scroll-y mh-325px my-5 px-8">
-          <template v-for="(item, index) in data2" :key="index">
+          <template
+            v-for="(item, index) in data2"
+            :key="index"
+          >
             <!--begin::Item-->
             <div class="d-flex flex-stack py-4">
               <!--begin::Section-->
@@ -170,12 +185,14 @@
                 <span
                   class="w-70px badge me-4"
                   :class="`badge-light-${item.state}`"
-                  >{{ item.code }}</span
-                >
+                >{{ item.code }}</span>
                 <!--end::Code-->
 
                 <!--begin::Title-->
-                <a href="#" class="text-gray-800 text-hover-primary fw-bold">{{
+                <a
+                  href="#"
+                  class="text-gray-800 text-hover-primary fw-bold"
+                >{{
                   item.message
                 }}</a>
                 <!--end::Title-->
@@ -193,10 +210,13 @@
 
         <!--begin::View more-->
         <div class="py-3 text-center border-top">
-          <a href="#" class="btn btn-color-gray-600 btn-active-color-primary">
+          <a
+            href="#"
+            class="btn btn-color-gray-600 btn-active-color-primary"
+          >
             View All
             <span class="svg-icon-svg-icon-5">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Right-2.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Right-2.svg" />
             </span>
           </a>
         </div>
@@ -213,7 +233,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "notifications-menu",
+  name: "NotificationsMenu",
   components: {},
   setup() {
     const data1 = [
@@ -221,49 +241,49 @@ export default defineComponent({
         title: "Project Alice",
         description: "Phase 1 development",
         time: "1 hr",
-        icon: "dist/media/icons/duotone/Clothes/Crown.svg",
+        icon: "/dist/media/icons/duotone/Clothes/Crown.svg",
         state: "primary"
       },
       {
         title: "HR Confidential",
         description: "Confidential staff documents",
         time: "2 hrs",
-        icon: "dist/media/icons/duotone/Code/Warning-2.svg",
+        icon: "/dist/media/icons/duotone/Code/Warning-2.svg",
         state: "danger"
       },
       {
         title: "Company HR",
         description: "Corporeate staff profiles",
         time: "5 hrs",
-        icon: "dist/media/icons/duotone/Communication/Group.svg",
+        icon: "/dist/media/icons/duotone/Communication/Group.svg",
         state: "warning"
       },
       {
         title: "Project Redux",
         description: "New frontend admin theme",
         time: "2 days",
-        icon: "dist/media/icons/duotone/General/Thunder.svg",
+        icon: "/dist/media/icons/duotone/General/Thunder.svg",
         state: "success"
       },
       {
         title: "Project Breafing",
         description: "Product launch status update",
         time: "21 Jan",
-        icon: "dist/media/icons/duotone/Communication/Flag.svg",
+        icon: "/dist/media/icons/duotone/Communication/Flag.svg",
         state: "primary"
       },
       {
         title: "Banner Assets",
         description: "Collection of banner images",
         time: "21 Jan",
-        icon: "dist/media/icons/duotone/Design/Image.svg",
+        icon: "/dist/media/icons/duotone/Design/Image.svg",
         state: "info"
       },
       {
         title: "Icon Assets",
         description: "Collection of SVG icons",
         time: "20 March",
-        icon: "dist/media/icons/duotone/Design/Component.svg",
+        icon: "/dist/media/icons/duotone/Design/Component.svg",
         state: "warning"
       }
     ];

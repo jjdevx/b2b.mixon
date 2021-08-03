@@ -1,6 +1,9 @@
 <template>
   <!--begin::Mixed Widget 10-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Body-->
     <div
       class="card-body p-0 d-flex justify-content-between flex-column overflow-hidden"
@@ -13,7 +16,7 @@
               :class="`svg-icon-${chartColor}`"
               class="svg-icon svg-icon-2x"
             >
-              <inline-svg src="dist/media/icons/duotone/Shopping/Chart-line1.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Shopping/Chart-line1.svg" />
             </span>
           </div>
         </div>
@@ -34,7 +37,7 @@
         :series="series"
         type="bar"
         :height="chartHeight"
-      ></apexchart>
+      />
       <!--end::Chart-->
     </div>
   </div>
@@ -46,7 +49,7 @@ import { defineComponent, ref } from "vue";
 import { getCSSVariableValue } from "@/metronic/assets/ts/_utils";
 
 export default defineComponent({
-  name: "widget-12",
+  name: "Widget12",
   props: {
     widgetClasses: String,
     chartColor: String,
@@ -58,7 +61,7 @@ export default defineComponent({
     const labelColor = getCSSVariableValue("--bs-gray-500");
     const borderColor = getCSSVariableValue("--bs-gray-200");
     const secondaryColor = getCSSVariableValue("--bs-gray-300");
-    const baseColor = getCSSVariableValue("--bs-" + color.value);
+    const baseColor = getCSSVariableValue(`--bs-${  color.value}`);
 
     const chartOptions = {
       chart: {
@@ -142,8 +145,8 @@ export default defineComponent({
           fontSize: "12px"
         },
         y: {
-          formatter: function(val) {
-            return "$" + val + " revenue";
+          formatter(val) {
+            return `$${  val  } revenue`;
           }
         }
       },
@@ -152,7 +155,7 @@ export default defineComponent({
         padding: {
           top: 10
         },
-        borderColor: borderColor,
+        borderColor,
         strokeDashArray: 4,
         yaxis: {
           lines: {

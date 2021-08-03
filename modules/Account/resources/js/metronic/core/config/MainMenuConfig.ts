@@ -4,13 +4,13 @@ const DocMenuConfig: object = [
       {
         heading: "dashboard",
         route: "/dashboard",
-        svgIcon: "dist/media/icons/duotone/Design/PenAndRuller.svg",
+        svgIcon: "/dist/media/icons/duotone/Design/PenAndRuller.svg",
         fontIcon: "bi-app-indicator"
       },
       {
         heading: "layoutBuilder",
         route: "/builder",
-        svgIcon: "dist/media/icons/duotone/Interface/Settings-02.svg",
+        svgIcon: "/dist/media/icons/duotone/Interface/Settings-02.svg",
         fontIcon: "bi-layers"
       }
     ]
@@ -22,7 +22,7 @@ const DocMenuConfig: object = [
       {
         sectionTitle: "pages",
         route: "/pages",
-        svgIcon: "dist/media/icons/duotone/Code/Compiling.svg",
+        svgIcon: "/dist/media/icons/duotone/Code/Compiling.svg",
         fontIcon: "bi-archive",
         sub: [
           {
@@ -74,7 +74,7 @@ const DocMenuConfig: object = [
       {
         sectionTitle: "account",
         route: "/account",
-        svgIcon: "dist/media/icons/duotone/General/User.svg",
+        svgIcon: "/dist/media/icons/duotone/General/User.svg",
         fontIcon: "bi-person",
         sub: [
           {
@@ -89,7 +89,7 @@ const DocMenuConfig: object = [
       },
       {
         sectionTitle: "authentication",
-        svgIcon: "dist/media/icons/duotone/Interface/Lock.svg",
+        svgIcon: "/dist/media/icons/duotone/Interface/Lock.svg",
         fontIcon: "bi-sticky",
         sub: [
           {
@@ -122,7 +122,7 @@ const DocMenuConfig: object = [
       {
         sectionTitle: "modals",
         route: "/modals",
-        svgIcon: "dist/media/icons/duotone/Design/Substract.svg",
+        svgIcon: "/dist/media/icons/duotone/Design/Substract.svg",
         fontIcon: "bi-shield-check",
         sub: [
           {
@@ -192,7 +192,7 @@ const DocMenuConfig: object = [
       {
         sectionTitle: "widgets",
         route: "/widgets",
-        svgIcon: "dist/media/icons/duotone/Layout/Layout-4-blocks.svg",
+        svgIcon: "/dist/media/icons/duotone/Layout/Layout-4-blocks.svg",
         fontIcon: "bi-layers",
         sub: [
           {
@@ -230,7 +230,7 @@ const DocMenuConfig: object = [
       {
         sectionTitle: "chat",
         route: "/chat",
-        svgIcon: "dist/media/icons/duotone/Communication/Group-chat.svg",
+        svgIcon: "/dist/media/icons/duotone/Communication/Group-chat.svg",
         fontIcon: "bi-chat-left",
         sub: [
           {

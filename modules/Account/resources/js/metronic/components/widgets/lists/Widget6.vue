@@ -1,9 +1,14 @@
 <template>
   <!--begin::List Widget 6-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header border-0">
-      <h3 class="card-title fw-bolder text-dark">Notifications</h3>
+      <h3 class="card-title fw-bolder text-dark">
+        Notifications
+      </h3>
 
       <div class="card-toolbar">
         <!--begin::Menu-->
@@ -16,11 +21,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown3></Dropdown3>
+        <Dropdown3 />
         <!--end::Menu-->
       </div>
     </div>
@@ -28,7 +33,10 @@
 
     <!--begin::Body-->
     <div class="card-body pt-0">
-      <template v-for="(item, index) in list" :key="index">
+      <template
+        v-for="(item, index) in list"
+        :key="index"
+      >
         <!--begin::Item-->
         <div
           :class="[
@@ -38,9 +46,12 @@
           class="d-flex align-items-center rounded p-5 mb-7"
         >
           <!--begin::Icon-->
-          <span :class="`svg-icon-${item.color}`" class="svg-icon me-5">
+          <span
+            :class="`svg-icon-${item.color}`"
+            class="svg-icon me-5"
+          >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Home/Library.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Home/Library.svg" />
             </span>
           </span>
           <!--end::Icon-->
@@ -50,15 +61,17 @@
             <a
               href="#"
               class="fw-bolder text-gray-800 text-hover-primary fs-6"
-              >{{ item.title }}</a
-            >
+            >{{ item.title }}</a>
 
             <span class="text-muted fw-bold d-block">{{ item.text }}</span>
           </div>
           <!--end::Title-->
 
           <!--begin::Lable-->
-          <span :class="`text-${item.color}`" class="fw-bolder py-1">{{
+          <span
+            :class="`text-${item.color}`"
+            class="fw-bolder py-1"
+          >{{
             item.number
           }}</span>
           <!--end::Lable-->
@@ -76,7 +89,7 @@ import { defineComponent, ref } from "vue";
 import Dropdown3 from "@/metronic/components/dropdown/Dropdown3.vue";
 
 export default defineComponent({
-  name: "kt-widget-6",
+  name: "KtWidget6",
   components: {
     Dropdown3
   },

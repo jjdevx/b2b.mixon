@@ -54,7 +54,7 @@
       </div>
     </div>
     <div class="fv-row mb-7">
-      <label class="form-label fw-bolder text-dark fs-6">Почта</label>
+      <label class="form-label fw-bolder text-dark fs-6">Почта*</label>
       <Field
         class="form-control form-control-lg form-control-solid"
         type="email"
@@ -227,21 +227,9 @@ import AuthLayout from '@/layouts/Auth.vue'
 import {object, string, ref as reference} from 'yup'
 import BaseSchema from 'yup/lib/schema'
 import {Inertia} from '@inertiajs/inertia'
+import {User} from '@/types/users'
 
-type FormFields = {
-  name: string
-  surname: string
-  email: string
-  password: string
-  passwordConfirmation: string
-  company: string
-  okpo: number
-  country: string
-  city: string
-  address: string
-  fax: string
-  phone: string
-}
+type FormFields = Omit<User, 'id' | 'roles'> & { passwordConfirmation: string }
 
 export default defineComponent({
   components: {Field, Form, ErrorMessage},

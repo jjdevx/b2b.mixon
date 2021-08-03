@@ -11,7 +11,7 @@
         <div class="symbol symbol-50px me-5">
           <img
             alt="Logo"
-            src="dist/media/avatars/150-26.jpg"
+            :src="user.icon"
           >
         </div>
         <div class="d-flex flex-column">

@@ -1,14 +1,17 @@
 <template>
   <!--begin::Tables Widget 4-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
         <span class="card-label fw-bolder fs-3 mb-1">New Members</span>
 
-        <span class="text-muted mt-1 fw-bold fs-7"
-          >More than 400 new members</span
-        >
+        <span
+          class="text-muted mt-1 fw-bold fs-7"
+        >More than 400 new members</span>
       </h3>
       <div class="card-toolbar">
         <ul class="nav">
@@ -17,8 +20,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary active fw-bolder px-4 me-1"
               data-bs-toggle="tab"
               href="#kt_table_widget_4_tab_1"
-              >Month</a
-            >
+            >Month</a>
           </li>
 
           <li class="nav-item">
@@ -26,8 +28,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4 me-1"
               data-bs-toggle="tab"
               href="#kt_table_widget_4_tab_2"
-              >Week</a
-            >
+            >Week</a>
           </li>
 
           <li class="nav-item">
@@ -35,8 +36,7 @@
               class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light-primary fw-bolder px-4"
               data-bs-toggle="tab"
               href="#kt_table_widget_4_tab_3"
-              >Day</a
-            >
+            >Day</a>
           </li>
         </ul>
       </div>
@@ -46,12 +46,15 @@
     <!--begin::Body-->
     <div class="card-body py-3">
       <div class="tab-content">
-        <template v-for="(item, index) in items" :key="index">
+        <template
+          v-for="(item, index) in items"
+          :key="index"
+        >
           <!--begin::Tap pane-->
           <div
+            :id="`kt_table_widget_4_tab_${index + 1}`"
             :class="[index === 0 && 'show active']"
             class="tab-pane fade"
-            :id="`kt_table_widget_4_tab_${index + 1}`"
           >
             <!--begin::Table container-->
             <div class="table-responsive">
@@ -60,29 +63,34 @@
                 <!--begin::Table head-->
                 <thead>
                   <tr>
-                    <th class="p-0 w-50px"></th>
-                    <th class="p-0 min-w-150px"></th>
-                    <th class="p-0 min-w-140px"></th>
-                    <th class="p-0 min-w-120px"></th>
+                    <th class="p-0 w-50px" />
+                    <th class="p-0 min-w-150px" />
+                    <th class="p-0 min-w-140px" />
+                    <th class="p-0 min-w-120px" />
                   </tr>
                 </thead>
                 <!--end::Table head-->
 
                 <!--begin::Table body-->
                 <tbody>
-                  <template v-for="(item1, index1) in item" :key="index1">
+                  <template
+                    v-for="(item1, index1) in item"
+                    :key="index1"
+                  >
                     <tr>
                       <td>
                         <div class="symbol symbol-50px">
-                          <img :src="item1.image" alt="" />
+                          <img
+                            :src="item1.image"
+                            alt=""
+                          >
                         </div>
                       </td>
                       <td>
                         <a
                           href="#"
                           class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                          >{{ item1.user.name }}</a
-                        >
+                        >{{ item1.user.name }}</a>
                         <span class="text-muted fw-bold d-block fs-7">{{
                           item1.user.position
                         }}</span>
@@ -93,12 +101,15 @@
                         </span>
 
                         <div class="rating">
-                          <template v-for="i in 5" :key="i">
+                          <template
+                            v-for="i in 5"
+                            :key="i"
+                          >
                             <div
                               :class="[item1.rating >= i && 'checked']"
                               class="rating-label me-2"
                             >
-                              <i class="bi bi-star-fill fs-5"></i>
+                              <i class="bi bi-star-fill fs-5" />
                             </div>
                           </template>
                         </div>
@@ -108,13 +119,13 @@
                           href="#"
                           class="btn btn-icon btn-light-twitter btn-sm me-3"
                         >
-                          <i class="bi bi-twitter fs-4"></i>
+                          <i class="bi bi-twitter fs-4" />
                         </a>
                         <a
                           href="#"
                           class="btn btn-icon btn-light-facebook btn-sm"
                         >
-                          <i class="bi bi-facebook fs-4"></i>
+                          <i class="bi bi-facebook fs-4" />
                         </a>
                       </td>
                     </tr>
@@ -138,7 +149,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "kt-widget-4",
+  name: "KtWidget4",
   components: {},
   props: {
     widgetClasses: String
@@ -147,7 +158,7 @@ export default defineComponent({
     const items = [
       [
         {
-          image: "dist/media/avatars/150-11.jpg",
+          image: "/dist/media/avatars/150-11.jpg",
           user: {
             name: "Brad Simmons",
             position: "Movie Creator"
@@ -155,7 +166,7 @@ export default defineComponent({
           rating: 5
         },
         {
-          image: "dist/media/avatars/150-4.jpg",
+          image: "/dist/media/avatars/150-4.jpg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding"
@@ -163,7 +174,7 @@ export default defineComponent({
           rating: 5
         },
         {
-          image: "dist/media/avatars/150-5.jpg",
+          image: "/dist/media/avatars/150-5.jpg",
           user: {
             name: "Lebron Wayde",
             position: "ReactJS Developer"
@@ -171,7 +182,7 @@ export default defineComponent({
           rating: 4
         },
         {
-          image: "dist/media/avatars/150-6.jpg",
+          image: "/dist/media/avatars/150-6.jpg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer"
@@ -179,7 +190,7 @@ export default defineComponent({
           rating: 5
         },
         {
-          image: "dist/media/avatars/150-9.jpg",
+          image: "/dist/media/avatars/150-9.jpg",
           user: {
             name: "Kevin Leonard",
             position: "Art Director"
@@ -190,7 +201,7 @@ export default defineComponent({
 
       [
         {
-          image: "dist/media/svg/avatars/043-boy-18.svg",
+          image: "/dist/media/svg/avatars/043-boy-18.svg",
           user: {
             name: "Kevin Leonard",
             position: "Art Director"
@@ -198,7 +209,7 @@ export default defineComponent({
           rating: 3
         },
         {
-          image: "dist/media/svg/avatars/014-girl-7.svg",
+          image: "/dist/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer"
@@ -206,7 +217,7 @@ export default defineComponent({
           rating: 5
         },
         {
-          image: "dist/media/svg/avatars/018-girl-9.svg",
+          image: "/dist/media/svg/avatars/018-girl-9.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding"
@@ -214,7 +225,7 @@ export default defineComponent({
           rating: 5
         },
         {
-          image: "dist/media/svg/avatars/001-boy.svg",
+          image: "/dist/media/svg/avatars/001-boy.svg",
           user: {
             name: "Brad Simmons",
             position: "Movie Creator"
@@ -225,7 +236,7 @@ export default defineComponent({
 
       [
         {
-          image: "dist/media/svg/avatars/018-girl-9.svg",
+          image: "/dist/media/svg/avatars/018-girl-9.svg",
           user: {
             name: "Jessie Clarcson",
             position: "HTML, CSS Coding"
@@ -233,7 +244,7 @@ export default defineComponent({
           rating: 5
         },
         {
-          image: "dist/media/svg/avatars/047-girl-25.svg",
+          image: "/dist/media/svg/avatars/047-girl-25.svg",
           user: {
             name: "Lebron Wayde",
             position: "ReactJS Developer"
@@ -241,7 +252,7 @@ export default defineComponent({
           rating: 4
         },
         {
-          image: "dist/media/svg/avatars/014-girl-7.svg",
+          image: "/dist/media/svg/avatars/014-girl-7.svg",
           user: {
             name: "Natali Trump",
             position: "UI/UX Designer"

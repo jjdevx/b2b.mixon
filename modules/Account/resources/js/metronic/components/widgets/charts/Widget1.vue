@@ -1,6 +1,9 @@
 <template>
   <!--begin::Charts Widget 1-->
-  <div class="card" :class="widgetClasses">
+  <div
+    class="card"
+    :class="widgetClasses"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <!--begin::Title-->
@@ -23,11 +26,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
       <!--end::Toolbar-->
@@ -37,7 +40,11 @@
     <!--begin::Body-->
     <div class="card-body">
       <!--begin::Chart-->
-      <apexchart type="bar" :options="options" :series="series"></apexchart>
+      <apexchart
+        type="bar"
+        :options="options"
+        :series="series"
+      />
       <!--end::Chart-->
     </div>
     <!--end::Body-->
@@ -51,12 +58,12 @@ import { getCSSVariableValue } from "@/metronic/assets/ts/_utils";
 import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 
 export default defineComponent({
-  name: "widget-1",
-  props: {
-    widgetClasses: String
-  },
+  name: "Widget1",
   components: {
     Dropdown1
+  },
+  props: {
+    widgetClasses: String
   },
   setup() {
     const labelColor = getCSSVariableValue("--bs-gray-500");
@@ -142,14 +149,14 @@ export default defineComponent({
           fontSize: "12px"
         },
         y: {
-          formatter: function(val) {
-            return "$" + val + " thousands";
+          formatter(val) {
+            return `$${  val  } thousands`;
           }
         }
       },
       colors: [baseColor, secondaryColor],
       grid: {
-        borderColor: borderColor,
+        borderColor,
         strokeDashArray: 4,
         yaxis: {
           lines: {

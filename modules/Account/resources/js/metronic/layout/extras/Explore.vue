@@ -28,17 +28,22 @@
     <!--begin::Card-->
     <div class="card shadow-none w-100">
       <!--begin::Header-->
-      <div class="card-header" id="kt_explore_header">
-        <h3 class="card-title fw-bolder text-gray-700">Explore Metronic</h3>
+      <div
+        id="kt_explore_header"
+        class="card-header"
+      >
+        <h3 class="card-title fw-bolder text-gray-700">
+          Explore Metronic
+        </h3>
 
         <div class="card-toolbar">
           <button
+            id="kt_explore_close"
             type="button"
             class="btn btn-sm btn-icon btn-active-light-primary me-n5"
-            id="kt_explore_close"
           >
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </button>
         </div>
@@ -46,7 +51,10 @@
       <!--end::Header-->
 
       <!--begin::Body-->
-      <div class="card-body" id="kt_explore_body">
+      <div
+        id="kt_explore_body"
+        class="card-body"
+      >
         <!--begin::Content-->
         <div
           id="kt_explore_scroll"
@@ -60,23 +68,24 @@
           <!--begin::Demos-->
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo1</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo1
+              </h3>
               <div
                 class="overlay overflow-hidden border border-4 border-primary p-2 rounded"
               >
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo1.png"
+                    src="/dist/media/demos/demo1.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo1"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -84,21 +93,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo2</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo2
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo2.png"
+                    src="/dist/media/demos/demo2.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo2"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -106,21 +116,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo3</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo3
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo3.png"
+                    src="/dist/media/demos/demo3.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo3"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -128,21 +139,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo4</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo4
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo4.png"
+                    src="/dist/media/demos/demo4.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo4"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -150,21 +162,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo5</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo5
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo5.png"
+                    src="/dist/media/demos/demo5.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo5"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -172,21 +185,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo6</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo6
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo6.png"
+                    src="/dist/media/demos/demo6.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo6"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -194,21 +208,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo7</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo7
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo7.png"
+                    src="/dist/media/demos/demo7.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo7"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -216,21 +231,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo8</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo8
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo8.png"
+                    src="/dist/media/demos/demo8.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo8"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -238,21 +254,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo9</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo9
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo9.png"
+                    src="/dist/media/demos/demo9.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo9"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -260,21 +277,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo10</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo10
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo10.png"
+                    src="/dist/media/demos/demo10.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo10"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -282,21 +300,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo11</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo11
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo11.png"
+                    src="/dist/media/demos/demo11.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo11"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -304,21 +323,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo12</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo12
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo12.png"
+                    src="/dist/media/demos/demo12.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo12"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -326,21 +346,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo13</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo13
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo13.png"
+                    src="/dist/media/demos/demo13.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo13"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -348,21 +369,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo14</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo14
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo14.png"
+                    src="/dist/media/demos/demo14.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo14"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -370,21 +392,22 @@
 
           <div class="mb-0">
             <div class="mb-7">
-              <h3 class="fw-bold text-center mb-3">Demo15</h3>
+              <h3 class="fw-bold text-center mb-3">
+                Demo15
+              </h3>
               <div class="overlay overflow-hidden border border-4 p-2 rounded">
                 <div class="overlay-wrapper rounded">
                   <img
-                    src="dist/media/demos/demo15.png"
+                    src="/dist/media/demos/demo15.png"
                     alt="demo"
                     class="w-100 rounded"
-                  />
+                  >
                 </div>
                 <div class="overlay-layer bg-dark bg-opacity-10">
                   <a
                     href="https://preview.keenthemes.com/metronic8/demo15"
                     class="btn btn-primary shadow"
-                    >Preview</a
-                  >
+                  >Preview</a>
                 </div>
               </div>
             </div>
@@ -396,8 +419,14 @@
       <!--end::Body-->
 
       <!--begin::Footer-->
-      <div class="card-footer py-5 text-center" id="kt_explore_footer">
-        <a href="" class="btn btn-primary"> Purchase {{ themeName }} </a>
+      <div
+        id="kt_explore_footer"
+        class="card-footer py-5 text-center"
+      >
+        <a
+          href=""
+          class="btn btn-primary"
+        > Purchase {{ themeName }} </a>
       </div>
       <!--end::Footer-->
     </div>
@@ -411,7 +440,7 @@ import { defineComponent } from "vue";
 import { themeName } from "@/metronic/core/helpers/documentation";
 
 export default defineComponent({
-  name: "kt-explore",
+  name: "KtExplore",
   setup() {
     return {
       themeName

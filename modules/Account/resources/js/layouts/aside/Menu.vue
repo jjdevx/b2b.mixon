@@ -29,7 +29,7 @@
         >
           <span class="menu-icon">
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="dist/media/icons/duotone/Design/PenAndRuller.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Design/PenAndRuller.svg" />
             </span>
           </span>
           <span class="menu-title">Главная</span>
@@ -43,7 +43,7 @@
         >
           <span class="menu-icon">
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Sign-out.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Sign-out.svg" />
             </span>
           </span>
           <span class="menu-title">Выйти</span>

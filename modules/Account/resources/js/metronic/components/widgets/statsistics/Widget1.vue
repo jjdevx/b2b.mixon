@@ -2,7 +2,7 @@
   <!--begin::Statistics Widget 1-->
   <div
     :class="widgetClasses"
-    :style="`background-image: url('dist/media/svg/shapes/${background}')`"
+    :style="`background-image: url('/dist/media/svg/shapes/${background}')`"
     class="card bgi-no-repeat"
     style="background-position: right top; background-size: 30% auto;"
   >
@@ -11,13 +11,14 @@
       <a
         href="#"
         class="card-title fw-bolder text-muted text-hover-primary fs-4"
-        >{{ title }}</a
-      >
+      >{{ title }}</a>
 
-      <div class="fw-bolder text-primary my-6">{{ time }}</div>
+      <div class="fw-bolder text-primary my-6">
+        {{ time }}
+      </div>
 
       <p class="text-dark-75 fw-bold fs-5 m-0">
-        <span v-html="description"></span>
+        <span v-html="description" />
       </p>
     </div>
     <!--end::Body-->
@@ -29,14 +30,14 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "kt-widget-1",
+  name: "KtWidget1",
+  components: {},
   props: {
     widgetClasses: String,
     background: String,
     title: String,
     time: String,
     description: String
-  },
-  components: {}
+  }
 });
 </script>

@@ -1,8 +1,8 @@
 <template>
   <!--begin::Modal - Two-factor authentication-->
   <div
-    class="modal fade"
     id="kt_modal_two_factor_authentication"
+    class="modal fade"
     tabindex="-1"
     aria-hidden="true"
   >
@@ -22,7 +22,7 @@
             data-bs-dismiss="modal"
           >
             <span class="svg-icon svg-icon-1">
-              <inline-svg src="dist/media/icons/duotone/Navigation/Close.svg" />
+              <inline-svg src="/dist/media/icons/duotone/Navigation/Close.svg" />
             </span>
           </div>
           <!--end::Close-->
@@ -44,26 +44,26 @@
             <div class="pb-10">
               <!--begin::Option-->
               <input
+                id="kt_modal_two_factor_authentication_option_1"
+                v-model="value"
                 type="radio"
                 class="btn-check"
                 name="auth_option"
                 value="apps"
                 checked="checked"
-                id="kt_modal_two_factor_authentication_option_1"
-                v-model="value"
-              />
+              >
               <label
                 class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-5"
                 for="kt_modal_two_factor_authentication_option_1"
               >
                 <span class="svg-icon svg-icon-4x me-4">
-                  <inline-svg src="dist/media/icons/duotone/Interface/Cog.svg" />
+                  <inline-svg src="/dist/media/icons/duotone/Interface/Cog.svg" />
                 </span>
 
                 <span class="d-block fw-bold text-start">
-                  <span class="text-dark fw-bolder d-block fs-3"
-                    >Authenticator Apps</span
-                  >
+                  <span
+                    class="text-dark fw-bolder d-block fs-3"
+                  >Authenticator Apps</span>
                   <span class="text-gray-400 fw-bold fs-6">
                     Get codes from an app like Google Authenticator, Microsoft
                     Authenticator, Authy or 1Password.
@@ -74,27 +74,27 @@
 
               <!--begin::Option-->
               <input
+                id="kt_modal_two_factor_authentication_option_2"
+                v-model="value"
                 type="radio"
                 class="btn-check"
                 name="auth_option"
                 value="sms"
-                id="kt_modal_two_factor_authentication_option_2"
-                v-model="value"
-              />
+              >
               <label
                 class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center"
                 for="kt_modal_two_factor_authentication_option_2"
               >
                 <span class="svg-icon svg-icon-4x me-4">
-                  <inline-svg src="dist/media/icons/duotone/Interface/Comment.svg" />
+                  <inline-svg src="/dist/media/icons/duotone/Interface/Comment.svg" />
                 </span>
 
                 <span class="d-block fw-bold text-start">
                   <span class="text-dark fw-bolder d-block fs-3">SMS</span>
-                  <span class="text-gray-400 fw-bold fs-6"
-                    >We will send a code via SMS if you need to use your backup
-                    login method.</span
-                  >
+                  <span
+                    class="text-gray-400 fw-bold fs-6"
+                  >We will send a code via SMS if you need to use your backup
+                    login method.</span>
                 </span>
               </label>
               <!--end::Option-->
@@ -102,7 +102,10 @@
             <!--end::Options-->
 
             <!--begin::Action-->
-            <button @click="state = value" class="btn btn-primary w-100">
+            <button
+              class="btn btn-primary w-100"
+              @click="state = value"
+            >
               Continue
             </button>
             <!--end::Action-->
@@ -110,7 +113,10 @@
           <!--end::Options-->
 
           <!--begin::Apps-->
-          <div :class="[state !== 'apps' && 'd-none']" data-kt-element="apps">
+          <div
+            :class="[state !== 'apps' && 'd-none']"
+            data-kt-element="apps"
+          >
             <!--begin::Heading-->
             <h3 class="text-dark fw-bolder mb-7">
               Authenticator Apps
@@ -123,25 +129,29 @@
               <a
                 href="https://support.google.com/accounts/answer/1066447?hl=en"
                 target="_blank"
-                >Google Authenticator</a
-              >,
+              >Google Authenticator</a>,
               <a
                 href="https://www.microsoft.com/en-us/account/authenticator"
                 target="_blank"
-                >Microsoft Authenticator</a
-              >,
-              <a href="https://authy.com/download/" target="_blank">Authy</a>,
+              >Microsoft Authenticator</a>,
+              <a
+                href="https://authy.com/download/"
+                target="_blank"
+              >Authy</a>,
               or
               <a
                 href="https://support.1password.com/one-time-passwords/"
                 target="_blank"
-                >1Password</a
-              >, scan the QR code. It will generate a 6 digit code for you to
+              >1Password</a>, scan the QR code. It will generate a 6 digit code for you to
               enter below.
 
               <!--begin::QR code image-->
               <div class="pt-5 text-center">
-                <img src="dist/media/misc/qr.png" alt="" class="mw-150px" />
+                <img
+                  src="/dist/media/misc/qr.png"
+                  alt=""
+                  class="mw-150px"
+                >
               </div>
               <!--end::QR code image-->
             </div>
@@ -152,7 +162,7 @@
             >
               <span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
                 <inline-svg
-                  src="dist/media/icons/duotone/Code/Warning-1-circle.svg"
+                  src="/dist/media/icons/duotone/Code/Warning-1-circle.svg"
                 />
               </span>
               <!--begin::Wrapper-->
@@ -175,8 +185,8 @@
             <!--begin::Form-->
             <Form
               class="form"
-              @submit="submitAuthCodeForm()"
               :validation-schema="schema2"
+              @submit="submitAuthCodeForm()"
             >
               <!--begin::Input group-->
               <div class="mb-10 fv-row">
@@ -198,8 +208,8 @@
               <div class="d-flex flex-center">
                 <button
                   type="reset"
-                  @click="state = ''"
                   class="btn btn-white me-3"
+                  @click="state = ''"
                 >
                   Cancel
                 </button>
@@ -217,7 +227,7 @@
                     Please wait...
                     <span
                       class="spinner-border spinner-border-sm align-middle ms-2"
-                    ></span>
+                    />
                   </span>
                 </button>
               </div>
@@ -228,7 +238,10 @@
           <!--end::Options-->
 
           <!--begin::SMS-->
-          <div :class="[state !== 'sms' && 'd-none']" data-kt-element="sms">
+          <div
+            :class="[state !== 'sms' && 'd-none']"
+            data-kt-element="sms"
+          >
             <!--begin::Heading-->
             <h3 class="text-dark fw-bolder fs-3 mb-5">
               SMS: Verify Your Mobile Number
@@ -245,8 +258,8 @@
             <!--begin::Form-->
             <Form
               class="form"
-              @submit="submitMobileForm()"
               :validation-schema="schema1"
+              @submit="submitMobileForm()"
             >
               <!--begin::Input group-->
               <div class="mb-10 fv-row">
@@ -266,7 +279,10 @@
 
               <!--begin::Actions-->
               <div class="d-flex flex-center">
-                <button @click="state = ''" class="btn btn-white me-3">
+                <button
+                  class="btn btn-white me-3"
+                  @click="state = ''"
+                >
                   Cancel
                 </button>
 
@@ -283,7 +299,7 @@
                     Please wait...
                     <span
                       class="spinner-border spinner-border-sm align-middle ms-2"
-                    ></span>
+                    />
                   </span>
                 </button>
               </div>
@@ -309,7 +325,7 @@ import { ErrorMessage, Field, Form } from "vee-validate";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 
 export default defineComponent({
-  name: "two-factor-auth-modal",
+  name: "TwoFactorAuthModal",
   components: {
     ErrorMessage,
     Field,

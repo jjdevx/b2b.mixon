@@ -1,6 +1,9 @@
 <template>
   <!--begin::Tables Widget 1-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -19,11 +22,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
     </div>
@@ -38,17 +41,20 @@
           <!--begin::Table head-->
           <thead>
             <tr>
-              <th class="p-0 w-50px"></th>
-              <th class="p-0 min-w-200px"></th>
-              <th class="p-0 min-w-100px"></th>
-              <th class="p-0 min-w-40px"></th>
+              <th class="p-0 w-50px" />
+              <th class="p-0 min-w-200px" />
+              <th class="p-0 min-w-100px" />
+              <th class="p-0 min-w-40px" />
             </tr>
           </thead>
           <!--end::Table head-->
 
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in items" :key="index">
+            <template
+              v-for="(item, index) in items"
+              :key="index"
+            >
               <tr>
                 <th>
                   <div class="symbol symbol-50px me-2">
@@ -57,7 +63,7 @@
                         :src="item.image"
                         class="h-50 align-self-center"
                         alt=""
-                      />
+                      >
                     </span>
                   </div>
                 </th>
@@ -66,8 +72,7 @@
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                    >{{ item.info.title }}</a
-                  >
+                  >{{ item.info.title }}</a>
                   <span class="text-muted fw-bold d-block fs-7">{{
                     item.info.description
                   }}</span>
@@ -89,7 +94,7 @@
                         :aria-valuenow="item.progress.value"
                         aria-valuemin="0"
                         aria-valuemax="100"
-                      ></div>
+                      />
                     </div>
                   </div>
                 </td>
@@ -101,7 +106,7 @@
                   >
                     <span class="svg-icon svg-icon-2">
                       <inline-svg
-                        src="dist/media/icons/duotone/Navigation/Arrow-right.svg"
+                        src="/dist/media/icons/duotone/Navigation/Arrow-right.svg"
                       />
                     </span>
                   </a>
@@ -124,7 +129,7 @@ import { defineComponent } from "vue";
 import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 
 export default defineComponent({
-  name: "kt-widget-1",
+  name: "KtWidget1",
   components: {
     Dropdown1
   },
@@ -134,7 +139,7 @@ export default defineComponent({
   setup() {
     const items = [
       {
-        image: "dist/media/svg/brand-logos/plurk.svg",
+        image: "/dist/media/svg/brand-logos/plurk.svg",
         info: {
           title: "Top Authors",
           description: "Successful Fellas"
@@ -146,7 +151,7 @@ export default defineComponent({
       },
 
       {
-        image: "dist/media/svg/brand-logos/telegram.svg",
+        image: "/dist/media/svg/brand-logos/telegram.svg",
         info: {
           title: "Popular Authors",
           description: "Most Successful"
@@ -158,7 +163,7 @@ export default defineComponent({
       },
 
       {
-        image: "dist/media/svg/brand-logos/vimeo.svg",
+        image: "/dist/media/svg/brand-logos/vimeo.svg",
         info: {
           title: "New Users",
           description: "Awesome Users"
@@ -170,7 +175,7 @@ export default defineComponent({
       },
 
       {
-        image: "dist/media/svg/brand-logos/bebo.svg",
+        image: "/dist/media/svg/brand-logos/bebo.svg",
         info: {
           title: "Active Customers",
           description: "Best Customers"
@@ -182,7 +187,7 @@ export default defineComponent({
       },
 
       {
-        image: "dist/media/svg/brand-logos/kickstarter.svg",
+        image: "/dist/media/svg/brand-logos/kickstarter.svg",
         info: {
           title: "Bestseller Theme",
           description: "Amazing Templates"

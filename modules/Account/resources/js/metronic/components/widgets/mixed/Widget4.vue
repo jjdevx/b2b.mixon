@@ -1,6 +1,9 @@
 <template>
   <!--begin::Mixed Widget 4-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Beader-->
     <div class="card-header border-0 py-5">
       <h3 class="card-title align-items-start flex-column">
@@ -19,11 +22,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown1></Dropdown1>
+        <Dropdown1 />
         <!--end::Menu-->
       </div>
     </div>
@@ -39,20 +42,22 @@
           :series="series"
           :height="chartHeight"
           type="radialBar"
-        ></apexchart>
+        />
         <!--end::Chart-->
       </div>
 
       <div class="pt-5">
         <p class="text-center fs-6 pb-5 ">
           <span class="badge badge-light-danger fs-8">Notes:</span>&nbsp;
-          Current sprint requires stakeholders<br />
+          Current sprint requires stakeholders<br>
           to approve newly amended policies
         </p>
 
-        <a href="#" :class="`btn-${btnColor}`" class="btn w-100 py-3"
-          >Take Action</a
-        >
+        <a
+          href="#"
+          :class="`btn-${btnColor}`"
+          class="btn w-100 py-3"
+        >Take Action</a>
       </div>
     </div>
     <!--end::Body-->
@@ -66,7 +71,7 @@ import Dropdown1 from "@/metronic/components/dropdown/Dropdown1.vue";
 import { getCSSVariableValue } from "@/metronic/assets/ts/_utils";
 
 export default defineComponent({
-  name: "widget-1",
+  name: "Widget1",
   components: {
     Dropdown1
   },
@@ -79,8 +84,8 @@ export default defineComponent({
   setup(props) {
     const color = ref(props.chartColor);
 
-    const baseColor = getCSSVariableValue("--bs-" + color.value);
-    const lightColor = getCSSVariableValue("--bs-light-" + color.value);
+    const baseColor = getCSSVariableValue(`--bs-${  color.value}`);
+    const lightColor = getCSSVariableValue(`--bs-light-${  color.value}`);
     const labelColor = getCSSVariableValue("--bs-" + "gray-700");
 
     const chartOptions = {
@@ -107,8 +112,8 @@ export default defineComponent({
               fontWeight: "700",
               offsetY: 12,
               show: true,
-              formatter: function(val) {
-                return val + "%";
+              formatter(val) {
+                return `${val  }%`;
               }
             }
           },

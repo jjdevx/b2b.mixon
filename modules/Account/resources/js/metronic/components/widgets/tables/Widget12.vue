@@ -1,6 +1,9 @@
 <template>
   <!--begin::Tables Widget 12-->
-  <div :class="widgetClasses" class="card">
+  <div
+    :class="widgetClasses"
+    class="card"
+  >
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
       <h3 class="card-title align-items-start flex-column">
@@ -19,11 +22,11 @@
         >
           <span class="svg-icon svg-icon-2">
             <inline-svg
-              src="dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
+              src="/dist/media/icons/duotone/Layout/Layout-4-blocks-2.svg"
             />
           </span>
         </button>
-        <Dropdown2></Dropdown2>
+        <Dropdown2 />
         <!--end::Menu-->
       </div>
     </div>
@@ -38,19 +41,32 @@
           <!--begin::Table head-->
           <thead>
             <tr class="fw-bolder text-muted bg-light">
-              <th class="ps-4 min-w-300px rounded-start">Agent</th>
-              <th class="min-w-125px">Earnings</th>
-              <th class="min-w-125px">Comission</th>
-              <th class="min-w-200px">Company</th>
-              <th class="min-w-150px">Rating</th>
-              <th class="min-w-200px text-end rounded-end"></th>
+              <th class="ps-4 min-w-300px rounded-start">
+                Agent
+              </th>
+              <th class="min-w-125px">
+                Earnings
+              </th>
+              <th class="min-w-125px">
+                Comission
+              </th>
+              <th class="min-w-200px">
+                Company
+              </th>
+              <th class="min-w-150px">
+                Rating
+              </th>
+              <th class="min-w-200px text-end rounded-end" />
             </tr>
           </thead>
           <!--end::Table head-->
 
           <!--begin::Table body-->
           <tbody>
-            <template v-for="(item, index) in list" :key="index">
+            <template
+              v-for="(item, index) in list"
+              :key="index"
+            >
               <tr>
                 <td>
                   <div class="d-flex align-items-center">
@@ -60,7 +76,7 @@
                           :src="item.agent.image"
                           class="h-75 align-self-end"
                           alt=""
-                        />
+                        >
                       </span>
                     </div>
 
@@ -68,12 +84,10 @@
                       <a
                         href="#"
                         class="text-dark fw-bolder text-hover-primary mb-1 fs-6"
-                        >{{ item.agent.name }}</a
-                      >
+                      >{{ item.agent.name }}</a>
                       <span
                         class="text-muted fw-bold text-muted d-block fs-7"
-                        >{{ item.agent.skills }}</span
-                      >
+                      >{{ item.agent.skills }}</span>
                     </div>
                   </div>
                 </td>
@@ -82,19 +96,17 @@
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.earnings.value }}</a
-                  >
-                  <span class="text-muted fw-bold text-muted d-block fs-7"
-                    >{{ item.earnings.remarks }}></span
-                  >
+                  >{{ item.earnings.value }}</a>
+                  <span
+                    class="text-muted fw-bold text-muted d-block fs-7"
+                  >{{ item.earnings.remarks }}></span>
                 </td>
 
                 <td>
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.comission.value }}</a
-                  >
+                  >{{ item.comission.value }}</a>
                   <span class="text-muted fw-bold text-muted d-block fs-7">{{
                     item.comission.remarks
                   }}</span>
@@ -104,8 +116,7 @@
                   <a
                     href="#"
                     class="text-dark fw-bolder text-hover-primary d-block mb-1 fs-6"
-                    >{{ item.company.name }}</a
-                  >
+                  >{{ item.company.name }}</a>
                   <span class="text-muted fw-bold text-muted d-block fs-7">{{
                     item.company.fields
                   }}</span>
@@ -113,20 +124,22 @@
 
                 <td>
                   <div class="rating">
-                    <template v-for="i in 5" :key="i">
+                    <template
+                      v-for="i in 5"
+                      :key="i"
+                    >
                       <div
                         :class="[item.rating.value >= i && 'checked']"
                         class="rating-label me-2"
                       >
-                        <i class="bi bi-star-fill fs-5"></i>
+                        <i class="bi bi-star-fill fs-5" />
                       </div>
                     </template>
                   </div>
 
                   <span
                     class="text-muted fw-bold text-muted d-block fs-7 mt-1"
-                    >{{ item.rating.remarks }}</span
-                  >
+                  >{{ item.rating.remarks }}</span>
                 </td>
 
                 <td class="text-end">
@@ -163,7 +176,7 @@ import { defineComponent } from "vue";
 import Dropdown2 from "@/metronic/components/dropdown/Dropdown2.vue";
 
 export default defineComponent({
-  name: "kt-widget-12",
+  name: "KtWidget12",
   components: {
     Dropdown2
   },
@@ -174,7 +187,7 @@ export default defineComponent({
     const list = [
       {
         agent: {
-          image: "dist/media/svg/avatars/001-boy.svg",
+          image: "/dist/media/svg/avatars/001-boy.svg",
           name: "Brad Simmons",
           skills: "HTML, JS, ReactJS"
         },
@@ -197,7 +210,7 @@ export default defineComponent({
       },
       {
         agent: {
-          image: "dist/media/svg/avatars/047-girl-25.svg",
+          image: "/dist/media/svg/avatars/047-girl-25.svg",
           name: "Lebron Wayde",
           skills: "PHP, Laravel, VueJS"
         },
@@ -220,7 +233,7 @@ export default defineComponent({
       },
       {
         agent: {
-          image: "dist/media/svg/avatars/006-girl-3.svg",
+          image: "/dist/media/svg/avatars/006-girl-3.svg",
           name: "Brad Simmons",
           skills: "HTML, JS, ReactJS"
         },
@@ -243,7 +256,7 @@ export default defineComponent({
       },
       {
         agent: {
-          image: "dist/media/svg/avatars/014-girl-7.svg",
+          image: "/dist/media/svg/avatars/014-girl-7.svg",
           name: "Natali Trump",
           skills: "HTML, JS, ReactJS"
         },
@@ -266,7 +279,7 @@ export default defineComponent({
       },
       {
         agent: {
-          image: "dist/media/svg/avatars/020-girl-11.svg",
+          image: "/dist/media/svg/avatars/020-girl-11.svg",
           name: "	Jessie Clarcson",
           skills: "HTML, JS, ReactJS"
         },
