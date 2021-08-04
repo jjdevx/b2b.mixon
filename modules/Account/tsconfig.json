@@ -38,7 +38,7 @@
         "resources/js/*"
       ],
       "mixon": [
-        "resources/js/helpers/mixon.ts"
+        "resources/js/core/facade.ts"
       ]
     },
     "lib": [

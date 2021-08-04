@@ -1,4 +1,5 @@
 export type User = {
+  avatar?: string
   id: number
   name: string
   surname: string

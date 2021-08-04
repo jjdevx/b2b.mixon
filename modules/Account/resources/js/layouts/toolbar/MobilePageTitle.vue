@@ -22,7 +22,7 @@
     >
       <li class="breadcrumb-item pe-3">
         <InertiaLink
-          href="/dashboard"
+          href="/"
           class="text-muted text-hover-primary"
         >
           Главная

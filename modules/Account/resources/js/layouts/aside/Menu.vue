@@ -11,6 +11,7 @@
     data-kt-scroll-wrappers="#kt_aside_menu"
   >
     <div
+      v-if="menu"
       id="#kt_header_menu"
       class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
       data-kt-menu="true"
@@ -22,17 +23,22 @@
           >Аккаунт</span>
         </div>
       </div>
-      <div class="menu-item">
+      <div
+        v-for="item in menu"
+        :key="item.link"
+        class="menu-item"
+      >
         <InertiaLink
-          href="/"
+          :href="item.link"
           class="menu-link"
+          :class="{active: item.active}"
         >
           <span class="menu-icon">
             <span class="svg-icon svg-icon-2">
-              <inline-svg src="/dist/media/icons/duotone/Design/PenAndRuller.svg" />
+              <inline-svg :src="`/dist/media/icons/${item.icon}`" />
             </span>
           </span>
-          <span class="menu-title">Главная</span>
+          <span class="menu-title">{{ item.title }}</span>
         </InertiaLink>
       </div>
       <div class="menu-item">
@@ -59,15 +65,19 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, ref} from 'vue'
+import {computed, defineComponent, onMounted, ref} from 'vue'
 import {ScrollComponent} from '@/metronic/assets/ts/components/_ScrollComponent'
 import {MenuComponent} from '@/metronic/assets/ts/components/MenuComponent'
 import {Inertia} from '@inertiajs/inertia'
+import {useStore} from '@/store'
 
 export default defineComponent({
   name: 'KtMenu',
   components: {},
   setup() {
+    const store = useStore()
+    const menu = computed(() => store.state.common?.menu)
+
     const scrollElRef = ref<null | HTMLElement>(null)
 
     function logout() {
@@ -82,7 +92,7 @@ export default defineComponent({
       }
     })
 
-    return {scrollElRef, logout}
+    return {menu, scrollElRef, logout}
   }
 })
 </script>

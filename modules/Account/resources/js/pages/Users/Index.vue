@@ -10,7 +10,7 @@
       </h3>
       <div class="d-flex align-items-center">
         <InertiaLink
-          v-if="!isTrash"
+          v-if="!isTrash && can('users.trash')"
           :href="route('users.trash')"
           class="add-user-btn btn btn-sm btn-light-danger"
         >
@@ -30,6 +30,7 @@
           Активные
         </InertiaLink>
         <InertiaLink
+          v-if="can('users.create')"
           :href="route('users.create')"
           class="add-user-btn btn btn-sm btn-light-primary"
         >
@@ -139,6 +140,7 @@
 
                 <td class="text-end">
                   <InertiaLink
+                    v-if="can('users.edit')"
                     :href="route('users.edit',user.id)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                   >
@@ -147,6 +149,7 @@
                     </span>
                   </InertiaLink>
                   <a
+                    v-if="can('users.delete')"
                     href="#"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                     @click.prevent="destroy(user.id)"
@@ -156,7 +159,7 @@
                     </span>
                   </a>
                   <a
-                    v-if="isTrash"
+                    v-if="isTrash && can('users.restore')"
                     href="#"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm"
                     data-bs-toggle="tooltip"
@@ -190,12 +193,9 @@
 </template>
 
 <script lang="ts">
+import {useRoute, useCan, usePage, Inertia, Swal} from 'mixon'
 import {computed, defineComponent, onMounted, ref} from 'vue'
-import route, {routeIncludes} from '@/helpers/route'
 import {ElPagination} from 'element-plus'
-import {usePage} from '@inertiajs/inertia-vue3'
-import {Inertia} from '@inertiajs/inertia'
-import Swal from 'sweetalert2'
 import {Tooltip} from 'bootstrap'
 
 interface Page {
@@ -239,6 +239,8 @@ export default defineComponent({
   setup() {
     const page = usePage<Page>()
     const data = computed(() => page.props.value.data)
+
+    const {route, routeIncludes} = useRoute()
 
     const isTrash = routeIncludes('trash')
 
@@ -308,7 +310,7 @@ export default defineComponent({
       searchQuery, search,
       destroy, restore,
       handleSizeChange, handleCurrentChange,
-      route
+      route, ...useCan()
     }
   }
 })

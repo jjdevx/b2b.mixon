@@ -1,6 +1,11 @@
 <?php
 
-use Modules\Account\Http\Controllers\{AuthController, DashboardController, Users\UserController};
+use Modules\Account\Http\Controllers\{AuthController,
+    DashboardController,
+    Users\AvatarController,
+    Users\ProfileController,
+    Users\UserController
+};
 use Modules\Account\Http\Middleware\RedirectIfAuthenticated;
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -29,12 +34,13 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         ->parameter('user', 'id')
         ->except(['show'])
         ->middleware('can:users.index');
+    Route::delete('users/{id}/avatar', [UserController::class, 'destroyAvatar'])
+        ->name('users.avatar.destroy')
+        ->middleware('can:users.edit');
 
-    Route::prefix('users/{user}/avatar')
-        ->as('users.avatar.')
-        ->middleware('can:users.edit')
-        ->group(function () {
-           // Route::post('', [AvatarController::class, 'update'])->name('update');
-           // Route::delete('', [AvatarController::class, 'destroy'])->name('destroy');
-        });
+    Route::prefix('profile')->as('profile.')->group(function () {
+        Route::get('', [ProfileController::class, 'edit'])->name('edit');
+        Route::patch('', [ProfileController::class, 'update'])->name('update');
+        Route::delete('avatar', [ProfileController::class, 'destroyAvatar'])->name('avatar.destroy');
+    });
 });

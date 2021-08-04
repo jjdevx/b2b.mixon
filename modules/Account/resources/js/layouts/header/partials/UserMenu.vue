@@ -28,10 +28,10 @@
     <div class="separator my-2" />
     <div class="menu-item px-5">
       <InertiaLink
-        href="/"
+        :href="route('profile.edit')"
         class="menu-link px-5"
       >
-        Мой профиль
+        Мой аккаунт
       </InertiaLink>
     </div>
     <div class="menu-item px-5">
@@ -49,6 +49,7 @@
 import {computed, defineComponent} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
 import {useStore} from '@/store'
+import {useRoute} from '@/helpers/route'
 
 export default defineComponent({
   components: {},
@@ -61,7 +62,7 @@ export default defineComponent({
       Inertia.delete('/logout')
     }
 
-    return {user, logout}
+    return {user, logout, ...useRoute()}
   }
 })
 </script>

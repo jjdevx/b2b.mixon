@@ -3,7 +3,6 @@
 namespace Modules\Account\Http\Controllers\Users;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Http\Resources\Json\ResourceCollection;
 use Modules\Account\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
@@ -12,7 +11,6 @@ use Inertia\Response;
 use Modules\Account\Http\Requests\IndexRequest;
 use Modules\Account\Http\Requests\UserRequest;
 use Modules\Account\Http\Resources\UserCollection;
-use Modules\Account\Http\Resources\UserResource;
 use Modules\Account\Repositories\UserRepository;
 
 class UserController extends Controller
@@ -65,6 +63,10 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
         $user->markEmailAsVerified();
 
+        if ($avatar = $request->file('avatar')) {
+            $user->uploadAvatar($avatar);
+        }
+
         return redirect()->route('account.users.edit', $user->id)->with([
             'toast' => [
                 'text' => "Пользователь {$user->full_name} был создан."
@@ -82,7 +84,7 @@ class UserController extends Controller
         $data['roles'] = $user->roles->pluck('id');
 
         if ($user->avatarMedia) {
-            $data['avatar'] = $user->avatar;
+            $data['avatar'] = $user->getAvatar();
         }
 
         return inertia('Users/Profile', [
@@ -106,6 +108,10 @@ class UserController extends Controller
         $user->update($data);
 
         $user->syncRoles($request->input('roles'));
+
+        if ($avatar = $request->file('avatar')) {
+            $user->uploadAvatar($avatar);
+        }
 
         return back()->with(['toast' => ['text' => "Пользователь {$user->full_name} был отредактирован."]]);
     }
@@ -164,5 +170,15 @@ class UserController extends Controller
             $user->forceDelete();
         }
         return back()->with(['toast' => ['text' => 'Пользователь был удален окончательно.']]);
+    }
+
+    public function destroyAvatar(int $id): RedirectResponse
+    {
+        $user = $this->repository->findById($id);
+
+        $user->deleteAvatar();
+        $user->load('avatarMedia');
+
+        return redirect()->back()->with(['toast' => ['text' => 'Фото было удалено.']]);
     }
 }

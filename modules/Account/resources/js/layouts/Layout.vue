@@ -110,6 +110,6 @@ export default defineComponent({
 
 <style scoped>
 .container-fluid {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 </style>

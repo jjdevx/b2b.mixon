@@ -55,8 +55,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
                     ->sharpen(0)
                     ->nonQueued();
                 $this->addMediaConversion('icon')
-                    ->width(50)
                     ->height(50)
+                    ->crop('crop-center', 100, 100)
                     ->sharpen(0)
                     ->nonQueued();
             });

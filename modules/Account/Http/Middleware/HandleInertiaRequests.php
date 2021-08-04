@@ -30,12 +30,21 @@ class HandleInertiaRequests extends Middleware
                     'meta' => fn() => [
                         'title' => \SEOMeta::getTitle()
                     ],
+                    'auth' => function () use ($request) {
+                        if (!\Auth::check()) {
+                            return;
+                        }
+
+                        $user = $request->user('web');
+                        $data = $user->only(['id', 'name', 'surname', 'email', 'icon']);
+
+                        $data['permissions'] = $user->getAllPermissions()->pluck('name');
+
+                        return $data;
+                    },
+                    'menu' => \Auth::check() ? $this->menu($request) : []
                 ]
             ];
-
-            if ($user = \Auth::user()) {
-                $shared['common']['auth'] = $user->only(['name', 'email', 'icon']);
-            }
 
             if ($flash = \Session::get('flash')) {
                 $shared['flash'] = $flash;
@@ -49,5 +58,36 @@ class HandleInertiaRequests extends Middleware
         }
 
         return array_merge(parent::share($request), $shared);
+    }
+
+    protected function menu(Request $request): array
+    {
+        $user = \Auth::user();
+
+        $menu = [
+            [
+                'link' => route('account.dashboard'),
+                'title' => 'Главная',
+                'icon' => 'duotone/Design/PenAndRuller.svg',
+                'active' => $request->routeIs('account.dashboard')
+            ],
+            [
+                'link' => route('account.profile.edit'),
+                'title' => 'Мой аккаунт',
+                'icon' => 'duotone/General/Settings-1.svg',
+                'active' => $request->routeIs('account.profile.edit')
+            ]
+        ];
+
+        if ($user->can('users.index')) {
+            $menu[] = [
+                'link' => route('account.users.index'),
+                'title' => 'Пользователи',
+                'icon' => 'duotone/General/User.svg',
+                'active' => \Str::contains($request->route()->getName(), 'users')
+            ];
+        }
+
+        return $menu;
     }
 }

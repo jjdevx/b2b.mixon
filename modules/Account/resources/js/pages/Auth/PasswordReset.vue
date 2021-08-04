@@ -53,17 +53,13 @@
 </template>
 
 <script lang="ts">
+import {usePage, Inertia, BaseSchema} from 'mixon'
 import {defineComponent, ref} from 'vue'
 import {ErrorMessage, Field, Form, FormActions} from 'vee-validate'
 import {object, string} from 'yup'
 import AuthLayout from '@/layouts/Auth.vue'
-import {Inertia} from '@inertiajs/inertia'
-import {usePage} from '@inertiajs/inertia-vue3'
-import BaseSchema from 'yup/lib/schema'
 
-type FormFields = {
-  email: string
-}
+type FormFields = { email: string }
 
 export default defineComponent({
   components: {Field, Form, ErrorMessage},

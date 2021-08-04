@@ -10,8 +10,7 @@ mix.browserSync({
 })
 
 mix.alias({
-  '@': path.join(__dirname, 'resources/js'),
-  'mixon': path.join(__dirname, 'resources/js/helpers/mixon.ts')
+  '@': path.join(__dirname, 'resources/js')
 })
 
 mix.webpackConfig({

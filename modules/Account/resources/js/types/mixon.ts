@@ -6,9 +6,12 @@ export interface Common {
   },
   auth: {
     name: string
+    surname: string
     email: string
     icon: string
-  }
+    permissions: Array<string>
+  },
+  menu: Array<{ title: string, link: string, icon: string, active: boolean }>
 }
 
 export interface Flash {

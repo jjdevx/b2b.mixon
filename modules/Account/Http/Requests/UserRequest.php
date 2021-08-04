@@ -12,6 +12,7 @@ class UserRequest extends FormRequest
         $update = request()->isMethod('PATCH');
 
         return [
+            'avatar' => ['nullable', 'image', 'max:5096', 'mimes:jpg,jpeg,bmp,png'],
             'name' => ['required', 'string255', 'min:2'],
             'surname' => ['required', 'string255', 'min:3'],
             'email' => ['required', 'email', 'unique:users,email,' . ($update ? $this->route()->parameter('user') : '')],

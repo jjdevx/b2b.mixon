@@ -79,12 +79,11 @@
 </template>
 
 <script lang="ts">
+import {Inertia, BaseSchema} from 'mixon'
 import {defineComponent, ref} from 'vue'
 import {ErrorMessage, Field, Form, FormActions} from 'vee-validate'
 import AuthLayout from '@/layouts/Auth.vue'
 import {object, string} from 'yup'
-import BaseSchema from 'yup/lib/schema'
-import {Inertia} from '@inertiajs/inertia'
 
 type FormFields = { email: string, password: string }
 

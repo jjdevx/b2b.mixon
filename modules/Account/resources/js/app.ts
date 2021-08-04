@@ -47,7 +47,7 @@ createInertiaApp({
     const app = createApp({render: () => h(InertiaApp, props)})
 
     app.use(plugin).component('InertiaLink', Link)
-
+    //app.use(mixonPlugin)
     app.use(store, key)
     app.use(ElementPlus)
 
