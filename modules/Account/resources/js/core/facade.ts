@@ -1,5 +1,5 @@
-export {useRoute} from '../helpers/route'
-export {useCan} from '../helpers/can'
+export {useRoute} from './helpers/route'
+export {useCan} from './helpers/can'
 
 export {Inertia} from '@inertiajs/inertia'
 export {usePage} from '@inertiajs/inertia-vue3'

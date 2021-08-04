@@ -10,7 +10,8 @@ mix.browserSync({
 })
 
 mix.alias({
-  '@': path.join(__dirname, 'resources/js')
+  '@': path.join(__dirname, 'resources/js'),
+  'mixon': path.join(__dirname, 'resources/js/core/facade')
 })
 
 mix.webpackConfig({

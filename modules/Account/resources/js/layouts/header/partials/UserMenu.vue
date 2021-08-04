@@ -49,7 +49,7 @@
 import {computed, defineComponent} from 'vue'
 import {Inertia} from '@inertiajs/inertia'
 import {useStore} from '@/store'
-import {useRoute} from '@/helpers/route'
+import {useRoute} from '@/core/helpers/route'
 
 export default defineComponent({
   components: {},

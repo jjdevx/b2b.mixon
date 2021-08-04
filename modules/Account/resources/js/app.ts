@@ -17,7 +17,7 @@ import '@/metronic/core/plugins/keenthemes'
 import '@/metronic/core/plugins/prismjs'
 import 'bootstrap'
 
-import {flashMessages, toastMessages} from '@/helpers/flash-messages'
+import {flashMessages, toastMessages} from '@/core/helpers/flash-messages'
 import {Common, Flash, Toast} from '@/types/mixon'
 import {setCurrentPageTitle} from '@/metronic/core/helpers/breadcrumb'
 
