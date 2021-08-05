@@ -2,10 +2,10 @@
 
 use Modules\Account\Http\Controllers\{AuthController,
     DashboardController,
+    DepartmentController,
     Users\AvatarController,
     Users\ProfileController,
-    Users\UserController
-};
+    Users\UserController};
 use Modules\Account\Http\Middleware\RedirectIfAuthenticated;
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -43,4 +43,9 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         Route::patch('', [ProfileController::class, 'update'])->name('update');
         Route::delete('avatar', [ProfileController::class, 'destroyAvatar'])->name('avatar.destroy');
     });
+
+    Route::resource('departments', DepartmentController::class)
+        ->parameter('department', 'id')
+        ->except(['show'])
+        ->middleware('can:departments.index');
 });

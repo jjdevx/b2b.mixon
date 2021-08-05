@@ -35,7 +35,7 @@
         >
           <span class="menu-icon">
             <span class="svg-icon svg-icon-2">
-              <inline-svg :src="`/dist/media/icons/${item.icon}`" />
+              <inline-svg :src="`/dist/media/icons/duotone/${item.icon}`" />
             </span>
           </span>
           <span class="menu-title">{{ item.title }}</span>

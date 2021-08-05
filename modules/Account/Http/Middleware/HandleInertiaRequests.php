@@ -68,13 +68,13 @@ class HandleInertiaRequests extends Middleware
             [
                 'link' => route('account.dashboard'),
                 'title' => 'Главная',
-                'icon' => 'duotone/Design/PenAndRuller.svg',
+                'icon' => 'Design/PenAndRuller.svg',
                 'active' => $request->routeIs('account.dashboard')
             ],
             [
                 'link' => route('account.profile.edit'),
                 'title' => 'Мой аккаунт',
-                'icon' => 'duotone/General/Settings-1.svg',
+                'icon' => 'General/Settings-1.svg',
                 'active' => $request->routeIs('account.profile.edit')
             ]
         ];
@@ -83,8 +83,16 @@ class HandleInertiaRequests extends Middleware
             $menu[] = [
                 'link' => route('account.users.index'),
                 'title' => 'Пользователи',
-                'icon' => 'duotone/General/User.svg',
+                'icon' => 'General/User.svg',
                 'active' => \Str::contains($request->route()->getName(), 'users')
+            ];
+        }
+        if ($user->can('departments.index')) {
+            $menu[] = [
+                'link' => route('account.departments.index'),
+                'title' => 'Отделы',
+                'icon' => 'Home/Building.svg',
+                'active' => \Str::contains($request->route()->getName(), 'departments')
             ];
         }
 

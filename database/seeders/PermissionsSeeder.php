@@ -11,14 +11,6 @@ class PermissionsSeeder extends Seeder
 
     public function run(): void
     {
-        /*
-        Eloquent::unguard();
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        Role::truncate();
-        Permission::truncate();
-        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        */
-
         $crudPermissions = ['index', 'create', 'edit', 'delete'];
         $trashPermissions = ['trash', 'restore', 'force-delete'];
 
@@ -29,6 +21,10 @@ class PermissionsSeeder extends Seeder
             ],
             'users' => [
                 'name' => 'Пользователи',
+                'permissions' => [...$crudPermissions, ...$trashPermissions],
+            ],
+            'departments' => [
+                'name' => 'Отделы',
                 'permissions' => [...$crudPermissions, ...$trashPermissions],
             ],
         ];
