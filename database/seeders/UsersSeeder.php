@@ -25,7 +25,7 @@ class UsersSeeder extends Seeder
             $this->command->getOutput()->progressStart(10);
 
             User::factory()->count(10)->create()->each(function (User $user) {
-                $user->assignRole('user');
+                $user->assignRole(random_int(0, 1) ? 'user' : 'manager');
                 $user->addMediaFromUrl('https://i.pravatar.cc/225')->toMediaCollection('avatar');
 
                 $this->command->getOutput()->progressAdvance();

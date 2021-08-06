@@ -26,7 +26,7 @@ class UserRepository
     public function getRoles(): array
     {
         return collect(Role::all(['id', 'label'])
-            ->map(fn(Role $r) => ['value' => $r->id, 'text' => $r->label]))
+            ->map(fn(Role $r) => ['value' => $r->id, 'label' => $r->label]))
             ->values()
             ->toArray();
     }

@@ -214,26 +214,15 @@
           class="fv-row mb-7"
         >
           <label class="form-label fw-bolder text-dark fs-6">Роль</label>
-          <Field
-            v-slot="{ value }"
-            class="form-control form-control-lg form-control-solid"
-            as="select"
-            multiple
-            name="roles"
-            autocomplete="off"
-          >
-            <option
-              v-for="{value:id,text} in roles"
-              :key="id"
-              :value="id"
-              :selected="value && value.includes(id)"
-            >
-              {{ text }}
-            </option>
-          </Field>
+          <Multiselect
+            v-model="roles"
+            :options="rolesForSelect"
+            mode="tags"
+            searchable
+          />
           <div class="fv-plugins-message-container">
             <div class="fv-help-block">
-              <ErrorMessage name="roles" />
+              {{ rolesErrorMessage }}
             </div>
           </div>
         </div>
@@ -262,10 +251,11 @@
 </template>
 
 <script lang="ts">
-import {usePage, useRoute, Inertia, BaseSchema} from 'mixon'
+import {BaseSchema, Inertia, usePage, useRoute} from 'mixon'
 import {computed, defineComponent, ref} from 'vue'
-import {ErrorMessage, Field, Form, FormActions} from 'vee-validate'
-import {object, string, array, number, mixed} from 'yup'
+import {ErrorMessage, Field, Form, FormActions, useField} from 'vee-validate'
+import Multiselect from '@vueform/multiselect'
+import {array, mixed, number, object, string} from 'yup'
 import {User} from '@/types/users'
 
 interface Page {
@@ -278,20 +268,19 @@ interface Page {
 type FormFields = Omit<User, 'id'> & { avatar: string }
 
 export default defineComponent({
-  components: {ErrorMessage, Field, Form},
+  components: {ErrorMessage, Field, Form, Multiselect},
   setup() {
     const {props} = usePage<Page>()
+    const {route, routeIncludes} = useRoute()
 
     const user = computed(() => props.value.data.user)
-    const roles = props.value.data.roles
-
-    const {route, routeIncludes} = useRoute()
+    const rolesForSelect = props.value.data.roles
 
     const isProfile = routeIncludes('profile.edit')
 
     const isLoading = ref(false)
 
-    const schema: Record<keyof FormFields, BaseSchema> = {
+    const schema: Record<keyof Omit<FormFields, 'roles'>, BaseSchema> = {
       avatar: mixed()
         .label('Фото'),
       name: string()
@@ -336,11 +325,13 @@ export default defineComponent({
       phone: string()
         .min(10)
         .nullable()
-        .label('Телефон'),
-      roles: array()
-        .of(number())
+        .label('Телефон')
     }
     const userValidationSchema = object().shape(schema)
+    const {
+      value: roles,
+      errorMessage: rolesErrorMessage
+    } = useField('roles', array().of(number()).required(), {initialValue: user.value?.roles})
 
     function submit(data: FormFields, actions: FormActions<FormFields>): void {
       isLoading.value = true
@@ -352,7 +343,7 @@ export default defineComponent({
 
       data.avatar = Array.isArray(data.avatar) ? data.avatar[0] : ''
 
-      Inertia.post(url, {...data, _method: user.value ? 'PATCH' : null}, {
+      Inertia.post(url, {...data, roles: roles.value, _method: user.value ? 'PATCH' : null}, {
         preserveState: true,
         preserveScroll: true,
         onSuccess: () => actions.setFieldValue('password', ''),
@@ -365,7 +356,11 @@ export default defineComponent({
       isProfile ? route('profile.avatar.destroy') : route('users.avatar.destroy', user.value?.id)
     )
 
-    return {userValidationSchema, user, submit, removeAvatar, roles, isProfile, isLoading, route}
+    return {
+      userValidationSchema, user, submit, removeAvatar, rolesForSelect, isProfile, isLoading,
+      roles, rolesErrorMessage,
+      route
+    }
   }
 })
 </script>
