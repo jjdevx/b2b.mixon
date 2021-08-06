@@ -324,21 +324,12 @@
 import {useRoute, useCan, usePage, Inertia, Swal, formatDate} from 'mixon'
 import {computed, defineComponent, onMounted} from 'vue'
 import {Tooltip} from 'bootstrap'
+import {DepartmentType, Department} from '@/types/departments'
+
+type DepartmentWithUsers = Omit<Department, 'users'> & { users: Array<{ id: number, name: string }> }
 
 interface Page {
-  data: {
-    branches: Array<Department>,
-    offices: Array<Department>,
-    shops: Array<Department>
-  }
-}
-
-interface Department {
-  id: number
-  name: string
-  createdAt: string
-  updatedAt: string
-  users: Array<{ id: number, name: string }>
+  data: Record<DepartmentType, Array<DepartmentWithUsers>>
 }
 
 export default defineComponent({
@@ -397,9 +388,9 @@ export default defineComponent({
     })
 
     return {
-      branches: data.value.branches,
-      offices: data.value.offices,
-      shops: data.value.shops,
+      branches: data.value.branch,
+      offices: data.value.office,
+      shops: data.value.shop,
       isTrash,
       destroy, restore,
       handleSizeChange, handleCurrentChange,

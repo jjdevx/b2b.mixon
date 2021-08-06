@@ -17,7 +17,7 @@ class Department extends Model
         'shop' => 'Магазин'
     ];
 
-    protected $fillable = ['title', 'type'];
+    protected $fillable = ['name', 'type'];
 
     public function users(): BelongsToMany
     {

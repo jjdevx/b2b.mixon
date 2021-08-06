@@ -43,6 +43,10 @@ class PermissionsSeeder extends Seeder
                 'label' => 'Админ',
                 'permissions' => Permission::all()->pluck('name')
             ],
+            'manager' => [
+                'label' => 'Менеджер',
+                'permissions' => []
+            ],
             'user' => [
                 'label' => 'Пользователь',
                 'permissions' => ['account.access']
