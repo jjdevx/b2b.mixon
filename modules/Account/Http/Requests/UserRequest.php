@@ -2,7 +2,6 @@
 
 namespace Modules\Account\Http\Requests;
 
-use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -24,7 +23,8 @@ class UserRequest extends FormRequest
             'address' => ['nullable', 'string255', 'min:10'],
             'fax' => ['nullable', 'string255', 'min:10'],
             'phone' => ['nullable', 'string255', 'min:10'],
-            'roles' => ['array'],
+            'shipping_point' => ['nullable', 'exists:departments,id'],
+            'roles' => ['array', 'nullable'],
             'roles.*' => ['nullable', 'numeric', 'exists:user_roles,id']
         ];
     }

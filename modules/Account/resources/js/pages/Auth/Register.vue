@@ -221,14 +221,14 @@
 </template>
 
 <script lang="ts">
-import {Inertia, BaseSchema} from 'mixon'
+import {BaseSchema, Inertia} from 'mixon'
 import {defineComponent, ref} from 'vue'
 import {ErrorMessage, Field, Form, FormActions} from 'vee-validate'
 import AuthLayout from '@/layouts/Auth.vue'
-import {object, string, ref as reference} from 'yup'
+import {object, ref as reference, string} from 'yup'
 import {User} from '@/types/users'
 
-type FormFields = Omit<User, 'avatar' | 'id' | 'roles'> & { passwordConfirmation: string }
+type FormFields = Omit<User, 'avatar' | 'id' | 'shippingPoint' | 'roles'> & { passwordConfirmation: string }
 
 export default defineComponent({
   components: {Field, Form, ErrorMessage},

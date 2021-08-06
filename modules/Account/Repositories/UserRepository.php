@@ -2,9 +2,11 @@
 
 namespace Modules\Account\Repositories;
 
+use App\Models\Department;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 use Spatie\Permission\Models\Role;
 
 class UserRepository
@@ -21,6 +23,11 @@ class UserRepository
             ->when($search['sortBy'] ?? false, fn(Builder $q) => $q->orderBy($search['sortBy'], $search['sortDesc'] ?? false ? 'desc' : 'asc'))
             ->when($scope, fn($q) => $scope($q))
             ->paginate($search['perPage'] ?? 10);
+    }
+
+    public function getShippingPoints(): Collection
+    {
+        return Department::where('type', '=', 'branch')->pluck('name', 'id');
     }
 
     public function getRoles(): array

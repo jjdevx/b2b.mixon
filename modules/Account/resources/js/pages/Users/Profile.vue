@@ -209,23 +209,42 @@
           </div>
         </div>
 
-        <div
-          v-if="!isProfile"
-          class="fv-row mb-7"
-        >
-          <label class="form-label fw-bolder text-dark fs-6">Роль</label>
-          <Multiselect
-            v-model="roles"
-            :options="rolesForSelect"
-            mode="tags"
-            searchable
-          />
-          <div class="fv-plugins-message-container">
-            <div class="fv-help-block">
-              {{ rolesErrorMessage }}
+        <template v-if="!isProfile">
+          <div class="fv-row mb-7">
+            <label class="form-label fw-bolder text-dark fs-6">Точка отгрузки*</label>
+            <select
+              v-model="shippingPoint"
+              class="form-control form-control-lg form-control-solid"
+            >
+              <option
+                v-for="(name,id) in shippingPoints"
+                :key="id"
+                :value="id"
+              >
+                {{ name }}
+              </option>
+            </select>
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                {{ shippingPointErrorMessage }}
+              </div>
             </div>
           </div>
-        </div>
+          <div class="fv-row mb-7">
+            <label class="form-label fw-bolder text-dark fs-6">Роль</label>
+            <Multiselect
+              v-model="roles"
+              :options="rolesForSelect"
+              mode="tags"
+              searchable
+            />
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                {{ rolesErrorMessage }}
+              </div>
+            </div>
+          </div>
+        </template>
       </div>
       <div class="card-footer d-flex justify-content-end py-6 px-9">
         <InertiaLink
@@ -252,7 +271,7 @@
 
 <script lang="ts">
 import {BaseSchema, Inertia, usePage, useRoute} from 'mixon'
-import {computed, defineComponent, ref} from 'vue'
+import {computed, defineComponent, ref, watch} from 'vue'
 import {ErrorMessage, Field, Form, FormActions, useField} from 'vee-validate'
 import Multiselect from '@vueform/multiselect'
 import {array, mixed, number, object, string} from 'yup'
@@ -261,11 +280,12 @@ import {User} from '@/types/users'
 interface Page {
   data: {
     user?: User
+    shippingPoints: Record<number, string>
     roles: Array<{ value: number, text: string }>
   }
 }
 
-type FormFields = Omit<User, 'id'> & { avatar: string }
+type FormFields = Omit<User, 'id' | 'shippingPoint'> & { avatar: string }
 
 export default defineComponent({
   components: {ErrorMessage, Field, Form, Multiselect},
@@ -275,12 +295,13 @@ export default defineComponent({
 
     const user = computed(() => props.value.data.user)
     const rolesForSelect = props.value.data.roles
+    const shippingPoints = props.value.data.shippingPoints
 
     const isProfile = routeIncludes('profile.edit')
 
     const isLoading = ref(false)
 
-    const schema: Record<keyof Omit<FormFields, 'roles'>, BaseSchema> = {
+    const schema: Record<keyof Omit<FormFields, 'shippingPoint' | 'roles'>, BaseSchema> = {
       avatar: mixed()
         .label('Фото'),
       name: string()
@@ -329,9 +350,14 @@ export default defineComponent({
     }
     const userValidationSchema = object().shape(schema)
     const {
+      value: shippingPoint,
+      errorMessage: shippingPointErrorMessage
+    } = useField('shippingPoint', number().nullable().label('Точка отгрузки'), {initialValue: user.value?.shippingPoint})
+    const {
       value: roles,
       errorMessage: rolesErrorMessage
-    } = useField('roles', array().of(number()).required(), {initialValue: user.value?.roles})
+    } = useField('roles', array().of(number()).required().label('Роли'), {initialValue: user.value?.roles})
+    watch(user, () => roles.value = user.value?.roles)
 
     function submit(data: FormFields, actions: FormActions<FormFields>): void {
       isLoading.value = true
@@ -343,13 +369,21 @@ export default defineComponent({
 
       data.avatar = Array.isArray(data.avatar) ? data.avatar[0] : ''
 
-      Inertia.post(url, {...data, roles: roles.value, _method: user.value ? 'PATCH' : null}, {
-        preserveState: true,
-        preserveScroll: true,
-        onSuccess: () => actions.setFieldValue('password', ''),
-        onError: errors => actions.setErrors(errors),
-        onFinish: () => isLoading.value = false
-      })
+      Inertia.post(
+        url,
+        {
+          ...data,
+          shippingPoint: shippingPoint.value ?? null,
+          roles: roles.value,
+          _method: user.value ? 'PATCH' : null
+        },
+        {
+          preserveState: true,
+          preserveScroll: true,
+          onSuccess: () => actions.setFieldValue('password', ''),
+          onError: errors => actions.setErrors(errors),
+          onFinish: () => isLoading.value = false
+        })
     }
 
     const removeAvatar = () => Inertia.delete(
@@ -357,7 +391,8 @@ export default defineComponent({
     )
 
     return {
-      userValidationSchema, user, submit, removeAvatar, rolesForSelect, isProfile, isLoading,
+      userValidationSchema, user, submit, removeAvatar, shippingPoints, rolesForSelect, isProfile, isLoading,
+      shippingPoint, shippingPointErrorMessage,
       roles, rolesErrorMessage,
       route
     }

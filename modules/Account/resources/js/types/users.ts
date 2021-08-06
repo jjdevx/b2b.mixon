@@ -12,5 +12,6 @@ export type User = {
   address: string
   fax: string
   phone: string
+  shippingPoint: number
   roles: Array<number>
 }

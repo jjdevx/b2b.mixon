@@ -2,12 +2,12 @@
 
 namespace Modules\Account\Http\Controllers\Users;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
-use Modules\Account\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
+use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\IndexRequest;
 use Modules\Account\Http\Requests\UserRequest;
 use Modules\Account\Http\Resources\UserCollection;
@@ -51,16 +51,26 @@ class UserController extends Controller
     {
         $this->seo()->setTitle('Создать пользователя');
 
-        return inertia('Users/Profile', ['data' => ['roles' => $this->repository->getRoles()]]);
+        return inertia('Users/Profile', ['data' => [
+            'shippingPoints' => $this->repository->getShippingPoints(),
+            'roles' => $this->repository->getRoles()
+        ]]);
     }
 
     public function store(UserRequest $request): RedirectResponse
     {
+        $data = $request->except('password');
+        $data['shipping_point'] = $data['shippingPoint'];
         $password = \Hash::make($request->input('password'));
 
-        $user = User::create(array_merge($request->except('password'), compact('password')));
+        $user = User::create(array_merge($data, compact('password')));
 
-        $user->assignRole($request->input('roles'));
+        if ($roles = $request->input('roles')) {
+            $user->assignRole($roles);
+        } else {
+            $user->assignRole('user');
+        }
+
         $user->markEmailAsVerified();
 
         if ($avatar = $request->file('avatar')) {
@@ -80,7 +90,8 @@ class UserController extends Controller
 
         $this->seo()->setTitle('Редактировать пользователя');
 
-        $data = $user->only(['id', 'name', 'surname', 'email', 'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone']);
+        $data = $user->only(['id', 'name', 'surname', 'email', 'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone', 'shipping_point']);
+        $data['shippingPoint'] = $data['shipping_point'];
         $data['roles'] = $user->roles->pluck('id');
 
         if ($user->avatarMedia) {
@@ -90,6 +101,7 @@ class UserController extends Controller
         return inertia('Users/Profile', [
             'data' => [
                 'user' => $data,
+                'shippingPoints' => $this->repository->getShippingPoints(),
                 'roles' => $this->repository->getRoles()
             ]
         ]);
@@ -100,6 +112,7 @@ class UserController extends Controller
         $user = $this->repository->findById($id);
 
         $data = $request->except('password');
+        $data['shipping_point'] = $data['shippingPoint'];
 
         if ($password = $request->input('password')) {
             $data['password'] = \Hash::make($password);

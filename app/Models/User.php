@@ -6,6 +6,7 @@ use App\Models\Traits\Searchable;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,7 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         Searchable;
 
     protected $fillable = [
-        'name', 'surname', 'email', 'password', 'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone'
+        'name', 'surname', 'email', 'password', 'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone', 'shipping_point'
     ];
 
     protected $hidden = ['password', 'remember_token',];
@@ -99,6 +100,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function departments(): BelongsToMany
     {
         return $this->belongsToMany(Department::class, 'department_has_users');
+    }
+
+    public function shippingPoint(): BelongsTo
+    {
+        return $this->belongsTo(Department::class, 'shipping_point');
     }
 
     // ACCESSORS
