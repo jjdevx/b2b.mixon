@@ -293,7 +293,7 @@ export default defineComponent({
     const {props} = usePage<Page>()
     const {route, routeIncludes} = useRoute()
 
-    const user = computed(() => props.value.data.user)
+    const user = computed(() => props.value.data?.user)
     const rolesForSelect = props.value.data.roles
     const shippingPoints = props.value.data.shippingPoints
 
