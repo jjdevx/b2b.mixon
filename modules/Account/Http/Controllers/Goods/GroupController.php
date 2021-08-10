@@ -22,7 +22,7 @@ class GroupController extends Controller
 
         $groups = $this->repository->getGroupsForIndex();
 
-        return inertia('Groups/Index', [
+        return inertia('Goods/Groups/Index', [
             'data' => [
                 'groups' => GroupResource::collection($groups)->collection,
             ]
@@ -33,7 +33,7 @@ class GroupController extends Controller
     {
         $this->seo()->setTitle('Создать группу');
 
-        return inertia('Groups/Form');
+        return inertia('Goods/Groups/Form');
     }
 
     public function store(GroupRequest $request): RedirectResponse
@@ -53,11 +53,9 @@ class GroupController extends Controller
 
         $this->seo()->setTitle('Редактировать группу');
 
-        $data = $group->only(['id', 'name']);
-
-        return inertia('Groups/Form', [
+        return inertia('Goods/Groups/Form', [
             'data' => [
-                'group' => $data,
+                'group' => new GroupResource($group),
             ]
         ]);
     }

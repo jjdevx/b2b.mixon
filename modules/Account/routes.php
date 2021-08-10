@@ -3,6 +3,7 @@
 use Modules\Account\Http\Controllers\{AuthController,
     DashboardController,
     DepartmentController,
+    Goods\CategoryController,
     Goods\GroupController,
     Users\ProfileController,
     Users\UserController};
@@ -53,4 +54,9 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         ->parameter('group', 'id')
         ->except(['show'])
         ->middleware('can:groups.index');
+
+    Route::resource('categories', CategoryController::class)
+        ->parameter('category', 'id')
+        ->except(['show'])
+        ->middleware('can:categories.index');
 });

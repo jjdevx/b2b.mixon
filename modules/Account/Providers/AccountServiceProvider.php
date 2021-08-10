@@ -2,6 +2,7 @@
 
 namespace Modules\Account\Providers;
 
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class AccountServiceProvider extends ServiceProvider
@@ -13,6 +14,8 @@ class AccountServiceProvider extends ServiceProvider
     public function boot(): void
     {
         \Validator::extend('string255', fn($attr, $value) => (is_string($value) && mb_strlen($value) <= 255));
+
+        JsonResource::withoutWrapping();
 
         $this->registerTranslations();
         $this->registerConfig();

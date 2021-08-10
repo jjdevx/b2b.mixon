@@ -12,8 +12,8 @@ class GroupRepository
         return Group::findOrFail($id);
     }
 
-    public function getGroupsForIndex(\Closure $scope = null): Collection
+    public function getGroupsForIndex(): Collection
     {
-        return Group::when($scope, fn($q) => $scope($q))->get();
+        return Group::all();
     }
 }

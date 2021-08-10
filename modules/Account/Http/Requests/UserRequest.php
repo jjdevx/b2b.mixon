@@ -23,7 +23,7 @@ class UserRequest extends FormRequest
             'address' => ['nullable', 'string255', 'min:10'],
             'fax' => ['nullable', 'string255', 'min:10'],
             'phone' => ['nullable', 'string255', 'min:10'],
-            'shipping_point' => ['nullable', 'exists:departments,id'],
+            'shippingPoint' => ['nullable', 'exists:departments,id'],
             'roles' => ['array', 'nullable'],
             'roles.*' => ['nullable', 'numeric', 'exists:user_roles,id']
         ];

@@ -30,6 +30,10 @@ class PermissionsSeeder extends Seeder
             'groups' => [
                 'name' => 'Отделы',
                 'permissions' => [...$crudPermissions],
+            ],
+            'categories' => [
+                'name' => 'Категории',
+                'permissions' => [...$crudPermissions],
             ]
         ];
 

@@ -4,12 +4,14 @@ namespace Modules\Account\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GroupRequest extends FormRequest
+class CategoryRequest extends FormRequest
 {
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string255']
+            'groupId' => ['required', 'exists:goods_groups,id'],
+            'name' => ['required', 'string255'],
+            'number' => ['required', 'integer']
         ];
     }
 

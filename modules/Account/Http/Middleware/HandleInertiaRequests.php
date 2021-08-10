@@ -87,6 +87,7 @@ class HandleInertiaRequests extends Middleware
                 'active' => \Str::contains($request->route()->getName(), 'users')
             ];
         }
+
         if ($user->can('departments.index')) {
             $menu[] = [
                 'link' => route('account.departments.index'),
@@ -95,12 +96,21 @@ class HandleInertiaRequests extends Middleware
                 'active' => \Str::contains($request->route()->getName(), 'departments')
             ];
         }
+
         if ($user->can('groups.index')) {
             $menu[] = [
                 'link' => route('account.groups.index'),
                 'title' => 'Группы',
                 'icon' => 'Files/Group-folders.svg',
                 'active' => \Str::contains($request->route()->getName(), 'groups')
+            ];
+        }
+        if ($user->can('categories.index')) {
+            $menu[] = [
+                'link' => route('account.categories.index'),
+                'title' => 'Категории',
+                'icon' => 'Shopping/Price1.svg',
+                'active' => \Str::contains($request->route()->getName(), 'categories')
             ];
         }
 
