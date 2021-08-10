@@ -95,6 +95,14 @@ class HandleInertiaRequests extends Middleware
                 'active' => \Str::contains($request->route()->getName(), 'departments')
             ];
         }
+        if ($user->can('groups.index')) {
+            $menu[] = [
+                'link' => route('account.groups.index'),
+                'title' => 'Группы',
+                'icon' => 'Files/Group-folders.svg',
+                'active' => \Str::contains($request->route()->getName(), 'groups')
+            ];
+        }
 
         return $menu;
     }

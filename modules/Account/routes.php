@@ -3,7 +3,7 @@
 use Modules\Account\Http\Controllers\{AuthController,
     DashboardController,
     DepartmentController,
-    Users\AvatarController,
+    Goods\GroupController,
     Users\ProfileController,
     Users\UserController};
 use Modules\Account\Http\Middleware\RedirectIfAuthenticated;
@@ -48,4 +48,9 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         ->parameter('department', 'id')
         ->except(['show'])
         ->middleware('can:departments.index');
+
+    Route::resource('groups', GroupController::class)
+        ->parameter('group', 'id')
+        ->except(['show'])
+        ->middleware('can:groups.index');
 });

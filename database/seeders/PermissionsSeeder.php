@@ -27,6 +27,10 @@ class PermissionsSeeder extends Seeder
                 'name' => 'Отделы',
                 'permissions' => [...$crudPermissions, ...$trashPermissions],
             ],
+            'groups' => [
+                'name' => 'Отделы',
+                'permissions' => [...$crudPermissions],
+            ]
         ];
 
         foreach ($sections as $key => $section) {
