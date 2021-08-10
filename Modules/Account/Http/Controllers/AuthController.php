@@ -3,15 +3,10 @@
 namespace Modules\Account\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Auth\Events\Verified;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
-use Illuminate\Validation\ValidationException;
 use Inertia\Response;
 use Modules\Account\Http\Requests\LoginRequest;
 use Modules\Account\Http\Requests\RegisterRequest;

@@ -2,10 +2,9 @@
 
 namespace Modules\Account\Http\Controllers\Users;
 
-use Illuminate\Http\Request;
-use Modules\Account\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
+use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\ProfileRequest;
 
 class ProfileController extends Controller

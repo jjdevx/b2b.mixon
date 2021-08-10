@@ -57,11 +57,7 @@ import {defineComponent} from 'vue'
 import KTTopbar from '@/layouts/Header/Topbar.vue'
 import KTMenu from '@/layouts/Header/Menu.vue'
 
-import {
-  headerWidthFluid,
-  headerLeft,
-  asideDisplay
-} from '@/metronic/core/helpers/config'
+import {asideDisplay, headerLeft, headerWidthFluid} from '@/metronic/core/helpers/config'
 
 export default defineComponent({
   components: {

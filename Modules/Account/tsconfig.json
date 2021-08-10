@@ -25,7 +25,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "typeRoots": [
-      "resources/js/vue-shims.d.ts",
+      "resources/js/shims-vue.d.ts",
       "resources/js/types",
       "node_modules/@types"
     ],
