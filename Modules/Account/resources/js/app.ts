@@ -39,7 +39,7 @@ function initInertia() {
 
 createInertiaApp({
   resolve: async (name) => {
-    const {default: page} = await import(`./Pages/${name}`)
+    const {default: page} = await import(`./pages/${name}`)
     page.layout = page.layout || Layout
     return page
   },
