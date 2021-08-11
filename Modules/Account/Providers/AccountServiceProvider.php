@@ -2,7 +2,7 @@
 
 namespace Modules\Account\Providers;
 
-use Illuminate\Http\resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 
 class AccountServiceProvider extends ServiceProvider
