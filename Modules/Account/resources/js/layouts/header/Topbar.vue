@@ -33,7 +33,7 @@
 
 <script lang="ts">
 import {computed, defineComponent} from 'vue'
-import KTUserMenu from '@/layouts/Header/partials/UserMenu.vue'
+import KTUserMenu from '@/layouts/header/partials/UserMenu.vue'
 import {useStore} from '@/store'
 
 export default defineComponent({

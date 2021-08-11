@@ -54,8 +54,8 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue'
-import KTTopbar from '@/layouts/Header/Topbar.vue'
-import KTMenu from '@/layouts/Header/Menu.vue'
+import KTTopbar from '@/layouts/header/Topbar.vue'
+import KTMenu from '@/layouts/header/Menu.vue'
 
 import {asideDisplay, headerLeft, headerWidthFluid} from '@/metronic/core/helpers/config'
 

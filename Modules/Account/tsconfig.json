@@ -23,7 +23,7 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "typeRoots": [
       "resources/js/shims-vue.d.ts",
       "resources/js/types",

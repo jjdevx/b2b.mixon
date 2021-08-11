@@ -48,7 +48,7 @@
 import {defineComponent, onMounted, onUpdated} from 'vue'
 import {DrawerComponent} from '@/metronic/assets/ts/components/_DrawerOptions'
 import {ToggleComponent} from '@/metronic/assets/ts/components/_ToggleComponent'
-import KTMenu from '@/layouts/Aside/Menu.vue'
+import KTMenu from '@/layouts/aside/Menu.vue'
 import {asideTheme} from '@/metronic/core/helpers/config'
 
 export default defineComponent({
