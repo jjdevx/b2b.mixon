@@ -10,6 +10,7 @@ public/dist
 /vendor
 
 .env
+.env.prod
 .env.backup
 .env.example
 .phpunit.result.cache
