@@ -3,20 +3,40 @@
 namespace Modules\Account\Http\Controllers\Stock;
 
 use App\Http\Requests\StockUpdateRequest;
-use Inertia\Response;
+use App\Models\Department;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Inertia\Response as InertiaResponse;
 use Modules\Account\Http\Controllers\Controller;
+use Modules\Account\Imports\StockImport;
 
-class StockUpdateController extends Controller
+final class StockUpdateController extends Controller
 {
-    public function page(): Response
+    public function page(): InertiaResponse
     {
         $this->seo()->setTitle('Загрузка наличия');
 
-        return inertia('Stock/Update');
+        return inertia('Stock/Update', [
+            'data' => [
+                'department' => $this->getDepartment()
+            ]
+        ]);
     }
 
-    public function handle(StockUpdateRequest $request)
+    public function handle(StockUpdateRequest $request): RedirectResponse
     {
-        dd($this->file('excel'));
+        $department = $this->getDepartment();
+        abort_if($department === null, Response::HTTP_FORBIDDEN, 'Вы не можете загружать наличие.');
+
+        $importer = new StockImport($department);
+
+        \Excel::import($importer, $request->file('excel'));
+
+        return back()->with(['toast' => ['text' => 'Наличие товара было обновлено.']]);
+    }
+
+    private function getDepartment(): Department
+    {
+        return \Auth::user()->departments()->first();
     }
 }
