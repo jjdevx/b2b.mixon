@@ -23,4 +23,9 @@ class Department extends Model
     {
         return $this->belongsToMany(User::class, 'department_has_users');
     }
+
+    public function goods(): BelongsToMany
+    {
+        return $this->belongsToMany(Good::class, 'department_has_goods', 'department_id', 'sku', 'id', 'sku');
+    }
 }

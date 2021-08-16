@@ -15,8 +15,8 @@ class CreateGoodsTable extends Migration
             $table->string('sku');
             $table->string('name');
 
-            $table->decimal('arp');
-            $table->decimal('rrp')->nullable();
+            $table->decimal('arp')->nullable();
+            $table->decimal('rrp');
 
             $table->unsignedTinyInteger('wholesale_small')->nullable();
             $table->unsignedTinyInteger('wholesale_medium')->nullable();

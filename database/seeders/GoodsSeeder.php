@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Good;
 use App\Models\Goods\Category;
 use App\Models\Goods\Group;
 use Illuminate\Database\Seeder;
@@ -140,11 +141,41 @@ class GoodsSeeder extends Seeder
                 ]
             ];
 
-            foreach ($groups as $key => $value) {
-                $group = Group::create(['name' => $value]);
-                collect($categories[$key])
-                    ->map(fn($value, $key) => ['group_id' => $group->id, 'name' => $value, 'number' => $key])
-                    ->each(fn($attrs) => Category::create($attrs));
+            if (!Group::exists()) {
+                foreach ($groups as $key => $value) {
+                    $group = Group::create(['name' => $value]);
+                    collect($categories[$key])
+                        ->map(fn($value, $key) => ['group_id' => $group->id, 'name' => $value, 'number' => $key])
+                        ->each(fn($attrs) => Category::create($attrs));
+                }
+            }
+
+            $skus = [
+                '105-01-2' => 'Шпатлевка универсальная MIXON-UNI  2кг',
+                '3000-01-2' => 'Шпатлевка универсальная MIXON-3000  2кг',
+                '106-01-2' => 'Шпатлевка алюминиевая MIXON-ALU  1,8кг',
+                '107-01-2' => 'Шпатлевка со стекловолокном MIXON-FIBER  1,8кг',
+                '120-01-2' => 'Шпатлевка универс. SILVER LINE MIXON SUPER SOFT  1,7кг',
+                '121-01-2' => 'Шпатлевка алюм. SILVER LINE MIXON ALUMINIUM  1,8кг',
+                '122-01-2' => 'Шпатлевка со стеклов. SILVER LINE MIXON FIBER GLASS  1,8кг',
+                '123-01-2' => 'Шпатлевка отделочн. SILVER LINE MIXON SUPER FINE  1,8кг',
+                '301-01-1' => 'Акриловый грунт MIXON 3+1 серый  1л',
+                '301-02-1' => 'Акриловый грунт MIXON 3+1 белый  1л',
+                '301-03-1' => 'Акриловый грунт MIXON 3+1 черный  1л',
+                '301-04-1' => 'Акриловый грунт MIXON 3+1 желтый  1л',
+                '301-05-1' => 'Акриловый грунт MIXON 3+1 красный  1л',
+                '311-01-03' => 'Отвердитель MIXON 3+1  330мл ',
+                '501-01-1' => 'Акриловый грунт MIXON 5+1 серый  1л',
+                '501-02-1' => 'Акриловый грунт MIXON 5+1 белый  1л',
+            ];
+
+            foreach ($skus as $sku => $name) {
+                Good::create([
+                    'category_id' => Category::inRandomOrder()->first()->id,
+                    'sku' => $sku,
+                    'name' => $name,
+                    'rrp' => random_int(50, 500)
+                ]);
             }
         });
     }

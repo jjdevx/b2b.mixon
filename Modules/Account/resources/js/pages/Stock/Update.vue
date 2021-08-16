@@ -6,6 +6,7 @@
         <div class="fv-row mb-7">
           <label class="form-label fw-bolder text-dark fs-6">Файл*</label>
           <input
+            ref="fileInput"
             class="form-control"
             type="file"
             accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
@@ -49,6 +50,8 @@ export default defineComponent({
     const department = computed(() => props.value.data.department)
     const { route } = useRoute()
 
+    const fileInput = ref(null as unknown as HTMLInputElement)
+
     const { handleSubmit, errors, setErrors } = useForm<FormFields>({
       validateOnMount: false,
     })
@@ -69,6 +72,10 @@ export default defineComponent({
       Inertia.post(route('stock.update.handle'), data, {
         preserveState: true,
         preserveScroll: true,
+        onSuccess() {
+          fileInput.value.value = ''
+          excel.value = null
+        },
         onError: (errors) => setErrors(errors),
         onFinish: () => (isLoading.value = false),
       })
@@ -80,6 +87,7 @@ export default defineComponent({
       route,
       submit,
       errors,
+      fileInput,
       excel,
       handleFileChange,
     }
