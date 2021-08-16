@@ -16,6 +16,7 @@ class AddShippingPointToUsersTable extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('users_shipping_point_foreign');
             $table->dropColumn('shipping_point');
         });
     }

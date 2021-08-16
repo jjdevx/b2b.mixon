@@ -30,6 +30,8 @@ class CreateGoodsTable extends Migration
             $table->decimal('weight', 6)->nullable();
 
             $table->timestamps();
+
+            $table->index('sku');
         });
     }
 

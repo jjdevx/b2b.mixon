@@ -34,6 +34,10 @@ class PermissionsSeeder extends Seeder
             'categories' => [
                 'name' => 'Категории',
                 'permissions' => [...$crudPermissions],
+            ],
+            'stock' => [
+                'name' => 'Остатки',
+                'permissions' => ['update', 'see', 'see_by_code'],
             ]
         ];
 
