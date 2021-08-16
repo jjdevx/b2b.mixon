@@ -30,7 +30,8 @@ module.exports = {
     "consistent-return": "error",
 
     "vue/max-attributes-per-line": "off",
-    "vue/html-self-closing":"off",
+    "vue/html-self-closing": "off",
+    "vue/singleline-html-element-content-newline": "off",
 
     "prettier-vue/prettier": [
       "warn",

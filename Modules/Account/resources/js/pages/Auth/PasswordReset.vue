@@ -6,9 +6,7 @@
     @submit="tryReset"
   >
     <div class="text-center mb-10">
-      <h1 class="text-dark mb-3">
-        Забыли пароль ?
-      </h1>
+      <h1 class="text-dark mb-3">Забыли пароль ?</h1>
       <div class="text-gray-400 fw-bold fs-4">
         Введите почту, которую вы указали при регистрации.
       </div>
@@ -36,16 +34,10 @@
         class="btn btn-lg btn-primary fw-bolder me-4"
       >
         <span class="indicator-label">Отправить</span>
-        <span
-          v-if="isLoading"
-          class="spinner-border spinner-border-sm align-middle ms-2"
-        />
+        <span v-if="isLoading" class="spinner-border spinner-border-sm align-middle ms-2" />
       </button>
 
-      <InertiaLink
-        href="/login"
-        class="btn btn-lg btn-light-primary fw-bolder"
-      >
+      <InertiaLink href="/login" class="btn btn-lg btn-light-primary fw-bolder">
         Назад
       </InertiaLink>
     </div>
@@ -53,29 +45,26 @@
 </template>
 
 <script lang="ts">
-import {usePage, Inertia, BaseSchema} from 'mixon'
-import {defineComponent, ref} from 'vue'
-import {ErrorMessage, Field, Form, FormActions} from 'vee-validate'
-import {object, string} from 'yup'
+import { usePage, Inertia, BaseSchema } from 'mixon'
+import { defineComponent, ref } from 'vue'
+import { ErrorMessage, Field, Form, FormActions } from 'vee-validate'
+import { object, string } from 'yup'
 import AuthLayout from '@/layouts/Auth.vue'
 
 type FormFields = { email: string }
 
 export default defineComponent({
-  components: {Field, Form, ErrorMessage},
+  components: { Field, Form, ErrorMessage },
   layout: AuthLayout,
   setup() {
     const isLoading = ref(false)
 
     const forgotPassword = object().shape<Record<keyof FormFields, BaseSchema>>({
-      email: string()
-        .email()
-        .required()
-        .label('Email')
+      email: string().email().required().label('Email'),
     })
 
     function tryReset(data: FormFields, e: FormActions<FormFields>): void {
-      const {props} = usePage<{ data: { status: number } }>()
+      const { props } = usePage<{ data: { status: number } }>()
 
       isLoading.value = true
 
@@ -88,11 +77,11 @@ export default defineComponent({
         onError(errors) {
           e.setErrors(errors)
         },
-        onFinish: () => isLoading.value = false
+        onFinish: () => (isLoading.value = false),
       })
     }
 
-    return {isLoading, forgotPassword, tryReset}
-  }
+    return { isLoading, forgotPassword, tryReset }
+  },
 })
 </script>

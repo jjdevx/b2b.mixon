@@ -1,9 +1,9 @@
 import Swal from 'sweetalert2'
-import {Flash, Toast} from '@/types/mixon'
+import { Flash, Toast } from '@/types/mixon'
 
 export async function flashMessages(flash: Flash) {
-  const {type, icon, timer} = flash
-  let {text} = flash
+  const { type, icon, timer } = flash
+  let { text } = flash
 
   if (['warning', 'error'].includes(type)) {
     text = `Халепа! ${text}`
@@ -15,7 +15,7 @@ export async function flashMessages(flash: Flash) {
     const pattern = text
     let seconds = (timer ?? 5000) / 1000
 
-    const replace = () => text = pattern.replace(':seconds', `${seconds}`)
+    const replace = () => (text = pattern.replace(':seconds', `${seconds}`))
     replace()
 
     intervalId = window.setInterval(() => {
@@ -31,7 +31,7 @@ export async function flashMessages(flash: Flash) {
     text,
     icon: icon ?? 'success',
     timer: timer ?? 5000,
-    timerProgressBar: true
+    timerProgressBar: true,
   })
 
   if (intervalId) {
@@ -40,7 +40,7 @@ export async function flashMessages(flash: Flash) {
 }
 
 export async function toastMessages(toast: Toast) {
-  const {text, icon} = toast
+  const { text, icon } = toast
 
   await Swal.fire({
     title: text,

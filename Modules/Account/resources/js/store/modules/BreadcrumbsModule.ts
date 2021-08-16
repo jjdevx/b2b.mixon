@@ -1,25 +1,25 @@
-import { Action, Mutation, Module, VuexModule } from "vuex-module-decorators";
-import { Actions, Mutations } from "@/store/enums/StoreEnums";
+import { Action, Mutation, Module, VuexModule } from 'vuex-module-decorators'
+import { Actions, Mutations } from '@/store/enums/StoreEnums'
 
 interface Breadcrumb {
-  title: string;
-  pageBreadcrumbPath: Array<string>;
+  title: string
+  pageBreadcrumbPath: Array<string>
 }
 
 interface StoreInfo {
-  breadcrumbs: Breadcrumb;
+  breadcrumbs: Breadcrumb
 }
 
 @Module
 export default class BreadcrumbsModule extends VuexModule implements StoreInfo {
-  breadcrumbs = {} as Breadcrumb;
+  breadcrumbs = {} as Breadcrumb
 
   /**
    * Get breadcrumb object for current page
    * @returns object
    */
   get getBreadcrumbs(): Breadcrumb {
-    return this.breadcrumbs;
+    return this.breadcrumbs
   }
 
   /**
@@ -27,7 +27,7 @@ export default class BreadcrumbsModule extends VuexModule implements StoreInfo {
    * @returns object
    */
   get pageBreadcrumbPath(): Array<string> {
-    return this.breadcrumbs.pageBreadcrumbPath;
+    return this.breadcrumbs.pageBreadcrumbPath
   }
 
   /**
@@ -35,16 +35,16 @@ export default class BreadcrumbsModule extends VuexModule implements StoreInfo {
    * @returns string
    */
   get pageTitle(): string {
-    return this.breadcrumbs.title;
+    return this.breadcrumbs.title
   }
 
   @Mutation
   [Mutations.SET_BREADCRUMB_MUTATION](payload) {
-    this.breadcrumbs = payload;
+    this.breadcrumbs = payload
   }
 
   @Action
   [Actions.SET_BREADCRUMB_ACTION](payload) {
-    this.context.commit(Mutations.SET_BREADCRUMB_MUTATION, payload);
+    this.context.commit(Mutations.SET_BREADCRUMB_MUTATION, payload)
   }
 }

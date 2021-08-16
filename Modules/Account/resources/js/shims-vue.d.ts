@@ -1,4 +1,4 @@
-import type {DefineComponent} from 'vue'
+import type { DefineComponent } from 'vue'
 
 declare module '*.vue' {
   const component: DefineComponent<{}, {}, never>

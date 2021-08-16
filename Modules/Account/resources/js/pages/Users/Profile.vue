@@ -13,12 +13,12 @@
           <div
             class="image-input image-input-outline mb-2"
             data-kt-image-input="true"
-            :class="{'image-input-empty': !user?.avatar}"
-            style="background-image: url(/dist/img/no-avatar.png);"
+            :class="{ 'image-input-empty': !user?.avatar }"
+            style="background-image: url(/dist/img/no-avatar.png)"
           >
             <div
               class="image-input-wrapper w-125px h-125px"
-              :style="`background-image: url(${user?user.avatar:''})`"
+              :style="`background-image: url(${user ? user.avatar : ''})`"
             />
             <span
               class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
@@ -44,10 +44,8 @@
           <div class="col-xl-6">
             <label class="form-label fw-bolder text-dark fs-6">Имя*</label>
             <Field
-
               class="form-control form-control-lg form-control-solid"
               type="text"
-
               name="name"
               autocomplete="off"
             />
@@ -62,7 +60,6 @@
             <Field
               class="form-control form-control-lg form-control-solid"
               type="text"
-
               name="surname"
               autocomplete="off"
             />
@@ -212,15 +209,8 @@
         <template v-if="!isProfile">
           <div class="fv-row mb-7">
             <label class="form-label fw-bolder text-dark fs-6">Точка отгрузки*</label>
-            <select
-              v-model="shippingPoint"
-              class="form-control form-control-lg form-control-solid"
-            >
-              <option
-                v-for="(name,id) in shippingPoints"
-                :key="id"
-                :value="id"
-              >
+            <select v-model="shippingPoint" class="form-control form-control-lg form-control-solid">
+              <option v-for="(name, id) in shippingPoints" :key="id" :value="id">
                 {{ name }}
               </option>
             </select>
@@ -232,12 +222,7 @@
           </div>
           <div class="fv-row mb-7">
             <label class="form-label fw-bolder text-dark fs-6">Роль</label>
-            <Multiselect
-              v-model="roles"
-              :options="rolesForSelect"
-              mode="tags"
-              searchable
-            />
+            <Multiselect v-model="roles" :options="rolesForSelect" mode="tags" searchable />
             <div class="fv-plugins-message-container">
               <div class="fv-help-block">
                 {{ rolesErrorMessage }}
@@ -254,15 +239,9 @@
           Назад
         </InertiaLink>
 
-        <button
-          type="submit"
-          class="btn btn-primary"
-        >
+        <button type="submit" class="btn btn-primary">
           Сохранить
-          <span
-            v-if="isLoading"
-            class="spinner-border spinner-border-sm align-middle ms-2"
-          />
+          <span v-if="isLoading" class="spinner-border spinner-border-sm align-middle ms-2" />
         </button>
       </div>
     </Form>
@@ -270,28 +249,28 @@
 </template>
 
 <script lang="ts">
-import {BaseSchema, Inertia, usePage, useRoute} from 'mixon'
-import {computed, defineComponent, ref, watch} from 'vue'
-import {ErrorMessage, Field, Form, FormActions, useField} from 'vee-validate'
+import { BaseSchema, Inertia, usePage, useRoute } from 'mixon'
+import { computed, defineComponent, ref, watch } from 'vue'
+import { ErrorMessage, Field, Form, FormActions, useField } from 'vee-validate'
 import Multiselect from '@vueform/multiselect'
-import {array, mixed, number, object, string} from 'yup'
-import {User} from '@/types/users'
+import { array, mixed, number, object, string } from 'yup'
+import { User } from '@/types/users'
 
 interface Page {
   data: {
     user?: User
     shippingPoints: Record<number, string>
-    roles: Array<{ value: number, text: string }>
+    roles: Array<{ value: number; text: string }>
   }
 }
 
 type FormFields = Omit<User, 'id' | 'shippingPoint'> & { avatar: string }
 
 export default defineComponent({
-  components: {ErrorMessage, Field, Form, Multiselect},
+  components: { ErrorMessage, Field, Form, Multiselect },
   setup() {
-    const {props} = usePage<Page>()
-    const {route, routeIncludes} = useRoute()
+    const { props } = usePage<Page>()
+    const { route, routeIncludes } = useRoute()
 
     const user = computed(() => props.value.data?.user)
     const rolesForSelect = props.value.data.roles
@@ -302,62 +281,31 @@ export default defineComponent({
     const isLoading = ref(false)
 
     const schema: Record<keyof Omit<FormFields, 'shippingPoint' | 'roles'>, BaseSchema> = {
-      avatar: mixed()
-        .label('Фото'),
-      name: string()
-        .min(2)
-        .required()
-        .label('Имя'),
-      surname: string()
-        .min(3)
-        .required()
-        .label('Фамилия'),
-      email: string()
-        .required()
-        .email()
-        .label('Почта'),
-      password: string()
-        .nullable()
-        .label('Пароль'),
-      company: string()
-        .min(4)
-        .nullable()
-        .label('Предприятие'),
-      okpo: string()
-        .min(6)
-        .nullable()
-        .label('ОКПО'),
-      country: string()
-        .min(3)
-        .nullable()
-        .label('Страна'),
-      city: string()
-        .min(2)
-        .nullable()
-        .label('Город'),
-      address: string()
-        .min(10)
-        .nullable()
-        .label('Адрес'),
-      fax: string()
-        .min(10)
-        .nullable()
-        .label('Факс'),
-      phone: string()
-        .min(10)
-        .nullable()
-        .label('Телефон')
+      avatar: mixed().label('Фото'),
+      name: string().min(2).required().label('Имя'),
+      surname: string().min(3).required().label('Фамилия'),
+      email: string().required().email().label('Почта'),
+      password: string().nullable().label('Пароль'),
+      company: string().min(4).nullable().label('Предприятие'),
+      okpo: string().min(6).nullable().label('ОКПО'),
+      country: string().min(3).nullable().label('Страна'),
+      city: string().min(2).nullable().label('Город'),
+      address: string().min(10).nullable().label('Адрес'),
+      fax: string().min(10).nullable().label('Факс'),
+      phone: string().min(10).nullable().label('Телефон'),
     }
     const userValidationSchema = object().shape(schema)
-    const {
-      value: shippingPoint,
-      errorMessage: shippingPointErrorMessage
-    } = useField('shippingPoint', number().nullable().label('Точка отгрузки'), {initialValue: user.value?.shippingPoint})
-    const {
-      value: roles,
-      errorMessage: rolesErrorMessage
-    } = useField('roles', array().of(number()).required().label('Роли'), {initialValue: user.value?.roles})
-    watch(user, () => roles.value = user.value?.roles)
+    const { value: shippingPoint, errorMessage: shippingPointErrorMessage } = useField(
+      'shippingPoint',
+      number().nullable().label('Точка отгрузки'),
+      { initialValue: user.value?.shippingPoint }
+    )
+    const { value: roles, errorMessage: rolesErrorMessage } = useField(
+      'roles',
+      array().of(number()).required().label('Роли'),
+      { initialValue: user.value?.roles }
+    )
+    watch(user, () => (roles.value = user.value?.roles))
 
     function submit(data: FormFields, actions: FormActions<FormFields>): void {
       isLoading.value = true
@@ -375,27 +323,38 @@ export default defineComponent({
           ...data,
           shippingPoint: shippingPoint.value ?? null,
           roles: roles.value,
-          _method: user.value ? 'PATCH' : null
+          _method: user.value ? 'PATCH' : null,
         },
         {
           preserveState: true,
           preserveScroll: true,
           onSuccess: () => actions.setFieldValue('password', ''),
-          onError: errors => actions.setErrors(errors),
-          onFinish: () => isLoading.value = false
-        })
+          onError: (errors) => actions.setErrors(errors),
+          onFinish: () => (isLoading.value = false),
+        }
+      )
     }
 
-    const removeAvatar = () => Inertia.delete(
-      isProfile ? route('profile.avatar.destroy') : route('users.avatar.destroy', user.value?.id)
-    )
+    const removeAvatar = () =>
+      Inertia.delete(
+        isProfile ? route('profile.avatar.destroy') : route('users.avatar.destroy', user.value?.id)
+      )
 
     return {
-      userValidationSchema, user, submit, removeAvatar, shippingPoints, rolesForSelect, isProfile, isLoading,
-      shippingPoint, shippingPointErrorMessage,
-      roles, rolesErrorMessage,
-      route
+      userValidationSchema,
+      user,
+      submit,
+      removeAvatar,
+      shippingPoints,
+      rolesForSelect,
+      isProfile,
+      isLoading,
+      shippingPoint,
+      shippingPointErrorMessage,
+      roles,
+      rolesErrorMessage,
+      route,
     }
-  }
+  },
 })
 </script>

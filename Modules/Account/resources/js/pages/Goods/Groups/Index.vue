@@ -17,31 +17,18 @@
     </h3>
     <div class="card-body py-2">
       <div class="table-responsive table-hover">
-        <table
-          class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
-        >
+        <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th />
-              <th>
-                Название
-              </th>
-              <th>
-                Добавлена
-              </th>
-              <th>
-                Отредактирована
-              </th>
-              <th class="min-w-150px text-end">
-                Действия
-              </th>
+              <th>Название</th>
+              <th>Добавлена</th>
+              <th>Отредактирована</th>
+              <th class="min-w-150px text-end">Действия</th>
             </tr>
           </thead>
           <tbody>
-            <template
-              v-for="(group, index) in groups"
-              :key="index"
-            >
+            <template v-for="(group, index) in groups" :key="index">
               <tr>
                 <td>
                   <span class="text-dark fw-bolder text-hover-primary fs-6">{{ group.id }}</span>
@@ -58,7 +45,7 @@
                 <td class="text-end">
                   <InertiaLink
                     v-if="can('groups.edit')"
-                    :href="route('groups.edit',group.id)"
+                    :href="route('groups.edit', group.id)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                   >
                     <span class="svg-icon svg-icon-3">
@@ -86,9 +73,9 @@
 </template>
 
 <script lang="ts">
-import {formatDate, Inertia, Swal, useCan, usePage, useRoute} from 'mixon'
-import {computed, defineComponent} from 'vue'
-import {Group} from '@/types/goods'
+import { formatDate, Inertia, Swal, useCan, usePage, useRoute } from 'mixon'
+import { computed, defineComponent } from 'vue'
+import { Group } from '@/types/goods'
 
 interface Page {
   data: {
@@ -101,22 +88,22 @@ export default defineComponent({
     const page = usePage<Page>()
     const data = computed(() => page.props.value.data)
 
-    const {route} = useRoute()
+    const { route } = useRoute()
 
     async function destroy(id: number) {
-      const {isConfirmed} = await Swal.fire({
+      const { isConfirmed } = await Swal.fire({
         title: `Вы уверены, что хотите удалить группу?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Да!',
-        cancelButtonText: 'Отменить'
+        cancelButtonText: 'Отменить',
       })
       if (isConfirmed) {
         Inertia.delete(route(`groups.destroy`, id), {
           preserveState: false,
-          replace: true
+          replace: true,
         })
       }
     }
@@ -124,8 +111,10 @@ export default defineComponent({
     return {
       groups: data.value.groups,
       destroy,
-      route, ...useCan(), formatDate
+      route,
+      ...useCan(),
+      formatDate,
     }
-  }
+  },
 })
 </script>

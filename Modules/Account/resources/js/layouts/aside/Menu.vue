@@ -13,26 +13,24 @@
     <div
       v-if="menu"
       id="#kt_header_menu"
-      class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
+      class="
+        menu
+        menu-column
+        menu-title-gray-800
+        menu-state-title-primary
+        menu-state-icon-primary
+        menu-state-bullet-primary
+        menu-arrow-gray-500
+      "
       data-kt-menu="true"
     >
       <div class="menu-item">
         <div class="menu-content pt-8 pb-2">
-          <span
-            class="menu-section text-muted text-uppercase fs-8 ls-1"
-          >Аккаунт</span>
+          <span class="menu-section text-muted text-uppercase fs-8 ls-1">Аккаунт</span>
         </div>
       </div>
-      <div
-        v-for="item in menu"
-        :key="item.link"
-        class="menu-item"
-      >
-        <InertiaLink
-          :href="item.link"
-          class="menu-link"
-          :class="{active: item.active}"
-        >
+      <div v-for="item in menu" :key="item.link" class="menu-item">
+        <InertiaLink :href="item.link" class="menu-link" :class="{ active: item.active }">
           <span class="menu-icon">
             <span class="svg-icon svg-icon-2">
               <inline-svg :src="`/dist/media/icons/duotone/${item.icon}`" />
@@ -42,11 +40,7 @@
         </InertiaLink>
       </div>
       <div class="menu-item">
-        <a
-          href="/"
-          class="menu-link"
-          @click="logout()"
-        >
+        <a href="/" class="menu-link" @click="logout()">
           <span class="menu-icon">
             <span class="svg-icon svg-icon-2">
               <inline-svg src="/dist/media/icons/duotone/Navigation/Sign-out.svg" />
@@ -65,11 +59,11 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, onMounted, ref} from 'vue'
-import {ScrollComponent} from '@/metronic/assets/ts/components/_ScrollComponent'
-import {MenuComponent} from '@/metronic/assets/ts/components/MenuComponent'
-import {Inertia} from '@inertiajs/inertia'
-import {useStore} from '@/store'
+import { computed, defineComponent, onMounted, ref } from 'vue'
+import { ScrollComponent } from '@/metronic/assets/ts/components/_ScrollComponent'
+import { MenuComponent } from '@/metronic/assets/ts/components/MenuComponent'
+import { Inertia } from '@inertiajs/inertia'
+import { useStore } from '@/store'
 
 export default defineComponent({
   name: 'KtMenu',
@@ -92,8 +86,8 @@ export default defineComponent({
       }
     })
 
-    return {menu, scrollElRef, logout}
-  }
+    return { menu, scrollElRef, logout }
+  },
 })
 </script>
 

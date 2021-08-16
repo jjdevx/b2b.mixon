@@ -7,16 +7,13 @@
       {{ message }}
     </h2>
     <div class="text-center">
-      <a
-        href="/"
-        class="btn btn-lg btn-primary fw-bolder"
-      >На главную</a>
+      <a href="/" class="btn btn-lg btn-primary fw-bolder">На главную</a>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { defineComponent } from 'vue'
 import AuthLayout from '@/layouts/Auth.vue'
 
 export default defineComponent({
@@ -24,12 +21,12 @@ export default defineComponent({
   props: {
     status: {
       type: Number,
-      default: 404
+      default: 404,
     },
     message: {
       type: String,
-      required: true
-    }
-  }
+      required: true,
+    },
+  },
 })
 </script>

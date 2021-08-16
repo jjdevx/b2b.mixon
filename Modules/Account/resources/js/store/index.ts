@@ -1,13 +1,13 @@
-import {InjectionKey} from 'vue'
-import {createStore, useStore as baseUseStore, Store} from 'vuex'
-import {config} from 'vuex-module-decorators'
+import { InjectionKey } from 'vue'
+import { createStore, useStore as baseUseStore, Store } from 'vuex'
+import { config } from 'vuex-module-decorators'
 
 import AuthModule from '@/store/modules/AuthModule'
 import BodyModule from '@/store/modules/BodyModule'
 import BreadcrumbsModule from '@/store/modules/BreadcrumbsModule'
 import ConfigModule from '@/store/modules/ConfigModule'
 
-import {Common} from '@/types/mixon'
+import { Common } from '@/types/mixon'
 
 config.rawError = true
 
@@ -25,13 +25,13 @@ export const store = createStore<State>({
     AuthModule,
     BodyModule,
     BreadcrumbsModule,
-    ConfigModule
+    ConfigModule,
   },
   mutations: {
     setCommon(state, payload) {
       state.common = payload
-    }
-  }
+    },
+  },
 })
 
 export default store

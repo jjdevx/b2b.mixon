@@ -37,37 +37,24 @@
     </h3>
     <div class="card-body py-2">
       <div class="table-responsive table-hover">
-        <table
-          class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
-        >
+        <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th />
-              <th>
-                Название
-              </th>
-              <th>
-                Добавлен
-              </th>
-              <th>
-                Отредактирован
-              </th>
-              <th>
-                Работники
-              </th>
-              <th class="min-w-150px text-end">
-                Действия
-              </th>
+              <th>Название</th>
+              <th>Добавлен</th>
+              <th>Отредактирован</th>
+              <th>Работники</th>
+              <th class="min-w-150px text-end">Действия</th>
             </tr>
           </thead>
           <tbody>
-            <template
-              v-for="(department, index) in branches"
-              :key="index"
-            >
+            <template v-for="(department, index) in branches" :key="index">
               <tr>
                 <td>
-                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{ department.id }}</span>
+                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{
+                    department.id
+                  }}</span>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ department.name }}
@@ -80,9 +67,9 @@
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   <InertiaLink
-                    v-for="({id,name},i) in department.users"
+                    v-for="({ id, name }, i) in department.users"
                     :key="id"
-                    :href="route('users.edit',id)"
+                    :href="route('users.edit', id)"
                   >
                     {{ `${name}${i !== department.users.length - 1 ? ', ' : ''}` }}
                   </InertiaLink>
@@ -90,7 +77,7 @@
                 <td class="text-end">
                   <InertiaLink
                     v-if="can('departments.edit')"
-                    :href="route('departments.edit',department.id)"
+                    :href="route('departments.edit', department.id)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                   >
                     <span class="svg-icon svg-icon-3">
@@ -132,37 +119,24 @@
     </h3>
     <div class="card-body py-2">
       <div class="table-responsive table-hover">
-        <table
-          class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
-        >
+        <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th />
-              <th>
-                Название
-              </th>
-              <th>
-                Добавлен
-              </th>
-              <th>
-                Отредактирован
-              </th>
-              <th>
-                Работники
-              </th>
-              <th class="min-w-150px text-end">
-                Действия
-              </th>
+              <th>Название</th>
+              <th>Добавлен</th>
+              <th>Отредактирован</th>
+              <th>Работники</th>
+              <th class="min-w-150px text-end">Действия</th>
             </tr>
           </thead>
           <tbody>
-            <template
-              v-for="(department, index) in offices"
-              :key="index"
-            >
+            <template v-for="(department, index) in offices" :key="index">
               <tr>
                 <td>
-                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{ department.id }}</span>
+                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{
+                    department.id
+                  }}</span>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ department.name }}
@@ -175,9 +149,9 @@
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   <InertiaLink
-                    v-for="({id,name},i) in department.users"
+                    v-for="({ id, name }, i) in department.users"
                     :key="id"
-                    :href="route('users.edit',id)"
+                    :href="route('users.edit', id)"
                   >
                     {{ `${name}${i !== department.users.length - 1 ? ', ' : ''}` }}
                   </InertiaLink>
@@ -185,7 +159,7 @@
                 <td class="text-end">
                   <InertiaLink
                     v-if="can('departments.edit')"
-                    :href="route('departments.edit',department.id)"
+                    :href="route('departments.edit', department.id)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                   >
                     <span class="svg-icon svg-icon-3">
@@ -227,37 +201,24 @@
     </h3>
     <div class="card-body py-2">
       <div class="table-responsive table-hover">
-        <table
-          class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
-        >
+        <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th />
-              <th>
-                Название
-              </th>
-              <th>
-                Добавлен
-              </th>
-              <th>
-                Отредактирован
-              </th>
-              <th>
-                Работники
-              </th>
-              <th class="min-w-150px text-end">
-                Действия
-              </th>
+              <th>Название</th>
+              <th>Добавлен</th>
+              <th>Отредактирован</th>
+              <th>Работники</th>
+              <th class="min-w-150px text-end">Действия</th>
             </tr>
           </thead>
           <tbody>
-            <template
-              v-for="(department, index) in shops"
-              :key="index"
-            >
+            <template v-for="(department, index) in shops" :key="index">
               <tr>
                 <td>
-                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{ department.id }}</span>
+                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{
+                    department.id
+                  }}</span>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ department.name }}
@@ -270,9 +231,9 @@
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   <InertiaLink
-                    v-for="({id,name},i) in department.users"
+                    v-for="({ id, name }, i) in department.users"
                     :key="id"
-                    :href="route('users.edit',id)"
+                    :href="route('users.edit', id)"
                   >
                     {{ `${name}${i !== department.users.length - 1 ? ', ' : ''}` }}
                   </InertiaLink>
@@ -280,7 +241,7 @@
                 <td class="text-end">
                   <InertiaLink
                     v-if="can('departments.edit')"
-                    :href="route('departments.edit',department.id)"
+                    :href="route('departments.edit', department.id)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                   >
                     <span class="svg-icon svg-icon-3">
@@ -321,12 +282,14 @@
 </template>
 
 <script lang="ts">
-import {useRoute, useCan, usePage, Inertia, Swal, formatDate} from 'mixon'
-import {computed, defineComponent, onMounted} from 'vue'
-import {Tooltip} from 'bootstrap'
-import {DepartmentType, Department} from '@/types/departments'
+import { useRoute, useCan, usePage, Inertia, Swal, formatDate } from 'mixon'
+import { computed, defineComponent, onMounted } from 'vue'
+import { Tooltip } from 'bootstrap'
+import { DepartmentType, Department } from '@/types/departments'
 
-type DepartmentWithUsers = Omit<Department, 'users'> & { users: Array<{ id: number, name: string }> }
+type DepartmentWithUsers = Omit<Department, 'users'> & {
+  users: Array<{ id: number; name: string }>
+}
 
 interface Page {
   data: Record<DepartmentType, Array<DepartmentWithUsers>>
@@ -337,51 +300,58 @@ export default defineComponent({
     const page = usePage<Page>()
     const data = computed(() => page.props.value.data)
 
-    const {route, routeIncludes} = useRoute()
+    const { route, routeIncludes } = useRoute()
 
     const isTrash = routeIncludes('trash')
 
     async function destroy(id: number) {
-      const {isConfirmed} = await Swal.fire({
+      const { isConfirmed } = await Swal.fire({
         title: `Вы уверены, что хотите удалить отдел${isTrash ? ' окончательно' : ''}?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Да!',
-        cancelButtonText: 'Отменить'
+        cancelButtonText: 'Отменить',
       })
       if (isConfirmed) {
         Inertia.delete(route(`departments.${!isTrash ? 'destroy' : 'forceDestroy'}`, id), {
           preserveState: false,
-          replace: true
+          replace: true,
         })
       }
     }
 
     async function restore(id: number) {
-      const {isConfirmed} = await Swal.fire({
+      const { isConfirmed } = await Swal.fire({
         title: 'Вы уверены, что хотите восстановить отдел?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Да!',
-        cancelButtonText: 'Отменить'
+        cancelButtonText: 'Отменить',
       })
       if (isConfirmed) {
-        Inertia.post(route(`departments.restore`, id), {}, {
-          preserveState: false,
-          replace: true
-        })
+        Inertia.post(
+          route(`departments.restore`, id),
+          {},
+          {
+            preserveState: false,
+            replace: true,
+          }
+        )
       }
     }
 
-    const handleSizeChange = (size: number) => Inertia.get('', {perPage: size})
-    const handleCurrentChange = (page: number) => Inertia.get('', {page}, {preserveScroll: true})
+    const handleSizeChange = (size: number) => Inertia.get('', { perPage: size })
+    const handleCurrentChange = (page: number) =>
+      Inertia.get('', { page }, { preserveScroll: true })
 
     onMounted(() => {
-      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+      const tooltipTriggerList = [].slice.call(
+        document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      )
       tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new Tooltip(tooltipTriggerEl)
       })
@@ -392,10 +362,14 @@ export default defineComponent({
       offices: data.value.office,
       shops: data.value.shop,
       isTrash,
-      destroy, restore,
-      handleSizeChange, handleCurrentChange,
-      route, ...useCan(), formatDate
+      destroy,
+      restore,
+      handleSizeChange,
+      handleCurrentChange,
+      route,
+      ...useCan(),
+      formatDate,
     }
-  }
+  },
 })
 </script>

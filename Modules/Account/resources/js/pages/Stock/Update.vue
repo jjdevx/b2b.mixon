@@ -4,7 +4,12 @@
       <div class="card-body border-top p-9">
         <div class="fv-row mb-7">
           <label class="form-label fw-bolder text-dark fs-6">Файл*</label>
-          <input id="formFile" class="form-control" type="file" />
+          <input
+            id="formFile"
+            class="form-control"
+            type="file"
+            accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          />
           <div class="fv-plugins-message-container">
             <div class="fv-help-block">
               {{ errors.name }}
@@ -53,11 +58,10 @@ export default defineComponent({
 
     const { handleSubmit, errors, setErrors } = useForm<FormFields>({
       validateOnMount: false,
-      initialValues: group.value ?? {
-        name: '',
-      },
     })
-    const { value: name } = useField('name', string().min(4).required().label('Название'))
+    const { value: name } = useField('name', string().min(4).required().label('Название'), {
+      initialValue: null,
+    })
 
     const isLoading = ref(false)
 

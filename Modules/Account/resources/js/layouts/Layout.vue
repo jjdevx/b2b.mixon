@@ -1,20 +1,10 @@
 <template>
   <ElConfigProvider :locale="ru">
     <div class="page d-flex flex-row flex-column-fluid">
-      <KTAside
-        v-if="asideEnabled"
-        :light-logo="themeLightLogo"
-        :dark-logo="themeDarkLogo"
-      />
-      <div
-        id="kt_wrapper"
-        class="d-flex flex-column flex-row-fluid wrapper"
-      >
+      <KTAside v-if="asideEnabled" :light-logo="themeLightLogo" :dark-logo="themeDarkLogo" />
+      <div id="kt_wrapper" class="d-flex flex-column flex-row-fluid wrapper">
         <KTHeader />
-        <div
-          id="kt_content"
-          class="content d-flex flex-column flex-column-fluid"
-        >
+        <div id="kt_content" class="content d-flex flex-column flex-column-fluid">
           <div class="post d-flex flex-column-fluid">
             <div class="container-fluid">
               <KTMobilePageTitle
@@ -35,8 +25,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, computed} from 'vue'
-import {useStore} from '@/store'
+import { defineComponent, computed } from 'vue'
+import { useStore } from '@/store'
 import KTAside from '@/layouts/aside/Aside.vue'
 import KTHeader from '@/layouts/header/Header.vue'
 import KTFooter from '@/layouts/footer/Footer.vue'
@@ -52,12 +42,11 @@ import {
   asideEnabled,
   subheaderDisplay,
   themeLightLogo,
-  themeDarkLogo
+  themeDarkLogo,
 } from '@/metronic/core/helpers/config'
 
-import {ElConfigProvider} from 'element-plus'
+import { ElConfigProvider } from 'element-plus'
 import ru from 'element-plus/lib/locale/lang/ru'
-
 
 export default defineComponent({
   components: {
@@ -102,9 +91,9 @@ export default defineComponent({
       breadcrumbs,
       themeLightLogo,
       themeDarkLogo,
-      ru
+      ru,
     }
-  }
+  },
 })
 </script>
 

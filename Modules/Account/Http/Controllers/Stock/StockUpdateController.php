@@ -12,7 +12,7 @@ class StockUpdateController extends Controller
     {
         $this->seo()->setTitle('Загрузка наличия');
 
-        return inertia('Stock/Page');
+        return inertia('Stock/Update');
     }
 
     public function handle(StockUpdateRequest $request)

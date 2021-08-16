@@ -17,34 +17,19 @@
     </h3>
     <div class="card-body py-2">
       <div class="table-responsive table-hover">
-        <table
-          class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
-        >
+        <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th />
-              <th>
-                Группа
-              </th>
-              <th>
-                Название
-              </th>
-              <th>
-                Добавлена
-              </th>
-              <th>
-                Отредактирована
-              </th>
-              <th class="min-w-150px text-end">
-                Действия
-              </th>
+              <th>Группа</th>
+              <th>Название</th>
+              <th>Добавлена</th>
+              <th>Отредактирована</th>
+              <th class="min-w-150px text-end">Действия</th>
             </tr>
           </thead>
           <tbody>
-            <template
-              v-for="(category, index) in categories"
-              :key="index"
-            >
+            <template v-for="(category, index) in categories" :key="index">
               <tr>
                 <td>
                   <span class="text-dark fw-bolder text-hover-primary fs-6">{{ category.id }}</span>
@@ -64,7 +49,7 @@
                 <td class="text-end">
                   <InertiaLink
                     v-if="can('categories.edit')"
-                    :href="route('categories.edit',category.id)"
+                    :href="route('categories.edit', category.id)"
                     class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
                   >
                     <span class="svg-icon svg-icon-3">
@@ -92,9 +77,9 @@
 </template>
 
 <script lang="ts">
-import {formatDate, Inertia, Swal, useCan, usePage, useRoute} from 'mixon'
-import {computed, defineComponent} from 'vue'
-import {Category} from '@/types/goods'
+import { formatDate, Inertia, Swal, useCan, usePage, useRoute } from 'mixon'
+import { computed, defineComponent } from 'vue'
+import { Category } from '@/types/goods'
 
 interface Page {
   data: {
@@ -107,22 +92,22 @@ export default defineComponent({
     const page = usePage<Page>()
     const data = computed(() => page.props.value.data)
 
-    const {route} = useRoute()
+    const { route } = useRoute()
 
     async function destroy(id: number) {
-      const {isConfirmed} = await Swal.fire({
+      const { isConfirmed } = await Swal.fire({
         title: `Вы уверены, что хотите удалить категорию?`,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Да!',
-        cancelButtonText: 'Отменить'
+        cancelButtonText: 'Отменить',
       })
       if (isConfirmed) {
         Inertia.delete(route(`categories.destroy`, id), {
           preserveState: false,
-          replace: true
+          replace: true,
         })
       }
     }
@@ -130,8 +115,10 @@ export default defineComponent({
     return {
       categories: data.value.categories,
       destroy,
-      route, ...useCan(), formatDate
+      route,
+      ...useCan(),
+      formatDate,
     }
-  }
+  },
 })
 </script>

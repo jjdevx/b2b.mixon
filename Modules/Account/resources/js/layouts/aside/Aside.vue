@@ -10,16 +10,9 @@
     data-kt-drawer-direction="start"
     data-kt-drawer-toggle="#kt_aside_mobile_toggle"
   >
-    <div
-      id="kt_aside_logo"
-      class="aside-logo flex-column-auto"
-    >
+    <div id="kt_aside_logo" class="aside-logo flex-column-auto">
       <a href="/">
-        <img
-          alt="Logo"
-          src="/dist/img/logo-red.svg"
-          class="h-50px logo"
-        >
+        <img alt="Logo" src="/dist/img/logo-red.svg" class="h-50px logo" />
       </a>
 
       <div
@@ -31,9 +24,7 @@
         data-kt-toggle-name="aside-minimize"
       >
         <span class="svg-icon svg-icon-1 rotate-180">
-          <inline-svg
-            src="/dist/media/icons/duotone/Navigation/Angle-double-left.svg"
-          />
+          <inline-svg src="/dist/media/icons/duotone/Navigation/Angle-double-left.svg" />
         </span>
       </div>
     </div>
@@ -45,19 +36,19 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted, onUpdated} from 'vue'
-import {DrawerComponent} from '@/metronic/assets/ts/components/_DrawerOptions'
-import {ToggleComponent} from '@/metronic/assets/ts/components/_ToggleComponent'
+import { defineComponent, onMounted, onUpdated } from 'vue'
+import { DrawerComponent } from '@/metronic/assets/ts/components/_DrawerOptions'
+import { ToggleComponent } from '@/metronic/assets/ts/components/_ToggleComponent'
 import KTMenu from '@/layouts/aside/Menu.vue'
-import {asideTheme} from '@/metronic/core/helpers/config'
+import { asideTheme } from '@/metronic/core/helpers/config'
 
 export default defineComponent({
   components: {
-    KTMenu
+    KTMenu,
   },
   props: {
-    lightLogo: {type: String, required: true},
-    darkLogo: {type: String, required: true}
+    lightLogo: { type: String, required: true },
+    darkLogo: { type: String, required: true },
   },
   setup() {
     onMounted(() => {
@@ -69,7 +60,7 @@ export default defineComponent({
       ToggleComponent.bootstrap()
     })
 
-    return {asideTheme}
-  }
+    return { asideTheme }
+  },
 })
 </script>

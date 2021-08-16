@@ -1,4 +1,4 @@
-import baseRoute, {Config} from 'ziggy-js'
+import baseRoute, { Config } from 'ziggy-js'
 
 declare global {
   interface Window {
@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-export type RouteFunction = (name: string, params?, absolute?: boolean) => string;
+export type RouteFunction = (name: string, params?, absolute?: boolean) => string
 
 const route: RouteFunction = (name, params = {}, absolute = false) => {
   return baseRoute(`account.${name}`, params, absolute, window.Ziggy)
@@ -18,7 +18,7 @@ export function routeIncludes(name: string): boolean {
 }
 
 export function useRoute() {
-  return {route, routeIncludes}
+  return { route, routeIncludes }
 }
 
 export default route

@@ -14,14 +14,25 @@
   >
     <div
       id="#kt_header_menu"
-      class="menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-title-gray-700 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-400 fw-bold my-5 my-lg-0 align-items-stretch"
+      class="
+        menu
+        menu-lg-rounded
+        menu-column
+        menu-lg-row
+        menu-state-bg
+        menu-title-gray-700
+        menu-state-title-primary
+        menu-state-icon-primary
+        menu-state-bullet-primary
+        menu-arrow-gray-400
+        fw-bold
+        my-5 my-lg-0
+        align-items-stretch
+      "
       data-kt-menu="true"
     >
       <div class="menu-item me-lg-1">
-        <InertiaLink
-          href="/"
-          class="menu-link py-3"
-        >
+        <InertiaLink href="/" class="menu-link py-3">
           <span class="menu-title">Главная</span>
         </InertiaLink>
       </div>
@@ -30,12 +41,12 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, onMounted} from 'vue'
-import {MenuComponent} from '@/metronic/assets/ts/components'
+import { defineComponent, onMounted } from 'vue'
+import { MenuComponent } from '@/metronic/assets/ts/components'
 
 export default defineComponent({
   setup() {
     onMounted(() => MenuComponent.reinitialization())
-  }
+  },
 })
 </script>
