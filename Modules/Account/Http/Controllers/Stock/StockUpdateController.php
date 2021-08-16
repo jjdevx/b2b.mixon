@@ -32,6 +32,9 @@ final class StockUpdateController extends Controller
 
         \Excel::import($importer, $request->file('excel'));
 
+        $department->stock_updated_at = now();
+        $department->save();
+
         return back()->with(['toast' => ['text' => 'Наличие товара было обновлено.']]);
     }
 

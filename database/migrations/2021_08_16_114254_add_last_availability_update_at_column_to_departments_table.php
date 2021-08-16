@@ -9,7 +9,7 @@ class AddLastAvailabilityUpdateAtColumnToDepartmentsTable extends Migration
     public function up(): void
     {
         Schema::table('departments', function (Blueprint $table) {
-            $table->timestamp('last_availability_update_at')->nullable();
+            $table->timestamp('stock_updated_at')->nullable()->after('updated_at');
         });
     }
 

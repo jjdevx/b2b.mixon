@@ -19,6 +19,8 @@ class Department extends Model
 
     protected $fillable = ['name', 'type'];
 
+    protected $casts = ['stock_updated_at' => 'timestamp'];
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'department_has_users');
