@@ -51,7 +51,7 @@ class Handler extends ExceptionHandler
                 ->render('Error/Error404', [
                     'status' => $response->status(),
                     'message' => $response->status() === 404 ? 'Страница не найдена.' : 'Доступ запрещен.',
-                    'metaInfo' => ['title' => $response->status()]
+                    'common' => ['meta' => ['title' => $response->status()]]
                 ])
                 ->toResponse($request)
                 ->setStatusCode($response->status());

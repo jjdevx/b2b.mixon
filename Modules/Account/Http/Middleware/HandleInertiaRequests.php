@@ -122,6 +122,14 @@ class HandleInertiaRequests extends Middleware
                 'active' => $request->routeIs('account.stock.update.page')
             ];
         }
+        if ($user->can('stock.see')) {
+            $menu[] = [
+                'link' => route('account.stock.view'),
+                'title' => 'Просмотр наличия',
+                'icon' => 'Shopping/Loader.svg',
+                'active' => $request->routeIs('account.stock.view')
+            ];
+        }
 
         return $menu;
     }

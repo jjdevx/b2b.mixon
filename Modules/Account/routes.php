@@ -6,6 +6,7 @@ use Modules\Account\Http\Controllers\{AuthController,
     Goods\CategoryController,
     Goods\GroupController,
     Stock\StockUpdateController,
+    Stock\StockViewController,
     Users\ProfileController,
     Users\UserController
 };
@@ -68,5 +69,6 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
             Route::post('', [StockUpdateController::class, 'handle'])->name('handle');
         });
 
+        Route::get('{department?}/{category?}', [StockViewController::class, 'index'])->name('view');
     });
 });

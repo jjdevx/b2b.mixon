@@ -11,10 +11,14 @@ class Department extends Model
 {
     use HasFactory, SoftDeletes;
 
+    public const BRANCH = 'branch';
+    public const OFFICE = 'office';
+    public const SHOP = 'shop';
+
     public static array $types = [
-        'branch' => 'Филиал',
-        'office' => 'Офис',
-        'shop' => 'Магазин'
+        self::BRANCH => 'Филиал',
+        self::OFFICE => 'Офис',
+        self::SHOP => 'Магазин'
     ];
 
     protected $fillable = ['name', 'type'];
