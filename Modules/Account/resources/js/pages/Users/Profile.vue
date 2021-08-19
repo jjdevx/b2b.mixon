@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-lg-500px mx-auto mb-5 mb-xl-10">
+  <div class="card w-lg-550px mx-auto mb-5 mb-xl-10">
     <Form
       id="kt_account_profile_details_form"
       class="form"
@@ -229,6 +229,42 @@
               </div>
             </div>
           </div>
+          <button
+            class="btn btn-primary d-block mx-auto mb-7"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#categories"
+            aria-expanded="false"
+            aria-controls="categories"
+          >
+            Права просмотра остатков групп
+          </button>
+          <div id="categories" class="list-group collapse">
+            <button
+              class="btn btn-success d-block mx-auto mb-7"
+              @click.prevent="setAllCategories()"
+            >
+              Выбрать все
+            </button>
+            <label
+              v-for="{ value, label } in categoriesForSelect"
+              :key="value"
+              class="list-group-item"
+            >
+              <input
+                v-model="categories"
+                class="form-check-input me-1"
+                type="checkbox"
+                :value="value"
+              />
+              {{ label }}
+            </label>
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                {{ categoriesErrorMessage }}
+              </div>
+            </div>
+          </div>
         </template>
       </div>
       <div class="card-footer d-flex justify-content-end py-6 px-9">
@@ -256,15 +292,21 @@ import Multiselect from '@vueform/multiselect'
 import { array, mixed, number, object, string } from 'yup'
 import { User } from '@/types/users'
 
+interface SelectItem {
+  value: number
+  label: string
+}
+
 interface Page {
   data: {
     user?: User
     shippingPoints: Record<number, string>
-    roles: Array<{ value: number; text: string }>
+    roles: Array<SelectItem>
+    categories: Array<SelectItem>
   }
 }
 
-type FormFields = Omit<User, 'id' | 'shippingPoint'> & { avatar: string }
+type FormFields = Omit<User, 'id' | 'shippingPoint' | 'categories'> & { avatar: string }
 
 export default defineComponent({
   components: { ErrorMessage, Field, Form, Multiselect },
@@ -275,6 +317,7 @@ export default defineComponent({
     const user = computed(() => props.value.data?.user)
     const rolesForSelect = props.value.data.roles
     const shippingPoints = props.value.data.shippingPoints
+    const categoriesForSelect = props.value.data.categories
 
     const isProfile = routeIncludes('profile.edit')
 
@@ -305,7 +348,18 @@ export default defineComponent({
       array().of(number()).required().label('Роли'),
       { initialValue: user.value?.roles }
     )
+    const { value: categories, errorMessage: categoriesErrorMessage } = useField(
+      'categories',
+      array().of(number()).required().label('Категории'),
+      { initialValue: user.value?.categories ?? [] }
+    )
     watch(user, () => (roles.value = user.value?.roles))
+
+    function setAllCategories() {
+      const ids = categoriesForSelect.map(({ value }) => value)
+      categories.value =
+        categories.value.length !== ids.length ? categoriesForSelect.map(({ value }) => value) : []
+    }
 
     function submit(data: FormFields, actions: FormActions<FormFields>): void {
       isLoading.value = true
@@ -323,6 +377,7 @@ export default defineComponent({
           ...data,
           shippingPoint: shippingPoint.value ?? null,
           roles: roles.value,
+          categories: categories.value,
           _method: user.value ? 'PATCH' : null,
         },
         {
@@ -347,12 +402,16 @@ export default defineComponent({
       removeAvatar,
       shippingPoints,
       rolesForSelect,
+      categoriesForSelect,
       isProfile,
       isLoading,
       shippingPoint,
       shippingPointErrorMessage,
       roles,
       rolesErrorMessage,
+      categories,
+      categoriesErrorMessage,
+      setAllCategories,
       route,
     }
   },

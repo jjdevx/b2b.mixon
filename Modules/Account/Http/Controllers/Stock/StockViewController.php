@@ -6,9 +6,8 @@ use App\Models\Department;
 use App\Models\Good;
 use App\Models\Goods\Category;
 use Carbon\Carbon;
-use Carbon\Traits\Creator;
-use Modules\Account\Http\Controllers\Controller;
 use Inertia\Response as InertiaResponse;
+use Modules\Account\Http\Controllers\Controller;
 
 class StockViewController extends Controller
 {
@@ -17,7 +16,11 @@ class StockViewController extends Controller
         $this->seo()->setTitle('Просмотр наличия');
 
         $departments = Department::whereIn('type', [Department::BRANCH, Department::SHOP])->get(['id', 'name']);
-        $categories = Category::all(['id', 'name']);
+        $categories = \Auth::user()->availableCategories()->get(['id', 'name']);
+
+        abort_if(
+            $category && !$categories->contains($category->id), 403, 'Вы не имеете права просматривать эту категорию товаров.'
+        );
 
         $goods = [];
         if ($department && $category) {

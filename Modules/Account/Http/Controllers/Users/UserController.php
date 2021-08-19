@@ -53,7 +53,8 @@ class UserController extends Controller
 
         return inertia('Users/Profile', ['data' => [
             'shippingPoints' => $this->repository->getShippingPoints(),
-            'roles' => $this->repository->getRoles()
+            'roles' => $this->repository->getRoles(),
+            'categories' => $this->repository->getCategories()
         ]]);
     }
 
@@ -77,6 +78,8 @@ class UserController extends Controller
             $user->uploadAvatar($avatar);
         }
 
+        $user->availableCategories()->sync($request->input('categories'));
+
         return redirect()->route('account.users.edit', $user->id)->with([
             'toast' => [
                 'text' => "Пользователь {$user->full_name} был создан."
@@ -93,6 +96,7 @@ class UserController extends Controller
         $data = $user->only(['id', 'name', 'surname', 'email', 'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone', 'shipping_point']);
         $data['shippingPoint'] = $data['shipping_point'];
         $data['roles'] = $user->roles->pluck('id');
+        $data['categories'] = $user->availableCategories->pluck('id');
 
         if ($user->avatarMedia) {
             $data['avatar'] = $user->getAvatar();
@@ -102,7 +106,8 @@ class UserController extends Controller
             'data' => [
                 'user' => $data,
                 'shippingPoints' => $this->repository->getShippingPoints(),
-                'roles' => $this->repository->getRoles()
+                'roles' => $this->repository->getRoles(),
+                'categories' => $this->repository->getCategories()
             ]
         ]);
     }
@@ -121,6 +126,7 @@ class UserController extends Controller
         $user->update($data);
 
         $user->syncRoles($request->input('roles'));
+        $user->availableCategories()->sync($request->input('categories'));
 
         if ($avatar = $request->file('avatar')) {
             $user->uploadAvatar($avatar);

@@ -14,4 +14,5 @@ export type User = {
   phone: string
   shippingPoint: number
   roles: Array<number>
+  categories: Array<number>
 }

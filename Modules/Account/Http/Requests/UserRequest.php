@@ -25,7 +25,9 @@ class UserRequest extends FormRequest
             'phone' => ['nullable', 'string255', 'min:10'],
             'shippingPoint' => ['nullable', 'exists:departments,id'],
             'roles' => ['array', 'nullable'],
-            'roles.*' => ['nullable', 'numeric', 'exists:user_roles,id']
+            'roles.*' => ['nullable', 'numeric', 'exists:user_roles,id'],
+            'categories' => ['array', 'nullable'],
+            'categories.*' => ['nullable', 'numeric', 'exists:goods_categories,id'],
         ];
     }
 

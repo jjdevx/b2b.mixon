@@ -3,6 +3,7 @@
 namespace Modules\Account\Repositories;
 
 use App\Models\Department;
+use App\Models\Goods\Category;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
@@ -35,6 +36,13 @@ class UserRepository
         return collect(Role::all(['id', 'label'])
             ->map(fn(Role $r) => ['value' => $r->id, 'label' => $r->label]))
             ->values()
+            ->toArray();
+    }
+
+    public function getCategories(): array
+    {
+        return Category::all(['id', 'name'])
+            ->map(fn(Category $c) => ['value' => $c->id, 'label' => $c->name])
             ->toArray();
     }
 }

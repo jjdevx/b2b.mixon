@@ -213,7 +213,7 @@ import AuthLayout from '@/layouts/Auth.vue'
 import { object, ref as reference, string } from 'yup'
 import { User } from '@/types/users'
 
-type FormFields = Omit<User, 'avatar' | 'id' | 'shippingPoint' | 'roles'> & {
+type FormFields = Omit<User, 'avatar' | 'id' | 'shippingPoint' | 'roles' | 'categories'> & {
   passwordConfirmation: string
 }
 

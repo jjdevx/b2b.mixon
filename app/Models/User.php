@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Goods\Category;
 use App\Models\Traits\Searchable;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -105,6 +106,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function shippingPoint(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'shipping_point');
+    }
+
+    public function availableCategories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'user_can_view_stocks');
     }
 
     // ACCESSORS
