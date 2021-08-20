@@ -114,7 +114,7 @@ class HandleInertiaRequests extends Middleware
             ];
         }
 
-        if ($user->can('stock.update')) {
+        if ($user->can('stocks.update')) {
             $menu[] = [
                 'link' => route('account.stock.update.page'),
                 'title' => 'Загрузка наличия',
@@ -122,12 +122,20 @@ class HandleInertiaRequests extends Middleware
                 'active' => $request->routeIs('account.stock.update.page')
             ];
         }
-        if ($user->can('stock.see')) {
+        if ($user->can('stocks.view')) {
             $menu[] = [
                 'link' => route('account.stock.view'),
                 'title' => 'Просмотр наличия',
-                'icon' => 'Shopping/Loader.svg',
+                'icon' => 'Shopping/Box3.svg',
                 'active' => $request->routeIs('account.stock.view')
+            ];
+        }
+        if ($user->can('stocks.search')) {
+            $menu[] = [
+                'link' => route('account.stock.search'),
+                'title' => 'Просмотр наличия по коду',
+                'icon' => 'Shopping/Barcode.svg',
+                'active' => $request->routeIs('account.stock.search')
             ];
         }
 

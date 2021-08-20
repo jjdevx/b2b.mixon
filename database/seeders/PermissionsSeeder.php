@@ -35,9 +35,9 @@ class PermissionsSeeder extends Seeder
                 'name' => 'Категории',
                 'permissions' => [...$crudPermissions],
             ],
-            'stock' => [
+            'stocks' => [
                 'name' => 'Остатки',
-                'permissions' => ['update', 'see', 'see_by_code'],
+                'permissions' => ['update', 'view', 'search'],
             ]
         ];
 
@@ -57,11 +57,11 @@ class PermissionsSeeder extends Seeder
             ],
             'manager' => [
                 'label' => 'Менеджер',
-                'permissions' => []
+                'permissions' => ['stocks.update', 'stocks.view', 'stocks.search']
             ],
             'user' => [
                 'label' => 'Пользователь',
-                'permissions' => ['account.access']
+                'permissions' => ['account.access', 'stocks.search']
             ]
         ];
 

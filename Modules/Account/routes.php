@@ -8,8 +8,7 @@ use Modules\Account\Http\Controllers\{AuthController,
     Stock\StockUpdateController,
     Stock\StockViewController,
     Users\ProfileController,
-    Users\UserController
-};
+    Users\UserController};
 use Modules\Account\Http\Middleware\RedirectIfAuthenticated;
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -64,11 +63,12 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         ->middleware('can:categories.index');
 
     Route::prefix('stock')->as('stock.')->group(function () {
-        Route::prefix('update')->as('update.')->middleware('can:stock.update')->group(function () {
+        Route::prefix('update')->as('update.')->middleware('can:stocks.update')->group(function () {
             Route::get('', [StockUpdateController::class, 'page'])->name('page');
             Route::post('', [StockUpdateController::class, 'handle'])->name('handle');
         });
 
-        Route::get('{department?}/{category?}', [StockViewController::class, 'index'])->name('view');
+        Route::get('search', [StockViewController::class, 'search'])->name('search')->middleware('can:stocks.search');
+        Route::get('{department?}/{category?}', [StockViewController::class, 'view'])->name('view')->middleware('can:stocks.view');
     });
 });
