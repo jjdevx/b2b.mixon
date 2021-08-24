@@ -9,7 +9,7 @@ class StockUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'excel' => ['required', 'file', 'mimes:xlsx'],
+            'excel' => ['required', 'file', 'mimes:xls,xlsx'],
         ];
     }
 

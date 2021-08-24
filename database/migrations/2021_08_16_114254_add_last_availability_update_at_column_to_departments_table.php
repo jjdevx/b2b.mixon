@@ -16,7 +16,7 @@ class AddLastAvailabilityUpdateAtColumnToDepartmentsTable extends Migration
     public function down(): void
     {
         Schema::table('departments', function (Blueprint $table) {
-            $table->dropColumn('last_availability_update_at');
+            $table->dropColumn('stock_updated_at');
         });
     }
 }

@@ -2,12 +2,14 @@
 
 namespace Modules\Account\Http\Controllers\Goods;
 
+use App\Http\Requests\StockUpdateRequest;
 use App\Models\Goods\Category;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\CategoryRequest;
 use Modules\Account\Http\Resources\CategoryResource;
+use Modules\Account\Imports\CategoriesSalesImport;
 use Modules\Account\Repositories\CategoryRepository;
 
 class CategoryController extends Controller
@@ -91,5 +93,12 @@ class CategoryController extends Controller
         }
 
         return back()->with(['toast' => ['text' => "Группа $category->name была удалена."]]);
+    }
+
+    public function updateSales(StockUpdateRequest $request): RedirectResponse
+    {
+        \Excel::import(new CategoriesSalesImport(), $request->file('excel'));
+
+        return redirect()->route('account.categories.index')->with(['toast' => ['text' => 'Скидки по группам были обновлены.']]);
     }
 }

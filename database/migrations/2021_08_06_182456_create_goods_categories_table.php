@@ -15,6 +15,14 @@ class CreateGoodsCategoriesTable extends Migration
             $table->string('name');
             $table->unsignedSmallInteger('number');
 
+            $table->decimal('sale_small', 4)->nullable();
+            $table->decimal('sale_medium', 4)->nullable();
+            $table->decimal('sale', 4)->nullable();
+            $table->decimal('sale_special', 4)->nullable();
+            $table->decimal('sale_big', 4)->nullable();
+            $table->decimal('sale_exclusive', 4)->nullable();
+            $table->decimal('sale_super_exclusive', 4)->nullable();
+
             $table->timestamps();
         });
     }

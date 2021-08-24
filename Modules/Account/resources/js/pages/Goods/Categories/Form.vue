@@ -69,7 +69,10 @@ interface Page {
   }
 }
 
-type FormFields = Omit<Category, 'id' | 'createdAt' | 'updatedAt'>
+type FormFields = Omit<
+  Category,
+  'id' | 'saleSmall' | 'sale' | 'saleBig' | 'createdAt' | 'updatedAt'
+>
 
 export default defineComponent({
   setup() {

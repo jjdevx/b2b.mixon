@@ -10,6 +10,9 @@ export interface Category {
   groupId: number
   name: string
   number: number
+  saleSmall: number
+  sale: number
+  saleBig: number
   createdAt: string
   updatedAt: string
 }

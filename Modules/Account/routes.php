@@ -8,7 +8,8 @@ use Modules\Account\Http\Controllers\{AuthController,
     Stock\StockUpdateController,
     Stock\StockViewController,
     Users\ProfileController,
-    Users\UserController};
+    Users\UserController
+};
 use Modules\Account\Http\Middleware\RedirectIfAuthenticated;
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -61,6 +62,9 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         ->parameter('category', 'id')
         ->except(['show'])
         ->middleware('can:categories.index');
+    Route::post('categories/sales', [CategoryController::class, 'updateSales'])
+        ->name('categories.sales')
+        ->middleware('can:categories.sales.update');
 
     Route::prefix('stock')->as('stock.')->group(function () {
         Route::prefix('update')->as('update.')->middleware('can:stocks.update')->group(function () {

@@ -22,10 +22,12 @@
             <tr class="fw-bolder text-muted">
               <th />
               <th>Группа</th>
+              <th>Номер</th>
               <th>Название</th>
+              <th class="min-w-175px">Скидки</th>
               <th>Добавлена</th>
               <th>Отредактирована</th>
-              <th class="min-w-150px text-end">Действия</th>
+              <th class="min-w-125px text-end">Действия</th>
             </tr>
           </thead>
           <tbody>
@@ -38,7 +40,13 @@
                   {{ category.groupId }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{ category.number }}
+                </td>
+                <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ category.name }}
+                </td>
+                <td class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{ category.saleSmall }}% | {{ category.sale }}% | {{ category.saleBig }}%
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ formatDate(category.createdAt, 'DD.MM.YYYY, HH:ss') }}
@@ -74,11 +82,13 @@
       </div>
     </div>
   </div>
+  <UpdateSales class="mt-6" />
 </template>
 
 <script lang="ts">
 import { formatDate, Inertia, Swal, useCan, usePage, useRoute } from 'mixon'
 import { computed, defineComponent } from 'vue'
+import UpdateSales from '@/pages/Goods/Categories/UpdateSales.vue'
 import { Category } from '@/types/goods'
 
 interface Page {
@@ -88,6 +98,7 @@ interface Page {
 }
 
 export default defineComponent({
+  components: { UpdateSales },
   setup() {
     const page = usePage<Page>()
     const data = computed(() => page.props.value.data)

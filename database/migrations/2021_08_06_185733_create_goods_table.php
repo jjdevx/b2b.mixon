@@ -18,14 +18,6 @@ class CreateGoodsTable extends Migration
             $table->decimal('arp')->nullable();
             $table->decimal('rrp');
 
-            $table->unsignedTinyInteger('wholesale_small')->nullable();
-            $table->unsignedTinyInteger('wholesale_medium')->nullable();
-            $table->unsignedTinyInteger('wholesale')->nullable();
-            $table->unsignedTinyInteger('wholesale_special')->nullable();
-            $table->unsignedTinyInteger('wholesale_big')->nullable();
-            $table->unsignedTinyInteger('wholesale_exclusive')->nullable();
-            $table->unsignedTinyInteger('wholesale_super_exclusive')->nullable();
-
             $table->decimal('volume', 6)->nullable();
             $table->decimal('weight', 6)->nullable();
 
