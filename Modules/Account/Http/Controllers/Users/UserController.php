@@ -53,6 +53,7 @@ class UserController extends Controller
 
         return inertia('Users/Profile', ['data' => [
             'shippingPoints' => $this->repository->getShippingPoints(),
+            'saleTypes' => User::$saleTypes,
             'roles' => $this->repository->getRoles(),
             'categories' => $this->repository->getCategories()
         ]]);
@@ -93,8 +94,13 @@ class UserController extends Controller
 
         $this->seo()->setTitle('Редактировать пользователя');
 
-        $data = $user->only(['id', 'name', 'surname', 'email', 'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone', 'shipping_point']);
+        $data = $user->only([
+            'id', 'name', 'surname', 'email',
+            'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone',
+            'shipping_point', 'sale_type'
+        ]);
         $data['shippingPoint'] = $data['shipping_point'];
+        $data['saleType'] = $data['sale_type'];
         $data['roles'] = $user->roles->pluck('id');
         $data['categories'] = $user->availableCategories->pluck('id');
 
@@ -106,6 +112,7 @@ class UserController extends Controller
             'data' => [
                 'user' => $data,
                 'shippingPoints' => $this->repository->getShippingPoints(),
+                'saleTypes' => User::$saleTypes,
                 'roles' => $this->repository->getRoles(),
                 'categories' => $this->repository->getCategories()
             ]
@@ -118,6 +125,7 @@ class UserController extends Controller
 
         $data = $request->except('password');
         $data['shipping_point'] = $data['shippingPoint'];
+        $data['sale_type'] = $data['saleType'];
 
         if ($password = $request->input('password')) {
             $data['password'] = \Hash::make($password);

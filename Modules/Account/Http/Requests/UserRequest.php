@@ -2,12 +2,15 @@
 
 namespace Modules\Account\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
     public function rules(): array
     {
+        $saleTypes = implode(',', array_keys(User::$saleTypes));
+
         $update = request()->isMethod('PATCH');
 
         return [
@@ -24,6 +27,7 @@ class UserRequest extends FormRequest
             'fax' => ['nullable', 'string255', 'min:10'],
             'phone' => ['nullable', 'string255', 'min:10'],
             'shippingPoint' => ['nullable', 'exists:departments,id'],
+            'saleType' => ['nullable', "in:$saleTypes"],
             'roles' => ['array', 'nullable'],
             'roles.*' => ['nullable', 'numeric', 'exists:user_roles,id'],
             'categories' => ['array', 'nullable'],

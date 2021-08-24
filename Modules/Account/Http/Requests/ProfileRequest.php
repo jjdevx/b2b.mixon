@@ -8,7 +8,7 @@ class ProfileRequest extends UserRequest
     {
         $rules = parent::rules();
 
-        unset($rules['roles'], $rules['roles.*']);
+        unset($rules['shippingPoint'], $rules['saleType'], $rules['roles'], $rules['roles.*'], $rules['categories'], $rules['categories.*']);
 
         $rules['email'] = ['required', 'email', 'unique:users,email,' . \Auth::id()];
         $rules['password'] = ['nullable', 'string', 'min:8', 'numbers', 'letters'];

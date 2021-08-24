@@ -10,7 +10,7 @@
       <div class="text-gray-400 fw-bold fs-4">
         Уже есть аккаунт?
 
-        <InertiaLink href="/login" class="link-primary fw-bolder"> Войти </InertiaLink>
+        <InertiaLink href="/login" class="link-primary fw-bolder"> Войти</InertiaLink>
       </div>
     </div>
 
@@ -213,7 +213,10 @@ import AuthLayout from '@/layouts/Auth.vue'
 import { object, ref as reference, string } from 'yup'
 import { User } from '@/types/users'
 
-type FormFields = Omit<User, 'avatar' | 'id' | 'shippingPoint' | 'roles' | 'categories'> & {
+type FormFields = Omit<
+  User,
+  'avatar' | 'id' | 'shippingPoint' | 'saleType' | 'roles' | 'categories'
+> & {
   passwordConfirmation: string
 }
 

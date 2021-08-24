@@ -208,8 +208,9 @@
 
         <template v-if="!isProfile">
           <div class="fv-row mb-7">
-            <label class="form-label fw-bolder text-dark fs-6">Точка отгрузки*</label>
+            <label class="form-label fw-bolder text-dark fs-6">Точка отгрузки</label>
             <select v-model="shippingPoint" class="form-control form-control-lg form-control-solid">
+              <option :value="null">Нету</option>
               <option v-for="(name, id) in shippingPoints" :key="id" :value="id">
                 {{ name }}
               </option>
@@ -217,6 +218,20 @@
             <div class="fv-plugins-message-container">
               <div class="fv-help-block">
                 {{ shippingPointErrorMessage }}
+              </div>
+            </div>
+          </div>
+          <div class="fv-row mb-7">
+            <label class="form-label fw-bolder text-dark fs-6">Тип скидки</label>
+            <select v-model="saleType" class="form-control form-control-lg form-control-solid">
+              <option :value="null">Нету</option>
+              <option v-for="(name, type) in saleTypes" :key="type" :value="type">
+                {{ name }}
+              </option>
+            </select>
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                {{ saleTypeErrorMessage }}
               </div>
             </div>
           </div>
@@ -301,12 +316,15 @@ interface Page {
   data: {
     user?: User
     shippingPoints: Record<number, string>
+    saleTypes: Record<string, string>
     roles: Array<SelectItem>
     categories: Array<SelectItem>
   }
 }
 
-type FormFields = Omit<User, 'id' | 'shippingPoint' | 'categories'> & { avatar: string }
+type FormFields = Omit<User, 'id' | 'shippingPoint' | 'saleType' | 'roles' | 'categories'> & {
+  avatar: string
+}
 
 export default defineComponent({
   components: { ErrorMessage, Field, Form, Multiselect },
@@ -315,15 +333,16 @@ export default defineComponent({
     const { route, routeIncludes } = useRoute()
 
     const user = computed(() => props.value.data?.user)
-    const rolesForSelect = props.value.data.roles
     const shippingPoints = props.value.data.shippingPoints
+    const saleTypes = props.value.data.saleTypes
+    const rolesForSelect = props.value.data.roles
     const categoriesForSelect = props.value.data.categories
 
     const isProfile = routeIncludes('profile.edit')
 
     const isLoading = ref(false)
 
-    const schema: Record<keyof Omit<FormFields, 'shippingPoint' | 'roles'>, BaseSchema> = {
+    const schema: Record<keyof FormFields, BaseSchema> = {
       avatar: mixed().label('Фото'),
       name: string().min(2).required().label('Имя'),
       surname: string().min(3).required().label('Фамилия'),
@@ -342,6 +361,11 @@ export default defineComponent({
       'shippingPoint',
       number().nullable().label('Точка отгрузки'),
       { initialValue: user.value?.shippingPoint }
+    )
+    const { value: saleType, errorMessage: saleTypeErrorMessage } = useField(
+      'saleType',
+      mixed().nullable().label('Тип скидки'),
+      { initialValue: user.value?.saleType }
     )
     const { value: roles, errorMessage: rolesErrorMessage } = useField(
       'roles',
@@ -376,6 +400,7 @@ export default defineComponent({
         {
           ...data,
           shippingPoint: shippingPoint.value ?? null,
+          saleType: saleType.value ?? null,
           roles: roles.value,
           categories: categories.value,
           _method: user.value ? 'PATCH' : null,
@@ -401,12 +426,15 @@ export default defineComponent({
       submit,
       removeAvatar,
       shippingPoints,
+      saleTypes,
       rolesForSelect,
       categoriesForSelect,
       isProfile,
       isLoading,
       shippingPoint,
       shippingPointErrorMessage,
+      saleType,
+      saleTypeErrorMessage,
       roles,
       rolesErrorMessage,
       categories,

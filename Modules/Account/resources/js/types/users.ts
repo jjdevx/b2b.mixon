@@ -1,3 +1,5 @@
+type saleType = 'saleSmall' | 'sale' | 'saleBig'
+
 export type User = {
   avatar?: string
   id: number
@@ -13,6 +15,7 @@ export type User = {
   fax: string
   phone: string
   shippingPoint: number
+  saleType: saleType
   roles: Array<number>
   categories: Array<number>
 }

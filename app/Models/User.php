@@ -31,8 +31,21 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         CascadeSoftDeletes,
         Searchable;
 
+    public const SALE_SMALL = 'sale_small';
+    public const SALE = 'sale';
+    public const SALE_BIG = 'sale_big';
+
+    public static array $saleTypes = [
+        self::SALE_SMALL => 'Мелкий опт',
+        self::SALE => 'Опт',
+        self::SALE_BIG => 'Крупный опт'
+    ];
+
     protected $fillable = [
-        'name', 'surname', 'email', 'password', 'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone', 'shipping_point'
+        'name', 'surname',
+        'email', 'password',
+        'company', 'okpo', 'country', 'city', 'address', 'fax', 'phone',
+        'shipping_point', 'sale_type'
     ];
 
     protected $hidden = ['password', 'remember_token',];
