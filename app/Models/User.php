@@ -126,6 +126,11 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         return $this->belongsToMany(Category::class, 'user_can_view_stocks');
     }
 
+    public function sales(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class, 'user_has_sales')->withPivot('size');
+    }
+
     // ACCESSORS
     public function getFullNameAttribute(): string
     {

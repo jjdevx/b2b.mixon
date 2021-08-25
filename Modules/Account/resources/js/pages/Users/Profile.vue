@@ -252,7 +252,7 @@
             aria-expanded="false"
             aria-controls="categories"
           >
-            Права просмотра остатков групп
+            Права просмотра остатков категорий
           </button>
           <div id="categories" class="list-group collapse">
             <button
@@ -277,6 +277,41 @@
             <div class="fv-plugins-message-container">
               <div class="fv-help-block">
                 {{ categoriesErrorMessage }}
+              </div>
+            </div>
+          </div>
+          <button
+            class="btn btn-primary d-block mx-auto mb-7"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#sales"
+            aria-expanded="false"
+            aria-controls="sales"
+          >
+            Скидки по категориям
+          </button>
+          <div id="sales" class="list-group sales-list collapse">
+            <button class="btn btn-danger d-block mx-auto mb-7" @click.prevent="resetAllSales()">
+              Удалить все
+            </button>
+            <label
+              v-for="{ value, label } in categoriesForSelect"
+              :key="value"
+              class="list-group-item sales-list__item"
+            >
+              {{ label }}
+              <input
+                v-model="sales[value]"
+                class="form-control form-control-sm sales-list__input"
+                type="number"
+                min="0"
+                max="99.99"
+                step="0.01"
+              />
+            </label>
+            <div class="fv-plugins-message-container">
+              <div class="fv-help-block">
+                {{ salesErrorMessage }}
               </div>
             </div>
           </div>
@@ -377,6 +412,13 @@ export default defineComponent({
       array().of(number()).required().label('Категории'),
       { initialValue: user.value?.categories ?? [] }
     )
+    const { value: sales, errorMessage: salesErrorMessage } = useField(
+      'sales',
+      mixed().required().label('Скидки по категориям'),
+      { initialValue: user.value?.sales ?? {} }
+    )
+    const resetAllSales = () => (sales.value = {})
+
     watch(user, () => (roles.value = user.value?.roles))
 
     function setAllCategories() {
@@ -403,6 +445,7 @@ export default defineComponent({
           saleType: saleType.value ?? null,
           roles: roles.value,
           categories: categories.value,
+          sales: sales.value,
           _method: user.value ? 'PATCH' : null,
         },
         {
@@ -415,9 +458,10 @@ export default defineComponent({
       )
     }
 
+    const avatarDestroyRoute = 'profile.avatar.destroy'
     const removeAvatar = () =>
       Inertia.delete(
-        isProfile ? route('profile.avatar.destroy') : route('users.avatar.destroy', user.value?.id)
+        isProfile ? route(avatarDestroyRoute) : route(avatarDestroyRoute, user.value?.id)
       )
 
     return {
@@ -440,8 +484,25 @@ export default defineComponent({
       categories,
       categoriesErrorMessage,
       setAllCategories,
+      sales,
+      salesErrorMessage,
+      resetAllSales,
       route,
     }
   },
 })
 </script>
+
+<style lang="scss" scoped>
+.sales-list {
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__input {
+    max-width: 70px;
+  }
+}
+</style>

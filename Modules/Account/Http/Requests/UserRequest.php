@@ -32,7 +32,16 @@ class UserRequest extends FormRequest
             'roles.*' => ['nullable', 'numeric', 'exists:user_roles,id'],
             'categories' => ['array', 'nullable'],
             'categories.*' => ['nullable', 'numeric', 'exists:goods_categories,id'],
+            'sales_ids' => ['array', 'nullable'],
+            'sales_ids.*' => ['nullable', 'numeric', 'exists:goods_categories,id'],
+            'sales' => ['array', 'nullable'],
+            'sales.*' => ['nullable', 'numeric', 'min:0', 'max:99.99'],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge(['sales_ids' => array_keys($this->input('sales'))]);
     }
 
     public function authorize(): bool

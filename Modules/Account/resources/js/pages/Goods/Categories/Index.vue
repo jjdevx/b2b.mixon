@@ -82,7 +82,7 @@
       </div>
     </div>
   </div>
-  <UpdateSales class="mt-6" />
+  <UpdateSales v-if="can('categories.sales.update')" class="mt-6" />
 </template>
 
 <script lang="ts">

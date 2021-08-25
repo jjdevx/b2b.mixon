@@ -80,6 +80,15 @@ class UserController extends Controller
         }
 
         $user->availableCategories()->sync($request->input('categories'));
+        if ($request->filled('sales')) {
+            $sales = array_filter($request->input('sales'), fn($s) => $s);
+
+            foreach ($sales as $categoryId => $sale) {
+                $sales[$categoryId] = ['size' => $sale];
+            }
+
+            $user->sales()->sync($sales);
+        }
 
         return redirect()->route('account.users.edit', $user->id)->with([
             'toast' => [
@@ -103,6 +112,12 @@ class UserController extends Controller
         $data['saleType'] = $data['sale_type'];
         $data['roles'] = $user->roles->pluck('id');
         $data['categories'] = $user->availableCategories->pluck('id');
+        $sales = [];
+
+        foreach ($user->sales as $sale) {
+            $sales[$sale->id] = $sale->pivot->size;
+        }
+        $data['sales'] = $sales;
 
         if ($user->avatarMedia) {
             $data['avatar'] = $user->getAvatar();
@@ -133,8 +148,21 @@ class UserController extends Controller
 
         $user->update($data);
 
-        $user->syncRoles($request->input('roles'));
-        $user->availableCategories()->sync($request->input('categories'));
+        if ($request->filled('roles')) {
+            $user->syncRoles($request->input('roles'));
+        }
+        if ($request->filled('categories')) {
+            $user->availableCategories()->sync($request->input('categories'));
+        }
+        if ($request->filled('sales')) {
+            $sales = array_filter($request->input('sales'), fn($s) => $s);
+
+            foreach ($sales as $categoryId => $sale) {
+                $sales[$categoryId] = ['size' => $sale];
+            }
+
+            $user->sales()->sync($sales);
+        }
 
         if ($avatar = $request->file('avatar')) {
             $user->uploadAvatar($avatar);
