@@ -215,7 +215,7 @@ import { User } from '@/types/users'
 
 type FormFields = Omit<
   User,
-  'avatar' | 'id' | 'shippingPoint' | 'saleType' | 'roles' | 'categories'
+  'avatar' | 'id' | 'shippingPoint' | 'saleType' | 'roles' | 'categories' | 'sales'
 > & {
   passwordConfirmation: string
 }

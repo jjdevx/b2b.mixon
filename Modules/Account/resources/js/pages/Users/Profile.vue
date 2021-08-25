@@ -357,7 +357,10 @@ interface Page {
   }
 }
 
-type FormFields = Omit<User, 'id' | 'shippingPoint' | 'saleType' | 'roles' | 'categories'> & {
+type FormFields = Omit<
+  User,
+  'id' | 'shippingPoint' | 'saleType' | 'roles' | 'categories' | 'sales'
+> & {
   avatar: string
 }
 

@@ -18,4 +18,5 @@ export type User = {
   saleType: saleType
   roles: Array<number>
   categories: Array<number>
+  sales: Record<number, number>
 }

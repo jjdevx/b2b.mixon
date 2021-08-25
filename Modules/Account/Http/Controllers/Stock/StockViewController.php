@@ -17,7 +17,11 @@ class StockViewController extends Controller
         $this->seo()->setTitle('Просмотр наличия');
 
         $departments = Department::whereIn('type', [Department::BRANCH, Department::SHOP])->get(['id', 'name']);
-        $categories = \Auth::user()->availableCategories()->get(['id', 'name']);
+
+        $user = \Auth::user();
+        $categories = $user->hasRole('admin')
+            ? Category::all(['id', 'name'])
+            : $user->availableCategories()->get(['id', 'name']);
 
         abort_if(
             $category && !$categories->contains($category->id),
@@ -62,7 +66,7 @@ class StockViewController extends Controller
                     ->select(['name'])
                     ->withPivot('qty')
             ])
-                ->get(['id', 'name','stock_updated_at'])
+                ->get(['id', 'name', 'stock_updated_at'])
                 ->filter(fn(Department $d) => $d->goods->isNotEmpty())
                 ->map(function (Department $department) use ($sku) {
                     $data = $department->toArray();
