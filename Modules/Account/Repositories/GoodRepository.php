@@ -4,6 +4,7 @@ namespace Modules\Account\Repositories;
 
 use App\Models\Good;
 use App\Models\Goods\Category;
+use App\Models\User;
 use Illuminate\Support\Collection;
 
 class GoodRepository
@@ -20,15 +21,18 @@ class GoodRepository
         return Good::where('category_id', '=', $category->id)
             ->with(['stocks' => fn($q) => $q->where('department_id', '=', $department->id)])
             ->get(['id', 'sku', 'name', 'rrp', 'weight'])
-            ->map(function (Good $good) use ($category, $user) {
-                $good->stock = $good->stocks[0]?->pivot->qty ?? 0;
-                $salePrice = $good->rrp;
-                if (($saleType = $user->sale_type) && $sale = $category->getAttribute($saleType)) {
-                    $salePrice *= 1 - $sale / 100;
-                }
+            ->map(fn(Good $g) => $this->calculateSale($g->setRelation('category', $category), $user));
+    }
 
-                $good->salePrice = number_format($salePrice, 2, '.', '');
-                return $good;
-            });
+    public function calculateSale(Good $good, User $user): Good
+    {
+        $good->stock = $good->stocks[0]?->pivot->qty ?? 0;
+        $salePrice = $good->rrp;
+        if (($saleType = $user->sale_type) && $sale = $good->category->getAttribute($saleType)) {
+            $salePrice *= 1 - $sale / 100;
+        }
+
+        $good->salePrice = number_format($salePrice, 2, '.', '');
+        return $good;
     }
 }

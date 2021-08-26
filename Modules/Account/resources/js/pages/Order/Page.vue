@@ -120,7 +120,7 @@ export default defineComponent({
     function addToCart() {
       if (Object.values(counts.value)) {
         const goods = Object.fromEntries(Object.entries(counts.value).filter(([, value]) => +value))
-        Inertia.post(route('order.update'), serialize({ goods }))
+        Inertia.post(route('order.update'), serialize({ goods }), { preserveState: false })
       }
     }
 
