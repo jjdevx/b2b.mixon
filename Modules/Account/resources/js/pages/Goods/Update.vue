@@ -2,7 +2,7 @@
   <div class="card w-lg-500px mx-auto mb-5 mb-xl-10">
     <form id="kt_account_profile_details_form" class="form" novalidate @submit.prevent="submit">
       <div class="card-body border-top p-9">
-        <h1 class="mb-8">Загрузка наличия для #{{ department.id }} {{ department.name }}</h1>
+        <h1 class="mb-8">Загрузка товаров</h1>
         <div class="fv-row mb-7">
           <label class="form-label fw-bolder text-dark fs-6">Файл*</label>
           <input
@@ -30,24 +30,15 @@
 </template>
 
 <script lang="ts">
-import { Inertia, usePage, useRoute } from 'mixon'
-import { computed, defineComponent, ref } from 'vue'
+import { Inertia, useRoute } from 'mixon'
+import { defineComponent, ref } from 'vue'
 import { useField, useForm } from 'vee-validate'
 import { mixed } from 'yup'
-import { Department } from '@/types/departments'
-
-interface Page {
-  data: {
-    department: Department
-  }
-}
 
 type FormFields = { excel: string[] }
 
 export default defineComponent({
   setup() {
-    const { props } = usePage<Page>()
-    const department = computed(() => props.value.data.department)
     const { route } = useRoute()
 
     const fileInput = ref(null as unknown as HTMLInputElement)
@@ -69,7 +60,7 @@ export default defineComponent({
 
     const submit = handleSubmit((data: FormFields) => {
       isLoading.value = true
-      Inertia.post(route('stock.update.handle'), data, {
+      Inertia.post(route('goods.update.handle'), data, {
         preserveState: true,
         preserveScroll: true,
         onSuccess() {
@@ -82,7 +73,6 @@ export default defineComponent({
     })
 
     return {
-      department,
       isLoading,
       route,
       submit,

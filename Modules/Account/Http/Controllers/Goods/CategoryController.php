@@ -20,7 +20,7 @@ class CategoryController extends Controller
 
     public function index(): Response
     {
-        $this->seo()->setTitle('Группы');
+        $this->seo()->setTitle('Категории');
 
         $categories = $this->repository->getCategoriesForIndex();
 
@@ -44,7 +44,7 @@ class CategoryController extends Controller
 
     public function store(CategoryRequest $request): RedirectResponse
     {
-        $data = $request->only(['groupId', 'name', 'number']);
+        $data = $request->only(['id', 'groupId', 'name']);
         $data['group_id'] = $data['groupId'];
 
         $category = Category::create($data);

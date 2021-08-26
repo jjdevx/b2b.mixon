@@ -341,6 +341,7 @@ import { ErrorMessage, Field, Form, FormActions, useField } from 'vee-validate'
 import Multiselect from '@vueform/multiselect'
 import { array, mixed, number, object, string } from 'yup'
 import { User } from '@/types/users'
+import { serialize } from 'object-to-formdata'
 
 interface SelectItem {
   value: number
@@ -415,7 +416,7 @@ export default defineComponent({
       array().of(number()).required().label('Категории'),
       { initialValue: user.value?.categories ?? [] }
     )
-    const { value: sales, errorMessage: salesErrorMessage } = useField(
+    const { value: sales, errorMessage: salesErrorMessage } = useField<Record<string, number>>(
       'sales',
       mixed().required().label('Скидки по категориям'),
       { initialValue: user.value?.sales ?? {} }
@@ -440,17 +441,19 @@ export default defineComponent({
 
       data.avatar = Array.isArray(data.avatar) ? data.avatar[0] : ''
 
+      const salesFiltered = Object.fromEntries(Object.entries(sales.value).filter(([, v]) => v))
+
       Inertia.post(
         url,
-        {
+        serialize({
           ...data,
           shippingPoint: shippingPoint.value ?? null,
           saleType: saleType.value ?? null,
           roles: roles.value,
           categories: categories.value,
-          sales: sales.value,
+          sales: salesFiltered,
           _method: user.value ? 'PATCH' : null,
-        },
+        }),
         {
           preserveState: true,
           preserveScroll: true,

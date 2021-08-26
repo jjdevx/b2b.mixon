@@ -13,7 +13,7 @@ class Good extends Model implements Buyable
 {
     use CanBeBought;
 
-    protected $fillable = ['category_id', 'sku', 'name', 'rrp'];
+    protected $fillable = ['category_id', 'sku', 'name', 'rrp','weight'];
 
     public function getBuyablePrice($options = null)
     {

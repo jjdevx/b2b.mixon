@@ -95,6 +95,14 @@ class HandleInertiaRequests extends Middleware
             ];
         }
 
+        if ($user->can('goods.update')) {
+            $menu[] = [
+                'link' => route('account.goods.update'),
+                'title' => 'Загрузка товаров',
+                'icon' => 'Files/Import.svg',
+                'active' => $request->routeIs('account.goods.update')
+            ];
+        }
         if ($user->can('stocks.update')) {
             $menu[] = [
                 'link' => route('account.stock.update.page'),

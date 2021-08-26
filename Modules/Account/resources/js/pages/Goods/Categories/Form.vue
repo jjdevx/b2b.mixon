@@ -3,7 +3,7 @@
     <form id="kt_account_profile_details_form" class="form" novalidate @submit.prevent="submit">
       <div class="card-body border-top p-9">
         <div class="fv-row mb-7">
-          <label class="form-label fw-bolder text-dark fs-6">Точка отгрузки*</label>
+          <label class="form-label fw-bolder text-dark fs-6">Группа*</label>
           <select v-model="groupId" class="form-control form-control-lg form-control-solid">
             <option v-for="{ value, label } in groupsForSelect" :key="value" :value="value">
               {{ label }}
@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="fv-row mb-7">
-          <label class="form-label fw-bolder text-dark fs-6">Номер в группе*</label>
+          <label class="form-label fw-bolder text-dark fs-6">Номер*</label>
           <input
             v-model="numberInGroup"
             type="number"
@@ -33,7 +33,7 @@
           />
           <div class="fv-plugins-message-container">
             <div class="fv-help-block">
-              {{ errors.number }}
+              {{ errors.id }}
             </div>
           </div>
         </div>
@@ -69,10 +69,7 @@ interface Page {
   }
 }
 
-type FormFields = Omit<
-  Category,
-  'id' | 'saleSmall' | 'sale' | 'saleBig' | 'createdAt' | 'updatedAt'
->
+type FormFields = Omit<Category, 'saleSmall' | 'sale' | 'saleBig' | 'createdAt' | 'updatedAt'>
 
 export default defineComponent({
   setup() {
@@ -87,12 +84,12 @@ export default defineComponent({
       initialValues: category.value ?? {
         groupId: 1,
         name: '',
-        number: 0,
+        id: 0,
       },
     })
     const { value: groupId } = useField('groupId', number().required().label('Группа'))
     const { value: name } = useField('name', string().min(4).required().label('Название'))
-    const { value: numberInGroup } = useField('number', number().required().label('Номер'))
+    const { value: numberInGroup } = useField('id', number().required().label('Номер'))
 
     const isLoading = ref(false)
 

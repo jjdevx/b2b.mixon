@@ -14,7 +14,7 @@ class Category extends Model
 
     protected $table = 'goods_categories';
 
-    protected $fillable = ['group_id', 'name', 'number', 'sale_small', 'sale', 'sale_big'];
+    protected $fillable = ['id', 'group_id', 'name', 'sale_small', 'sale', 'sale_big'];
 
     public function group(): BelongsTo
     {

@@ -9,7 +9,6 @@ export interface Category {
   id: number
   groupId: number
   name: string
-  number: number
   saleSmall: number
   sale: number
   saleBig: number

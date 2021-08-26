@@ -13,7 +13,6 @@ class CreateGoodsCategoriesTable extends Migration
             $table->foreignId('group_id')->constrained('goods_groups')->onDelete('cascade');
 
             $table->string('name');
-            $table->unsignedSmallInteger('number');
 
             $table->decimal('sale_small', 4)->nullable();
             $table->decimal('sale_medium', 4)->nullable();

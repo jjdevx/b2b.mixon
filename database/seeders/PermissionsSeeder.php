@@ -39,6 +39,10 @@ class PermissionsSeeder extends Seeder
                 'name' => 'Остатки',
                 'permissions' => ['update', 'view', 'search'],
             ],
+            'goods' => [
+                'name' => 'Товары',
+                'permissions' => ['update'],
+            ],
             'order' => [
                 'name' => 'Заказ',
                 'permissions' => ['make'],
@@ -61,7 +65,7 @@ class PermissionsSeeder extends Seeder
             ],
             'manager' => [
                 'label' => 'Менеджер',
-                'permissions' => ['stocks.update', 'stocks.view', 'stocks.search']
+                'permissions' => ['stocks.update', 'stocks.view', 'stocks.search', 'goods.update']
             ],
             'user' => [
                 'label' => 'Пользователь',

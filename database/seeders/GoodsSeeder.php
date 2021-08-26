@@ -145,7 +145,7 @@ class GoodsSeeder extends Seeder
                 foreach ($groups as $key => $value) {
                     $group = Group::create(['name' => $value]);
                     collect($categories[$key])
-                        ->map(fn($value, $key) => ['group_id' => $group->id, 'name' => $value, 'number' => $key])
+                        ->map(fn($value, $key) => ['id' => $key, 'group_id' => $group->id, 'name' => $value])
                         ->each(fn($attrs) => Category::create($attrs));
                 }
             }
@@ -171,12 +171,12 @@ class GoodsSeeder extends Seeder
         ];
 
         foreach ($skus as $sku => $name) {
-            Good::create([
+           /* Good::create([
                 'category_id' => Category::inRandomOrder()->first()->id,
                 'sku' => $sku,
                 'name' => $name,
                 'rrp' => random_int(50, 500)
-            ]);
+            ]);*/
         }
     }
 }

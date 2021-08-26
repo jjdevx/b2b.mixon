@@ -17,7 +17,6 @@ class CategoryResource extends JsonResource
             'groupId' => $category->group_id,
             'id' => $category->id,
             'name' => $category->name,
-            'number' => $category->number,
             'saleSmall' => $category->sale_small,
             'sale' => $category->sale,
             'saleBig' => $category->sale_big,

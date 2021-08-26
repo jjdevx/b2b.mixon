@@ -9,9 +9,9 @@ class CategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'id' => ['required', 'integer'],
             'groupId' => ['required', 'exists:goods_groups,id'],
             'name' => ['required', 'string255'],
-            'number' => ['required', 'integer']
         ];
     }
 

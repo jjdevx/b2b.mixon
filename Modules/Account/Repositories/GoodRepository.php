@@ -26,9 +26,13 @@ class GoodRepository
 
     public function calculateSale(Good $good, User $user): Good
     {
+        $category = $good->category;
         $good->stock = $good->stocks[0]?->pivot->qty ?? 0;
         $salePrice = $good->rrp;
-        if (($saleType = $user->sale_type) && $sale = $good->category->getAttribute($saleType)) {
+
+        if ($sale = $user->sales()->where('id', '=', $category->id)->first()) {
+            $salePrice *= 1 - (float)$sale->pivot->size / 100;
+        } else if (($saleType = $user->sale_type) && $sale = $category->getAttribute($saleType)) {
             $salePrice *= 1 - $sale / 100;
         }
 

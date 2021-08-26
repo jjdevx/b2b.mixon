@@ -4,6 +4,7 @@ use Modules\Account\Http\Controllers\{AuthController,
     DashboardController,
     DepartmentController,
     Goods\CategoryController,
+    Goods\GoodsImportController,
     Goods\GroupController,
     Order\CartController,
     Order\OrderController,
@@ -76,6 +77,12 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
     Route::post('categories/sales', [CategoryController::class, 'updateSales'])
         ->name('categories.sales')
         ->middleware('can:categories.sales.update');
+
+    Route::prefix('goods/update')->as('goods.update')->middleware('can:goods.update')->group(function () {
+        Route::get('', [GoodsImportController::class, 'page']);
+        Route::post('', [GoodsImportController::class, 'handle'])->name('.handle');
+    });
+
 
     Route::prefix('stock')->as('stock.')->group(function () {
         Route::prefix('update')->as('update.')->middleware('can:stocks.update')->group(function () {
