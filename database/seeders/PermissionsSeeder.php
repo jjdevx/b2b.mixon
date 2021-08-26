@@ -38,6 +38,10 @@ class PermissionsSeeder extends Seeder
             'stocks' => [
                 'name' => 'Остатки',
                 'permissions' => ['update', 'view', 'search'],
+            ],
+            'order' => [
+                'name' => 'Заказ',
+                'permissions' => ['make'],
             ]
         ];
 

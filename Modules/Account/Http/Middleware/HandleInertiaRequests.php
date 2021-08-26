@@ -79,38 +79,19 @@ class HandleInertiaRequests extends Middleware
             ]
         ];
 
-        if ($user->can('users.index')) {
+        if ($user->shippingPoint && $user->can('order.make')) {
             $menu[] = [
-                'link' => route('account.users.index'),
-                'title' => 'Пользователи',
-                'icon' => 'General/User.svg',
-                'active' => \Str::contains($request->route()->getName(), 'users')
+                'link' => route('account.order'),
+                'title' => 'Заказ товаров',
+                'icon' => 'Shopping/Calculator.svg',
+                'active' => $request->routeIs('account.order')
             ];
-        }
-
-        if ($user->can('departments.index')) {
             $menu[] = [
-                'link' => route('account.departments.index'),
-                'title' => 'Отделы',
-                'icon' => 'Home/Building.svg',
-                'active' => \Str::contains($request->route()->getName(), 'departments')
-            ];
-        }
-
-        if ($user->can('groups.index')) {
-            $menu[] = [
-                'link' => route('account.groups.index'),
-                'title' => 'Группы',
-                'icon' => 'Files/Group-folders.svg',
-                'active' => \Str::contains($request->route()->getName(), 'groups')
-            ];
-        }
-        if ($user->can('categories.index')) {
-            $menu[] = [
-                'link' => route('account.categories.index'),
-                'title' => 'Категории',
-                'icon' => 'Shopping/Price1.svg',
-                'active' => \Str::contains($request->route()->getName(), 'categories')
+                'link' => route('account.order.cart'),
+                'title' => 'Корзина',
+                'icon' => 'Shopping/Cart2.svg',
+                'active' => $request->routeIs('account.order.checkout'),
+                'separator' => true
             ];
         }
 
@@ -135,7 +116,41 @@ class HandleInertiaRequests extends Middleware
                 'link' => route('account.stock.search'),
                 'title' => 'Просмотр наличия по коду',
                 'icon' => 'Shopping/Barcode.svg',
-                'active' => $request->routeIs('account.stock.search')
+                'active' => $request->routeIs('account.stock.search'),
+                'separator' => true
+            ];
+        }
+
+        if ($user->can('users.index')) {
+            $menu[] = [
+                'link' => route('account.users.index'),
+                'title' => 'Пользователи',
+                'icon' => 'General/User.svg',
+                'active' => \Str::contains($request->route()->getName(), 'users')
+            ];
+        }
+        if ($user->can('departments.index')) {
+            $menu[] = [
+                'link' => route('account.departments.index'),
+                'title' => 'Отделы',
+                'icon' => 'Home/Building.svg',
+                'active' => \Str::contains($request->route()->getName(), 'departments')
+            ];
+        }
+        if ($user->can('groups.index')) {
+            $menu[] = [
+                'link' => route('account.groups.index'),
+                'title' => 'Группы',
+                'icon' => 'Files/Group-folders.svg',
+                'active' => \Str::contains($request->route()->getName(), 'groups')
+            ];
+        }
+        if ($user->can('categories.index')) {
+            $menu[] = [
+                'link' => route('account.categories.index'),
+                'title' => 'Категории',
+                'icon' => 'Shopping/Price1.svg',
+                'active' => \Str::contains($request->route()->getName(), 'categories')
             ];
         }
 

@@ -11,7 +11,7 @@ export interface Common {
     icon: string
     permissions: Array<string>
   }
-  menu: Array<{ title: string; link: string; icon: string; active: boolean }>
+  menu: Array<{ title: string; link: string; icon: string; active: boolean; separator?: boolean }>
 }
 
 export interface Flash {

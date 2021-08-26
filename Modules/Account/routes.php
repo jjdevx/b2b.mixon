@@ -5,6 +5,8 @@ use Modules\Account\Http\Controllers\{AuthController,
     DepartmentController,
     Goods\CategoryController,
     Goods\GroupController,
+    Order\CartController,
+    Order\OrderController,
     Stock\StockUpdateController,
     Stock\StockViewController,
     Users\ProfileController,
@@ -33,6 +35,15 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
     Route::delete('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('', [DashboardController::class, 'page'])->name('dashboard');
+
+    Route::prefix('order')->as('order')->group(function () {
+        Route::get('/{category?}', [OrderController::class, 'page']);
+        Route::post('', [OrderController::class, 'update'])->name('.update');
+        Route::prefix('cart')->as('.cart')->group(function () {
+            Route::get('', [CartController::class, 'page']);
+            Route::post('', [CartController::class, 'submit'])->name('.submit');
+        });
+    });
 
     Route::resource('users', UserController::class)
         ->parameter('user', 'id')

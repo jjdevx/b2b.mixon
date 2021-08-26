@@ -19,7 +19,7 @@ class CreateGoodsTable extends Migration
             $table->decimal('rrp');
 
             $table->decimal('volume', 6)->nullable();
-            $table->decimal('weight', 6)->nullable();
+            $table->decimal('weight', 7, 3)->nullable();
 
             $table->timestamps();
 

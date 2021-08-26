@@ -29,16 +29,23 @@
           <span class="menu-section text-muted text-uppercase fs-8 ls-1">Аккаунт</span>
         </div>
       </div>
-      <div v-for="item in menu" :key="item.link" class="menu-item">
-        <InertiaLink :href="item.link" class="menu-link" :class="{ active: item.active }">
-          <span class="menu-icon">
-            <span class="svg-icon svg-icon-2">
-              <inline-svg :src="`/dist/media/icons/duotone/${item.icon}`" />
+      <template v-for="item in menu" :key="item.link" class="menu-item">
+        <div class="menu-item">
+          <InertiaLink :href="item.link" class="menu-link" :class="{ active: item.active }">
+            <span class="menu-icon">
+              <span class="svg-icon svg-icon-2">
+                <inline-svg :src="`/dist/media/icons/duotone/${item.icon}`" />
+              </span>
             </span>
-          </span>
-          <span class="menu-title">{{ item.title }}</span>
-        </InertiaLink>
-      </div>
+            <span class="menu-title">{{ item.title }}</span>
+          </InertiaLink>
+        </div>
+        <div v-if="item.separator" class="menu-item">
+          <div class="menu-content">
+            <div class="separator my-1" />
+          </div>
+        </div>
+      </template>
       <div class="menu-item">
         <a href="/" class="menu-link" @click="logout()">
           <span class="menu-icon">
