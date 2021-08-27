@@ -17,7 +17,7 @@ class CategoriesSalesImport implements ToCollection
                     $saleBig = $item[2] * ($item[3] / 100 + 1);
                 }
 
-                if ($category = Category::where('number', '=', $item[0])->first()) {
+                if ($category = Category::find($item[0])) {
                     $category->update([
                         'sale_small' => $item[1] ?? null,
                         'sale' => $item[2] ?? null,
