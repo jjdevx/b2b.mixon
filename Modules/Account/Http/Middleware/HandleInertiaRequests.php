@@ -87,7 +87,7 @@ class HandleInertiaRequests extends Middleware
                 'active' => $request->routeIs('account.order')
             ];
             $menu[] = [
-                'link' => route('account.order.cart'),
+                'link' => route('account.cart'),
                 'title' => 'Корзина',
                 'icon' => 'Shopping/Cart2.svg',
                 'active' => $request->routeIs('account.order.checkout'),

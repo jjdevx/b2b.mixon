@@ -68,11 +68,11 @@
             </template>
           </tbody>
         </table>
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-lg btn-primary" :disabled="disabled" @click="addToCart()">
-            Добавить в корзину
-          </button>
-        </div>
+      </div>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-lg btn-primary" :disabled="disabled" @click="addToCart()">
+          Добавить в корзину
+        </button>
       </div>
     </div>
   </div>
@@ -139,6 +139,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.table-responsive {
+  max-height: 60vh;
+}
+
 .order-qty-input {
   max-width: 75px;
 }

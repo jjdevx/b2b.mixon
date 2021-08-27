@@ -41,7 +41,7 @@ class UserRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        $this->merge(['sales_ids' => array_keys($this->input('sales'))]);
+        $this->merge(['sales_ids' => array_keys($this->input('sales')??[])]);
     }
 
     public function authorize(): bool

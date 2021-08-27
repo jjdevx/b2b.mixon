@@ -39,6 +39,7 @@ final class OrderController extends Controller
         $user = \Auth::user();
         $goods = $request->input('goods');
 
+        \Cart::setGlobalTax(0);
         \Cart::restore($user->id);
         foreach ($goods as $id => $qty) {
             $good = $this->repository->calculateSale(Good::find($id), $user);
