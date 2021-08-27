@@ -103,7 +103,7 @@ class HandleInertiaRequests extends Middleware
                 'active' => $request->routeIs('account.goods.update')
             ];
         }
-        if ($user->can('stocks.update')) {
+        if ($user->can('stocks.update') && $user->departments()->exists()) {
             $menu[] = [
                 'link' => route('account.stock.update.page'),
                 'title' => 'Загрузка наличия',
