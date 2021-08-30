@@ -69,7 +69,7 @@ class PermissionsSeeder extends Seeder
             ],
             'user' => [
                 'label' => 'Пользователь',
-                'permissions' => ['account.access', 'stocks.search']
+                'permissions' => ['account.access', 'stocks.search', 'order.make']
             ]
         ];
 
