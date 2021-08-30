@@ -72,7 +72,7 @@ class StockViewController extends Controller
                     $data = $department->toArray();
                     $good = $data['goods'][0];
 
-                    $data['date'] = $data['stock_updated_at'];
+                    $data['date'] = Carbon::createFromTimestamp($data['stock_updated_at'])->toDateTimeString();
                     $data['sku'] = $sku;
                     $data['good'] = $good['name'];
                     $data['stock'] = $good['pivot']['qty'];
