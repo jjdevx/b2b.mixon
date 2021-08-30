@@ -57,7 +57,7 @@ export default defineComponent({
     const submit = handleSubmit((data: FormFields) => {
       isLoading.value = true
       Inertia.post(route('categories.sales'), data, {
-        preserveState: true,
+        preserveState: false,
         preserveScroll: true,
         onSuccess() {
           fileInput.value.value = ''
