@@ -90,7 +90,7 @@ class HandleInertiaRequests extends Middleware
                 'link' => route('account.cart'),
                 'title' => 'Корзина',
                 'icon' => 'Shopping/Cart2.svg',
-                'active' => $request->routeIs('account.order.checkout'),
+                'active' => $request->routeIs('account.cart'),
                 'separator' => true
             ];
         }
