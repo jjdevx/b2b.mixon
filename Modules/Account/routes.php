@@ -40,12 +40,19 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
     Route::prefix('order')->as('order')->group(function () {
         Route::get('/{category?}', [OrderController::class, 'page']);
         Route::post('', [OrderController::class, 'update'])->name('.update');
+
+        Route::post('create', [OrderController::class, 'create'])->name('.create');
     });
 
     Route::prefix('cart')->as('cart')->group(function () {
         Route::get('', [CartController::class, 'page']);
         Route::post('', [CartController::class, 'submit'])->name('.submit');
+
+        Route::post('plus/{id}', [CartController::class, 'plus'])->name('.plus');
+        Route::post('minus/{id}', [CartController::class, 'minus'])->name('.minus');
+
         Route::delete('', [CartController::class, 'clear'])->name('.clear');
+        Route::delete('{id}', [CartController::class, 'remove'])->name('.remove');
     });
 
     Route::resource('users', UserController::class)

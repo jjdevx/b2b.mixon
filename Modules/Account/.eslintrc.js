@@ -37,7 +37,7 @@ module.exports = {
       "warn",
       {
         tabWidth: 2,
-        printWidth: 100,
+        printWidth: 120,
         singleQuote: true,
         semi: false,
         trailingComma: "es5"
