@@ -46,10 +46,7 @@
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ good.name }}
                 </td>
-                <td
-                  class="text-dark fw-bolder text-hover-primary fs-6"
-                  :class="{ 'text-danger': good.stock === 0 }"
-                >
+                <td class="text-dark fw-bolder text-hover-primary fs-6" :class="{ 'text-danger': good.stock === 0 }">
                   {{ good.stock }}
                 </td>
               </tr>
@@ -63,7 +60,7 @@
 
 <script lang="ts">
 import { formatDate, Inertia, usePage, useRoute } from 'mixon'
-import { computed, defineComponent, ref, watch } from 'vue'
+import { computed, defineComponent, onMounted, ref, watch } from 'vue'
 import { Group } from '@/types/goods'
 import { Department } from '@/types/departments'
 
@@ -96,6 +93,12 @@ export default defineComponent({
             category: category.value,
           })
         )
+      }
+    })
+
+    onMounted(() => {
+      if (department.value === null) {
+        department.value = data.value.departments[0].id
       }
     })
 

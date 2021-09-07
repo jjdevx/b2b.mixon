@@ -20,7 +20,7 @@ class GoodRepository
 
         return Good::where('category_id', '=', $category->id)
             ->with(['stocks' => fn($q) => $q->where('department_id', '=', $department->id)])
-            ->get(['id', 'sku', 'name', 'rrp', 'weight'])
+            ->get(['id', 'sku', 'name', 'rrp', 'weight', 'volume'])
             ->map(fn(Good $g) => $this->calculateSale($g->setRelation('category', $category), $user));
     }
 
@@ -28,15 +28,20 @@ class GoodRepository
     {
         $category = $good->category;
         $good->stock = $good->stocks[0]?->pivot->qty ?? 0;
+
         $salePrice = $good->rrp;
+        $discount = 0;
 
         if ($sale = $user->sales()->where('id', '=', $category->id)->first()) {
-            $salePrice *= 1 - (float)$sale->pivot->size / 100;
+            $discount = (float)$sale->pivot->size / 100;
         } else if (($saleType = $user->sale_type) && $sale = $category->getAttribute($saleType)) {
-            $salePrice *= 1 - $sale / 100;
+            $discount = $sale / 100;
         }
 
+        $salePrice *= 1 - $discount;
+
         $good->salePrice = number_format($salePrice, 2, '.', '');
+        $good->discount = $discount * 100;
         return $good;
     }
 }

@@ -5,6 +5,7 @@ namespace Modules\Account\Http\Controllers\Order;
 use App\Http\Requests\OrderUpdateRequest;
 use App\Models\Good;
 use App\Models\Goods\Category;
+use App\Models\Goods\Group;
 use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response as InertiaResponse;
@@ -19,7 +20,7 @@ final class OrderController extends Controller
 
     }
 
-    public function page(Category $category = null): InertiaResponse
+    public function page(Group $group = null, Category $category = null): InertiaResponse
     {
         $this->seo()->setTitle('Заказ товаров');
 
@@ -29,7 +30,9 @@ final class OrderController extends Controller
 
         return inertia('Order/Page', [
             'data' => [
-                'categories' => Category::all(['id', 'name']),
+                'groups' => Group::all(['id', 'name']),
+                'categories' => $group?->categories ?? [],
+                'group' => $group?->id,
                 'category' => $category?->id,
                 'goods' => $goods ?? []
             ]
@@ -63,7 +66,7 @@ final class OrderController extends Controller
                 'total' => \Cart::total(),
                 'qty' => \Cart::count(),
                 'weight' => \Cart::weightFloat(),
-                'volume' => \Cart::content()->reduce(fn($carry, CartItem $i) => $carry + $i->model->volume, 0)
+                'volume' => \Cart::content()->reduce(fn($carry, CartItem $i) => $carry + $i->model->volume * $i->qty, 0)
             ]));
 
             $items = [];

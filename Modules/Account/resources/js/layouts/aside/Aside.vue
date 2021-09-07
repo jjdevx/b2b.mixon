@@ -12,7 +12,7 @@
   >
     <div id="kt_aside_logo" class="aside-logo flex-column-auto">
       <a href="/">
-        <img alt="Logo" src="/dist/img/logo-red.svg" class="h-50px logo" />
+        <img alt="Logo" src="/dist/img/logo-white.svg" class="logo" />
       </a>
 
       <div
@@ -64,3 +64,13 @@ export default defineComponent({
   },
 })
 </script>
+
+<style scoped>
+.aside .aside-logo {
+  height: 90px;
+}
+
+.logo {
+  height: 80px;
+}
+</style>

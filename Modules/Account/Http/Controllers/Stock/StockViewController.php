@@ -15,10 +15,14 @@ class StockViewController extends Controller
     public function view(Department $department = null, Category $category = null): InertiaResponse
     {
         $this->seo()->setTitle('Просмотр наличия');
-
-        $departments = Department::whereIn('type', [Department::BRANCH, Department::SHOP])->get(['id', 'name']);
-
         $user = \Auth::user();
+
+        if ($user->hasRole('user')) {
+            $departments = [$user->shippingPoint];
+        } else {
+            $departments = Department::whereIn('type', [Department::BRANCH, Department::SHOP])->get(['id', 'name']);
+        }
+
         $categories = $user->hasRole('admin')
             ? Category::all(['id', 'name'])
             : $user->availableCategories()->get(['id', 'name']);
@@ -66,6 +70,12 @@ class StockViewController extends Controller
                     ->select(['name'])
                     ->withPivot('qty')
             ])
+                ->where(function ($query) {
+                    $user = \Auth::user();
+                    if ($user->hasRole('user') && ($shippingPoint = $user->shipping_point)) {
+                        $query->where('id', '=', $shippingPoint);
+                    }
+                })
                 ->get(['id', 'name', 'stock_updated_at'])
                 ->filter(fn(Department $d) => $d->goods->isNotEmpty())
                 ->map(function (Department $department) use ($sku) {

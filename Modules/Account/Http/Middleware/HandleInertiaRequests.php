@@ -64,20 +64,7 @@ class HandleInertiaRequests extends Middleware
     {
         $user = \Auth::user();
 
-        $menu = [
-            [
-                'link' => route('account.dashboard'),
-                'title' => 'Главная',
-                'icon' => 'Design/PenAndRuller.svg',
-                'active' => $request->routeIs('account.dashboard')
-            ],
-            [
-                'link' => route('account.profile.edit'),
-                'title' => 'Мой аккаунт',
-                'icon' => 'General/Settings-1.svg',
-                'active' => $request->routeIs('account.profile.edit')
-            ]
-        ];
+        $menu = [];
 
         if ($user->shippingPoint && $user->can('order.make')) {
             $menu[] = [
@@ -86,31 +73,8 @@ class HandleInertiaRequests extends Middleware
                 'icon' => 'Shopping/Calculator.svg',
                 'active' => $request->routeIs('account.order')
             ];
-            $menu[] = [
-                'link' => route('account.cart'),
-                'title' => 'Корзина',
-                'icon' => 'Shopping/Cart2.svg',
-                'active' => $request->routeIs('account.cart'),
-                'separator' => true
-            ];
         }
 
-        if ($user->can('goods.update')) {
-            $menu[] = [
-                'link' => route('account.goods.update'),
-                'title' => 'Загрузка товаров',
-                'icon' => 'Files/Import.svg',
-                'active' => $request->routeIs('account.goods.update')
-            ];
-        }
-        if ($user->can('stocks.update') && $user->departments()->exists()) {
-            $menu[] = [
-                'link' => route('account.stock.update.page'),
-                'title' => 'Загрузка наличия',
-                'icon' => 'Shopping/Loader.svg',
-                'active' => $request->routeIs('account.stock.update.page')
-            ];
-        }
         if ($user->can('stocks.view')) {
             $menu[] = [
                 'link' => route('account.stock.view'),
@@ -124,8 +88,24 @@ class HandleInertiaRequests extends Middleware
                 'link' => route('account.stock.search'),
                 'title' => 'Просмотр наличия по коду',
                 'icon' => 'Shopping/Barcode.svg',
-                'active' => $request->routeIs('account.stock.search'),
+                'active' => $request->routeIs('account.stock.search')
+            ];
+        }
+        if ($user->can('stocks.update') && $user->departments()->exists()) {
+            $menu[] = [
+                'link' => route('account.stock.update.page'),
+                'title' => 'Загрузка наличия',
+                'icon' => 'Shopping/Loader.svg',
+                'active' => $request->routeIs('account.stock.update.page'),
                 'separator' => true
+            ];
+        }
+        if ($user->can('goods.update')) {
+            $menu[] = [
+                'link' => route('account.goods.update'),
+                'title' => 'Загрузка товаров',
+                'icon' => 'Files/Import.svg',
+                'active' => $request->routeIs('account.goods.update')
             ];
         }
 
@@ -158,9 +138,33 @@ class HandleInertiaRequests extends Middleware
                 'link' => route('account.categories.index'),
                 'title' => 'Категории',
                 'icon' => 'Shopping/Price1.svg',
-                'active' => \Str::contains($request->route()->getName(), 'categories')
+                'active' => \Str::contains($request->route()->getName(), 'categories'),
+                'separator' => true
             ];
         }
+
+        if ($user->shippingPoint && $user->can('order.make')) {
+            $menu[] = [
+                'link' => route('account.cart'),
+                'title' => 'Корзина',
+                'icon' => 'Shopping/Cart2.svg',
+                'active' => $request->routeIs('account.cart'),
+                'separator' => true
+            ];
+        }
+
+        $menu[] = [
+            'link' => route('account.dashboard'),
+            'title' => 'Главная',
+            'icon' => 'Design/PenAndRuller.svg',
+            'active' => $request->routeIs('account.dashboard')
+        ];
+        $menu[] = [
+            'link' => route('account.profile.edit'),
+            'title' => 'Мой аккаунт',
+            'icon' => 'General/Settings-1.svg',
+            'active' => $request->routeIs('account.profile.edit')
+        ];
 
         return $menu;
     }

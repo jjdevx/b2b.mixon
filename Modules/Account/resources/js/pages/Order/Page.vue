@@ -2,8 +2,16 @@
   <div class="card pb-4">
     <div class="d-flex justify-content-center pt-6 ms-4 mb-7">
       <div class="col-md-3 text-center">
-        <div>
+        <div class="form-group">
           <label class="form-label fw-bolder text-dark fs-6">Группа товара*</label>
+          <select v-model="group" class="form-control form-control-lg form-control-solid">
+            <option v-for="{ id, name } in groups" :key="id" :value="id">
+              {{ name }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label fw-bolder text-dark fs-6">Категория товара*</label>
           <select v-model="category" class="form-control form-control-lg form-control-solid">
             <option v-for="{ id, name } in categories" :key="id" :value="id">
               {{ name }}
@@ -14,9 +22,7 @@
     </div>
     <div v-if="goods.length" class="card-body py-2">
       <div class="table-responsive table-hover">
-        <table
-          class="table table-row-bordered table-row-gray-100 align-middle text-center gs-0 gy-3"
-        >
+        <table class="table table-row-bordered table-row-gray-100 align-middle text-center gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th>№ в группе</th>
@@ -25,8 +31,10 @@
               <th>Наличие</th>
               <th>Заказ</th>
               <th>Цена</th>
+              <th>% скидки</th>
               <th>Цена со скидкой</th>
               <th>Вес (брутто)</th>
+              <th>Объем</th>
             </tr>
           </thead>
           <tbody>
@@ -41,10 +49,7 @@
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ good.name }}
                 </td>
-                <td
-                  class="text-dark fw-bolder text-hover-primary fs-6"
-                  :class="{ 'text-danger': good.stock === 0 }"
-                >
+                <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ good.stock }}
                 </td>
                 <td>
@@ -53,10 +58,14 @@
                     min="0"
                     type="number"
                     class="form-control form-control-sm order-qty-input"
+                    :class="{ 'border-danger': counts[good.id] && good.stock === 0 }"
                   />
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ good.rrp }}
+                </td>
+                <td class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{ good.discount }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ good.salePrice }}
@@ -64,16 +73,20 @@
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ good.weight }}
                 </td>
+                <td class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{ good.volume }}
+                </td>
               </tr>
             </template>
           </tbody>
         </table>
       </div>
-      <div class="d-flex justify-content-center">
-        <button class="btn btn-lg btn-primary" :disabled="disabled" @click="addToCart()">
-          Добавить в корзину
-        </button>
+      <div class="d-flex justify-content-center mt-6">
+        <button class="btn btn-lg btn-primary" :disabled="disabled" @click="addToCart()">Ввод в заказ</button>
       </div>
+      <p v-if="hasOverstock" class="text-danger text-center mt-6">
+        Внимание! У вас в заказе товары, которых нет в наличии.
+      </p>
     </div>
   </div>
 </template>
@@ -81,12 +94,14 @@
 <script lang="ts">
 import { formatDate, Inertia, usePage, useRoute } from 'mixon'
 import { computed, defineComponent, ref, watch } from 'vue'
-import { Group } from '@/types/goods'
+import { Category, Group } from '@/types/goods'
 import { serialize } from 'object-to-formdata'
 
 interface Page {
   data: {
-    categories: Array<Group>
+    groups: Array<Group>
+    group?: number
+    categories: Array<Category>
     category?: number
     goods: Array<{
       id: number
@@ -94,8 +109,10 @@ interface Page {
       name: string
       stock: number
       rrp: number
+      discount: number
       salePrice: number
       weight: number
+      volume: number
     }>
   }
 }
@@ -107,15 +124,25 @@ export default defineComponent({
     const page = usePage<Page>()
     const data = computed(() => page.props.value.data)
 
+    const group = ref(data.value.group ?? null)
     const category = ref(data.value.category ?? null)
-    watch(category, () => {
-      if (category.value) {
-        Inertia.get(route('order', { category: category.value }))
+    watch([group, category], () => {
+      if (group.value) {
+        Inertia.get(route('order', { group: group.value, category: category.value }))
       }
     })
 
     const counts = ref<Record<string, string>>({})
     const disabled = computed(() => !Object.values(counts.value).filter((c) => c).length)
+
+    const hasOverstock = computed(() => {
+      for (const id in counts.value) {
+        if (counts.value[id] && data.value.goods.find((good) => good.id === parseInt(id))?.stock === 0) {
+          return true
+        }
+      }
+      return false
+    })
 
     function addToCart() {
       if (Object.values(counts.value)) {
@@ -125,11 +152,14 @@ export default defineComponent({
     }
 
     return {
+      groups: data.value.groups,
+      group,
       categories: data.value.categories,
       category,
       goods: data.value.goods,
       counts,
       disabled,
+      hasOverstock,
       addToCart,
       route,
       formatDate,

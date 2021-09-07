@@ -11,8 +11,11 @@
               <th>Наименование</th>
               <th>Количество</th>
               <th>Цена</th>
+              <th>% скидки</th>
+              <th>Цена со скидкой</th>
               <th>Всего</th>
               <th>Вес (брутто)</th>
+              <th>Объем</th>
               <th></th>
             </tr>
           </thead>
@@ -53,10 +56,19 @@
                   {{ good.price }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{ good.discount }}
+                </td>
+                <td class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{ good.salePrice }}
+                </td>
+                <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ good.total }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ good.weight }}
+                </td>
+                <td class="text-dark fw-bolder text-hover-primary fs-6">
+                  {{ good.volume }}
                 </td>
                 <td class="text-end">
                   <a
@@ -97,16 +109,24 @@
         <table class="cart_table table table-row-bordered table-sm">
           <tbody>
             <tr>
-              <td class="text-dark fw-bolder text-hover-primary fs-6">Общая сумма UAH:</td>
-              <td class="text-dark fw-bolder text-hover-primary fs-6">{{ data.total }}</td>
-            </tr>
-            <tr>
               <td class="text-dark fw-bolder text-hover-primary fs-6">Общее количество, ед.:</td>
               <td class="text-dark fw-bolder text-hover-primary fs-6">{{ data.qty }}</td>
             </tr>
             <tr>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">Cумма(РРЦ) UAH:</td>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">{{ data.rrp }}</td>
+            </tr>
+            <tr>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">Ваша стоимость (фактическая стоимость):</td>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">{{ data.total }}</td>
+            </tr>
+            <tr>
               <td class="text-dark fw-bolder text-hover-primary fs-6">Общий вес, кг.:</td>
               <td class="text-dark fw-bolder text-hover-primary fs-6">{{ data.weight }}</td>
+            </tr>
+            <tr>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">Общий объем, м².:</td>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">{{ data.volume }}</td>
             </tr>
           </tbody>
         </table>

@@ -8,10 +8,11 @@ use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
 use Modules\Account\Http\Controllers\Controller;
+use Modules\Account\Repositories\GoodRepository;
 
 class CartController extends Controller
 {
-    public function page(): Response
+    public function page(GoodRepository $repository): Response
     {
         $this->seo()->setTitle('Корзина');
 
@@ -19,18 +20,21 @@ class CartController extends Controller
 
         \Cart::restore($user->id);
 
-        $goods = \Cart::content()->map(function (CartItem $item) {
+        $goods = \Cart::content()->map(function (CartItem $item) use ($repository, $user) {
             /* @var $model Good */
-            $model = $item->model;
+            $model = $repository->calculateSale($item->model, $user);
             return [
                 'id' => $item->id,
                 'row' => $item->rowId,
                 'sku' => $model->sku,
                 'name' => $item->name,
                 'qty' => $item->qty,
-                'price' => $item->price,
+                'price' => $model->rrp,
+                'discount' => $model->discount,
+                'salePrice' => $item->price,
                 'total' => $item->total,
-                'weight' => $item->weight
+                'weight' => $item->weight,
+                'volume' => $model->volume
             ];
         });
         \Cart::store($user->id);
@@ -40,9 +44,11 @@ class CartController extends Controller
                 'goods' => $goods->values(),
                 'billing' => Order::$billing,
                 'types' => Order::$types,
+                'rrp' => $goods->reduce(fn($carry, $good) => $carry + $good['price'] * $good['qty'], 0),
                 'total' => \Cart::total(),
                 'qty' => \Cart::count(),
                 'weight' => \Cart::weight(),
+                'volume' => $goods->reduce(fn($carry, $good) => $carry + $good['volume'] * $good['qty'], 0)
             ]
         ]);
     }
