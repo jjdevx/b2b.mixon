@@ -24,6 +24,21 @@ class GoodRepository
             ->map(fn(Good $g) => $this->calculateSale($g->setRelation('category', $category), $user));
     }
 
+    public function getByCodes(array $codes): Collection
+    {
+        $user = \Auth::user();
+        $department = $user->shippingPoint;
+
+        if ($department === null) {
+            abort(403);
+        }
+
+        return Good::whereIn('sku', $codes)
+            ->with(['stocks' => fn($q) => $q->where('department_id', '=', $department->id), 'category'])
+            ->get(['id','category_id', 'sku', 'name', 'rrp', 'weight', 'volume'])
+            ->map(fn(Good $g) => $this->calculateSale($g, $user));
+    }
+
     public function calculateSale(Good $good, User $user): Good
     {
         $category = $good->category;

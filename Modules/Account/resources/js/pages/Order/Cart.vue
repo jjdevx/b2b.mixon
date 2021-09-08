@@ -9,7 +9,7 @@
               <th>ID</th>
               <th>Код товара</th>
               <th>Наименование</th>
-              <th>Количество</th>
+              <th class="min-w-125px">Количество</th>
               <th>Цена</th>
               <th>% скидки</th>
               <th>Цена со скидкой</th>
@@ -148,15 +148,21 @@ interface Page {
       sku: string
       name: string
       qty: number
+      stock: number
       price: number
+      discount: number
+      salePrice: number
       total: number
       weight: number
+      volume: number
     }>
     billing: Record<string, string>
     types: Record<string, string>
-    totals: number
+    rrp: number
+    total: number
     qty: number
     weight: number
+    volume: number
   }
 }
 
@@ -169,11 +175,11 @@ export default defineComponent({
 
     const clearCart = () => Inertia.delete(route('cart.clear'))
 
-    function changeQty(row: string, plus = true) {
+    function changeQty(row: number, plus = true) {
       Inertia.post(route(`cart.${plus ? 'plus' : 'minus'}`, row), { preserveState: false })
     }
 
-    const remove = (row: string) => Inertia.delete(route('cart.remove', row), { preserveState: false })
+    const remove = (row: number) => Inertia.delete(route('cart.remove', row), { preserveState: false })
 
     const form = reactive({ billing: 'CASH', type: 'CURRENT', comment: '' })
 

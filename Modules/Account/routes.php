@@ -38,6 +38,9 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
     Route::get('', [DashboardController::class, 'page'])->name('dashboard');
 
     Route::prefix('order')->as('order')->group(function () {
+        Route::get('codes', [OrderController::class, 'byCodes'])->name('.codes');
+        Route::post('codes', [OrderController::class, 'byCodes'])->name('.codes.goods');
+
         Route::get('{group?}/{category?}', [OrderController::class, 'page']);
         Route::post('', [OrderController::class, 'update'])->name('.update');
 

@@ -24,7 +24,7 @@ class HandleInertiaRequests extends Middleware
             'flash' => null
         ];
 
-        if ($request->isMethod('GET')) {
+        if ($request->isMethod('GET') || $request->isMethod('POST')) {
             $shared = [
                 'common' => [
                     'meta' => fn() => [
@@ -72,6 +72,12 @@ class HandleInertiaRequests extends Middleware
                 'title' => 'Заказ товаров',
                 'icon' => 'Shopping/Calculator.svg',
                 'active' => $request->routeIs('account.order')
+            ];
+            $menu[] = [
+                'link' => route('account.order.codes'),
+                'title' => 'Заказ по кодам',
+                'icon' => 'Shopping/Barcode-scan.svg',
+                'active' => $request->routeIs('account.order.codes')
             ];
         }
 

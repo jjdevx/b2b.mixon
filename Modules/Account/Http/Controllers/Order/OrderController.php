@@ -2,6 +2,7 @@
 
 namespace Modules\Account\Http\Controllers\Order;
 
+use App\Http\Requests\OrderByCodesRequest;
 use App\Http\Requests\OrderUpdateRequest;
 use App\Models\Good;
 use App\Models\Goods\Category;
@@ -11,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Inertia\Response as InertiaResponse;
 use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\OrderRequest;
+use Modules\Account\Imports\CodesImport;
 use Modules\Account\Repositories\GoodRepository;
 
 final class OrderController extends Controller
@@ -53,6 +55,27 @@ final class OrderController extends Controller
         \Cart::store($user->id);
 
         return back()->with(['toast' => ['text' => 'Товары были добавлены.']]);
+    }
+
+    public function byCodes(OrderByCodesRequest $request): InertiaResponse
+    {
+        $this->seo()->setTitle('Заказ по кодам');
+
+        if ($request->hasFile('excel')) {
+            $items = \Excel::toCollection(new CodesImport(), $request->file('excel'))->toArray()[0];
+            $goods = $this->repository->getByCodes(array_column($items, 0));
+            $counts = [];
+            foreach($items as [$sku,$qty]) {
+                $counts[$goods->where('sku',$sku)->first()->id] = $qty;
+            }
+        }
+
+        return inertia('Order/Codes', [
+            'data' => [
+                'goods' => $goods ?? [],
+                'counts' => $counts ?? []
+            ]
+        ]);
     }
 
     public function create(OrderRequest $request): RedirectResponse
