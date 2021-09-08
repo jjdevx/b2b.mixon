@@ -19,6 +19,7 @@ class UsersSeeder extends Seeder
                 'email' => $adminEmail,
                 'password' => env('INITIAL_USER_PASSWORDHASH'),
             ]);
+            $user->markEmailAsVerified();
             $user->save();
             $user->assignRole('admin');
         } else {
