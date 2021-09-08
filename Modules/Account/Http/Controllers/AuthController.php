@@ -48,7 +48,7 @@ class AuthController extends Controller
         return inertia('Auth/Register');
     }
 
-    public function tryRegister(RegisterRequest $request): RedirectResponse
+    public function tryRegister(RegisterRequest $request): \Illuminate\Http\Response
     {
         $user = User::create(array_merge($request->except('password'), [
             'password' => \Hash::make($request->input('password'))
@@ -60,11 +60,7 @@ class AuthController extends Controller
 
         \Auth::guard()->login($user, true);
 
-        return redirect()->route('account.dashboard')->with('flash', [
-            'text' => 'Замечательно! Вам на почту было отправлено письмо для подтверждения аккаунта.',
-            'icon' => 'success',
-            'timer' => 4000
-        ]);
+        return inertia()->location('/');
     }
 
     public function verify(EmailVerificationRequest $request): RedirectResponse
