@@ -6,6 +6,7 @@ use App\Models\Department;
 use App\Models\Good;
 use App\Models\Goods\Category;
 use Carbon\Carbon;
+use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
 use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\StockSearchRequest;
@@ -72,8 +73,14 @@ class StockViewController extends Controller
             ])
                 ->where(function ($query) {
                     $user = \Auth::user();
-                    if ($user->hasRole('user') && ($shippingPoint = $user->shipping_point)) {
-                        $query->where('id', '=', $shippingPoint);
+                    if ($user->hasRole('user')) {
+                        $query->where('id', '=', $user->shipping_point);
+                        if (!$user->shipping_point) {
+                            Inertia::share('flash', [
+                                'text' => 'Ваш аккаунт не подключен ни к одной точке отгрузки. Обратитесь к администратору.',
+                                'icon' => 'warning',
+                            ]);
+                        }
                     }
                 })
                 ->get(['id', 'name', 'stock_updated_at'])

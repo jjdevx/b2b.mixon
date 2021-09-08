@@ -24,6 +24,14 @@ class HandleInertiaRequests extends Middleware
             'flash' => null
         ];
 
+        if (($user = \Auth::user()) && !$user->hasVerifiedEmail() && $request->isMethod('GET')) {
+            \Session::flash('flash', [
+                'text' => 'Ваш аккаунт неактивен. Вам на почту было отправлено письмо для подтверждения аккаунта.',
+                'icon' => 'warning',
+                'timer' => 4000
+            ]);
+        }
+
         if ($request->isMethod('GET') || $request->isMethod('POST')) {
             $shared = [
                 'common' => [
@@ -66,97 +74,99 @@ class HandleInertiaRequests extends Middleware
 
         $menu = [];
 
-        if ($user->shippingPoint && $user->can('order.make')) {
-            $menu[] = [
-                'link' => route('account.order'),
-                'title' => 'Заказ товаров',
-                'icon' => 'Shopping/Calculator.svg',
-                'active' => $request->routeIs('account.order')
-            ];
-            $menu[] = [
-                'link' => route('account.order.codes'),
-                'title' => 'Заказ по кодам',
-                'icon' => 'Shopping/Barcode-scan.svg',
-                'active' => $request->routeIs('account.order.codes')
-            ];
-        }
+        if ($user->hasVerifiedEmail()) {
+            if ($user->shippingPoint && $user->can('order.make')) {
+                $menu[] = [
+                    'link' => route('account.order'),
+                    'title' => 'Заказ товаров',
+                    'icon' => 'Shopping/Calculator.svg',
+                    'active' => $request->routeIs('account.order')
+                ];
+                $menu[] = [
+                    'link' => route('account.order.codes'),
+                    'title' => 'Заказ по кодам',
+                    'icon' => 'Shopping/Barcode-scan.svg',
+                    'active' => $request->routeIs('account.order.codes')
+                ];
+            }
 
-        if ($user->can('stocks.view')) {
-            $menu[] = [
-                'link' => route('account.stock.view'),
-                'title' => 'Просмотр наличия',
-                'icon' => 'Shopping/Box3.svg',
-                'active' => $request->routeIs('account.stock.view')
-            ];
-        }
-        if ($user->can('stocks.search')) {
-            $menu[] = [
-                'link' => route('account.stock.search'),
-                'title' => 'Просмотр наличия по коду',
-                'icon' => 'Shopping/Barcode.svg',
-                'active' => $request->routeIs('account.stock.search')
-            ];
-        }
-        if ($user->can('stocks.update') && $user->departments()->exists()) {
-            $menu[] = [
-                'link' => route('account.stock.update.page'),
-                'title' => 'Загрузка наличия',
-                'icon' => 'Shopping/Loader.svg',
-                'active' => $request->routeIs('account.stock.update.page'),
-                'separator' => true
-            ];
-        }
-        if ($user->can('goods.update')) {
-            $menu[] = [
-                'link' => route('account.goods.update'),
-                'title' => 'Загрузка товаров',
-                'icon' => 'Files/Import.svg',
-                'active' => $request->routeIs('account.goods.update')
-            ];
-        }
+            if ($user->can('stocks.view')) {
+                $menu[] = [
+                    'link' => route('account.stock.view'),
+                    'title' => 'Просмотр наличия',
+                    'icon' => 'Shopping/Box3.svg',
+                    'active' => $request->routeIs('account.stock.view')
+                ];
+            }
+            if ($user->can('stocks.search')) {
+                $menu[] = [
+                    'link' => route('account.stock.search'),
+                    'title' => 'Просмотр наличия по коду',
+                    'icon' => 'Shopping/Barcode.svg',
+                    'active' => $request->routeIs('account.stock.search')
+                ];
+            }
+            if ($user->can('stocks.update') && $user->departments()->exists()) {
+                $menu[] = [
+                    'link' => route('account.stock.update.page'),
+                    'title' => 'Загрузка наличия',
+                    'icon' => 'Shopping/Loader.svg',
+                    'active' => $request->routeIs('account.stock.update.page'),
+                    'separator' => true
+                ];
+            }
+            if ($user->can('goods.update')) {
+                $menu[] = [
+                    'link' => route('account.goods.update'),
+                    'title' => 'Загрузка товаров',
+                    'icon' => 'Files/Import.svg',
+                    'active' => $request->routeIs('account.goods.update')
+                ];
+            }
 
-        if ($user->can('users.index')) {
-            $menu[] = [
-                'link' => route('account.users.index'),
-                'title' => 'Пользователи',
-                'icon' => 'General/User.svg',
-                'active' => \Str::contains($request->route()->getName(), 'users')
-            ];
-        }
-        if ($user->can('departments.index')) {
-            $menu[] = [
-                'link' => route('account.departments.index'),
-                'title' => 'Отделы',
-                'icon' => 'Home/Building.svg',
-                'active' => \Str::contains($request->route()->getName(), 'departments')
-            ];
-        }
-        if ($user->can('groups.index')) {
-            $menu[] = [
-                'link' => route('account.groups.index'),
-                'title' => 'Группы',
-                'icon' => 'Files/Group-folders.svg',
-                'active' => \Str::contains($request->route()->getName(), 'groups')
-            ];
-        }
-        if ($user->can('categories.index')) {
-            $menu[] = [
-                'link' => route('account.categories.index'),
-                'title' => 'Категории',
-                'icon' => 'Shopping/Price1.svg',
-                'active' => \Str::contains($request->route()->getName(), 'categories'),
-                'separator' => true
-            ];
-        }
+            if ($user->can('users.index')) {
+                $menu[] = [
+                    'link' => route('account.users.index'),
+                    'title' => 'Пользователи',
+                    'icon' => 'General/User.svg',
+                    'active' => \Str::contains($request->route()->getName(), 'users')
+                ];
+            }
+            if ($user->can('departments.index')) {
+                $menu[] = [
+                    'link' => route('account.departments.index'),
+                    'title' => 'Отделы',
+                    'icon' => 'Home/Building.svg',
+                    'active' => \Str::contains($request->route()->getName(), 'departments')
+                ];
+            }
+            if ($user->can('groups.index')) {
+                $menu[] = [
+                    'link' => route('account.groups.index'),
+                    'title' => 'Группы',
+                    'icon' => 'Files/Group-folders.svg',
+                    'active' => \Str::contains($request->route()->getName(), 'groups')
+                ];
+            }
+            if ($user->can('categories.index')) {
+                $menu[] = [
+                    'link' => route('account.categories.index'),
+                    'title' => 'Категории',
+                    'icon' => 'Shopping/Price1.svg',
+                    'active' => \Str::contains($request->route()->getName(), 'categories'),
+                    'separator' => true
+                ];
+            }
 
-        if ($user->shippingPoint && $user->can('order.make')) {
-            $menu[] = [
-                'link' => route('account.cart'),
-                'title' => 'Корзина',
-                'icon' => 'Shopping/Cart2.svg',
-                'active' => $request->routeIs('account.cart'),
-                'separator' => true
-            ];
+            if ($user->shippingPoint && $user->can('order.make')) {
+                $menu[] = [
+                    'link' => route('account.cart'),
+                    'title' => 'Корзина',
+                    'icon' => 'Shopping/Cart2.svg',
+                    'active' => $request->routeIs('account.cart'),
+                    'separator' => true
+                ];
+            }
         }
 
         $menu[] = [
@@ -165,12 +175,15 @@ class HandleInertiaRequests extends Middleware
             'icon' => 'Design/PenAndRuller.svg',
             'active' => $request->routeIs('account.dashboard')
         ];
-        $menu[] = [
-            'link' => route('account.profile.edit'),
-            'title' => 'Мой аккаунт',
-            'icon' => 'General/Settings-1.svg',
-            'active' => $request->routeIs('account.profile.edit')
-        ];
+
+        if ($user->hasVerifiedEmail()) {
+            $menu[] = [
+                'link' => route('account.profile.edit'),
+                'title' => 'Мой аккаунт',
+                'icon' => 'General/Settings-1.svg',
+                'active' => $request->routeIs('account.profile.edit')
+            ];
+        }
 
         return $menu;
     }
