@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Order extends Model
@@ -28,6 +29,11 @@ class Order extends Model
     public const UPDATED_AT = null;
 
     protected $fillable = ['billing', 'type', 'comment', 'total', 'qty', 'weight', 'volume'];
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function goods(): BelongsToMany
     {

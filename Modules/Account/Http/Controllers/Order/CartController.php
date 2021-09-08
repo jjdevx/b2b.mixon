@@ -39,6 +39,8 @@ class CartController extends Controller
         });
         \Cart::store($user->id);
 
+        $volume = round($goods->reduce(fn($carry, $good) => $carry + $good['volume'] * $good['qty'], 0), 3);
+
         return inertia('Order/Cart', [
             'data' => [
                 'goods' => $goods->values(),
@@ -48,7 +50,7 @@ class CartController extends Controller
                 'total' => \Cart::total(),
                 'qty' => \Cart::count(),
                 'weight' => \Cart::weight(),
-                'volume' => $goods->reduce(fn($carry, $good) => $carry + $good['volume'] * $good['qty'], 0)
+                'volume' => $volume
             ]
         ]);
     }

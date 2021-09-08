@@ -7,12 +7,14 @@ use App\Http\Requests\OrderUpdateRequest;
 use App\Models\Good;
 use App\Models\Goods\Category;
 use App\Models\Goods\Group;
+use App\Models\User;
 use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response as InertiaResponse;
 use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\OrderRequest;
 use Modules\Account\Imports\CodesImport;
+use Modules\Account\Notifications\NewOrder;
 use Modules\Account\Repositories\GoodRepository;
 
 final class OrderController extends Controller
@@ -65,8 +67,8 @@ final class OrderController extends Controller
             $items = \Excel::toCollection(new CodesImport(), $request->file('excel'))->toArray()[0];
             $goods = $this->repository->getByCodes(array_column($items, 0));
             $counts = [];
-            foreach($items as [$sku,$qty]) {
-                $counts[$goods->where('sku',$sku)->first()->id] = $qty;
+            foreach ($items as [$sku, $qty]) {
+                $counts[$goods->where('sku', $sku)->first()->id] = $qty;
             }
         }
 
@@ -80,8 +82,10 @@ final class OrderController extends Controller
 
     public function create(OrderRequest $request): RedirectResponse
     {
-        \DB::transaction(function () use ($request) {
-            $user = \Auth::user();
+        $user = \Auth::user();
+        $order = null;
+
+        \DB::transaction(function () use ($request, $user, &$order) {
 
             \Cart::restore($user->id);
 
@@ -109,6 +113,9 @@ final class OrderController extends Controller
             \Cart::erase(\Auth::id());
             \Cart::destroy();
         });
+
+        $user->notify(new NewOrder($order));
+        $user->shippingPoint->users->each(fn(User $u) => $user->notify(new NewOrder($order, true)));
 
         return redirect()->route('account.order')->with(['toast' => ['text' => 'Ваш заказ был отправлен.']]);
     }
