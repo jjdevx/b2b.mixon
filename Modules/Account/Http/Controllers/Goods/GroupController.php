@@ -18,7 +18,7 @@ class GroupController extends Controller
 
     public function index(): Response
     {
-        $this->seo()->setTitle('Группы');
+        $this->seo()->setTitle('Направления');
 
         $groups = $this->repository->getGroupsForIndex();
 
@@ -76,7 +76,7 @@ class GroupController extends Controller
         try {
             $group->delete();
         } catch (\Exception) {
-            return back()->with(['error' => 'Возникла ошибка при удалении группы.']);
+            return back()->with(['error' => 'Возникла ошибка при удалении направления.']);
         }
 
         return back()->with(['toast' => ['text' => "Группа $group->name была удалена."]]);

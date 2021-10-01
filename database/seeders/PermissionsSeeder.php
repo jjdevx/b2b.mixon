@@ -28,11 +28,11 @@ class PermissionsSeeder extends Seeder
                 'permissions' => [...$crudPermissions, ...$trashPermissions],
             ],
             'groups' => [
-                'name' => 'Группы',
+                'name' => 'Направления',
                 'permissions' => [...$crudPermissions],
             ],
             'categories' => [
-                'name' => 'Категории',
+                'name' => 'Группы товара',
                 'permissions' => [...$crudPermissions, 'sales.update'],
             ],
             'stocks' => [

@@ -13,7 +13,7 @@
       </InertiaLink>
     </div>
     <h3 class="card-title align-items-start flex-column ps-4">
-      <span class="card-label fw-bolder fs-3 mb-1">Категории</span>
+      <span class="card-label fw-bolder fs-3 mb-1">Группы товара</span>
     </h3>
     <div class="card-body py-2">
       <div class="table-responsive table-hover">

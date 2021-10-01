@@ -17,7 +17,7 @@ class Department extends Model
 
     public static array $types = [
         self::BRANCH => 'Филиал',
-        self::OFFICE => 'Офис',
+        self::OFFICE => 'Отдел Продаж',
         self::SHOP => 'Магазин'
     ];
 

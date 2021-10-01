@@ -143,7 +143,7 @@ class HandleInertiaRequests extends Middleware
             if ($user->can('groups.index')) {
                 $menu[] = [
                     'link' => route('account.groups.index'),
-                    'title' => 'Группы',
+                    'title' => 'Направления',
                     'icon' => 'Files/Group-folders.svg',
                     'active' => \Str::contains($request->route()->getName(), 'groups')
                 ];
@@ -151,7 +151,7 @@ class HandleInertiaRequests extends Middleware
             if ($user->can('categories.index')) {
                 $menu[] = [
                     'link' => route('account.categories.index'),
-                    'title' => 'Категории',
+                    'title' => 'Группы товара',
                     'icon' => 'Shopping/Price1.svg',
                     'active' => \Str::contains($request->route()->getName(), 'categories'),
                     'separator' => true

@@ -20,7 +20,7 @@ class CategoryController extends Controller
 
     public function index(): Response
     {
-        $this->seo()->setTitle('Категории');
+        $this->seo()->setTitle('Группы товара');
 
         $categories = $this->repository->getCategoriesForIndex();
 
@@ -89,7 +89,7 @@ class CategoryController extends Controller
         try {
             $category->delete();
         } catch (\Exception) {
-            return back()->with(['error' => 'Возникла ошибка при удалении категории.']);
+            return back()->with(['error' => 'Возникла ошибка при удалении группы товара.']);
         }
 
         return back()->with(['toast' => ['text' => "Группа $category->name была удалена."]]);

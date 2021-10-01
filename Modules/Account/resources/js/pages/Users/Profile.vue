@@ -43,12 +43,7 @@
         <div class="row fv-row mb-7">
           <div class="col-xl-6">
             <label class="form-label fw-bolder text-dark fs-6">Имя*</label>
-            <Field
-              class="form-control form-control-lg form-control-solid"
-              type="text"
-              name="name"
-              autocomplete="off"
-            />
+            <Field class="form-control form-control-lg form-control-solid" type="text" name="name" autocomplete="off" />
             <div class="fv-plugins-message-container">
               <div class="fv-help-block">
                 <ErrorMessage name="name" />
@@ -72,12 +67,7 @@
         </div>
         <div class="fv-row mb-7">
           <label class="form-label fw-bolder text-dark fs-6">Почта*</label>
-          <Field
-            class="form-control form-control-lg form-control-solid"
-            type="email"
-            name="email"
-            autocomplete="off"
-          />
+          <Field class="form-control form-control-lg form-control-solid" type="email" name="email" autocomplete="off" />
           <div class="fv-plugins-message-container">
             <div class="fv-help-block">
               <ErrorMessage name="email" />
@@ -148,12 +138,7 @@
           </div>
           <div class="col-xl-7">
             <label class="form-label fw-bolder text-dark fs-6">Город</label>
-            <Field
-              class="form-control form-control-lg form-control-solid"
-              type="text"
-              name="city"
-              autocomplete="off"
-            />
+            <Field class="form-control form-control-lg form-control-solid" type="text" name="city" autocomplete="off" />
             <div class="fv-plugins-message-container">
               <div class="fv-help-block">
                 <ErrorMessage name="city" />
@@ -178,12 +163,7 @@
         <div class="row fv-row mb-7">
           <div class="col-xl-6">
             <label class="form-label fw-bolder text-dark fs-6">Факс</label>
-            <Field
-              class="form-control form-control-lg form-control-solid"
-              type="text"
-              name="fax"
-              autocomplete="off"
-            />
+            <Field class="form-control form-control-lg form-control-solid" type="text" name="fax" autocomplete="off" />
             <div class="fv-plugins-message-container">
               <div class="fv-help-block">
                 <ErrorMessage name="fax" />
@@ -255,23 +235,11 @@
             Права просмотра остатков категорий
           </button>
           <div id="categories" class="list-group collapse">
-            <button
-              class="btn btn-success d-block mx-auto mb-7"
-              @click.prevent="setAllCategories()"
-            >
+            <button class="btn btn-success d-block mx-auto mb-7" @click.prevent="setAllCategories()">
               Выбрать все
             </button>
-            <label
-              v-for="{ value, label } in categoriesForSelect"
-              :key="value"
-              class="list-group-item"
-            >
-              <input
-                v-model="categories"
-                class="form-check-input me-1"
-                type="checkbox"
-                :value="value"
-              />
+            <label v-for="{ value, label } in categoriesForSelect" :key="value" class="list-group-item">
+              <input v-model="categories" class="form-check-input me-1" type="checkbox" :value="value" />
               {{ label }}
             </label>
             <div class="fv-plugins-message-container">
@@ -291,9 +259,7 @@
             Скидки по категориям
           </button>
           <div id="sales" class="list-group sales-list collapse">
-            <button class="btn btn-danger d-block mx-auto mb-7" @click.prevent="resetAllSales()">
-              Удалить все
-            </button>
+            <button class="btn btn-danger d-block mx-auto mb-7" @click.prevent="resetAllSales()">Удалить все</button>
             <label
               v-for="{ value, label } in categoriesForSelect"
               :key="value"
@@ -318,10 +284,7 @@
         </template>
       </div>
       <div class="card-footer d-flex justify-content-end py-6 px-9">
-        <InertiaLink
-          :href="route('users.index')"
-          class="btn btn-white btn-active-light-primary me-2"
-        >
+        <InertiaLink :href="route('users.index')" class="btn btn-white btn-active-light-primary me-2">
           Назад
         </InertiaLink>
 
@@ -358,10 +321,7 @@ interface Page {
   }
 }
 
-type FormFields = Omit<
-  User,
-  'id' | 'shippingPoint' | 'saleType' | 'roles' | 'categories' | 'sales'
-> & {
+type FormFields = Omit<User, 'id' | 'shippingPoint' | 'saleType' | 'roles' | 'categories' | 'sales'> & {
   avatar: string
 }
 
@@ -413,7 +373,7 @@ export default defineComponent({
     )
     const { value: categories, errorMessage: categoriesErrorMessage } = useField(
       'categories',
-      array().of(number()).required().label('Категории'),
+      array().of(number()).required().label('Группы товара'),
       { initialValue: user.value?.categories ?? [] }
     )
     const { value: sales, errorMessage: salesErrorMessage } = useField<Record<string, number>>(
@@ -427,8 +387,7 @@ export default defineComponent({
 
     function setAllCategories() {
       const ids = categoriesForSelect.map(({ value }) => value)
-      categories.value =
-        categories.value.length !== ids.length ? categoriesForSelect.map(({ value }) => value) : []
+      categories.value = categories.value.length !== ids.length ? categoriesForSelect.map(({ value }) => value) : []
     }
 
     function submit(data: FormFields, actions: FormActions<FormFields>): void {
@@ -466,9 +425,7 @@ export default defineComponent({
 
     const avatarDestroyRoute = 'profile.avatar.destroy'
     const removeAvatar = () =>
-      Inertia.delete(
-        isProfile ? route(avatarDestroyRoute) : route(avatarDestroyRoute, user.value?.id)
-      )
+      Inertia.delete(isProfile ? route(avatarDestroyRoute) : route(avatarDestroyRoute, user.value?.id))
 
     return {
       userValidationSchema,

@@ -52,9 +52,7 @@
             <template v-for="(department, index) in branches" :key="index">
               <tr>
                 <td>
-                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{
-                    department.id
-                  }}</span>
+                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{ department.id }}</span>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ department.name }}
@@ -66,11 +64,7 @@
                   {{ formatDate(department.updatedAt, 'DD.MM.YYYY, HH:ss') }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  <InertiaLink
-                    v-for="({ id, name }, i) in department.users"
-                    :key="id"
-                    :href="route('users.edit', id)"
-                  >
+                  <InertiaLink v-for="({ id, name }, i) in department.users" :key="id" :href="route('users.edit', id)">
                     {{ `${name}${i !== department.users.length - 1 ? ', ' : ''}` }}
                   </InertiaLink>
                 </td>
@@ -115,7 +109,7 @@
       </div>
     </div>
     <h3 class="card-title align-items-start flex-column ps-4">
-      <span class="card-label fw-bolder fs-3 mb-1">Офисы</span>
+      <span class="card-label fw-bolder fs-3 mb-1">Отделы Продаж</span>
     </h3>
     <div class="card-body py-2">
       <div class="table-responsive table-hover">
@@ -134,9 +128,7 @@
             <template v-for="(department, index) in offices" :key="index">
               <tr>
                 <td>
-                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{
-                    department.id
-                  }}</span>
+                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{ department.id }}</span>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ department.name }}
@@ -148,11 +140,7 @@
                   {{ formatDate(department.updatedAt, 'DD.MM.YYYY, HH:ss') }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  <InertiaLink
-                    v-for="({ id, name }, i) in department.users"
-                    :key="id"
-                    :href="route('users.edit', id)"
-                  >
+                  <InertiaLink v-for="({ id, name }, i) in department.users" :key="id" :href="route('users.edit', id)">
                     {{ `${name}${i !== department.users.length - 1 ? ', ' : ''}` }}
                   </InertiaLink>
                 </td>
@@ -216,9 +204,7 @@
             <template v-for="(department, index) in shops" :key="index">
               <tr>
                 <td>
-                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{
-                    department.id
-                  }}</span>
+                  <span class="text-dark fw-bolder text-hover-primary fs-6">{{ department.id }}</span>
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ department.name }}
@@ -230,11 +216,7 @@
                   {{ formatDate(department.updatedAt, 'DD.MM.YYYY, HH:ss') }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  <InertiaLink
-                    v-for="({ id, name }, i) in department.users"
-                    :key="id"
-                    :href="route('users.edit', id)"
-                  >
+                  <InertiaLink v-for="({ id, name }, i) in department.users" :key="id" :href="route('users.edit', id)">
                     {{ `${name}${i !== department.users.length - 1 ? ', ' : ''}` }}
                   </InertiaLink>
                 </td>
@@ -345,13 +327,10 @@ export default defineComponent({
     }
 
     const handleSizeChange = (size: number) => Inertia.get('', { perPage: size })
-    const handleCurrentChange = (page: number) =>
-      Inertia.get('', { page }, { preserveScroll: true })
+    const handleCurrentChange = (page: number) => Inertia.get('', { page }, { preserveScroll: true })
 
     onMounted(() => {
-      const tooltipTriggerList = [].slice.call(
-        document.querySelectorAll('[data-bs-toggle="tooltip"]')
-      )
+      const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
       tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new Tooltip(tooltipTriggerEl)
       })
