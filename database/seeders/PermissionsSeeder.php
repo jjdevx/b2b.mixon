@@ -65,7 +65,7 @@ class PermissionsSeeder extends Seeder
             ],
             'manager' => [
                 'label' => 'Менеджер',
-                'permissions' => ['stocks.update', 'stocks.view', 'stocks.search', 'goods.update']
+                'permissions' => ['stocks.update', 'stocks.view', 'stocks.search']
             ],
             'user' => [
                 'label' => 'Пользователь',
