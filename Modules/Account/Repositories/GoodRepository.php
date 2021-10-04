@@ -33,9 +33,12 @@ class GoodRepository
             abort(403);
         }
 
+        $availableCategories = \Auth::user()->availableCategories()->pluck('id');
+
         return Good::whereIn('sku', $codes)
+            ->whereIn('category_id', $availableCategories)
             ->with(['stocks' => fn($q) => $q->where('department_id', '=', $department->id), 'category'])
-            ->get(['id','category_id', 'sku', 'name', 'rrp', 'weight', 'volume'])
+            ->get(['id', 'category_id', 'sku', 'name', 'rrp', 'weight', 'volume'])
             ->map(fn(Good $g) => $this->calculateSale($g, $user));
     }
 
@@ -56,7 +59,7 @@ class GoodRepository
         $salePrice *= 1 - $discount;
 
         $good->salePrice = number_format($salePrice, 2, '.', '');
-        $good->discount = round($discount * 100,2);
+        $good->discount = round($discount * 100, 2);
         return $good;
     }
 }

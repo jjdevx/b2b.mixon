@@ -28,14 +28,22 @@ final class OrderController extends Controller
     {
         $this->seo()->setTitle('Заказ товаров');
 
+        $availableCategories = \Auth::user()->availableCategories()->pluck('id');
+
+        $groups = Group::whereHas('categories', fn($q) => $q->whereIn('id', $availableCategories))->get(['id', 'name']);
+
+        if ($group) {
+            $categories = $group->categories()->whereIn('id', $availableCategories)->get();
+        }
+
         if ($category) {
             $goods = $this->repository->getByCategory($category);
         }
 
         return inertia('Order/Page', [
             'data' => [
-                'groups' => Group::all(['id', 'name']),
-                'categories' => $group?->categories ?? [],
+                'groups' => $groups ?? [],
+                'categories' => $categories ?? [],
                 'group' => $group?->id,
                 'category' => $category?->id,
                 'goods' => $goods ?? []
@@ -67,8 +75,14 @@ final class OrderController extends Controller
             $items = \Excel::toCollection(new CodesImport(), $request->file('excel'))->toArray()[0];
             $goods = $this->repository->getByCodes(array_column($items, 0));
             $counts = [];
+
             foreach ($items as [$sku, $qty]) {
-                $counts[$goods->where('sku', $sku)->first()->id] = $qty;
+                $good = $goods->where('sku', $sku)->first();
+                if ($good === null) {
+                    continue;
+                }
+
+                $counts[$good->id] = $qty;
             }
         }
 

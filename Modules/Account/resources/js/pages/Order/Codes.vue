@@ -151,7 +151,10 @@ export default defineComponent({
         preserveState: false,
         preserveScroll: true,
         onSuccess() {
-          fileInput.value.value = ''
+          if (fileInput.value) {
+            fileInput.value.value = ''
+          }
+
           excel.value = null
         },
         onError: (errors) => setErrors(errors),
