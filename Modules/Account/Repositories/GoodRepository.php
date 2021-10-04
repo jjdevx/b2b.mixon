@@ -56,7 +56,7 @@ class GoodRepository
         $salePrice *= 1 - $discount;
 
         $good->salePrice = number_format($salePrice, 2, '.', '');
-        $good->discount = $discount * 100;
+        $good->discount = round($discount * 100,2);
         return $good;
     }
 }
