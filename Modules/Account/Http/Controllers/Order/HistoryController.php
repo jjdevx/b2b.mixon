@@ -3,10 +3,7 @@
 namespace Modules\Account\Http\Controllers\Order;
 
 use App\Models\Department;
-use App\Models\Goods\Category;
-use App\Models\Goods\Group;
 use App\Models\Order;
-use App\Models\User;
 use Inertia\Response as InertiaResponse;
 use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\IndexRequest;
@@ -14,7 +11,7 @@ use Modules\Account\Http\Resources\OrderCollection;
 
 final class HistoryController extends Controller
 {
-    public function page(IndexRequest $request): InertiaResponse
+    public function index(IndexRequest $request): InertiaResponse
     {
         $this->seo()->setTitle('История заказов');
 
@@ -41,6 +38,21 @@ final class HistoryController extends Controller
                 ]),
             ]
         ]);
+    }
+
+    public function show(Order $order): InertiaResponse
+    {
+        $this->seo()->setTitle("Заказ {$order->id}");
+
+        $user = \Auth::user();
+
+        abort_unless($order->user_id === $user->id || $user->hasRole(['admin', 'manager']), 403);
+
+        $order->load(['user', 'goods']);
+        $order->billing = Order::$billing[$order->billing];
+        $order->type = Order::$types[$order->type];
+
+        return inertia('Order/Show', ['data' => ['order' => $order]]);
     }
 
     private function getDepartment(): Department

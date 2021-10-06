@@ -43,8 +43,10 @@
                   {{ formatDate(order.createdAt, 'DD.MM.YYYY, HH:ss') }}
                 </td>
                 <td class="text-end">
-                  <a href="#" class="btn btn-success me-1">Просмотреть</a>
-                  <a href="#" class="btn btn-primary">Повторить</a>
+                  <InertiaLink :href="route('history.show', order.id)" class="btn btn-success me-1">
+                    Просмотреть
+                  </InertiaLink>
+                  <InertiaLink :href="route('history.repeat', order.id)" class="btn btn-primary">Повторить</InertiaLink>
                 </td>
               </tr>
             </template>

@@ -169,7 +169,7 @@ class HandleInertiaRequests extends Middleware
                     'link' => route('account.history'),
                     'title' => 'История заказов',
                     'icon' => 'Code/Time-schedule.svg',
-                    'active' => $request->routeIs('account.history'),
+                    'active' => \Str::contains($request->route()->getName(), 'history'),
                     'separator' => true
                 ];
             }
