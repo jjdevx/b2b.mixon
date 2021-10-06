@@ -10,6 +10,8 @@ class OrderByCodesRequest extends FormRequest
     {
         return [
             'excel' => ['nullable', 'file', 'mimes:xls,xlsx'],
+            'goods' => ['nullable', 'string'],
+            'counts' => ['nullable', 'string'],
         ];
     }
 

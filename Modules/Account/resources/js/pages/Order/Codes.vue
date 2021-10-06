@@ -26,6 +26,24 @@
         </button>
       </div>
     </form>
+    <form id="kt_account_profile_details_form" class="form" novalidate @submit.prevent="submitTextareas">
+      <div class="card-body d-flex border-top p-9">
+        <div class="fv-row mb-7 pe-1">
+          <label class="form-label fw-bolder text-dark fs-6">Товары</label>
+          <textarea v-model="goodsTextarea" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="fv-row mb-7 ps-1">
+          <label class="form-label fw-bolder text-dark fs-6">Количества</label>
+          <textarea v-model="countsTextarea" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+      </div>
+      <div class="card-footer d-flex justify-content-end py-6 px-9">
+        <button type="submit" class="btn btn-primary">
+          Показать
+          <span v-if="isLoading" class="spinner-border spinner-border-sm align-middle ms-2" />
+        </button>
+      </div>
+    </form>
   </div>
   <div v-if="goods?.length" class="card pb-4">
     <div class="card-body py-2">
@@ -124,6 +142,7 @@ interface Page {
 }
 
 type FormFields = { excel: string[] }
+type TextareasFields = { goods: string | null; counts: string | null }
 
 export default defineComponent({
   setup() {
@@ -162,6 +181,26 @@ export default defineComponent({
       })
     })
 
+    const { handleSubmit: handleTextareas, resetForm: resetTextareas } = useForm<TextareasFields>({
+      validateOnMount: false,
+      initialValues: { goods: null, counts: null },
+    })
+    const { value: goodsTextarea } = useField('goods', mixed().label('Товары'), { initialValue: null })
+    const { value: countsTextarea } = useField('counts', mixed().label('Количества'), { initialValue: null })
+
+    const submitTextareas = handleTextareas((data: TextareasFields) => {
+      isLoading.value = true
+      Inertia.post(route('order.codes.goods'), data, {
+        preserveState: false,
+        preserveScroll: true,
+        onSuccess() {
+          resetTextareas()
+        },
+        onError: (errors) => setErrors(errors),
+        onFinish: () => (isLoading.value = false),
+      })
+    })
+
     const counts = ref<Record<string, string>>(data.value.counts ?? {})
     const disabled = computed(() => !Object.values(counts.value).filter((c) => c).length)
 
@@ -189,6 +228,9 @@ export default defineComponent({
       fileInput,
       excel,
       handleFileChange,
+      submitTextareas,
+      goodsTextarea,
+      countsTextarea,
       goods: data.value.goods,
       counts,
       disabled,
@@ -199,7 +241,6 @@ export default defineComponent({
   },
 })
 </script>
-
 
 <style scoped>
 .table-responsive {

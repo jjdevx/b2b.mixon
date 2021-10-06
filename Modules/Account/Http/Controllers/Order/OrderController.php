@@ -84,6 +84,21 @@ final class OrderController extends Controller
 
                 $counts[$good->id] = $qty;
             }
+        } else if ($request->filled(['goods', 'counts'])) {
+            $skus = explode("\n", $request->input('goods'));
+            $goods = $this->repository->getByCodes($skus);
+
+            $countsRaw = explode("\n", $request->input('counts'));
+            $counts = [];
+            for ($i = 0, $iMax = count($countsRaw); $i < $iMax; $i++) {
+                $sku = $skus[$i];
+                $good = $goods->where('sku', $sku)->first();
+                if ($good === null) {
+                    continue;
+                }
+
+                $counts[$good->id] = $countsRaw[$i];
+            }
         }
 
         return inertia('Order/Codes', [
