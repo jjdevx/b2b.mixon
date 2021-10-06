@@ -7,12 +7,12 @@ use Modules\Account\Http\Controllers\{AuthController,
     Goods\GoodsImportController,
     Goods\GroupController,
     Order\CartController,
+    Order\HistoryController,
     Order\OrderController,
     Stock\StockUpdateController,
     Stock\StockViewController,
     Users\ProfileController,
-    Users\UserController
-};
+    Users\UserController};
 use Modules\Account\Http\Middleware\RedirectIfAuthenticated;
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -45,6 +45,10 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         Route::post('', [OrderController::class, 'update'])->name('.update');
 
         Route::post('create', [OrderController::class, 'create'])->name('.create');
+    });
+
+    Route::prefix('history')->as('history')->group(function () {
+        Route::get('', [HistoryController::class, 'page']);
     });
 
     Route::prefix('cart')->as('cart')->group(function () {

@@ -163,7 +163,13 @@ class HandleInertiaRequests extends Middleware
                     'link' => route('account.cart'),
                     'title' => 'Корзина',
                     'icon' => 'Shopping/Cart2.svg',
-                    'active' => $request->routeIs('account.cart'),
+                    'active' => $request->routeIs('account.cart')
+                ];
+                $menu[] = [
+                    'link' => route('account.history'),
+                    'title' => 'История заказов',
+                    'icon' => 'Code/Time-schedule.svg',
+                    'active' => $request->routeIs('account.history'),
                     'separator' => true
                 ];
             }
