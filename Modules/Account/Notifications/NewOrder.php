@@ -32,6 +32,8 @@ class NewOrder extends Notification implements ShouldQueue
 
         $mail->viewData = ['order' => $order->load('goods')];
 
+        $mail->line("Заказ: #{$order->id}.");
+
         $author = $order->user;
         $mail->line("Заказчик: #{$author->id}, {$author->full_name}, {$author->email}, {$author->phone}.");
 
