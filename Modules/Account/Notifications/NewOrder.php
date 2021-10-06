@@ -24,11 +24,14 @@ class NewOrder extends Notification implements ShouldQueue
 
     public function toMail($notifiable): MailMessage
     {
+        $order = $this->order;
+
         $mail = (new MailMessage)
             ->subject($this->forManagers ? 'Поступил новый заказ для Mixon' : 'Ваш заказ на сайте Mixon')
             ->greeting($this->forManagers ? 'Новый заказ для вашей точки отгрузки.' : 'Спасибо вам за заказ.');
 
-        $order = $this->order;
+        $mail->viewData = ['order' => $order->load('goods')];
+
         $author = $order->user;
         $mail->line("Заказчик: #{$author->id}, {$author->full_name}, {$author->email}, {$author->phone}.");
 
