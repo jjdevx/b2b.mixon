@@ -3,14 +3,22 @@
 namespace Modules\Account\Http\Controllers\Order;
 
 use App\Models\Department;
+use App\Models\Good;
 use App\Models\Order;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Response as InertiaResponse;
 use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\IndexRequest;
 use Modules\Account\Http\Resources\OrderCollection;
+use Modules\Account\Repositories\GoodRepository;
 
 final class HistoryController extends Controller
 {
+    public function __construct(private GoodRepository $repository)
+    {
+
+    }
+
     public function index(IndexRequest $request): InertiaResponse
     {
         $this->seo()->setTitle('История заказов');
@@ -18,14 +26,13 @@ final class HistoryController extends Controller
         $paginationCount = 20;
 
         $user = \Auth::user();
-        $orders = $user->orders()->with('user')->withCount('goods')->orderByDesc('id')->paginate($paginationCount);
+        $orders = $user->orders()->with('user')->orderByDesc('id')->paginate($paginationCount);
 
         if ($user->hasRole('admin')) {
-            $orders = Order::with('user')->withCount('goods')->orderByDesc('id')->paginate($paginationCount);
+            $orders = Order::with('user')->orderByDesc('id')->paginate($paginationCount);
         } else if ($department = $this->getDepartment()) {
             $orders = Order::with('user')
                 ->whereHas('user', fn($q) => $q->whereHas('departments', fn($d) => $d->where('id', $department->id)))
-                ->withCount('goods')
                 ->orderByDesc('id')
                 ->paginate($paginationCount);
         }
@@ -53,6 +60,18 @@ final class HistoryController extends Controller
         $order->type = Order::$types[$order->type];
 
         return inertia('Order/Show', ['data' => ['order' => $order]]);
+    }
+
+    public function repeat(Order $order): RedirectResponse
+    {
+        $user = \Auth::user();
+
+        foreach ($order->goods as $good) {
+            $goodWithSale = $this->repository->calculateSale(Good::find($good->id), $user);
+            \Cart::add($goodWithSale, $good->pivot->qty);
+        }
+
+        return redirect()->route('account.cart')->with(['toast' => ['text' => 'Товары были добавлены.']]);
     }
 
     private function getDepartment(): Department

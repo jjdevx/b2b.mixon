@@ -18,7 +18,7 @@ class OrderResource extends JsonResource
                 'name' => $order->user->name,
                 'surname' => $order->user->surname,
             ],
-            'goodsCount' => $order->goods_count,
+            'qty' => $order->qty,
             'weight' => $order->weight,
             'volume' => $order->volume,
             'createdAt' => $order->created_at

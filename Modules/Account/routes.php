@@ -50,7 +50,7 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
     Route::prefix('history')->as('history')->group(function () {
         Route::get('', [HistoryController::class, 'index']);
         Route::get('{order}', [HistoryController::class, 'show'])->name('.show');
-        Route::get('{order}/repeat', [HistoryController::class, 'show'])->name('.repeat');
+        Route::get('{order}/repeat', [HistoryController::class, 'repeat'])->name('.repeat');
     });
 
     Route::prefix('cart')->as('cart')->group(function () {

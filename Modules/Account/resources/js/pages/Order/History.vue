@@ -31,7 +31,7 @@
                   {{ `${order.user.surname} ${order.user.name}` }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
-                  {{ order.goodsCount }}
+                  {{ order.qty }}
                 </td>
                 <td class="text-dark fw-bolder text-hover-primary fs-6">
                   {{ order.weight }}
@@ -99,7 +99,7 @@ interface Order {
     name: string
     surname: string
   }
-  goodsCount: number
+  qty: number
   weight: number
   volume: number
   createdAt: string
