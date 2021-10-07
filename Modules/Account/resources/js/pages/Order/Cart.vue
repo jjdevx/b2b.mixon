@@ -86,7 +86,10 @@
           </tbody>
         </table>
       </div>
-      <button class="btn btn-lg btn-warning" @click="clearCart()">Очистить корзину</button>
+      <div class="d-flex flex-wrap">
+        <button class="btn btn-lg btn-warning me-3" @click="clearCart()">Очистить корзину</button>
+        <a :href="route('cart.excel')" class="btn btn-lg btn-success">Excel</a>
+      </div>
       <div class="d-flex justify-content-between align-items-center mt-6">
         <form class="cart_form" @submit.prevent="submit()">
           <div class="mb-3">
@@ -194,6 +197,7 @@ export default defineComponent({
       remove,
       form,
       submit,
+      route,
     }
   },
 })

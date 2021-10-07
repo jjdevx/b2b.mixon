@@ -50,6 +50,10 @@ class NewOrder extends Notification implements ShouldQueue
         Общий вес, кг.: {$order->weight}.<br>
         Общий объем, м².: {$order->volume}."));
 
+        if ($this->forManagers) {
+            $mail->attach(storage_path("app/exports/order-$order->id.xlsx"));
+        }
+
         return $mail;
     }
 }

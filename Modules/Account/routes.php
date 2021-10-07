@@ -12,7 +12,8 @@ use Modules\Account\Http\Controllers\{AuthController,
     Stock\StockUpdateController,
     Stock\StockViewController,
     Users\ProfileController,
-    Users\UserController};
+    Users\UserController
+};
 use Modules\Account\Http\Middleware\RedirectIfAuthenticated;
 
 Route::middleware(RedirectIfAuthenticated::class)->group(function () {
@@ -56,6 +57,8 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
     Route::prefix('cart')->as('cart')->group(function () {
         Route::get('', [CartController::class, 'page']);
         Route::post('', [CartController::class, 'submit'])->name('.submit');
+
+        Route::get('excel', [CartController::class, 'excel'])->name('.excel');
 
         Route::post('plus/{id}', [CartController::class, 'plus'])->name('.plus');
         Route::post('minus/{id}', [CartController::class, 'minus'])->name('.minus');

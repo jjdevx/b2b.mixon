@@ -11,6 +11,7 @@ use App\Models\User;
 use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response as InertiaResponse;
+use Modules\Account\Exports\OrderGoodsExport;
 use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Http\Requests\OrderRequest;
 use Modules\Account\Imports\CodesImport;
@@ -142,6 +143,8 @@ final class OrderController extends Controller
             \Cart::erase(\Auth::id());
             \Cart::destroy();
         });
+
+        \Excel::store(new OrderGoodsExport($order->goods), "exports/order-$order->id.xlsx");
 
         $user->notify(new NewOrder($order));
         $user->shippingPoint->users->each(fn(User $u) => $user->notify(new NewOrder($order, true)));

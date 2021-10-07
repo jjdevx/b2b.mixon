@@ -7,6 +7,7 @@ use App\Models\Order;
 use Gloudemans\Shoppingcart\CartItem;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response;
+use Modules\Account\Exports\CartGoodsExport;
 use Modules\Account\Http\Controllers\Controller;
 use Modules\Account\Repositories\GoodRepository;
 
@@ -46,7 +47,7 @@ class CartController extends Controller
                 'goods' => $goods->values(),
                 'billing' => Order::$billing,
                 'types' => Order::$types,
-                'rrp' => $goods->reduce(fn($carry, $good) => $carry + $good['price'] * $good['qty'], 0),
+                'rrp' => round($goods->reduce(fn($carry, $good) => $carry + $good['price'] * $good['qty'], 0), 2),
                 'total' => \Cart::total(),
                 'qty' => \Cart::count(),
                 'weight' => \Cart::weight(),
@@ -89,5 +90,33 @@ class CartController extends Controller
         \Cart::store($id);
 
         return back()->with(['toast' => ['text' => 'Товар был удален.']]);
+    }
+
+    public function excel(GoodRepository $repository)
+    {
+        $user = \Auth::user();
+
+        \Cart::restore($user->id);
+
+        $goods = \Cart::content()->map(function (CartItem $item) use ($repository, $user) {
+            /* @var $model Good */
+            $model = $repository->calculateSale($item->model, $user);
+            return [
+                'id' => $item->id,
+                'row' => $item->rowId,
+                'sku' => $model->sku,
+                'name' => $item->name,
+                'qty' => $item->qty,
+                'price' => $model->rrp,
+                'discount' => $model->discount,
+                'salePrice' => $item->price,
+                'total' => $item->total,
+                'weight' => $item->weight,
+                'volume' => $model->volume
+            ];
+        });
+        \Cart::store($user->id);
+
+        return \Excel::download(new CartGoodsExport($goods), 'cart.xlsx');
     }
 }
