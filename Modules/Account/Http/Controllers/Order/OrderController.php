@@ -145,6 +145,7 @@ final class OrderController extends Controller
         });
 
         \Excel::store(new OrderGoodsExport($order->goods), "exports/order-$order->id.xlsx");
+        \PDF::loadView('account::order-mail', compact('user', 'order'))->save(storage_path("app/pdf/order-$order->id.pdf"));
 
         $user->notify(new NewOrder($order));
         $user->shippingPoint->users->each(fn(User $u) => $user->notify(new NewOrder($order, true)));

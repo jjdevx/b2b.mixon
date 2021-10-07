@@ -88,7 +88,8 @@
       </div>
       <div class="d-flex flex-wrap">
         <button class="btn btn-lg btn-warning me-3" @click="clearCart()">Очистить корзину</button>
-        <a :href="route('cart.excel')" class="btn btn-lg btn-success">Excel</a>
+        <a :href="route('cart.excel')" class="btn btn-lg btn-success me-3">Excel</a>
+        <a :href="route('cart.pdf')" class="btn btn-lg btn-danger">PDF</a>
       </div>
       <div class="d-flex justify-content-between align-items-center mt-6">
         <form class="cart_form" @submit.prevent="submit()">

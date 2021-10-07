@@ -52,6 +52,8 @@ class NewOrder extends Notification implements ShouldQueue
 
         if ($this->forManagers) {
             $mail->attach(storage_path("app/exports/order-$order->id.xlsx"));
+        } else {
+            $mail->attach(storage_path("app/pdf/order-$order->id.pdf"));
         }
 
         return $mail;

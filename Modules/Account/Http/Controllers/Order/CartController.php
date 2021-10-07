@@ -13,46 +13,12 @@ use Modules\Account\Repositories\GoodRepository;
 
 class CartController extends Controller
 {
-    public function page(GoodRepository $repository): Response
+    public function page(): Response
     {
         $this->seo()->setTitle('Корзина');
 
-        $user = \Auth::user();
-
-        \Cart::restore($user->id);
-
-        $goods = \Cart::content()->map(function (CartItem $item) use ($repository, $user) {
-            /* @var $model Good */
-            $model = $repository->calculateSale($item->model, $user);
-            return [
-                'id' => $item->id,
-                'row' => $item->rowId,
-                'sku' => $model->sku,
-                'name' => $item->name,
-                'qty' => $item->qty,
-                'price' => $model->rrp,
-                'discount' => $model->discount,
-                'salePrice' => $item->price,
-                'total' => $item->total,
-                'weight' => $item->weight,
-                'volume' => $model->volume
-            ];
-        });
-        \Cart::store($user->id);
-
-        $volume = round($goods->reduce(fn($carry, $good) => $carry + $good['volume'] * $good['qty'], 0), 3);
-
         return inertia('Order/Cart', [
-            'data' => [
-                'goods' => $goods->values(),
-                'billing' => Order::$billing,
-                'types' => Order::$types,
-                'rrp' => round($goods->reduce(fn($carry, $good) => $carry + $good['price'] * $good['qty'], 0), 2),
-                'total' => \Cart::total(),
-                'qty' => \Cart::count(),
-                'weight' => \Cart::weight(),
-                'volume' => $volume
-            ]
+            'data' => $this->getCartData()
         ]);
     }
 
@@ -118,5 +84,52 @@ class CartController extends Controller
         \Cart::store($user->id);
 
         return \Excel::download(new CartGoodsExport($goods), 'cart.xlsx');
+    }
+
+    public function pdf(GoodRepository $repository)
+    {
+        $user = \Auth::user();
+
+        $pdf = \PDF::loadView('account::order', array_merge(['user' => $user], $this->getCartData()));
+
+        return $pdf->download('order.pdf');
+    }
+
+    private function getCartData(): array
+    {
+        $repository = app(GoodRepository ::class);
+        $user = \Auth::user();
+        \Cart::restore($user->id);
+
+        $goods = \Cart::content()->map(function (CartItem $item) use ($repository, $user) {
+            /* @var $model Good */
+            $model = $repository->calculateSale($item->model, $user);
+            return [
+                'id' => $item->id,
+                'row' => $item->rowId,
+                'sku' => $model->sku,
+                'name' => $item->name,
+                'qty' => $item->qty,
+                'price' => $model->rrp,
+                'discount' => $model->discount,
+                'salePrice' => $item->price,
+                'total' => $item->total,
+                'weight' => $item->weight,
+                'volume' => $model->volume
+            ];
+        });
+        \Cart::store($user->id);
+
+        $volume = round($goods->reduce(fn($carry, $good) => $carry + $good['volume'] * $good['qty'], 0), 3);
+        return [
+            'goods' => $goods->values(),
+            'billing' => Order::$billing,
+            'types' => Order::$types,
+            'rrp' => round($goods->reduce(fn($carry, $good) => $carry + $good['price'] * $good['qty'], 0), 2),
+            'total' => \Cart::total(),
+            'qty' => \Cart::count(),
+            'weight' => \Cart::weight(),
+            'volume' => $volume
+        ];
     }
 }

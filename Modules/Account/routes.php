@@ -59,6 +59,7 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
         Route::post('', [CartController::class, 'submit'])->name('.submit');
 
         Route::get('excel', [CartController::class, 'excel'])->name('.excel');
+        Route::get('pdf', [CartController::class, 'pdf'])->name('.pdf');
 
         Route::post('plus/{id}', [CartController::class, 'plus'])->name('.plus');
         Route::post('minus/{id}', [CartController::class, 'minus'])->name('.minus');

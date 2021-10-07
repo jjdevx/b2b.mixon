@@ -78,7 +78,19 @@
           </tbody>
         </table>
       </div>
-      <div class="d-flex justify-content-end mt-6">
+      <div class="d-flex justify-content-between align-items-center mt-6">
+        <table class="cart_table table table-row-bordered table-sm">
+          <tbody>
+            <tr>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">Форма расчета:</td>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">{{ order.billing }}</td>
+            </tr>
+            <tr>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">Тип заказа:</td>
+              <td class="text-dark fw-bolder text-hover-primary fs-6">{{ order.type }}</td>
+            </tr>
+          </tbody>
+        </table>
         <table class="cart_table table table-row-bordered table-sm">
           <tbody>
             <tr>

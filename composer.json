@@ -11,6 +11,7 @@
     "php": "^7.4|^8.0",
     "artesaos/seotools": "^0.20.1",
     "barryvdh/laravel-debugbar": "^3.6",
+    "barryvdh/laravel-dompdf": "^0.9.0",
     "barryvdh/laravel-ide-helper": "^2.10",
     "bumbummen99/shoppingcart": "^4.0",
     "dyrynda/laravel-cascade-soft-deletes": "^4.1",
