@@ -56,7 +56,7 @@ class NewUser extends Notification implements ShouldQueue
         $user = $this->user;
         $url = $this->getUrl();
 
-        $message .= "Ім'я: {$user->name}\nID: {$user->id},\nимя: {$user->name},\nпочта: {$user->email}\n";
+        $message .= "Имя: {$user->name} $user->surname}\nID: {$user->id},\nпочта: {$user->email}\n";
         if ($phone = $user->phone) {
             $message .= "Телефон: $phone\n\n";
         }
