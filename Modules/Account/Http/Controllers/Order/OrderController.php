@@ -148,7 +148,7 @@ final class OrderController extends Controller
         \PDF::loadView('account::order-mail', compact('user', 'order'))->save(storage_path("app/pdf/order-$order->id.pdf"));
 
         $user->notify(new NewOrder($order));
-        $user->shippingPoint->users->each(fn(User $u) => $user->notify(new NewOrder($order, true)));
+        $user->shippingPoint->users->each(fn(User $u) => $u->notify(new NewOrder($order, true)));
 
         return redirect()->route('account.order')->with(['toast' => ['text' => 'Ваш заказ был отправлен.']]);
     }
