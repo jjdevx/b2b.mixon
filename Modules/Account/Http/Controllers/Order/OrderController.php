@@ -144,7 +144,7 @@ final class OrderController extends Controller
             \Cart::destroy();
         });
 
-        \Excel::store(new OrderGoodsExport($order->goods), "exports/order-$order->id.xlsx");
+        \Excel::store(new OrderGoodsExport($order->goods,$user,$order), "exports/order-$order->id.xlsx");
         \PDF::loadView('account::order-mail', compact('user', 'order'))->save(storage_path("app/pdf/order-$order->id.pdf"));
 
         $user->notify(new NewOrder($order));

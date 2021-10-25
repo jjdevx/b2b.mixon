@@ -2,13 +2,15 @@
 
 namespace Modules\Account\Exports;
 
-use App\Models\Good;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use PhpOffice\PhpSpreadsheet\Style\Alignment;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class CartGoodsExport implements FromCollection, ShouldAutoSize
+class CartGoodsExport implements FromCollection, ShouldAutoSize, WithStyles
 {
     public function __construct(private Collection $items, private User $user, private array $data)
     {
@@ -42,5 +44,14 @@ class CartGoodsExport implements FromCollection, ShouldAutoSize
         $items->push(['Адрес:', $this->user->address]);
 
         return $items;
+    }
+
+    public function styles(Worksheet $sheet): array
+    {
+        return [
+            'B' => [
+                'alignment' => ['horizontal' => Alignment::HORIZONTAL_CENTER,]
+             ]
+        ];
     }
 }
