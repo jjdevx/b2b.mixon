@@ -10,6 +10,14 @@
             </option>
           </select>
         </div>
+        <div class="form-group">
+          <label class="form-label fw-bolder text-dark fs-6">Направление товара*</label>
+          <select v-model="group" class="form-control form-control-lg form-control-solid">
+            <option v-for="{ id, name } in groups" :key="id" :value="id">
+              {{ name }}
+            </option>
+          </select>
+        </div>
         <div>
           <label class="form-label fw-bolder text-dark fs-6">Группа товара*</label>
           <select v-model="category" class="form-control form-control-lg form-control-solid">
@@ -68,6 +76,8 @@ interface Page {
   data: {
     departments: Array<Department>
     department?: number
+    groups: Array<Group>
+    group?: number
     categories: Array<Group>
     category?: number
     goods: Array<{ sku: string; name: string; stock: number }>
@@ -83,13 +93,19 @@ export default defineComponent({
     const data = computed(() => page.props.value.data)
 
     const department = ref(data.value.department ?? null)
+    const group = ref(data.value.group ?? null)
     const category = ref(data.value.category ?? null)
 
-    watch([department, category], () => {
-      if (department.value && category.value) {
+    watch([group], () => {
+      category.value = null
+    })
+
+    watch([department, group, category], () => {
+      if (department.value && group.value) {
         Inertia.get(
           route('stock.view', {
             department: department.value,
+            group: group.value,
             category: category.value,
           })
         )
@@ -105,6 +121,8 @@ export default defineComponent({
     return {
       departments: data.value.departments,
       department,
+      groups: data.value.groups,
+      group,
       categories: data.value.categories,
       category,
       goods: data.value.goods,

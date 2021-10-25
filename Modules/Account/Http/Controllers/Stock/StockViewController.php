@@ -5,6 +5,7 @@ namespace Modules\Account\Http\Controllers\Stock;
 use App\Models\Department;
 use App\Models\Good;
 use App\Models\Goods\Category;
+use App\Models\Goods\Group;
 use Carbon\Carbon;
 use Inertia\Inertia;
 use Inertia\Response as InertiaResponse;
@@ -13,12 +14,12 @@ use Modules\Account\Http\Requests\StockSearchRequest;
 
 class StockViewController extends Controller
 {
-    public function view(Department $department = null, Category $category = null): InertiaResponse
+    public function view(Department $department = null, Group $group = null, Category $category = null): InertiaResponse
     {
         $this->seo()->setTitle('Просмотр наличия');
         $user = \Auth::user();
 
-        if ($user->hasAnyRole('manager','admin')) {
+        if ($user->hasAnyRole('manager', 'admin')) {
             $departments = Department::whereIn('type', [Department::BRANCH, Department::SHOP])->get(['id', 'name']);
         } else {
             $departments = [$user->shippingPoint];
@@ -27,6 +28,12 @@ class StockViewController extends Controller
         $categories = $user->hasRole('admin')
             ? Category::all(['id', 'name'])
             : $user->availableCategories()->get(['id', 'name']);
+
+        $groups = Group::whereHas('categories', fn($q) => $q->whereIn('id', $categories->pluck('id')))->get(['id', 'name']);
+
+        if ($group) {
+            $categories = $group->categories()->whereIn('id', $categories->pluck('id'))->get();
+        }
 
         abort_if(
             $category && !$categories->contains($category->id),
@@ -53,7 +60,9 @@ class StockViewController extends Controller
             'data' => [
                 'departments' => $departments,
                 'department' => $department?->id,
-                'categories' => $categories,
+                'groups' => $groups,
+                'group' => $group?->id,
+                'categories' => $group ? $categories : null,
                 'category' => $category?->id,
                 'goods' => $goods,
                 'stockLastUpdate' => $stockLastUpdate,

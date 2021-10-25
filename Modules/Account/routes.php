@@ -112,7 +112,9 @@ Route::middleware(['auth', 'can:account.access'])->group(function () {
             Route::post('', [StockUpdateController::class, 'handle'])->name('handle');
         });
 
+
+
         Route::get('search', [StockViewController::class, 'search'])->name('search')->middleware('can:stocks.search');
-        Route::get('{department?}/{category?}', [StockViewController::class, 'view'])->name('view')->middleware('can:stocks.view');
+        Route::get('{department?}/{group?}/{category?}', [StockViewController::class, 'view'])->name('view')->middleware('can:stocks.view');
     });
 });
