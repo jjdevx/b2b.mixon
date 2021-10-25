@@ -22,7 +22,7 @@
     </div>
     <div v-if="goods.length" class="card-body py-2">
       <div class="table-responsive table-hover">
-        <table class="table table-row-bordered table-row-gray-100 align-middle text-center gs-0 gy-3">
+        <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th>№ в группе</th>
