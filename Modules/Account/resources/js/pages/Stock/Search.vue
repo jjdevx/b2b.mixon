@@ -9,17 +9,12 @@
       <form @submit.prevent="search(searchBy.name)">
         <label class="form-label fw-bolder text-dark fs-6">Поиск кода по части названия</label>
         <input v-model="name" class="form-control form-control-lg form-control-solid mb-3" />
-        <button class="btn btn-success d-block mx-auto mb-7" :disabled="!name.length">
-          Искать
-        </button>
+        <button class="btn btn-success d-block mx-auto mb-7" :disabled="!name.length">Искать</button>
       </form>
     </div>
     <div v-if="goodsBySku.length || goodsByName.length" class="card-body py-2">
       <div class="table-responsive table-hover">
-        <table
-          v-if="goodsBySku.length"
-          class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
-        >
+        <table v-if="goodsBySku.length" class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th>Филиал</th>
@@ -54,10 +49,7 @@
             </template>
           </tbody>
         </table>
-        <table
-          v-if="goodsByName.length"
-          class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3"
-        >
+        <table v-if="goodsByName.length" class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3">
           <thead>
             <tr class="fw-bolder text-muted">
               <th>Код товара</th>
@@ -79,6 +71,12 @@
         </table>
       </div>
     </div>
+    <p v-if="data.sku && goodsBySku.length === 0" class="card-label fw-bolder fs-3 text-center">
+      Этого товара нигде нет в наличии.
+    </p>
+    <p v-if="data.name && goodsByName.length === 0" class="card-label fw-bolder fs-3 text-center">
+      Такого товара не найдено.
+    </p>
   </div>
 </template>
 
@@ -134,6 +132,7 @@ export default defineComponent({
     }
 
     return {
+      data,
       sku,
       goodsBySku: data.value.goodsBySku,
       name,
