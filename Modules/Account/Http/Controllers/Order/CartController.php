@@ -83,7 +83,7 @@ class CartController extends Controller
         });
         \Cart::store($user->id);
 
-        return \Excel::download(new CartGoodsExport($goods), 'cart.xlsx');
+        return \Excel::download(new CartGoodsExport($goods,$user,$this->getCartData()), 'cart.xlsx');
     }
 
     public function pdf(GoodRepository $repository)
