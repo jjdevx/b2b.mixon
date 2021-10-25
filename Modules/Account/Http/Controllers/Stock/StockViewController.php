@@ -18,10 +18,10 @@ class StockViewController extends Controller
         $this->seo()->setTitle('Просмотр наличия');
         $user = \Auth::user();
 
-        if ($user->hasRole('user')) {
-            $departments = [$user->shippingPoint];
-        } else {
+        if ($user->hasAnyRole('manager','admin')) {
             $departments = Department::whereIn('type', [Department::BRANCH, Department::SHOP])->get(['id', 'name']);
+        } else {
+            $departments = [$user->shippingPoint];
         }
 
         $categories = $user->hasRole('admin')
