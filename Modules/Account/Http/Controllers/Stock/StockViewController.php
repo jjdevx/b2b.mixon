@@ -82,7 +82,7 @@ class StockViewController extends Controller
             ])
                 ->where(function ($query) {
                     $user = \Auth::user();
-                    if ($user->hasRole('user')) {
+                    if ($user->hasRole('user') && !$user->hasRole('manager')) {
                         $query->where('id', '=', $user->shipping_point);
                         if (!$user->shipping_point) {
                             Inertia::share('flash', [
