@@ -74,7 +74,7 @@ final class HistoryController extends Controller
         return redirect()->route('account.cart')->with(['toast' => ['text' => 'Товары были добавлены.']]);
     }
 
-    private function getDepartment(): Department
+    private function getDepartment(): ?Department
     {
         return \Auth::user()->departments()->first();
     }
