@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <title>{{$page['props']['common']['meta']['title']}} - Mixon</title>
+    <title> Mixon</title>
     <link rel="icon" href="/favicon.ico" type="image/svg+xml">
     <link href="{{ mix('css/app.css','dist') }}" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
